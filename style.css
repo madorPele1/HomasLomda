@@ -1,0 +1,31 @@
+html {
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    overflow-y: scroll;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #BADEFD;
+}
+
+.first-page {
+    background-color: #BADEFD;
+    height: 100vh;
+    width: 100vw;
+}
+
+.main-title {
+    color: aliceblue;
+    font-size: 15vmax;
+    text-align: center;
+}
+
+.little-text {
+    font-size: 2.5vmax;
+    color: aliceblue;
+    text-align: center;
+    position: relative;
+    top: 22vh;
+}
