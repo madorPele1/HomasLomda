@@ -2,6 +2,12 @@
     font-family: heebo;
     src: url(assets/fonts/Heebo/Heebo-VariableFont_wght.ttf);
 }
+
+@font-face {
+    font-family: segoe;
+    src: url(assets/fonts/segoe/segoeuithis.ttf);
+}
+
 html {
     width: 100vw;
     max-width: 100%;
@@ -16,28 +22,27 @@ body {
     margin: 0;
     padding: 0;
     background-color: #BADEFD;
-    font-family: heebo;
+    font-family: segoe;
     overflow-x: hidden;
 
 }
 
-.first-page {
-    background-color: #BADEFD;
-    height: 100vh;
-    width: 90vw;
-    position: relative;
-    right: 2%;
+h1 {
+    font-family: heebo;
 }
 
 .main-title {
     color: rgb(4, 22, 38);
-    font-size: 7vmax;
+    font-size: 6vmax;
     text-align: center;
 }
 
 .explaine-text {
     color: rgb(4, 22, 38);
-    font-size: 5vmax;
+    font-size: 4vmax;
+    width: 80vw;
+    position: relative;
+    right: 8%;
     text-align: center;
 }
 
@@ -64,6 +69,7 @@ body {
 .button:hover {
     box-shadow: 0 0px 0 rgb(228, 165, 4);
     transform: translateY(12px);
+    align-self: center;
 }
 
 .questionmark-button {
@@ -74,12 +80,13 @@ body {
 }
 
 .instructions {
-    font-size: 4vmax;
+    font-size: 3.5vmax;
     text-align: center;
-    width: 90vw;
+    width: 88vw;
     position: relative;
-    right: 4%;
-    padding-bottom: 6vh;
+    padding-top: 1vh;
+    padding-bottom: 2vh;
+    padding-right: 5vw;
 }
 
 .bold {
@@ -92,19 +99,96 @@ body {
     font-weight: bold;
     text-align: center;
     position: relative;
-    bottom: 12%;
+    bottom: 20%;
     animation: up-down 3.5s infinite;
+}
+
+.choose-div {
+    background-image: url('assets/general/backgrounds/levelChoosing.svg');
+    width: 100vw;
+    height: 100vh;
+    background-size: 100%;
+    background-position: bottom;
+    background-repeat: no-repeat;
+}
+
+.choose {
+  height: 30vh;
+}
+
+#soldier {
+    position: absolute;
+    top: 152vh;
+    right: 0vw;
+    z-index: 2;
+}
+
+#commander {
+    position: absolute;
+    top: 152vh;
+    right: 70vw;
+    z-index: 2;
+}
+
+.picked {
+    filter: drop-shadow(0px 0px 7px rgb(223, 160, 82));
+}
+
+.choose-title {
+    font-size: 3.5vmax;
+    position: relative;
+    top: 5%;
+}
+
+#chosen-button {
+    position: absolute;
+    top: 125vh;
+    /* display: none; */
+}
+
+#animation-car {
+    position: relative;
+    top: 60vh;
+    width: 100vw;
+}
+
+@keyframes back-car-drive {
+    0% {
+        top: 60vh;
+        width: 100vw;
+        right: 0;
+    }
+    100% {
+        top: 48vh;
+        width: 50vw;
+        right: 12vw;
+    }
+}
+
+@keyframes right-car-drive {
+    0% {
+        top: 42vh;
+        left: -20vw;
+        width: 40vw;
+        z-index: 0;
+    }
+    100% {
+        top: 37vh;
+        left: 30vw;
+        width: 30vw;
+        z-index: 0;
+    }
 }
 
 @keyframes up-down {
     0% {
-        bottom: 12%;
+        bottom: 13%;
     }
     50% {
-        bottom: 10%;
+        bottom: 15%;
     }
     100% {
-        bottom: 12%;
+        bottom: 13%;
     }
 }
 
