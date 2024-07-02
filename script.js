@@ -40,6 +40,8 @@ const confirmChocie = () => {
             document.getElementById('animation-car').style.animation = `${role}-car-drive 1s linear forwards`;
             document.getElementById('animation-car').setAttribute('src', 'assets/general/cars/sideView.svg');
         }, 900);
+    sessionStorage.setItem("role", role);
+    window.location.href = "general.html";
 }
 
 const aboutUsOpen = () => {
