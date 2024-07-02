@@ -24,7 +24,6 @@ body {
     background-color: #BADEFD;
     font-family: segoe;
     overflow-x: hidden;
-
 }
 
 h1 {
@@ -77,6 +76,7 @@ h1 {
     height: 12vw;
     right: 2%;
     top: 2%;
+    z-index: 4;
 }
 
 .instructions {
@@ -104,29 +104,30 @@ h1 {
 }
 
 .choose-div {
+    position: absolute;
     background-image: url('assets/general/backgrounds/levelChoosing.svg');
     width: 100vw;
     height: 100vh;
-    background-size: 100%;
     background-position: bottom;
+    background-size: 100vw;
     background-repeat: no-repeat;
 }
 
 .choose {
-  height: 30vh;
+  height: 30%;
 }
 
 #soldier {
     position: absolute;
-    top: 152vh;
-    right: 0vw;
+    top: 42vh;
+    right: 68vw;
     z-index: 2;
 }
 
 #commander {
     position: absolute;
-    top: 152vh;
-    right: 70vw;
+    top: 42vh;
+    left: 73vw;
     z-index: 2;
 }
 
@@ -136,45 +137,68 @@ h1 {
 
 .choose-title {
     font-size: 3.5vmax;
+    width: 98vw;
     position: relative;
-    top: 5%;
+    bottom: 2%;
 }
 
 #chosen-button {
-    position: absolute;
-    top: 125vh;
-    /* display: none; */
+    position: relative;
+    bottom: 2vh;
+    display: none;
 }
 
 #animation-car {
-    position: relative;
-    top: 60vh;
+    position: absolute;
+    top: 73vh;
+    left: 0vw;
     width: 100vw;
+}
+
+#panel2 {
+    display: none;
 }
 
 @keyframes back-car-drive {
     0% {
-        top: 60vh;
+        top: 73vh;
         width: 100vw;
-        right: 0;
+        left: 0;
     }
     100% {
-        top: 48vh;
+        top: 57vh;
         width: 50vw;
-        right: 12vw;
+        left: 30vw;
     }
 }
 
-@keyframes right-car-drive {
+@keyframes commander-car-drive {
     0% {
-        top: 42vh;
-        left: -20vw;
+        top: 54vh;
+        left: 40vw;
         width: 40vw;
         z-index: 0;
     }
     100% {
-        top: 37vh;
-        left: 30vw;
+        top: 53vh;
+        left: 120vw;
+        width: 30vw;
+        z-index: 0;
+    }
+}
+
+@keyframes soldier-car-drive {
+    0% {
+        transform: scaleX(-100%);
+        top: 54vh;
+        left: 40vw;
+        width: 40vw;
+        z-index: 0;
+    }
+    100% {
+        transform: scaleX(-100%);
+        top: 53vh;
+        left: 0vw;
         width: 30vw;
         z-index: 0;
     }
@@ -208,4 +232,114 @@ h1 {
     100% {
         opacity: 1;
     }
+}
+
+@keyframes blur {
+    0% {
+        filter: blur(0px);
+    }
+    100% {
+        filter: blur(10px);
+    }
+}
+
+@keyframes un-blur {
+    0% {
+        filter: blur(10px);
+    }
+    100% {
+        filter: blur(0px);
+    }
+}
+
+@keyframes un-blur {
+    0% {
+        filter: blur(10px);
+    }
+    100% {
+        filter: blur(0px);
+    }
+}
+
+@keyframes circle-animation-open {
+    0% {
+        width: 12vw;
+        height: 12vw;
+        right: 2%;
+        top: 2%;
+    }
+    100% {
+        width: 100vw;
+        height: 100vw;
+        right: 0%;
+        top: 10%;
+    }
+}
+
+@keyframes circle-animation-close {
+    0% {
+        width: 100vw;
+        height: 100vw;
+        right: 0%;
+        top: 10%;
+    }
+    100% {
+        width: 12vw;
+        height: 12vw;
+        right: 2%;
+        top: 2%;
+    }
+}
+
+@keyframes slide {
+    0% {
+        width: 80vw;
+        height: 12vw;
+        left: 22%;
+        top: 2%;
+        opacity: 0.6;
+    }
+    100% {
+        width: 80vw;
+        left: -8%;
+        opacity: 1;
+    }
+}
+
+#about-title {
+    position: relative;
+    display: none;
+}
+
+#info {
+    background-color: rgb(237, 214, 8);
+    box-shadow: 0 12px 0 rgb(228, 165, 4);
+    border-radius: 50%;
+    width: 100vw;
+    height: 100vw;
+    position: absolute;
+    z-index: 3;
+    display: none;
+}
+
+#info-text {
+    text-align: center;
+    position: relative;
+    top: 5vh;
+}
+
+#about-text {
+    display: none;
+    opacity: 0;
+}
+
+#close-window {
+    opacity: 0;
+    position: absolute;
+    left: 13vw;
+    bottom: 29vh;
+    font-size: 5.5vmax;
+    font-weight: 900;
+    filter: drop-shadow(0px 3px 7px rgb(223, 160, 82));
+    z-index: 5;
 }
