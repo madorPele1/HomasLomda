@@ -10,7 +10,14 @@
     <body dir="rtl">
       <section class="panel" id="panel1">        
             <div class="container">
-              <button type="button" class="button questionmark-button">?</button>
+              <button type="button" class="button questionmark-button" id="question-button">?</button>
+              <div id="info">
+                <p id="close-window">✘</p>
+                <div id="info-text">
+                  <h1 class="main-title" id="about-title">מי אנחנו?</h1>
+                  <p class="explaine-text" id="about-text"> מדור פ"ה צוות פל"א - מירב קראוס, חן אוחיון, לירז בינשטוק, נועה שפרבר </p>
+                </div>
+              </div>
               <h1 class="main-title">ברוכים הבאים ללומדת החומ"ס!</h1>
               <p class="explaine-text">לומדה זו נועדה לסד"כ הגדודי אשר נדרש להיכרות ותרגול של המשימות באחריותו במענה לאירוע חומ"ס בחירום.</p>
               <button type="button" class="button" id="start-button">שנתחיל?</button>
@@ -18,12 +25,11 @@
         </section>
         <section class="panel" id="panel2">        
           <div class="choose-div">
-            <h1 class="main-title choose-title">לחצו על הדמות המאימה לכם ולחצו על 'אישור'.</h1>
+            <h1 class="main-title choose-title">לחצו על הדמות המתאימה לכם ולחצו על 'אישור'.</h1>
             <button type="button" class="button" id="chosen-button">אישור</button>
             <img src="assets/general/characters/allCharacters/commander.svg" alt="commander" class="choose" id="commander"/>
             <img src="assets/general/characters/allCharacters/soldier.svg" alt="soldier" class="choose" id="soldier"/>
             <img src="assets/general/cars/backView.svg" alt="back-car" id="animation-car">
-
           </div>
       </section>
     </body>
