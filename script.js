@@ -1,5 +1,5 @@
 let role;
-let solider;
+let soldier;
 let commander;
 
 window.addEventListener("load", () => {
@@ -39,9 +39,13 @@ const confirmChocie = () => {
         setTimeout(() => { 
             document.getElementById('animation-car').style.animation = `${role}-car-drive 1s linear forwards`;
             document.getElementById('animation-car').setAttribute('src', 'assets/general/cars/sideView.svg');
+            sessionStorage.setItem("role", role);
+        }, 700);
+
+        setTimeout(() => { 
             window.location.href = "general.html";
-        }, 900);
-    sessionStorage.setItem("role", role);
+        }, 1800);
+        
 }
 
 const aboutUsOpen = () => {
