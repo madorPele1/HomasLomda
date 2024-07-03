@@ -10,24 +10,46 @@
     <body dir="rtl">
 
         <div class="general-screens">
-            <section id="road-map">
 
+            <section id="road-map">
+                <!-- liraz's code -->
+                <img class="map-background" src="assets/general/backgrounds/map.svg" alt="map-background">
             </section>
-            <section id="opening-screen">
+
+            <section id="opening-screen" class="panel">
                 <div class="opening-div">
-                    <img class="character-img" src="assets/general/characters/circles/soldier.svg" alt="character-img">
-                    <button class="start-btn">בואו נתחיל!</button>
+                    <img class="character-circle" src="assets/general/characters/circles/soldier.svg" alt="character-img">
+                    <div class="start-text"></div>
+                    <button class="btn start-btn" onclick="startUnit">בואו נתחיל!</button>
                 </div>
-                <button class="back-to-map-car-button">
+                <button class="back-to-map-car-button" onclick="backToMap">
                     <img src="assets/general/cars/sideView.svg" alt="back-to-map-car-button">
                 </button>
             </section>
-            <section id="edning-screen"></section>
-            <section id="explaining-screen"></section>
-            <section id="questions-screen"></section>
+
+            <section id="ending-screen" class="panel">
+                <div class="ending-div">
+                    <img class="character-circle" src="assets/general/characters/circles/soldier.svg" alt="character-img">
+                    <div class="ending-text"></div>
+                    <button class="btn end-btn" onclick="endUnit">לפרק הבא</button>
+                </div>
+                <button class="back-to-map-car-button" onclick="backToMap">
+                    <img src="assets/general/cars/sideView.svg" alt="back-to-map-car-button">
+                </button>
+            </section>
+
+            <section id="explaining-screen" class="panel">
+                <div>
+                    <img class="speech-bubble" src="assets/general/speechBubble.svg" alt="speech-bubble">
+                    <div class="explaine-text"></div>
+                </div>
+                <img class="character" src="assets/general/characters/allCharacters/soldier.svg" alt="character">
+                <button class="btn back-btn">חזרה</button>
+            </section>
+            <!-- <section id="questions-screen"></section> -->
         </div>
 
-        <div class="specific-screens">
+        <!-- <div class="specific-screens">
             <div class="units" id="unit1">
                 <section id="concepts">
                     <section id="concepts-list"></section>
@@ -61,13 +83,9 @@
             <div class="units" id="unit5">
                 <section id="incident-handling">
                 </section>
-            </div>
-
-            
+            </div> -->
+        
         </div>
 
     </body>
 </html>
-
-<!-- background: rgb(187,176,217);
-background: linear-gradient(0deg, rgba(187,176,217,1) 0%, rgba(177,222,252,1) 100%); -->
