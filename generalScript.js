@@ -28,6 +28,3 @@ const backToMap = () => { // function for returning to map (by clicking the car)
     //also ables clicking on lower number of units the user already done
 }
 //
-
-// think of how to use the general screens and the specific screens - maybe script for the lomda (גייסון נוסף עם אובייקט של תסריט)
-// יהיו מסכי בסיס (הכלליים) וביניהם נוסיף את שאר המסכים? והתוכן יתחלף ברגע שילחצו על סיום פרק?
