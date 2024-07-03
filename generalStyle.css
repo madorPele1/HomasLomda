@@ -1,0 +1,106 @@
+@font-face {
+    font-family: heebo;
+    src: url(assets/fonts/Heebo/Heebo-VariableFont_wght.ttf);
+}
+
+@font-face {
+    font-family: segoe;
+    src: url(assets/fonts/segoe/segoeuithis.ttf);
+}
+
+html {
+    width: 100vw;
+    max-width: 100%;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    overflow-y: scroll;
+    overflow-x:hidden;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(45deg, rgba(187, 176, 217, 1) 0%, rgba(177, 222, 252, 1) 100%);
+    font-family: segoe;
+    overflow-x: hidden;
+}
+
+h1 {
+    font-family: heebo;
+}
+
+/* opening screen */
+.opening-div, .ending-div {
+    height: 35vh;
+    width: 90vw;
+    background-color: #a381a35c;
+    border-radius: 90px;
+    position: relative;
+    margin: 0 auto;
+    top: 15vh;
+}
+
+.panel {
+    /* position: absolute; */
+    background-image: url('assets/units/(1) concepts/background.svg');
+    width: 100vw;
+    height: 100vh;
+    background-position: bottom;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.btn {
+    background-color: rgb(237, 214, 8);
+    box-shadow: 0 6px 0 rgb(228, 165, 4);
+    width: 30vw;
+    height: 6vh;
+    font-size: 2vmax;
+    font-weight: bold;
+    border-radius: 68px;
+    border: none;
+    transition: all .3s;
+    display: block;
+    margin: auto;    
+    font-family: segoe;
+    position: relative;
+    top: 5vh
+}
+
+.character-circle {
+    width: 20vmax;
+    display: block;
+    margin: auto;
+    position: relative;
+    bottom: 10vh
+}
+
+.back-to-map-car-button {
+    width: 50vw;
+    background-color: transparent;
+    border-color: transparent;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+/* ending screen */
+.speech-bubble {
+    width: 90vw;
+    height: 40vh;
+    display: block;
+    margin: auto;
+    position: relative;
+    top: 40vw;
+}
+
+.character {
+    width: 60vw;
+    position: relative;
+}
+
+.back-btn {
+    margin:0;
+}
