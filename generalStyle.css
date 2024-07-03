@@ -104,3 +104,16 @@ h1 {
 .back-btn {
     margin:0;
 }
+
+/* roadMap */
+#animation_container {
+    border: #BADEFD solid 2px;
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+}
+
+#canvas {
+    width: 100%;
+    object-fit: contain;
+}
