@@ -6,23 +6,15 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="generalStyle.css">
         <script type="text/javascript" src="generalScript.js"></script>
-        <style>
-            #animation_container {
-              position:absolute;
-              margin:auto;
-              left:0;right:0;
-              top:0;bottom:0;
-            }
-          </style>
-          <script src="https://code.createjs.com/1.0.0/createjs.min.js"></script>
-          <script src="carStop1.js?1720002781966"></script>
+        <script src="https://code.createjs.com/1.0.0/createjs.min.js"></script>
+          <script src="zoomOutCarStop1.js?1720081823300"></script>
           <script>
           var canvas, stage, exportRoot, anim_container, dom_overlay_container, fnStartAnimation;
           function init() {
               canvas = document.getElementById("canvas");
               anim_container = document.getElementById("animation_container");
               dom_overlay_container = document.getElementById("dom_overlay_container");
-              var comp=AdobeAn.getComposition("BA375B89E3C481489DADDB4E8C0C8D1A");
+              var comp=AdobeAn.getComposition("C9A353383F7E6049932029EE4920EAC7");
               var lib=comp.getLibrary();
               createjs.MotionGuidePlugin.install();
               var loader = new createjs.LoadQueue(false);
@@ -44,7 +36,7 @@
               for(i=0; i<ssMetadata.length; i++) {
                   ss[ssMetadata[i].name] = new createjs.SpriteSheet( {"images": [queue.getResult(ssMetadata[i].name)], "frames": ssMetadata[i].frames} )
               }
-              exportRoot = new lib.carStop1();
+              exportRoot = new lib.zoomOutCarStop1();
               stage = new lib.Stage(canvas);	
               //Registers the "tick" event listener.
               fnStartAnimation = function() {
@@ -65,7 +57,15 @@
 
             <section id="road-map">
                 <div id="animation_container">
-            <canvas id="canvas"></canvas>
+                    <div class="stop-pick"></div>
+                    <div class="stop-pick"></div>
+                    <div class="stop-pick"></div>
+                    <div class="stop-pick"></div>
+                    <div class="stop-pick"></div>
+                    <canvas id="canvas"></canvas>
+                    <div id="dom_overlay_container">
+                    </div>
+                </div>
             <div id="dom_overlay_container">
             </div>
             </div>
