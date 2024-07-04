@@ -74,7 +74,7 @@
             <section id="opening-screen" class="panel">
                 <div class="opening-div">
                     <img class="character-circle" src="assets/general/characters/circles/soldier.svg" alt="character-img">
-                    <div class="start-text"></div>
+                    <p class="start-text"></p>
                     <button class="btn start-btn" onclick="startUnit">בואו נתחיל!</button>
                 </div>
                 <button class="back-to-map-car-button" onclick="backToMap">
@@ -85,7 +85,7 @@
             <section id="ending-screen" class="panel">
                 <div class="ending-div">
                     <img class="character-circle" src="assets/general/characters/circles/soldier.svg" alt="character-img">
-                    <div class="ending-text"></div>
+                    <p class="ending-text"></p>
                     <button class="btn end-btn" onclick="endUnit">לפרק הבא</button>
                 </div>
                 <button class="back-to-map-car-button" onclick="backToMap">
@@ -94,15 +94,38 @@
             </section>
 
             <section id="explaining-screen" class="panel">
-                <div>
+                <div class="explaining-div">
                     <img class="speech-bubble" src="assets/general/speechBubble.svg" alt="speech-bubble">
-                    <div class="explaine-text"></div>
+                    <p class="explaining-text"></p>
                 </div>
                 <img class="character" src="assets/general/characters/allCharacters/soldier.svg" alt="character">
                 <button class="btn back-btn">חזרה</button>
             </section>
-            <!-- <section id="questions-screen"></section> -->
-        </div>
+
+            <section id="questions-screen" class="panel">
+                <div class="question-div">
+                    <img class="emotion-circle" src="assets/general/characters/circles/soldier.svg" alt="emotion-circle">
+                    <p class="question-text"></p>
+                </div>
+                <div class="answers-div">
+                    <div id="answer1" class="answers">
+                        <img class="clouds" src="assets/general/cloud.svg" alt="cloud">
+                        <p class="answer-text"></p>
+                    </div>
+                    <div id="answer2" class="answers">
+                        <img class="clouds" src="assets/general/cloud.svg" alt="cloud">
+                        <p class="answer-text"></p>
+                    </div>
+                    <div id="answer3" class="answers">
+                        <img class="clouds" src="assets/general/cloud.svg" alt="cloud">
+                        <p class="answer-text"></p>
+                    </div>
+                    <div id="answer4" class="answers">
+                        <img class="clouds" src="assets/general/cloud.svg" alt="cloud">
+                        <p class="answer-text"></p>
+                    </div>
+                </div>
+            </section>
 
         <!-- <div class="specific-screens">
             <div class="units" id="unit1">
