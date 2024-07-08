@@ -3,6 +3,7 @@ var unit; //the changing number of unit
 
 window.addEventListener("load", () => {
     role = sessionStorage.getItem("role");
+    document.getElementById("map-pin").addEventListener("click", mapAnimation);
 })
 
 // functions for building the lomda
@@ -27,4 +28,16 @@ const endUnit = () => { // function called when click on "end-btn" that changes 
 const backToMap = () => { // function for returning to map (by clicking the car) by changing the number of unit
     //also ables clicking on lower number of units the user already done
 }
-//
+
+const mapAnimation = () => {
+    console.log('sdsdsd');
+    console.log(document.getElementById("map-pin"));
+    console.log(document.getElementById("map-square"));
+
+    document.getElementById("map-pin").style.animation = "resize-pin 3s forwards";
+    document.getElementById("map-square").style.animation = "resize 2s forwards";
+    setTimeout(() => { 
+        document.getElementById("img-background").style.animation = "fade-in 1s forwards";
+        document.getElementById("explaine-map").style.animation = "fade-in 1s forwards";
+    }, 2200);
+}
