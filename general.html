@@ -6,15 +6,23 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="generalStyle.css">
         <script type="text/javascript" src="generalScript.js"></script>
-        <script src="https://code.createjs.com/1.0.0/createjs.min.js"></script>
-          <script src="zoomOutCarStop1.js?1720081823300"></script>
+        <style>
+            #animation_container {
+              position:absolute;
+              margin:auto;
+              left:0;right:0;
+              top:0;bottom:0;
+            }
+          </style>
+          <script src="https://code.createjs.com/1.0.0/createjs.min.js"></script>
+          <script src="carStop1.js?1720002781966"></script>
           <script>
           var canvas, stage, exportRoot, anim_container, dom_overlay_container, fnStartAnimation;
           function init() {
               canvas = document.getElementById("canvas");
               anim_container = document.getElementById("animation_container");
               dom_overlay_container = document.getElementById("dom_overlay_container");
-              var comp=AdobeAn.getComposition("C9A353383F7E6049932029EE4920EAC7");
+              var comp=AdobeAn.getComposition("BA375B89E3C481489DADDB4E8C0C8D1A");
               var lib=comp.getLibrary();
               createjs.MotionGuidePlugin.install();
               var loader = new createjs.LoadQueue(false);
@@ -36,7 +44,7 @@
               for(i=0; i<ssMetadata.length; i++) {
                   ss[ssMetadata[i].name] = new createjs.SpriteSheet( {"images": [queue.getResult(ssMetadata[i].name)], "frames": ssMetadata[i].frames} )
               }
-              exportRoot = new lib.zoomOutCarStop1();
+              exportRoot = new lib.carStop1();
               stage = new lib.Stage(canvas);	
               //Registers the "tick" event listener.
               fnStartAnimation = function() {
@@ -55,29 +63,16 @@
         
         <div class="general-screens">
 
-            <section id="road-map">
-                <div id="animation_container">
-                    <div class="stop-pick"></div>
-                    <div class="stop-pick"></div>
-                    <div class="stop-pick"></div>
-                    <div class="stop-pick"></div>
-                    <div class="stop-pick"></div>
-                    <canvas id="canvas"></canvas>
-                    <div id="dom_overlay_container">
-                    </div>
-                </div>
-            <div id="dom_overlay_container">
-            </div>
-            </div>
+            <section id="map">
+                <div>map</div>
             </section>
 
             <section id="opening-screen" class="panel">
                 <div class="opening-div">
                     <img class="character-circle" src="assets/general/characters/circles/soldier.svg" alt="character-img">
                     <p class="start-text"></p>
-                    <button class="btn start-btn" onclick="startUnit">בואו נתחיל!</button>
                 </div>
-                <button class="back-to-map-car-button" onclick="backToMap">
+                <button class="back-to-map-car-button" onclick="backToMap()">
                     <img src="assets/general/cars/sideView.svg" alt="back-to-map-car-button">
                 </button>
             </section>
@@ -86,9 +81,9 @@
                 <div class="ending-div">
                     <img class="character-circle" src="assets/general/characters/circles/soldier.svg" alt="character-img">
                     <p class="ending-text"></p>
-                    <button class="btn end-btn" onclick="endUnit">לפרק הבא</button>
+                    <button id="end-btn" class="btn">לפרק הבא</button>
                 </div>
-                <button class="back-to-map-car-button" onclick="backToMap">
+                <button class="back-to-map-car-button">
                     <img src="assets/general/cars/sideView.svg" alt="back-to-map-car-button">
                 </button>
             </section>
@@ -99,7 +94,7 @@
                     <p class="explaining-text"></p>
                 </div>
                 <img class="character" src="assets/general/characters/allCharacters/soldier.svg" alt="character">
-                <button class="btn back-btn">חזרה</button>
+                <button id="back-btn" class="btn">חזרה</button>
             </section>
 
             <section id="questions-screen" class="panel">
@@ -107,47 +102,49 @@
                     <img class="emotion-circle" src="assets/general/characters/circles/soldier.svg" alt="emotion-circle">
                     <p class="question-text"></p>
                 </div>
+
                 <div class="answers-div">
                     <div id="answer1" class="answers">
-                        <img class="clouds" src="assets/general/cloud.svg" alt="cloud">
-                        <p class="answer-text"></p>
+                            <div class="cloud odd-cloud"></div>
+                            <p class="answer-text"></p>
                     </div>
                     <div id="answer2" class="answers">
-                        <img class="clouds" src="assets/general/cloud.svg" alt="cloud">
-                        <p class="answer-text"></p>
+                            <div class="cloud even-cloud"></div>
+                            <p class="answer-text"></p>
                     </div>
                     <div id="answer3" class="answers">
-                        <img class="clouds" src="assets/general/cloud.svg" alt="cloud">
-                        <p class="answer-text"></p>
+                            <div class="cloud odd-cloud"></div>
+                            <p class="answer-text"></p>
                     </div>
                     <div id="answer4" class="answers">
-                        <img class="clouds" src="assets/general/cloud.svg" alt="cloud">
-                        <p class="answer-text"></p>
+                            <div class="cloud even-cloud"></div>
+                            <p class="answer-text"></p>
                     </div>
+
                 </div>
+
             </section>
 
-        <!-- <div class="specific-screens">
+        <div class="specific-screens">
             <div class="units" id="unit1">
                 <section id="concepts">
                     <section id="concepts-list"></section>
                     <section class="concept1" id="rhombuses"></section>
                     <section class="concept2" id="hazardous-material-factory"></section>
                     <section class="concept2" id="hazardous-material-incident"></section>
-                    <section class="concept4" id="risk-areas"></section>
+                    <section class="concept4" id="risk-areas-concept"></section>
                 </section>
             </div>
 
             <div class="units" id="unit2">
                 <section id="responsibility">
                     <section class="" id="whatsapp"></section>
-                    <section class="" id="role-explaining"></section>
                 </section>
             </div>
 
             <div class="units" id="unit3">
                 <section id="roles">
-                    <section class="" id="area-explaining"></section>
+                    <section class="" id="rescue-roles,"></section>
                 </section>
             </div>
 
@@ -161,7 +158,7 @@
             <div class="units" id="unit5">
                 <section id="incident-handling">
                 </section>
-            </div> -->
+            </div>
         
         </div>
 
