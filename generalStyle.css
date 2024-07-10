@@ -239,6 +239,16 @@ h1 {
     z-index: 1;
 }
 
+.explaine-container {
+    position: relative;
+    bottom: 12%;
+}
+
+.explaine-back-btn {
+    position: absolute;
+    top: 92%;
+}
+
 /* fox-map */
 .map-square {
     border-radius: 10%;
@@ -378,4 +388,14 @@ h1 {
     opacity: 0;
 }
 
+.fox-map {
+    position: relative;
+    height: 100vh;
+    width: 100vw;
+}
+
+#fox-map-btn {
+    position: relative;
+    top: 90%;
+}
 
