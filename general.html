@@ -9,55 +9,19 @@
         <link rel="stylesheet" href="generalStyle.css">
         <script type="text/javascript" src="generalScript.js"></script>
         <script src="https://code.createjs.com/1.0.0/createjs.min.js"></script>
-          <script src="zoomOutCarStop1.js?1720081823300"></script>
-          <script>
-          var canvas, stage, exportRoot, anim_container, dom_overlay_container, fnStartAnimation;
-          function init() {
-              canvas = document.getElementById("canvas");
-              anim_container = document.getElementById("animation_container");
-              dom_overlay_container = document.getElementById("dom_overlay_container");
-              var comp=AdobeAn.getComposition("C9A353383F7E6049932029EE4920EAC7");
-              var lib=comp.getLibrary();
-              createjs.MotionGuidePlugin.install();
-              var loader = new createjs.LoadQueue(false);
-              loader.addEventListener("fileload", function(evt){handleFileLoad(evt,comp)});
-              loader.addEventListener("complete", function(evt){handleComplete(evt,comp)});
-              var lib=comp.getLibrary();
-              loader.loadManifest(lib.properties.manifest);
-          }
-          function handleFileLoad(evt, comp) {
-              var images=comp.getImages();	
-              if (evt && (evt.item.type == "image")) { images[evt.item.id] = evt.result; }	
-          }
-          function handleComplete(evt,comp) {
-              //This function is always called, irrespective of the content. You can use the variable "stage" after it is created in token create_stage.
-              var lib=comp.getLibrary();
-              var ss=comp.getSpriteSheet();
-              var queue = evt.target;
-              var ssMetadata = lib.ssMetadata;
-              for(i=0; i<ssMetadata.length; i++) {
-                  ss[ssMetadata[i].name] = new createjs.SpriteSheet( {"images": [queue.getResult(ssMetadata[i].name)], "frames": ssMetadata[i].frames} )
-              }
-              exportRoot = new lib.zoomOutCarStop1();
-              stage = new lib.Stage(canvas);	
-              //Registers the "tick" event listener.
-              fnStartAnimation = function() {
-                  stage.addChild(exportRoot);
-                  createjs.Ticker.framerate = lib.properties.fps;
-                  createjs.Ticker.addEventListener("tick", stage);
-              }	    
-              //Code to support hidpi screens and responsive scaling.
-              AdobeAn.makeResponsive(true,'both',true,1,[canvas,anim_container,dom_overlay_container]);	
-              AdobeAn.compositionLoaded(lib.properties.id);
-              fnStartAnimation();
-          }
-          </script>
     </head>
-    <body dir="rtl" onload="init();">
+    <body dir="rtl">
         
         <div class="general-screens">
 
-            <section id="road-map">
+            <section id="map" class="panel">
+                <div style="
+                    text-align: center;
+                    font-weight: bold;
+                    position: relative;
+                    top: 25%;"
+                    >here will be a map
+                </div> 
                 <div id="animation_container">
                     <div class="stop-pick"></div>
                     <div class="stop-pick"></div>
@@ -65,79 +29,75 @@
                     <div class="stop-pick"></div>
                     <div class="stop-pick"></div>
                     <canvas id="canvas"></canvas>
-                    <div id="dom_overlay_container">
-                    </div>
+                    <div id="dom_overlay_container"></div>
                 </div>
-            <div id="dom_overlay_container">
-            </div>
-            </div>
+                <div id="dom_overlay_container"></div>
             </section>
 
             <section id="opening-screen" class="panel">
                 <div class="opening-div">
-                    <img class="character-circle" src="assets/general/characters/circles/soldier.svg" alt="character-img">
+                    <img id="main-character-circle-opening" class="character-circle" alt="character-img">
                     <p class="start-text"></p>
-                    <button class="btn start-btn" onclick="startUnit">בואו נתחיל!</button>
                 </div>
-                <button class="back-to-map-car-button" onclick="backToMap">
+                <button class="back-to-map-car-button" onclick="backToMap()">
                     <img src="assets/general/cars/sideView.svg" alt="back-to-map-car-button">
                 </button>
             </section>
 
             <section id="ending-screen" class="panel">
                 <div class="ending-div">
-                    <img class="character-circle" src="assets/general/characters/circles/soldier.svg" alt="character-img">
+                    <img id="main-character-circle-ending" class="character-circle" alt="character-img">
                     <p class="ending-text"></p>
-                    <button class="btn end-btn" onclick="endUnit">לפרק הבא</button>
+                    <button id="end-btn" class="btn">לפרק הבא</button>
                 </div>
-                <button class="back-to-map-car-button" onclick="backToMap">
+                <button class="back-to-map-car-button">
                     <img src="assets/general/cars/sideView.svg" alt="back-to-map-car-button">
                 </button>
             </section>
 
             <section id="explaining-screen" class="panel">
                 <div class="explaining-div">
-                    <img class="speech-bubble" src="assets/general/speechBubble.svg" alt="speech-bubble">
                     <p class="explaining-text"></p>
                 </div>
-                <img class="character" src="assets/general/characters/allCharacters/soldier.svg" alt="character">
-                <button class="btn back-btn">חזרה</button>
+                <img class="character-body" alt="character">
+                <button id="back-btn" class="btn">חזרה</button>
             </section>
 
             <section id="questions-screen" class="panel">
                 <div class="question-div">
-                    <img class="emotion-circle" src="assets/general/characters/circles/soldier.svg" alt="emotion-circle">
+                    <img id="emotion-circle" class="character-circle" alt="emotion-circle">
                     <p class="question-text"></p>
                 </div>
+
                 <div class="answers-div">
-                    <div id="answer1" class="answers">
-                        <img class="clouds" src="assets/general/cloud.svg" alt="cloud">
-                        <p class="answer-text"></p>
+                    <div id="option1" class="answers">
+                            <div class="cloud odd-cloud"></div>
+                            <p class="answer-text right"></p>
                     </div>
-                    <div id="answer2" class="answers">
-                        <img class="clouds" src="assets/general/cloud.svg" alt="cloud">
-                        <p class="answer-text"></p>
+                    <div id="option2" class="answers">
+                            <div class="cloud even-cloud"></div>
+                            <p class="answer-text left"></p>
                     </div>
-                    <div id="answer3" class="answers">
-                        <img class="clouds" src="assets/general/cloud.svg" alt="cloud">
-                        <p class="answer-text"></p>
+                    <div id="option3" class="answers">
+                            <div class="cloud odd-cloud"></div>
+                            <p class="answer-text right"></p>
                     </div>
-                    <div id="answer4" class="answers">
-                        <img class="clouds" src="assets/general/cloud.svg" alt="cloud">
-                        <p class="answer-text"></p>
+                    <div id="option4" class="answers">
+                            <div class="cloud even-cloud"></div>
+                            <p class="answer-text left"></p>
                     </div>
+
                 </div>
+
             </section>
 
         <div class="specific-screens">
             <div class="units" id="unit1">
                 <section id="concepts">
-                    <section id="concepts-list"></section>
-                    <section class="concept1" id="rhombuses"></section>
-                    <section class="concept2" id="hazardous-material-factory">
-                    <section class="concept2" id="hazardous-material-incident"></section>
-                    <section class="concept4" id="risk-areas"></section>
-                    <section class="panel">
+                    <section class="concept1 panel" id="concepts-list"></section>
+                    <section class="concept1 panel" id="rhombuses"></section>
+                    
+                    <section class="concept2 panel" id="hazardous-material-factory">
                         <div class="fox-map">
                             <div class="title-background">
                                 <h1 class="title-text">מחזיק חומ"ס</h1>
@@ -147,22 +107,22 @@
                                 <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
                                     <div class="carousel-inner">
                                     <div class="carousel-item active">
-                                        <img src="assets/units/(1) concepts/Picture1.jpg" class="d-block w-100" alt="...">
+                                        <img src="assets/units/unit1/Picture1.jpg" class="d-block w-100" alt="...">
                                     </div>
                                     <div class="carousel-item">
-                                        <img src="assets/units/(1) concepts/Picture2.jpg" class="d-block w-100" alt="...">
+                                        <img src="assets/units/unit1/Picture2.jpg" class="d-block w-100" alt="...">
                                     </div>
                                     <div class="carousel-item">
-                                        <img src="assets/units/(1) concepts/Picture12.jpg" class="d-block w-100" alt="...">
+                                        <img src="assets/units/unit1/Picture12.jpg" class="d-block w-100" alt="...">
                                     </div>
                                     <div class="carousel-item">
-                                        <img src="assets/units/(1) concepts/Picture13.jpg" class="d-block w-100" alt="...">
+                                        <img src="assets/units/unit1/Picture13.jpg" class="d-block w-100" alt="...">
                                     </div>
                                     <div class="carousel-item">
-                                        <img src="assets/units/(1) concepts/Picture9.jpg" class="d-block w-100" alt="...">
+                                        <img src="assets/units/unit1/Picture9.jpg" class="d-block w-100" alt="...">
                                     </div>
                                     <div class="carousel-item">
-                                        <img src="assets/units/(1) concepts/Picture14.jpg" class="d-block w-100" alt="...">
+                                        <img src="assets/units/unit1/Picture14.jpg" class="d-block w-100" alt="...">
                                     </div>
                                     </div>
                                     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
@@ -176,40 +136,46 @@
                                 </div>
                             </div>
                             <div>
-                                <p class="explaine-map" id="explaine-map">הערה: לחומרים מסכני אוכלוסייה יש פתרונות מיגוניים שאושרו ע\"י פקע\"ר (כמו הדוגמאות שניתן לראות בתמונה, אתרים מבוטנים, סגירת חזית רביעית בקוביות בטון/לוחות פלדה, מכולות מיגון וכד'...) לא נדון בהם כאן...</p>
+                                <p class="explaine-map" id="explaine-map">הערה: לחומרים מסכני אוכלוסייה יש פתרונות מיגוניים שאושרו ע"י פקע"ר (כמו הדוגמאות שניתן לראות בתמונה, אתרים מבוטנים, סגירת חזית רביעית בקוביות בטון/לוחות פלדה, מכולות מיגון וכד'...) לא נדון בהם כאן...</p>
                             </div>
                             <button type="button" id="fox-map-btn" class="btn back-btn">חזרה למושגים</button>
                             <div>
-                                <img src="assets/units/(1) concepts/mapPin.svg" alt="map-pin" id="map-pin">
-                                <img src="assets/units/(1) concepts/mapImageSquare.jpg" alt="mapImageSquare" class="map-square" id="map-square"/>
+                                <img src="assets/units/unit1/mapPin.svg" alt="map-pin" id="map-pin">
+                                <img src="assets/units/unit1/mapImageSquare.jpg" alt="mapImageSquare" class="map-square" id="map-square"/>
                             </div>
                         </div>
                     </section>
+                    
+                    <section class="concept2 panel" id="hazardous-material-incident"></section>
+                    <section class="concept4 panel" id="risk-areas-concept"></section>
                 </section>
             </div>
 
             <div class="units" id="unit2">
                 <section id="responsibility">
-                    <section class="" id="whatsapp"></section>
-                    <section class="" id="role-explaining"></section>
+                    <section class="panel" id="whatsapp"></section>
+                    <section class="panel" id="hapak-whatsApp"></section>
+                    <section class="panel" id="shual-opening"></section>
                 </section>
             </div>
 
             <div class="units" id="unit3">
                 <section id="roles">
-                    <section class="" id="area-explaining"></section>
+                    <section class="panel" id="rescue-roles"></section>
+                    <section class="panel" id="area-organizing"></section>
                 </section>
             </div>
 
             <div class="units" id="unit4">
                 <section id="protection-levels">
-                    <section class="" id="protection-wearing"></section>
-                    <section class="" id="drag-drop-game"></section>
+                    <section class="panel" id="protection-wearing"></section>
+                    <section class="panel" id="drag-drop-game"></section>
+                    <section class="panel" id="risk-areas-levels"></section>
                 </section>
             </div>
 
             <div class="units" id="unit5">
-                <section id="incident-handling">
+                <section class="panel" id="haremez">
                 </section>
             </div>
         
