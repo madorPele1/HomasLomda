@@ -31,9 +31,13 @@ h1 {
     font-family: heebo;
 }
 
+section {
+    display: none;
+}
+
 /* opening and ending screen */
 .opening-div, .ending-div {
-    height: 35vh;
+    height: fit-content;
     width: 90vw;
     background-color: #a381a35c;
     border-radius: 90px;
@@ -43,10 +47,8 @@ h1 {
 }
 
 .panel {
-    /* position: absolute; */
-    background-image: url('assets/units/(1) concepts/background.svg');
     width: 100vw;
-    height: 100vh;
+    height: 100svh;
     background-position: bottom;
     background-size: cover;
     background-repeat: no-repeat;
@@ -68,11 +70,11 @@ h1 {
     position: relative;
 }
 
-.start-btn, .end-btn {
-    top: 5vh;
+#end-btn {
+    bottom: 5vh;
 }
 
-.character-circle {
+#main-character-circle-opening,  #main-character-circle-ending{
     width: 20vmax;
     display: block;
     margin: auto;
@@ -87,8 +89,19 @@ h1 {
     position: absolute;
     bottom: 0;
     left: 0;
-    z-index: 1;
+    z-index: 2;
 }
+
+.start-text, .ending-text, .question-text {
+    position: relative;
+    margin: 3vw;
+    margin-bottom: 1vh;
+    bottom: 12vh;
+    font-weight: bold;
+    line-height: 35px;
+    text-align: center;
+}
+
 
 /* explaining screen */
 #explaining-screen {
@@ -99,22 +112,32 @@ h1 {
     text-align: center;
 }
 
-.speech-bubble {
-    max-width: 90vw; 
-    max-height: 40vh; 
-    display: block;
-    position: absolute;
-    top: 20vmax
+.explaining-div {
+    width: 90vw;
+    min-height: 30vh;
+    height: fit-content;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-image: url(assets/general/speechBubble.svg);
+    position: relative;
+    background-position: center;
+    margin: 0 auto;
 }
 
-.character {
+.explaining-text {
+    position: relative;
+    margin: 7vw;
+    top: 2vh;
+}
+
+.character-body {
     width: 60vw;
     position: absolute;
     bottom: 20px;
     left: 40%;
 }
 
-.back-btn {
+#back-btn {
     position: absolute;
     bottom: 20px;
     left: 60%; 
@@ -182,42 +205,22 @@ h1 {
 }
 
 /* questions */
-    position: relative;
-    height: 100vh;
-    padding: 20px;
-    box-sizing: border-box;
-    text-align: center;
-}
-
-#questions-screen {
-    position: relative;
-    height: 100vh;
-    padding: 20px;
-    box-sizing: border-box;
-    text-align: center;
-}
-
 .question-div {
-    position: relative;
-    display: inline-block;
-    vertical-align: middle;
-    max-width: 90vw; 
-    height: auto;
     background-color: #fff8ffce;
+    margin: auto;
     border-radius: 90px;
-    padding: 10px;
-    margin-bottom: 20px;
+    margin-bottom: 6vh;
+    margin-top: 1.5vh;
+    height: 23vh;    
+    width: 90vw;    
 }
 
-/* Emotion circle */
-.emotion-circle {
-    width: 50%;
-    max-width: 100%;
-    height: auto;
+#emotion-circle {
     display: block;
     position: relative;
     z-index: 1;
-    left: 20%;
+    width: 30%;
+    left: 10%;
 }
 
 .answers {
@@ -226,27 +229,63 @@ h1 {
     background-color: #fff8ffce;
     border-radius: 90px;
     width: 90vw;
-    height: 8vh;
+    height: 10vh;
     margin-bottom: 10px; 
     overflow: visible; 
-}
-
-.clouds {
-    position: absolute;
-    left: -100%;
-    top: 50%;
-    transform: translateY(-50%);
     z-index: 1;
+    margin-bottom: 50px;
 }
 
-.explaine-container {
+.answer-text .right{
     position: relative;
-    bottom: 12%;
+    bottom: 8svh;
+    margin: 0 38vw 0 0;
 }
 
-.explaine-back-btn {
+.answer-text .left{
+    position: relative;
+    bottom: 8svh;
+    margin: 0 0 0 38vw;
+}
+
+/* clouds */
+.cloud {
+    width: 190px; 
+    height: 64px; 
+    background: #fffffff3;
+    box-shadow: 10px 10px rgba(145, 145, 145, 0.295);
+    border-radius: 100px; 
+    position: relative; 
+    
+}
+
+.cloud::before, .cloud::after {
+    content: "";
     position: absolute;
-    top: 92%;
+    background: inherit;
+    border-radius: inherit;
+}
+
+.cloud::before { /* bigger part of cloud */
+    width: 88px;
+    height: 80px;
+    top: -40px;
+    left: 82px;
+}
+
+.cloud::after { /* smaller part of cloud */
+    width: 64px;
+    height: 52px;
+    bottom: 30px;
+    left: 35px;
+}
+
+.even-cloud {
+    right: 50vw;
+}
+
+.odd-cloud {
+    left: 5vw;
 }
 
 /* fox-map */
@@ -350,6 +389,7 @@ h1 {
    top: 18%;
    left: 20%;
    opacity: 0;
+   display: none;
 }
 
 @keyframes fade-in {
@@ -386,6 +426,7 @@ h1 {
     left: 5%;
     z-index: 7;
     opacity: 0;
+    display: none;
 }
 
 .fox-map {
@@ -398,4 +439,3 @@ h1 {
     position: relative;
     top: 90%;
 }
-
