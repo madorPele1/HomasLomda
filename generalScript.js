@@ -187,13 +187,12 @@ var commanderUnit5 = [
 
 window.addEventListener("load", () => { // Initializing the lomda
     role = sessionStorage.getItem("role");
+    if (role === null) {
+        role = 'soldier';
+    };
     unit = 1;
     screenArrayName = `${role}Unit${unit}`;
-    displayScreens(screenArrayName);
-    // carStops = document.getElementsByClassName('stop-pick');
-    // for (var i = 0; i < carStops.length; i++) {
-    //     carStops[i].addEventListener('click', animate);
-    };
+    displayScreens(screenArrayName);  
 })
 
 
@@ -232,6 +231,21 @@ const clickHandler = (event) => {
             break;
         case "map-pin":
             mapAnimation();
+            break;
+        case "carStop1":
+            animate('carStop1');
+            break;
+        case "carStop2":
+            animate('carStop2');
+            break;
+        case "carStop3":
+            animate('carStop3');
+            break;
+        case "carStop4":
+            animate('carStop4');
+            break;
+        case "carStop5":
+            animate('carStop5');
             break;
         default:
             break;
@@ -282,7 +296,6 @@ const addText = async () => {
             
             for (let i = 1; i < answersText.length-3; i++) {
                 answersText[i+3].textContent = data[key][questionKey]["options"][i-1];
-                console.log(answersText[i+3])
             }
     }
 
@@ -331,12 +344,15 @@ const mapAnimation = () => {
     }, 2200);
 }
 
-// const animate = (event) => {
-//     string = event.target.id;
-//     unit = string.charAt(7);
-//     var animationContainer = document.getElementsByClassName('animation_container');
-//     for (var i = 0; i < animationContainer.length; i++) {
-//         animationContainer[i].setAttribute('src', `assets/car/zoomOutCarStop${unit}.mp4`);
-//         document.getElementById('animation_container').currentTime = 0;
-//     };
-// }
+const animate = (stopNum) => {
+    unit = stopNum.charAt(7);
+    var animationContainer = document.getElementsByClassName('animation_container');
+    for (var i = 0; i < animationContainer.length; i++) {
+        animationContainer[i].setAttribute('src', `assets/car/zoomOutCarStop${unit}.mp4`);
+        document.getElementById('animation_container').currentTime = 0;
+    };
+    screenArrayName = `${role}Unit${unit}`;
+    console.log(screenArrayName);
+    displayScreens(screenArrayName);  
+}
+
