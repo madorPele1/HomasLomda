@@ -11,29 +11,20 @@
         <script src="https://code.createjs.com/1.0.0/createjs.min.js"></script>
     </head>
     <body dir="rtl">
-        
         <div class="general-screens">
-
-            <section id="map" class="panel">
-                <div style="
-                    text-align: center;
-                    font-weight: bold;
-                    position: relative;
-                    top: 25%;"
-                    >here will be a map
-                </div> 
-                <div id="animation_container">
-                    <div class="stop-pick"></div>
-                    <div class="stop-pick"></div>
-                    <div class="stop-pick"></div>
-                    <div class="stop-pick"></div>
-                    <div class="stop-pick"></div>
-                    <canvas id="canvas"></canvas>
-                    <div id="dom_overlay_container"></div>
+            <section id="road-map">
+                <div class="animation_container">
+                    <div class="stop-pick" id="carStop1"></div>
+                    <div class="stop-pick" id="carStop2"></div>
+                    <div class="stop-pick" id="carStop3"></div>
+                    <div class="stop-pick" id="carStop4"></div>
+                    <div class="stop-pick" id="carStop5"></div>
+                    <video class="animation_container" id="animation_container" autoplay muted>
+                      <source src="assets/car/zoomOutCarStop5.mp4" type="video/mp4" id="car-video">
+                    </video>
                 </div>
-                <div id="dom_overlay_container"></div>
             </section>
-
+            
             <section id="opening-screen" class="panel">
                 <div class="opening-div">
                     <img id="main-character-circle-opening" class="character-circle" alt="character-img">
