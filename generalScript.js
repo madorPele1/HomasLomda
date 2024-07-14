@@ -190,9 +190,9 @@ window.addEventListener("load", () => { // Initializing the lomda
     unit = 1;
     screenArrayName = `${role}Unit${unit}`;
     displayScreens(screenArrayName);
-    carStops = document.getElementsByClassName('stop-pick');
-    for (var i = 0; i < carStops.length; i++) {
-        carStops[i].addEventListener('click', animate);
+    // carStops = document.getElementsByClassName('stop-pick');
+    // for (var i = 0; i < carStops.length; i++) {
+    //     carStops[i].addEventListener('click', animate);
     };
 })
 
