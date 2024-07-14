@@ -190,6 +190,10 @@ window.addEventListener("load", () => { // Initializing the lomda
     unit = 1;
     screenArrayName = `${role}Unit${unit}`;
     displayScreens(screenArrayName);
+    carStops = document.getElementsByClassName('stop-pick');
+    for (var i = 0; i < carStops.length; i++) {
+        carStops[i].addEventListener('click', animate);
+    };
 })
 
 
@@ -325,4 +329,11 @@ const mapAnimation = () => {
             explaineMap[i].style.animation = "fade-in 1s forwards";
         }
     }, 2200);
+}
+
+const animate = (event) => {
+    string = event.target.id;
+    unit = string.charAt(7);
+    document.getElementById('animation_container').setAttribute('src', `assets/car/zoomOutCarStop${unit}.mp4`);
+    document.getElementById('animation_container').currentTime = 0;
 }
