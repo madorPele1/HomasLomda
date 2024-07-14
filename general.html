@@ -12,7 +12,7 @@
     </head>
     <body dir="rtl">
         <div class="general-screens">
-            <section id="road-map">
+            <section id="map">
                 <div class="animation_container">
                     <div class="stop-pick" id="carStop1"></div>
                     <div class="stop-pick" id="carStop2"></div>
@@ -20,7 +20,7 @@
                     <div class="stop-pick" id="carStop4"></div>
                     <div class="stop-pick" id="carStop5"></div>
                     <video class="animation_container" id="animation_container" autoplay muted>
-                      <source src="assets/car/zoomOutCarStop5.mp4" type="video/mp4" id="car-video">
+                      <source src="assets/car/zoomOutCarStop1.mp4" type="video/mp4" id="car-video">
                     </video>
                 </div>
             </section>
@@ -30,9 +30,6 @@
                     <img id="main-character-circle-opening" class="character-circle" alt="character-img">
                     <p class="start-text"></p>
                 </div>
-                <button class="back-to-map-car-button" onclick="backToMap()">
-                    <img src="assets/general/cars/sideView.svg" alt="back-to-map-car-button">
-                </button>
             </section>
 
             <section id="ending-screen" class="panel">
@@ -41,9 +38,7 @@
                     <p class="ending-text"></p>
                     <button id="end-btn" class="btn">לפרק הבא</button>
                 </div>
-                <button class="back-to-map-car-button">
-                    <img src="assets/general/cars/sideView.svg" alt="back-to-map-car-button">
-                </button>
+                
             </section>
 
             <section id="explaining-screen" class="panel">
@@ -51,7 +46,10 @@
                     <p class="explaining-text"></p>
                 </div>
                 <img class="character-body" alt="character">
-                <button id="back-btn" class="btn">חזרה</button>
+                <!-- <button id="back-btn" class="btn">חזרה</button> -->
+                <button class="back-to-map-car-button car-button" onclick="backToMap()">
+                    <img src="assets/general/cars/sideView.svg" alt="back-to-map-car-button" class="car-button">
+                </button>
             </section>
 
             <section id="questions-screen" class="panel">
@@ -131,7 +129,7 @@
                             </div>
                             <button type="button" id="fox-map-btn" class="btn back-btn">חזרה למושגים</button>
                             <div>
-                                <img src="assets/units/unit1/mapPin.svg" alt="map-pin" id="map-pin">
+                                <img src="assets/units/unit1/mapPin.svg" alt="map-pin" id="map-pin" class="map-pin">
                                 <img src="assets/units/unit1/mapImageSquare.jpg" alt="mapImageSquare" class="map-square" id="map-square"/>
                             </div>
                         </div>
@@ -174,3 +172,4 @@
 
     </body>
 </html>
+
