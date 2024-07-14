@@ -331,12 +331,12 @@ const mapAnimation = () => {
     }, 2200);
 }
 
-const animate = (event) => {
-    string = event.target.id;
-    unit = string.charAt(7);
-    var animationContainer = document.getElementsByClassName('animation_container');
-    for (var i = 0; i < animationContainer.length; i++) {
-        animationContainer[i].setAttribute('src', `assets/car/zoomOutCarStop${unit}.mp4`);
-        document.getElementById('animation_container').currentTime = 0;
-    };
-}
+// const animate = (event) => {
+//     string = event.target.id;
+//     unit = string.charAt(7);
+//     var animationContainer = document.getElementsByClassName('animation_container');
+//     for (var i = 0; i < animationContainer.length; i++) {
+//         animationContainer[i].setAttribute('src', `assets/car/zoomOutCarStop${unit}.mp4`);
+//         document.getElementById('animation_container').currentTime = 0;
+//     };
+// }
