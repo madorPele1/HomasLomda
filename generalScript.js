@@ -20,9 +20,9 @@ var soldierUnit1 = [
     "explaining-screen",
     "explaining-screen",
     "rhombuses",
-    "rhombuses",
-    "rhombuses",
-    "rhombuses",
+    "rhombuses1",
+    "rhombuses2",
+    "rhombuses3",
     "explaining-screen",
     "hazardous-material-factory",
     "explaining-screen",
@@ -186,6 +186,7 @@ var commanderUnit5 = [
 ];
 
 window.addEventListener("load", () => { // Initializing the lomda
+    num = 1;
     role = sessionStorage.getItem("role");
     if (role === null) {
         role = 'soldier';
@@ -246,6 +247,12 @@ const clickHandler = (event) => {
             break;
         case "carStop5":
             animate('carStop5');
+            break;
+        case "prev":
+            carousel();
+            break;
+        case "next":
+            carousel();
             break;
         default:
             break;
@@ -351,8 +358,30 @@ const animate = (stopNum) => {
         animationContainer[i].setAttribute('src', `assets/car/zoomOutCarStop${unit}.mp4`);
         document.getElementById('animation_container').currentTime = 0;
     };
+    if (unit === '2') {
+        unit = 3
+    } else if (unit === '3') {
+        unit = 4
+    } else if (unit === '4') {
+        unit = 2
+    }
     screenArrayName = `${role}Unit${unit}`;
-    console.log(screenArrayName);
-    displayScreens(screenArrayName);  
+    displayScreens(screenArrayName)  
+}
+
+const carousel = (side) => {
+    if (side === 'prev') {
+        num--;
+        if (num === 0) {
+            num = 8;
+        }
+    } else {
+        num++;
+        if (num === 9) {
+            num = 1;
+        }
+    }
+    document.getElementById('img-container').innerHTML = '';
+    document.getElementById('pic-shown').setAttribute('src', `assets/units/unit1/Picture${num}.jpg`);
 }
 
