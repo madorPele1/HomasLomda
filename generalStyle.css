@@ -146,11 +146,17 @@ section {
 }
 
 /* roadMap */
+#map {
+    position: relative;
+    width: 100vw;
+    height: 100svh;
+}
 #animation_container {
     border: #BADEFD solid 2px;
     width: 100vw;
     height: 100svh;
-    position: relative;
+    position: absolute;
+    object-fit: cover;
     min-height: 100svh;
 }
 
@@ -415,3 +421,68 @@ section {
     top: 90%;
 }
 
+.next {
+    height: 100%;
+    width: 45%;
+    position: relative;
+    right: 0;
+    color: white;
+    font-size: 4.5vmax;
+}
+
+.prev {
+    height: 100%;
+    width: 45%;
+    position: relative;
+    left: 0;
+    color: white;
+    font-size: 4.5vmax;
+}
+
+.arrow {
+    position: relative;
+    top: 40%;
+}
+
+ul {
+    list-style-type: none;
+}
+
+.concepts-list-title {
+    font-weight: 800;
+    font-size: 5vmax;
+    margin: 5%;
+    text-align: center;
+}
+
+li {
+    background-color: #f0dafee1;
+    width: 80vw;
+    height: 12vh;
+    margin-top: 15%;
+    font-size: 3vmax;
+    text-align: center;
+    border-radius: 10%;
+    padding-top: 3vh;
+}
+
+li:nth-child(3) {
+    padding-top: 1vh;
+}
+
+.rhombuses-container {
+    position: relative;
+    width: 100vw;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    align-content: center;
+    align-self: center;
+    justify-content: center;
+}
+
+.rhombuse {
+    width: 27vw;
+    align-self: center;
+    justify-content: center;
+}
