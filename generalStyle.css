@@ -210,6 +210,7 @@ section {
     display: flex;
     max-width: 90vw; 
     margin-bottom: 20px;
+    margin-top: 20px;
     max-height: 30vh; 
 }
 
@@ -236,8 +237,6 @@ section {
 }
 
 .answers {
-    display: flex;
-    align-items: center;
     background-color: #fff8ffce;
     border-radius: 90svw;
     padding: 10px; 
@@ -498,52 +497,6 @@ li:nth-child(3) {
     justify-content: center;
 }
 
-.rhombuses1 {
-    width: 100vw;
-    height: 100svh;
-    position: relative;
-    background: linear-gradient(45deg, rgb(240, 140, 97) 0%, rgb(232, 156, 156) 100%);
-}
-
-.rhombuses2 {
-    width: 100vw;
-    height: 100svh;
-    position: relative;
-    background: linear-gradient(45deg, rgb(240, 97, 97) 0%, rgb(232, 156, 169) 100%);
-}
-
-.rhombuses3 {
-    width: 100vw;
-    height: 100svh;
-    position: relative;
-    background: linear-gradient(45deg, rgb(246, 251, 252) 0%, rgb(218, 233, 248) 100%);
-}
-
-.rhombuses-explained {
-    font-size: 3.5vmax;
-    text-align: center;
-    padding: 2%;
-}
-
-.explained-div {
-    width: 90vw;
-    background-color: rgba(255, 255, 255, 0.397);
-    position: relative;
-    right: 5%;
-    top: 18%;
-    border-radius: 10%;
-}
-
-.rhombuses-explained-div {
-    position: relative;
-    top: 15%;
-}
-
-.rhombuse-div {
-    width:50vw;
-    position: relative;
-    right: 22.5%;
-}
 
 /* weraing protection explaining */
 .clothing-explaining-div {
