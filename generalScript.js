@@ -9,7 +9,7 @@
 
 // !* end of note *!
 
-var role; //the role of the user
+var role = "soldier"; //the role of the user
 var unit; //the changing number of unit
 var screenArrayName; //saving the name of the array that have the screens
 
@@ -188,27 +188,24 @@ var commanderUnit5 = [
 window.addEventListener("load", () => { // Initializing the lomda
     num = 1;
     role = sessionStorage.getItem("role");
-    if (role === null) {
-        role = 'soldier';
-    };
     unit = 1;
     screenArrayName = `${role}Unit${unit}`;
-    displayScreens(screenArrayName);  
+    displayScreens(screenArrayName);
 })
 
 
 const displayScreens = (screenArrayName) => { // function that gets the unit number and the role and displays the amount of the screens. The function creates a variable that contains the desired array and goes through each cell in the array and displays the screen with the corresponding name
+    document.documentElement.scrollTo({ top: 0, behavior: 'smooth' });
     document.querySelectorAll('.unit-screens').forEach(screen => screen.remove()); // removes the previous screens
     var screenArray = window[screenArrayName];
     screenArray.forEach(screenId => {
         const screenNode = document.getElementById(screenId);
         const screenClone = screenNode.cloneNode(true);
         screenClone.classList.add('unit-screens');
-        screenClone.style.display = 'block'; // Set display here
+        screenClone.style.display = 'block'; 
         document.body.appendChild(screenClone);
     });
 
-    document.documentElement.scrollTo({ top: 0, behavior: 'smooth' });
     removeEventListeners(); // Remove previous event listeners
     addEventListeners(); // Add new event listeners
     addContent();
@@ -259,7 +256,7 @@ const clickHandler = (event) => {
     }
 }
 
-const addContent = () => { // function that completes all the non-text content in the screen (background, chcracters)
+const addContent = () => { // function that completes all the non-text content in the screen (background, characters)
     
     var characterBody = document.getElementsByClassName("character-body"); //change the main character body
     for (let i = 0; i < characterBody.length; i++) {
@@ -284,32 +281,56 @@ const addText = async () => {
     const data = await response.json();
     const key = `${role}-unit${unit}`;
 
-    var startText = document.getElementsByClassName("start-text");
-    var endingText = document.getElementsByClassName("ending-text");
-    var questionText = document.getElementsByClassName("question-text");
-    var answersText = document.getElementsByClassName("answer-text");
-
+    var startText = document.getElementsByClassName("start-text"); 
     for (let i = 0; i < startText.length; i++) {
         startText[i].textContent = data[key]["opening-screen"];
-    }
-
+    } // adds the start text
+    
+    var endingText = document.getElementsByClassName("ending-text"); 
     for (let i = 0; i < endingText.length; i++) {
         endingText[i].textContent = data[key]["ending-screen"];
-    }
+    } // adds the ending text
 
-    for (let i = 1; i < questionText.length; i++) {
-        let questionKey = `q${i}`
-        questionText[i].textContent =data[key][questionKey]["question-text"];
-            
-            for (let i = 1; i < answersText.length-3; i++) {
-                answersText[i+3].textContent = data[key][questionKey]["options"][i-1];
+    var questionText = document.querySelectorAll('.unit-screens .question-text'); 
+    var answersText = document.querySelectorAll('.unit-screens .answer-text'); 
+    questionText.forEach((questionElement, index) => {
+        let questionKey = `q${index + 1}`;
+        questionElement.textContent = data[key][questionKey]["question-text"];
+        
+        let options = data[key][questionKey]["options"];
+        answersText[index * options.length].textContent = options[0]; 
+        answersText[index * options.length + 1].textContent = options[1];
+        answersText[index * options.length + 2].textContent = options[2];
+        answersText[index * options.length + 3].textContent = options[3];
+    });  // adds the questions and answers text
+
+    var explainingTitle = document.querySelectorAll('.unit-screens .explaining-title'); 
+    var explainingText = document.querySelectorAll('.unit-screens .explaining-text'); 
+    // var clothingExplaining = document.querySelectorAll('.unit-screens .clothing-explaining');
+
+    for (let i = 0; i < explainingText.length; i++) {
+        explainingTitle[i].textContent = data[key]["explaining-screens"][i]["title"];
+        explainingText[i].textContent = data[key]["explaining-screens"][i]["text"];
+        
+        let newRole = data[key]["explaining-screens"][i]["role"];
+        if (newRole) {
+            document.getElementsByClassName("character-body")[i+1].src = `assets/general/characters/allCharacters/${newRole}.svg`;
+            if (newRole == "protectionLevelA" || newRole == "protectionLevelB" || newRole == "protectionLevelC") {
+                 var clothingExplainingDiv = document.querySelectorAll('.unit-screens .clothing-explaining-div'); 
+                    for (let i = 0; i < clothingExplainingDiv.length; i++) {
+                        clothingExplainingDiv[i].innerHTML = 
+                        `<div class="clothing-explaining suit">חליפה כמוסה</div>
+                        <div class="clothing-explaining breath">מנפ</div>
+                        <div class="clothing-explaining gloves">כפפות</div>
+                        <div class="clothing-explaining boots">מגפיים</div>` 
+                    }       
+        
             }
-    }
-
-
-
-
+        }// Adding clothing explanations
+       
+    }   // adds the explaining text
 }
+
 
 const endUnit = () => {
     if (unit <= 4) {
@@ -384,4 +405,3 @@ const carousel = (side) => {
     document.getElementById('img-container').innerHTML = '';
     document.getElementById('pic-shown').setAttribute('src', `assets/units/unit1/Picture${num}.jpg`);
 }
-
