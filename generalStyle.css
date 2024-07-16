@@ -122,7 +122,7 @@ section {
     position: absolute;
     background-position: center;
     margin: 0 auto;
-    bottom: 52svh;
+    bottom: 48svh;
 }
 
 
@@ -133,7 +133,7 @@ section {
 }
 
 .character-body {
-    width: 60vw;
+    width: 50vw;
     position: absolute;
     bottom: 20px;
     left: 40%;
