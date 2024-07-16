@@ -328,6 +328,8 @@ const addText = async () => {
             }
         }// Adding clothing explanations
        
+        
+
     }   // adds the explaining text
 }
 
