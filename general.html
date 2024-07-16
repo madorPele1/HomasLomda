@@ -11,7 +11,9 @@
         <script src="https://code.createjs.com/1.0.0/createjs.min.js"></script>
     </head>
     <body dir="rtl">
+        
         <div class="general-screens">
+
             <section id="map">
                 <div class="animation_container">
                     <div class="stop-pick" id="carStop1"></div>
@@ -24,12 +26,15 @@
                     </video>
                 </div>
             </section>
-            
+
             <section id="opening-screen" class="panel">
                 <div class="opening-div">
                     <img id="main-character-circle-opening" class="character-circle" alt="character-img">
                     <p class="start-text"></p>
                 </div>
+                <button class="back-to-map-car-button" onclick="backToMap()">
+                    <img src="assets/general/cars/sideView.svg" alt="back-to-map-car-button">
+                </button>
             </section>
 
             <section id="ending-screen" class="panel">
@@ -38,18 +43,26 @@
                     <p class="ending-text"></p>
                     <button id="end-btn" class="btn">לפרק הבא</button>
                 </div>
-                
+                <button class="back-to-map-car-button">
+                    <img src="assets/general/cars/sideView.svg" alt="back-to-map-car-button">
+                </button>
             </section>
 
             <section id="explaining-screen" class="panel">
+                <h1 class="explaining-title"></h1>
                 <div class="explaining-div">
                     <p class="explaining-text"></p>
                 </div>
+                
+                <div class="clothing-explaining-div">
+                    <!-- <div class="clothing-explaining suit">חליפה כמוסה</div>
+                    <div class="clothing-explaining breath">מנפ</div>
+                    <div class="clothing-explaining gloves">כפפות</div>
+                    <div class="clothing-explaining boots">מגפיים</div> -->
+                </div>
+
                 <img class="character-body" alt="character">
-                <!-- <button id="back-btn" class="btn">חזרה</button> -->
-                <button class="back-to-map-car-button car-button" onclick="backToMap()">
-                    <img src="assets/general/cars/sideView.svg" alt="back-to-map-car-button" class="car-button">
-                </button>
+                <button id="back-btn" class="btn">חזרה</button>
             </section>
 
             <section id="questions-screen" class="panel">
@@ -77,108 +90,105 @@
                     </div>
 
                 </div>
-
             </section>
 
-        <div class="specific-screens">
-            <div class="units" id="unit1">
-                <section id="concepts">
-                    <section class="concept1 panel" id="concepts-list">
-                        <h1 class="concepts-list-title">לחצו על כל אחד מהמושגים כדי לראות את הגדרתו</h1>
-                        <ul class="list">
-                            <li class="concept">חומר מסוכן</li>
-                            <li class="concept">מחזיק חומ"ס</li>
-                            <li class="concept">מחזיק חומ"ס בעל פוטנציאל סיכון לאוכלוסייה</li>
-                            <li class="concept">אירוע חומ"ס</li>
-                        </ul>
-                    </section>
-                    <section class="concept1 panel" id="rhombuses">
-                        <p class="concepts-list-title">לחצו על המעוינים הזוהרים כדי לקבל מידע על כל סוג חומר</p>
-                        <div class="rhombuses-container">
-                            <img src="assets/units/unit1/homasTypes/flammableGases.svg" alt="homas-type1" class="rhombuse">
-                            <img src="assets/units/unit1/homasTypes/toxicGases.svg" alt="homas-type2" class="rhombuse">
-                            <img src="assets/units/unit1/homasTypes/explosiveSubstances.svg" alt="homas-type3" class="rhombuse">
-                            <img src="assets/units/unit1/homasTypes/flammableSolids.svg" alt="homas-type14" class="rhombuse">
-                            <img src="assets/units/unit1/homasTypes/spontaneouslyCombustible.svg" alt="homas-type4" class="rhombuse">
-                            <img src="assets/units/unit1/homasTypes/nonflammableGases.svg" alt="homas-type6" class="rhombuse">
-                            <img src="assets/units/unit1/homasTypes/dangerousWet.svg" alt="homas-type5" class="rhombuse">
-                            <img src="assets/units/unit1/homasTypes/infectiousSubstances.svg" alt="homas-type7" class="rhombuse">
-                            <img src="assets/units/unit1/homasTypes/miscellaneousSubstances.svg" alt="homas-type8" class="rhombuse">
-                            <img src="assets/units/unit1/homasTypes/corrosiveSubstances.svg" alt="homas-type9" class="rhombuse">
-                            <img src="assets/units/unit1/homasTypes/organicPeroxides.svg" alt="homas-type10" class="rhombuse">
-                            <img src="assets/units/unit1/homasTypes/oxidizingSubstances.svg" alt="homas-type11" class="rhombuse">
-                            <img src="assets/units/unit1/homasTypes/toxicSubstances.svg" alt="homas-type12" class="rhombuse">
-                            <img src="assets/units/unit1/homasTypes/flammableLiquids.svg" alt="homas-type13" class="rhombuse">
-                        </div>
-                    </section>
-                    <section class="concept1 panel" id="rhombuses1"></section>
-                    <section class="concept1 panel" id="rhombuses2"></section>
-                    <section class="concept1 panel" id="rhombuses3"></section>
-                    <section class="concept2 panel" id="hazardous-material-factory">
-                        <div class="fox-map">
-                            <div class="title-background">
-                                <h1 class="title-text">מחזיק חומ"ס</h1>
+            <div class="specific-screens">
+                <div class="units" id="unit1">
+                    <section id="concepts">
+                        <section class="concept1 panel" id="concepts-list">
+                            <h1 class="concepts-list-title">לחצו על כל אחד מהמושגים כדי לראות את הגדרתו</h1>
+                            <ul class="list">
+                                <li class="concept">חומר מסוכן</li>
+                                <li class="concept">מחזיק חומ"ס</li>
+                                <li class="concept">מחזיק חומ"ס בעל פוטנציאל סיכון לאוכלוסייה</li>
+                                <li class="concept">אירוע חומ"ס</li>
+                            </ul>
+                        </section>
+                        <section class="concept1 panel" id="rhombuses">
+                            <p class="concepts-list-title">לחצו על המעוינים הזוהרים כדי לקבל מידע על כל סוג חומר</p>
+                            <div class="rhombuses-container">
+                                <img src="assets/units/unit1/homasTypes/flammableGases.svg" alt="homas-type1" class="rhombuse">
+                                <img src="assets/units/unit1/homasTypes/toxicGases.svg" alt="homas-type2" class="rhombuse">
+                                <img src="assets/units/unit1/homasTypes/explosiveSubstances.svg" alt="homas-type3" class="rhombuse">
+                                <img src="assets/units/unit1/homasTypes/flammableSolids.svg" alt="homas-type14" class="rhombuse">
+                                <img src="assets/units/unit1/homasTypes/spontaneouslyCombustible.svg" alt="homas-type4" class="rhombuse">
+                                <img src="assets/units/unit1/homasTypes/nonflammableGases.svg" alt="homas-type6" class="rhombuse">
+                                <img src="assets/units/unit1/homasTypes/dangerousWet.svg" alt="homas-type5" class="rhombuse">
+                                <img src="assets/units/unit1/homasTypes/infectiousSubstances.svg" alt="homas-type7" class="rhombuse">
+                                <img src="assets/units/unit1/homasTypes/miscellaneousSubstances.svg" alt="homas-type8" class="rhombuse">
+                                <img src="assets/units/unit1/homasTypes/corrosiveSubstances.svg" alt="homas-type9" class="rhombuse">
+                                <img src="assets/units/unit1/homasTypes/organicPeroxides.svg" alt="homas-type10" class="rhombuse">
+                                <img src="assets/units/unit1/homasTypes/oxidizingSubstances.svg" alt="homas-type11" class="rhombuse">
+                                <img src="assets/units/unit1/homasTypes/toxicSubstances.svg" alt="homas-type12" class="rhombuse">
+                                <img src="assets/units/unit1/homasTypes/flammableLiquids.svg" alt="homas-type13" class="rhombuse">
                             </div>
-                            <p class="explaine-text">לפניכם צילום מסך מתוך מערכת שוע"ל:</p>
-                            <div class="img-background" id="img-background">
-                                <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
-                                    <div class="carousel-inner" id="img-container">
-                                        <img src="assets/units/unit1/Picture1.jpg" class="d-block w-100" id="pic-shown">
+                        </section>
+                        <section class="concept1 panel" id="rhombuses1"></section>
+                        <section class="concept1 panel" id="rhombuses2"></section>
+                        <section class="concept1 panel" id="rhombuses3"></section>
+                        <section class="concept2 panel" id="hazardous-material-factory">
+                            <div class="fox-map">
+                                <div class="title-background">
+                                    <h1 class="title-text">מחזיק חומ"ס</h1>
+                                </div>
+                                <p class="explaine-text">לפניכם צילום מסך מתוך מערכת שוע"ל:</p>
+                                <div class="img-background" id="img-background">
+                                    <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+                                        <div class="carousel-inner" id="img-container">
+                                            <img src="assets/units/unit1/Picture1.jpg" class="d-block w-100" id="pic-shown">
+                                        </div>
+                                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+                                        <span class="carousel-control-prev-icon" aria-hidden="true" id="prev"></span>
+                                        </button>
+                                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+                                            <span class="carousel-control-next-icon" aria-hidden="true" id="next"></span>
+                                        </button>
                                     </div>
-                                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
-                                    <span class="carousel-control-prev-icon" aria-hidden="true" id="prev"></span>
-                                    </button>
-                                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
-                                        <span class="carousel-control-next-icon" aria-hidden="true" id="next"></span>
-                                    </button>
+                                </div>
+                                <div>
+                                    <p class="explaine-map" id="explaine-map">הערה: לחומרים מסכני אוכלוסייה יש פתרונות מיגוניים שאושרו ע"י פקע"ר (כמו הדוגמאות שניתן לראות בתמונה, אתרים מבוטנים, סגירת חזית רביעית בקוביות בטון/לוחות פלדה, מכולות מיגון וכד'...) לא נדון בהם כאן...</p>
+                                </div>
+                                <button type="button" id="fox-map-btn" class="btn back-btn">חזרה למושגים</button>
+                                <div>
+                                    <img src="assets/units/unit1/mapPin.svg" alt="map-pin" id="map-pin" class="map-pin">
+                                    <img src="assets/units/unit1/mapImageSquare.jpg" alt="mapImageSquare" class="map-square" id="map-square"/>
                                 </div>
                             </div>
-                            <div>
-                                <p class="explaine-map" id="explaine-map">הערה: לחומרים מסכני אוכלוסייה יש פתרונות מיגוניים שאושרו ע"י פקע"ר (כמו הדוגמאות שניתן לראות בתמונה, אתרים מבוטנים, סגירת חזית רביעית בקוביות בטון/לוחות פלדה, מכולות מיגון וכד'...) לא נדון בהם כאן...</p>
-                            </div>
-                            <button type="button" id="fox-map-btn" class="btn back-btn">חזרה למושגים</button>
-                            <div>
-                                <img src="assets/units/unit1/mapPin.svg" alt="map-pin" id="map-pin" class="map-pin">
-                                <img src="assets/units/unit1/mapImageSquare.jpg" alt="mapImageSquare" class="map-square" id="map-square"/>
-                            </div>
-                        </div>
+                        </section>
+                        
+                        <section class="concept2 panel" id="hazardous-material-incident"></section>
+                        <section class="concept4 panel" id="risk-areas-concept"></section>
                     </section>
-                    
-                    <section class="concept2 panel" id="hazardous-material-incident"></section>
-                    <section class="concept4 panel" id="risk-areas-concept"></section>
-                </section>
-            </div>
-
-            <div class="units" id="unit2">
-                <section id="responsibility">
-                    <section class="panel" id="whatsapp"></section>
-                    <section class="panel" id="hapak-whatsApp"></section>
-                    <section class="panel" id="shual-opening"></section>
-                </section>
-            </div>
-
-            <div class="units" id="unit3">
-                <section id="roles">
-                    <section class="panel" id="rescue-roles"></section>
-                    <section class="panel" id="area-organizing"></section>
-                </section>
-            </div>
-
-            <div class="units" id="unit4">
-                <section id="protection-levels">
-                    <section class="panel" id="protection-wearing"></section>
-                    <section class="panel" id="drag-drop-game"></section>
-                    <section class="panel" id="risk-areas-levels"></section>
-                </section>
-            </div>
-
-            <div class="units" id="unit5">
-                <section class="panel" id="haremez">
-                </section>
-            </div>
-        
-        </div>
-
+                </div>
+    
+                <div class="units" id="unit2">
+                    <section id="responsibility">
+                        <section class="panel" id="whatsapp"></section>
+                        <section class="panel" id="hapak-whatsApp"></section>
+                        <section class="panel" id="shual-opening"></section>
+                    </section>
+                </div>
+    
+                <div class="units" id="unit3">
+                    <section id="roles">
+                        <section class="panel" id="rescue-roles"></section>
+                        <section class="panel" id="area-organizing"></section>
+                    </section>
+                </div>
+    
+                <div class="units" id="unit4">
+                    <section id="protection-levels">
+                        <section class="panel" id="protection-wearing"></section>
+                        <section class="panel" id="drag-drop-game"></section>
+                        <section class="panel" id="risk-areas-levels"></section>
+                    </section>
+                </div>
+    
+                <div class="units" id="unit5">
+                    <section class="panel" id="haremez">
+                    </section>
+                </div>
+            
+            </div> 
     </body>
 </html>
-
