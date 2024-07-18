@@ -218,14 +218,13 @@ section {
     position: relative;
     z-index: 1;
     width: 30%;
-    /* left: 10%; */
 }
 
 .question-text {
     font-weight: bold;
     text-align: center;
     font-size: 4svw;
-    margin: 4vw;
+    margin: auto;
 }
 
 .answers-div {
@@ -238,7 +237,7 @@ section {
     background-color: #fff8ffce;
     border-radius: 90svw;
     padding: 10px; 
-    width: 90vw; 
+    width: 93vw; 
     margin-bottom: 10px; 
     font-size: 1.6vw; 
 }
