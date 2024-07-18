@@ -245,6 +245,21 @@ const clickHandler = (event) => {
         case "next":
             carousel();
             break;
+        case "cold":
+            pacMap('cold');
+            break;
+        case "focus":
+            pacMap('focus');
+            break;
+        case "heat":
+            pacMap('heat');
+            break;
+        case "warm":
+            pacMap('warm');
+            break;
+        case "pac-map":
+            pacMap('pac-map');
+            break;
         default:
             break;
     }
@@ -391,4 +406,17 @@ const carousel = (side) => {
     }
     document.getElementById('img-container').innerHTML = '';
     document.getElementById('pic-shown').setAttribute('src', `assets/units/unit1/Picture${num}.jpg`);
+}
+
+const pacMap = (chosen) => {
+    var explainContainer = document.getElementsByClassName("explaine-container"); 
+    for (let i = 0; i < explainContainer.length; i++) {
+         explainContainer[i].style.display = "none";
+    }
+    if (chosen !== 'pac-map') {
+        var specificExplainContainer = document.getElementsByClassName(`${chosen}-explain`); 
+        for (let i = 0; i < specificExplainContainer.length; i++) {
+            specificExplainContainer[i].style.display = "block";
+        }
+    }
 }
