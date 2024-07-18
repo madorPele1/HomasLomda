@@ -305,32 +305,23 @@ const addText = async () => {
     });  // adds the questions and answers text
 
     var explainingTitle = document.querySelectorAll('.unit-screens .explaining-title'); 
-    var explainingText = document.querySelectorAll('.unit-screens .explaining-text'); 
-    // var clothingExplaining = document.querySelectorAll('.unit-screens .clothing-explaining');
-
+    var explainingText = document.querySelectorAll('.unit-screens .explaining-text');  
     for (let i = 0; i < explainingText.length; i++) {
         explainingTitle[i].textContent = data[key]["explaining-screens"][i]["title"];
-        explainingText[i].textContent = data[key]["explaining-screens"][i]["text"];
+        explainingText[i].textContent = data[key]["explaining-screens"][i]["text"]; // adds the explanation text
         
         let newRole = data[key]["explaining-screens"][i]["role"];
         if (newRole) {
-            document.getElementsByClassName("character-body")[i+1].src = `assets/general/characters/allCharacters/${newRole}.svg`;
+            document.getElementsByClassName("character-body")[i+1].src = `assets/general/characters/allCharacters/${newRole}.svg`; // changes hte relevent characters
+            
             if (newRole == "protectionLevelA" || newRole == "protectionLevelB" || newRole == "protectionLevelC") {
-                 var clothingExplainingDiv = document.querySelectorAll('.unit-screens .clothing-explaining-div'); 
-                    for (let i = 0; i < clothingExplainingDiv.length; i++) {
-                        clothingExplainingDiv[i].innerHTML = 
-                        `<div class="clothing-explaining suit">חליפה כמוסה</div>
-                        <div class="clothing-explaining breath">מנפ</div>
-                        <div class="clothing-explaining gloves">כפפות</div>
-                        <div class="clothing-explaining boots">מגפיים</div>` 
-                    }       
-        
-            }
-        }// Adding clothing explanations
-       
-        
-
-    }   // adds the explaining text
+                var clothingExplainingDiv = document.querySelectorAll('.unit-screens .clothing-explaining-div'); 
+                clothingExplainingDiv[6].innerHTML = `<div transition-style="in:wipe:left" class="clothing-explaining suit">חליפה כמוסה</div><div class="clothing-explaining breath">מנ"פ</div><div class="clothing-explaining gloves">כפפות</div><div class="clothing-explaining boots">מגפיים</div>`
+                clothingExplainingDiv[7].innerHTML = `<div transition-style="in:wipe:left" class="clothing-explaining suit">חליפת סרבל</div><div class="clothing-explaining breath">מנפ</div><div class="clothing-explaining gloves">כפפות</div><div class="clothing-explaining boots">מגפיים</div>`
+                clothingExplainingDiv[8].innerHTML = `<div transition-style="in:wipe:left" class="clothing-explaining suit">"מסכה ומסנן/אבן ספיר"</div><div class="clothing-explaining breath">חליפת סרבל</div><div class="clothing-explaining gloves">כפפות</div><div class="clothing-explaining boots">מגפיים</div>`
+            } 
+        } // adds the protection level explanation tags
+    }
 }
 
 
