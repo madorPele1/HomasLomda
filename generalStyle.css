@@ -625,3 +625,101 @@ li:nth-child(3) {
         }
     }
 }
+
+/* pac-map */
+.pac-map {
+    background-image: url(assets/units/unit1/pacMap.svg);
+    width: 90vw;
+    height: 50vh;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    position: relative;
+    right: 5%;
+    top: 18%;
+}
+
+#risk-areas-concept {
+    position: relative;
+}
+
+.pac-explained {
+    width: 90vw;
+    position: relative;
+    top: 10%;
+    right: 5%;
+    background-color: #DAE3F3;
+    padding: 4vw;
+    border-radius: 6vw;
+    box-shadow: #0726419c 0 2px 7px;
+    text-align: center;
+}
+
+.pac {
+    font-weight: bolder;
+    filter: drop-shadow(1px 0 1px rgb(58, 134, 147));
+    font-family: heebo-bold;
+}
+
+#cold {
+    position: absolute;
+    top: 10%;
+    right: 10%;
+}
+
+#focus {
+    position: absolute;
+    top: 30%;
+    right: 34.5%;
+}
+
+#heat {
+    position: absolute;
+    top: 32%;
+    right: 49%;
+}
+
+#warm {
+    position: absolute;
+    top: 55%;
+    right: 40%;
+}
+
+.explaine-container {
+    background-color: whitesmoke;
+    box-shadow: #07264181 0 2px 7px;
+    padding: 2vw;
+    border-radius: 3vw;
+    width: 55vw;
+    position: absolute;
+    z-index: 5;
+    font-size: 2vmax;
+}
+
+#cold-explain {
+    top: 18%;
+    right: 6%;
+    display: none;
+}
+
+#focus-explain {
+    top: 38%;
+    right: 6%;
+    display: none;
+}
+
+#heat-explain {
+    top: 40%;
+    right: 40%;
+    display: none;
+}
+
+#warm-explain {
+    top: 65%;
+    right: 15%;
+    display: none;
+}
+
+.pac-container {
+    position: relative;
+    top: 18%;
+}
