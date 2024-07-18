@@ -134,12 +134,6 @@ var commanderUnit2 = [
 var commanderUnit3 = [
     "map",
    "opening-screen",
-   "explaining-screen",
-   "explaining-screen",
-   "explaining-screen",
-   "explaining-screen",
-   "explaining-screen",
-   "explaining-screen",
    "rescue-roles",
    "area-organizing",
    "questions-screen",
