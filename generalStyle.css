@@ -83,7 +83,7 @@ section {
 }
 
 .back-to-map-car-button {
-    width: 50vw;
+    width: 35vw;
     background-color: transparent;
     border-color: transparent;
     position: absolute;
@@ -122,7 +122,7 @@ section {
     position: absolute;
     background-position: center;
     margin: 0 auto;
-    bottom: 48svh;
+    bottom: 52svh;
 }
 
 
@@ -133,7 +133,7 @@ section {
 }
 
 .character-body {
-    width: 50vw;
+    width: 60vw;
     position: absolute;
     bottom: 20px;
     left: 40%;
@@ -145,7 +145,6 @@ section {
     left: 60%; 
     margin: 10px; 
 }
-
 /* roadMap */
 
 #map {
@@ -208,7 +207,7 @@ section {
     margin: auto;
     border-radius: 90svw;
     display: flex;
-    max-width: 90vw; 
+    max-width: 95vw; 
     margin-bottom: 20px;
     margin-top: 20px;
     max-height: 30vh; 
@@ -219,12 +218,11 @@ section {
     position: relative;
     z-index: 1;
     width: 30%;
-    left: 10%;
+    /* left: 10%; */
 }
 
 .question-text {
     font-weight: bold;
-    line-height: 5vh;
     text-align: center;
     font-size: 4svw;
     margin: 4vw;
@@ -287,10 +285,6 @@ section {
 .even-cloud {
     right: 70vw;
 }
-
-/* .odd-cloud {
-    left: 5vw;
-} */
 
 /* fox-map */
 .map-square {
@@ -593,13 +587,42 @@ li:nth-child(3) {
     height: 50svh;
     flex-direction: column;
     justify-content: space-around;
-    right: 18svw;
+    right: 20svw;
     
 }
 
-.clothing-explaining {
+.suit, .breath, .gloves, .boots{
     height: 8vh;
-    width: 60vw;
+    width: 71vw;
     background-color: aliceblue;
     border-radius: 80vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-weight: bold;
+}
+
+@keyframes wipe-in-left {
+    from {
+        clip-path: inset(0 0 0 100%);
+        opacity: 0;
+    }
+    to {
+        clip-path: inset(0 0 0 0);
+        opacity: 1;
+    }
+}
+
+.clothing-explaining {
+    opacity: 0; /* Initially hidden */
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    @supports (animation-timeline: scroll()) {
+        .clothing-explaining {
+            animation: wipe-in-left 2.5s cubic-bezier(.25, 1, .30, 1) both;
+            animation-timeline: view(); /* Animation triggers when in view */
+            animation-range: contain; /* Animation confined to the element */
+        }
+    }
 }
