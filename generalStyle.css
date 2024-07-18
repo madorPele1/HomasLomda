@@ -723,3 +723,151 @@ li:nth-child(3) {
     position: relative;
     top: 18%;
 }
+
+/* whatsapp */
+.whatsapp-container {
+    background-color: #fff;
+    width: 100%;
+    height: 100%;
+    max-width: 600px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 100svw;
+    padding: 10px;
+    position: relative;
+    right: -5svw;
+    top: -10px;
+    justify-content: space-evenly;
+}
+
+.header img {
+    width: 7vh;
+}
+
+.header-text h1 {
+    font-size: 1.5rem;
+    margin: 0;
+}
+
+.header-text p {
+    font-size: 0.8rem;
+    color: #777;
+    margin: 0;
+}
+
+.contacts {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.contact {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+}
+
+.contact img {
+    height: 8svh;   
+    margin-right: 10px;
+}
+
+.contact-details {
+    flex: 1;
+}
+
+.contact-details h3 {
+    font-size: 1rem;
+    margin: 0;
+}
+
+.contact p {
+    background-color: #e1f0d8;
+    padding: 7px;
+    border-radius: 1vw;
+    color: #395724;
+    margin: 0; 
+}
+
+/* hapak-whatsapp */
+.hapak-whatsApp-container {
+    background-color: white;
+    background-image: url(assets/units/unit2/whatsAppImages/whatsAppBackground.svg);
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    max-width: 600px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+}
+
+.hapak-header {
+    background-color: white;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 100svw;
+    padding: 10px;
+    position: relative;
+    right: -5svw;
+    top: -5svw;
+    justify-content: space-evenly;
+}
+
+.hapak-header img {
+    width: 7vh;
+}
+
+.hapak-header-text h1 {
+    font-size: 1.5rem;
+    margin: 0;
+}
+
+.hapak-header-text p {
+    font-size: 0.8rem;
+    color: #777;
+    margin: 0;
+}
+
+.hapak-contacts {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.hapak-contact {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+}
+
+.hapak-contact img {
+    height: 8svh;   
+    margin-right: 10px;
+}
+
+.hapak-contact-details {
+    flex: 1;
+}
+
+.hapak-contact-details h3 {
+    font-size: 1rem;
+    margin: 0;
+}
+
+.hapak-contact p {
+    padding: 7px;
+    border-radius: 1vw;
+    margin: 0; 
+}
+
