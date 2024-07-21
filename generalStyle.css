@@ -242,7 +242,7 @@ section {
     font-size: 1.6vw; 
 }
 
-.right, .left {
+.answer-right, .answer-left {
     flex-grow: 1; 
     word-wrap: break-word; 
     font-size: 3.5vw; 
