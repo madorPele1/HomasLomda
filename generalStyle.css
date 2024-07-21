@@ -808,6 +808,7 @@ li:nth-child(3) {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
+    overflow: scroll;
 }
 
 .hapak-header {
@@ -841,7 +842,6 @@ li:nth-child(3) {
 .hapak-contacts {
     display: flex;
     flex-direction: column;
-    gap: 10px;
 }
 
 .hapak-contact {
@@ -852,16 +852,19 @@ li:nth-child(3) {
 
 .hapak-contact img {
     height: 8svh;   
-    margin-right: 10px;
 }
 
 .hapak-contact-details {
     flex: 1;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 }
 
 .hapak-contact-details h3 {
     font-size: 1rem;
     margin: 0;
+    text-align: center;
 }
 
 .hapak-contact p {
@@ -870,7 +873,69 @@ li:nth-child(3) {
     margin: 0; 
 }
 
+.pakar-commander {
+    flex-direction:row-reverse;
+}
 
+.bubble {
+    --r: 1em;  /* the radius */
+    --t: 1.5em; /* the size of the tail */
+    
+    max-width: 300px;
+    padding: 1em;
+    border-inline: var(--t) solid #0000;
+    border-radius: calc(var(--r) + var(--t))/var(--r);
+    mask: 
+      radial-gradient(100% 100% at var(--_p) 0,#0000 99%,#000 102%) 
+        var(--_p) 100%/var(--t) var(--t) no-repeat,
+      linear-gradient(#000 0 0) padding-box;
+    background: #fff;
+    color: #000
+  }
+  .left {
+    --_p: 0;
+    border-bottom-left-radius: 0 0;
+    place-self: start;
+    background: #bbf3bb;
+  }
+  .right {
+    --_p: 100%;
+    border-bottom-right-radius: 0 0;
+    place-self: end;
+  }
+
+.start-message {
+    background: #cff1f1;
+    padding: 10px;
+    border-radius: 2vh;
+    text-align: center;
+    margin-bottom: 2svh;
+}
+                                        
+@keyframes fade-up {
+    from {
+        transform: translate3d(0,6svh,0)
+    }
+    to {
+        transform: translate3d(0,0,0);
+        opacity: 1
+    }
+}
+
+.hapak-contact {
+    opacity: 0; 
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    @supports (animation-timeline: scroll()) {
+        .hapak-contact {
+            animation: fade-up 2.5s cubic-bezier(1, -1.11, 0, 2) both;
+            animation-timeline: view(); 
+        }
+    }
+}
+
+/* missile-animation */
 .missile-animation-div {
     position: relative;
 }
