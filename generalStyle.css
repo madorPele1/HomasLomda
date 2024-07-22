@@ -1054,3 +1054,59 @@ li:nth-child(3) {
 }
 
 
+/* protection-wearing */
+.protection-wearing-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    max-width: 600px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+}
+
+.protection-character-body {
+    width: 60vw;
+    position: absolute;
+    bottom: 70px;
+    left: 40%;
+}
+
+.protection-explanation-div {
+    background-color: #ffffff80;
+    border-radius: 20svw;
+    width: 80%;
+    height: 75%;
+    margin: auto;
+}
+
+.static-explanation {
+    text-align: center;
+    width: 70%;
+    margin: auto;
+    position: relative;
+    top: 7%;
+    display: block;
+}
+
+.scrolling-protection-explanation {
+    overflow: scroll;
+    /* background: #f5c3c380; */
+    position: absolute;
+    bottom: 10svh;
+    right: 7svw;
+    width: 90svw;
+    height: 72svh;
+}
+
+.scrolling-protection-clothing {
+    position: absolute;
+    width: 40svw; 
+}
+
+.scrolling-protection-text {
+    position: absolute;
+    line-height: 5svh;
+    width: 40svw;
+    text-align: center;
+    right: 40svw;
+}
