@@ -612,6 +612,17 @@ li:nth-child(3) {
     }
 }
 
+@-webkit-keyframes wipe-in-left {
+    from {
+        -webkit-clip-path: inset(0 0 0 100%);
+        opacity: 0;
+    }
+    to {
+        -webkit-clip-path: inset(0 0 0 0);
+        opacity: 1;
+    }
+}
+
 .clothing-explaining {
     opacity: 0; /* Initially hidden */
 }
@@ -619,7 +630,7 @@ li:nth-child(3) {
 @media (prefers-reduced-motion: no-preference) {
     @supports (animation-timeline: scroll()) {
         .clothing-explaining {
-            animation: wipe-in-left 2.5s cubic-bezier(0, 1.47, 1, 2.66) both;
+            animation: wipe-in-left 2.5s cubic-bezier(0.14, 0.63, 0.06, 2) both;
             animation-timeline: view(); /* Animation triggers when in view */
         }
     }
@@ -804,7 +815,6 @@ li:nth-child(3) {
     width: 100%;
     height: 100%;
     max-width: 600px;
-    padding: 20px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
@@ -818,10 +828,10 @@ li:nth-child(3) {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     width: 100svw;
     padding: 10px;
-    position: relative;
-    right: -5svw;
-    top: -5svw;
+    position: sticky;    
+    top: -1svw;
     justify-content: space-evenly;
+    z-index: 1;
 }
 
 .hapak-header img {
@@ -905,11 +915,13 @@ li:nth-child(3) {
   }
 
 .start-message {
-    background: #cff1f1;
+    background: #ddf9f9;
     padding: 10px;
     border-radius: 2vh;
     text-align: center;
-    margin-bottom: 2svh;
+    width: 66svw;
+    margin: auto;
+    margin-top: 3svh;
 }
                                         
 @keyframes fade-up {
@@ -919,6 +931,17 @@ li:nth-child(3) {
     to {
         transform: translate3d(0,0,0);
         opacity: 1
+    }
+}
+
+@-webkit-keyframes fade-up {
+    from {
+        -webkit-transform: translate3d(0, 6vh, 0);
+        opacity: 0;
+    }
+    to {
+        -webkit-transform: translate3d(0, 0, 0);
+        opacity: 1;
     }
 }
 
