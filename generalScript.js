@@ -242,6 +242,33 @@ const clickHandler = (event) => {
         case "pac-map":
             pacMap('pac-map');
             break;
+                case "definition1":
+            conceptScreenHandle(1);
+            break;
+        case "definition2":
+            conceptScreenHandle(2);
+            break;
+        case "definition3":
+            conceptScreenHandle(3);
+            break;
+        case "definition4":
+            conceptScreenHandle(4);
+            break;
+        case "end-concept-btn": 
+            conceptScreenHandle(-1);
+            break;
+        case "rhombuse1":
+            manageRhombuses(1);
+            break;
+        case "rhombuse2":
+            manageRhombuses(2);
+            break;
+        case "rhombuse3":
+            manageRhombuses(3);
+            break;
+        case "back-rhombuse-btn":
+            manageRhombuses(0);
+            break;
         default:
             break;
     }
@@ -401,4 +428,134 @@ const pacMap = (chosen) => {
             specificExplainContainer[i].style.display = "block";
         }
     }
+}
+
+
+const conceptScreenHandle = (definitionNum) => {
+    var allPanels = document.getElementsByTagName('section');
+    switch (definitionNum) {
+        case -1:
+            for (let i = 0; i < allPanels.length; i++) {
+                allPanels[i].style.display = 'none';
+                allPanels[41].style.display = 'block';
+                allPanels[42].style.display = 'block';
+            }
+            break;
+        case 0:
+            var checkMark = document.getElementsByClassName("checkMark1");
+            for (let i = 0; i < checkMark.length; i++) { 
+                if (visitedRhombuse1 &&  visitedRhombuse2 && visitedRhombuse3) {
+                    checkMark[i].style.display = 'inline';
+                }
+                visitedConcept1 = true;
+            }
+            var endConceptButton = document.getElementsByClassName('end-concept-btn');
+            for (let i = 0; i < endConceptButton.length; i++) { 
+                if (visitedConcept1 &&  visitedConcept2 && visitedConcept3 && visitedConcept4) {
+                    endConceptButton[i].style.display = 'block';
+                }
+            }
+            for (let i = 0; i < allPanels.length; i++) {
+                allPanels[i].style.display = 'none';
+                allPanels[26].style.display = 'block';
+                allPanels[27].style.display = 'block';
+                allPanels[28].style.display = 'block';
+            }
+            break;
+        case 1:
+            for (let i = 0; i < allPanels.length; i++) {
+                allPanels[i].style.display = 'none';
+                allPanels[29].style.display = 'block';
+                allPanels[30].style.display = 'block';
+                allPanels[31].style.display = 'block';
+            }
+            break;
+        case 2:
+            var checkMark = document.getElementsByClassName("checkMark2"); 
+            for (let i = 0; i < checkMark.length; i++) {
+                checkMark[i].style.display = 'inline';
+            }
+            visitedConcept2 = true;
+            for (let i = 0; i < allPanels.length; i++) {
+                allPanels[i].style.display = 'none';
+                allPanels[35].style.display = 'block';
+                allPanels[36].style.display = 'block';
+            }
+            break;
+        case 3:
+            var checkMark = document.getElementsByClassName("checkMark3"); 
+            for (let i = 0; i < checkMark.length; i++) {
+                checkMark[i].style.display = 'inline';
+            }
+            visitedConcept3 = true;
+            for (let i = 0; i < allPanels.length; i++) {
+                allPanels[i].style.display = 'none';
+                allPanels[37].style.display = 'block';
+            }
+            break;
+        case 4:
+            var checkMark = document.getElementsByClassName("checkMark4"); 
+            for (let i = 0; i < checkMark.length; i++) {
+                checkMark[i].style.display = 'inline';
+            }
+            visitedConcept4 = true;
+            for (let i = 0; i < allPanels.length; i++) {
+                allPanels[i].style.display = 'none';
+                allPanels[38].style.display = 'block';
+                allPanels[39].style.display = 'block';
+                allPanels[40].style.display = 'block';
+            }
+            break;
+        default:
+            break;
+    }   
+}
+
+const manageRhombuses = (rhombuseNum) => {
+    var allPanels = document.getElementsByTagName('section');
+    switch (rhombuseNum) {
+        case 0:
+            for (let i = 3; i < allPanels.length; i++) {
+                allPanels[i].style.display = 'none';
+                allPanels[29].style.display = 'block';
+                allPanels[30].style.display = 'block';
+                allPanels[31].style.display = 'block';
+            }
+            break;
+        case 1:
+            var rhombuses = document.getElementsByClassName("rhombuse1"); 
+            for (let i = 0; i < rhombuses.length; i++) {
+                rhombuses[i].setAttribute('src', 'assets/units/unit1/homasTypes/flammableGasesCheck.svg');
+            }
+            for (let i = 0; i < allPanels.length; i++) {
+                allPanels[i].style.display = 'none';
+                allPanels[33].style.display = 'block';
+            }
+            visitedRhombuse1 = true;
+            break;
+        case 2:
+            var rhombuses = document.getElementsByClassName("rhombuse2"); 
+            for (let i = 0; i < rhombuses.length; i++) {
+                rhombuses[i].setAttribute('src', 'assets/units/unit1/homasTypes/toxicGasesCheck.svg');
+            }
+            for (let i = 0; i < allPanels.length; i++) {
+                allPanels[i].style.display = 'none';
+                allPanels[34].style.display = 'block';
+            }
+            visitedRhombuse2 = true;
+            break;
+        case 3:
+            var rhombuses = document.getElementsByClassName("rhombuse3"); 
+            for (let i = 0; i < rhombuses.length; i++) {
+                rhombuses[i].setAttribute('src', 'assets/units/unit1/homasTypes/explosiveSubstancesCheck.svg');
+            }
+            for (let i = 0; i < allPanels.length; i++) {
+                allPanels[i].style.display = 'none';
+                allPanels[32].style.display = 'block';
+            }
+            visitedRhombuse3 = true;
+            break;
+        default:
+            break;
+    }   
 }
