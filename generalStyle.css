@@ -8,6 +8,11 @@
     src: url(assets/fonts/segoe/segoeuithis.ttf);
 }
 
+@font-face {
+    font-family: heebo-bold;
+    src: url(assets/fonts/Heebo/static/Heebo-ExtraBold.ttf);
+}
+
 html {
     width: 100vw;
     max-width: 100%;
@@ -474,6 +479,8 @@ section {
 
 /* concepts */
 ul {
+    position: relative;
+    bottom: 4%;
     list-style-type: none;
 }
 
@@ -484,19 +491,24 @@ ul {
     text-align: center;
 }
 
+#end-concept-btn {
+    position: relative;
+    bottom: 4%;
+}
+
+.end-concept-btn {
+    display: none;
+}
+
 li {
     background-color: #f0dafee1;
     width: 80vw;
-    height: 12vh;
+    height: 11svh;
     margin-top: 15%;
     font-size: 3vmax;
     text-align: center;
-    border-radius: 10%;
+    border-radius: 5vw;
     padding-top: 3vh;
-}
-
-li:nth-child(3) {
-    padding-top: 1vh;
 }
 
 /* rhombuses */
@@ -1109,4 +1121,188 @@ li:nth-child(3) {
     width: 40svw;
     text-align: center;
     right: 40svw;
+}
+
+/* missile-animation */
+.missile-animation-div {
+    position: relative;
+}
+
+.missile {
+    width: 45vw;
+    position: absolute;
+    left: -5%;
+    top: 0vh;
+    transform: rotate(30deg);
+    opacity: 0;
+}
+
+.man-coughing {
+    width: 60vw;
+    position: absolute;
+    top: 53vh;
+    left: 25%;
+    opacity: 0;
+}
+
+.bomb {
+    width: 45vw;
+    position: absolute;
+    left: 42%;
+    top: 40vh;
+    z-index: 2;
+    opacity: 0;
+}
+
+.smoke {
+    width: 20vw;
+    position: absolute;
+    top: 30vh;
+    right: 10%;
+    opacity: 0;
+}
+
+@keyframes missile-animation {
+    0% {
+        top: 0vh;
+        left: -5%;
+        transform: rotate(30deg);
+        opacity: 0;
+    }
+    30% {
+        top: 43vh;
+        transform: rotate(60deg);
+        left: 50%;
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        top: 43vh;
+        transform: rotate(60deg);
+        left: 50%;
+
+    }
+}
+
+@keyframes smoke-animation {
+    0% {
+        top: 30vh;
+        opacity: 0;
+    }
+    30% {
+        top: 25vh;
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        top: 20vh;
+    }
+}
+
+@keyframes man-coughing-animation {
+    0% {
+       transform: rotate(5deg); 
+       opacity: 0;
+    }
+    15% {
+        transform: rotate(0deg);
+    }
+    30% {
+        transform: rotate(5deg); 
+        opacity: 1; 
+
+    }
+    45% {
+        transform: rotate(0deg); 
+        opacity: 1; 
+
+    }
+    60% {
+        transform: rotate(5deg); 
+        opacity: 1; 
+
+    }
+    100% {
+        transform: rotate(0deg); 
+        opacity: 1; 
+    }
+}
+
+@keyframes bomb-animation {
+
+    0% {
+        opacity: 0;
+        width: 45vw;
+        top: 40vh;
+    }
+
+    20% {
+        opacity: 1;
+        width: 45vw;
+        top: 40vh;
+        left: 52%;
+
+    }
+
+    50% {
+        width: 55vw;
+        top: 40vh;
+        left: 45%;
+        opacity: 1;
+    }
+
+    80% {
+        opacity: 1;
+        width: 45vw;
+        top: 40vh;
+        left: 52%;
+    }
+
+    100% {
+        opacity: 0;
+        width: 45vw;
+        top: 40vh;
+    }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    @supports (animation-timeline: scroll()) {
+        .missile {
+            animation: missile-animation 2.5s;
+            animation-timeline: view(55vh 0vh); 
+        }
+        .man-coughing {
+            animation: man-coughing-animation 2.5s forwards;
+            animation-timeline: view(10vh 80vh);
+        }
+        .bomb {
+            animation: bomb-animation .5s;
+            animation-timeline: view(70vh 20vh);
+        }
+        .smoke {
+            animation: smoke-animation 1.5s;
+            animation-timeline: view(0vh 60vh);
+        }
+    }
+}
+
+.back-rhombuse-btn {
+    position: absolute;
+    top: 89vh;
+    left: 64%;
+}
+
+.back-btn-container {
+    position: relative;
+    left: 15%;
+}
+
+.small-btn {
+    width: 20vw;
+}
+
+.checkMark {
+    width: 10vw;
+    display: inline;
+    display: none;
 }
