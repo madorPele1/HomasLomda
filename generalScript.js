@@ -12,6 +12,13 @@
 var role = "soldier"; //the role of the user
 var unit; //the changing number of unit
 var screenArrayName; //saving the name of the array that have the screens
+let visitedRhombuse1 = false;
+let visitedRhombuse2 = false;
+let visitedRhombuse3 = false;
+let visitedConcept1 = false;
+let visitedConcept2 = false;
+let visitedConcept3 = false;
+let visitedConcept4 = false;
 
 var soldierUnit1 = [
     "map", 
