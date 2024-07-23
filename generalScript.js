@@ -404,15 +404,11 @@ const animate = (stopNum) => {
         animationContainer[i].setAttribute('src', `assets/car/zoomOutCarStop${unit}.mp4`);
         document.getElementById('animation_container').currentTime = 0;
     };
-    if (unit === '2') {
-        unit = 3
-    } else if (unit === '3') {
-        unit = 4
-    } else if (unit === '4') {
-        unit = 2
-    }
     screenArrayName = `${role}Unit${unit}`;
-    displayScreens(screenArrayName)  
+    displayScreens(screenArrayName);
+    if (unit === '1') {
+        conceptScreenHandle(0);
+    }
 }
 
 const carousel = (side) => {
