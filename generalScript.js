@@ -179,6 +179,10 @@ window.addEventListener("load", () => { // Initializing the lomda
 
 
 const displayScreens = (screenArrayName) => { // function that gets the unit number and the role and displays the amount of the screens. The function creates a variable that contains the desired array and goes through each cell in the array and displays the screen with the corresponding name
+    if (role == undefined) {
+        alert("יש להתחבר לעמוד הראשי של הלומדה: \n https://madorpele1.github.io/HomasLomda/")
+    }
+    
     document.documentElement.scrollTo({ top: 0, behavior: 'smooth' });
     document.querySelectorAll('.unit-screens').forEach(screen => screen.remove()); // removes the previous screens
     var screenArray = window[screenArrayName];
