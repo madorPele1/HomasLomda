@@ -717,7 +717,7 @@ li {
     font-size: 2vmax;
 }
 
-#cold-explain {
+.cold-explain {
     top: 18%;
     right: 6%;
     display: none;
@@ -729,13 +729,13 @@ li {
     display: none;
 }
 
-#heat-explain {
+.heat-explain {
     top: 40%;
     right: 40%;
     display: none;
 }
 
-#warm-explain {
+.warm-explain {
     top: 65%;
     right: 15%;
     display: none;
@@ -1304,5 +1304,69 @@ li {
 .checkMark {
     width: 10vw;
     display: inline;
+    display: none;
+}
+
+/* unit3 */
+.cold-area-pic {
+    display: inline;
+    width: 15vw;
+    margin: -2vw;
+    margin-left: 0;
+}
+
+.cold-job {
+    margin: 0;
+    display: inline;
+    width: 60vw;
+}
+
+.cold-text {
+    display: inline;
+}
+
+.heat-text {
+    text-align: center;
+}
+
+.heat-area-pic {
+    width: 15vw;
+    height: 15vw;
+    margin: -2vw;
+    margin-left: 0;
+    float: right;
+}
+
+.job-explain2 {
+    top: 15%;
+    right: 55%;
+    width: 40vw;
+    height: 9vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    display: none;
+}
+
+.job-explain3 {
+    top: 38%;
+    right: 45%;
+    width: 60vw;
+    height: 9vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    display: none;
+}
+
+.job1 {
+    display: none;
+}
+
+.job2 {
+    display: none;
+}
+
+.job3 {
     display: none;
 }
