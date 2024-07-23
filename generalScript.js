@@ -210,24 +210,30 @@ const clickHandler = (event) => {
             break;
         case "back-btn":
             conceptScreenHandle(0);
+            pacMap('pac-map');
             break;
         case "map-pin":
             mapAnimation();
             break;
         case "carStop1":
             animate('carStop1');
+            pacMap('pac-map');
             break;
         case "carStop2":
             animate('carStop2');
+            pacMap('pac-map');
             break;
         case "carStop3":
             animate('carStop3');
+            pacMap('pac-map');
             break;
         case "carStop4":
             animate('carStop4');
+            pacMap('pac-map');
             break;
         case "carStop5":
             animate('carStop5');
+            pacMap('pac-map');
             break;
         case "prev":
             carousel();
