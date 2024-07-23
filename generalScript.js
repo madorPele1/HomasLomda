@@ -174,6 +174,7 @@ window.addEventListener("load", () => { // Initializing the lomda
     unit = 1;
     screenArrayName = `${role}Unit${unit}`;
     displayScreens(screenArrayName);
+    conceptScreenHandle(0);
 })
 
 
@@ -208,7 +209,7 @@ const clickHandler = (event) => {
             endUnit();
             break;
         case "back-btn":
-            backToMap();
+            conceptScreenHandle(0);
             break;
         case "map-pin":
             mapAnimation();
