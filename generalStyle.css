@@ -1360,7 +1360,6 @@ li {
     top: 15%;
     right: 55%;
     width: 40vw;
-    height: 9vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1369,9 +1368,8 @@ li {
 
 .job-explain3 {
     top: 38%;
-    right: 45%;
+    right: 35%;
     width: 60vw;
-    height: 9vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1387,5 +1385,37 @@ li {
 }
 
 .job3 {
+    font-size: 2vmax;    
+}
+
+.job4 {
     display: none;
+}
+
+.arrows {
+    display: flex;
+    width: 100%;
+    margin-top: -3vw;
+    justify-content: space-between;
+}
+
+.back-arrow {
+    display: none;
+    font-size: 5.5vmax;
+    font-weight: bolder;
+    color: #b263d4;
+    margin-top: -5vw;
+    margin-bottom: -2vw;
+    position: relative;
+    right: 94%;
+}
+
+.forward-arrow {
+    color: #b263d4;
+    font-size: 5.5vmax;
+    font-weight: bolder;
+    margin-top: -5vw;
+    margin-bottom: -2vw;
+    position: relative;
+    right: 0%;
 }
