@@ -367,6 +367,9 @@ const endUnit = () => {
         screenArrayName = `${role}Unit${unit}`;
         displayScreens(screenArrayName);
     }
+    animate(`stopNum${unit}`);
+    document.body.scrollTop = 0; // For Safari
+    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
 }
 
 // onclick functions
@@ -442,9 +445,60 @@ const pacMap = (chosen) => {
             specificExplainContainer[i].style.display = "block";
         }
     }
+    if (unit === '3') {
+        var explainText = document.getElementsByClassName(`general-job`); 
+        for (let i = 0; i < explainText.length; i++) {
+                explainText[i].style.display = "none";
+        }
+        for (let x = 1; x <= 2; x++) {
+            var explainText = document.getElementsByClassName(`job${x}`);
+            for (let i = 0; i < explainText.length; i++) {
+                explainText[i].style.display = "none";
+            } 
+        }
+        if (chosen === 'cold') {
+            var explainText = document.getElementsByClassName(`job1`);
+        } else if (chosen === 'pac-map') {
+            var explainText = document.getElementsByClassName(`general-job`);
+        } else {
+            var explainText = document.getElementsByClassName(`job2`);
+        }
+        for (let i = 0; i < explainText.length; i++) {
+            explainText[i].style.display = "block";
+        } 
+    }
 }
 
+const changeTextPac = (chosen) => {
+    switch (chosen) {
+        case 'next':
+            var textDisplay = document.getElementsByClassName("job4");
+            var arrowHide = document.getElementsByClassName("forward-arrow");
+            var arrowShow = document.getElementsByClassName("back-arrow");
+            break;
+        case 'back':
+            var textDisplay = document.getElementsByClassName("job3");
+            var arrowHide = document.getElementsByClassName("back-arrow");
+            var arrowShow = document.getElementsByClassName("forward-arrow");
 
+            break;
+    }
+    for (let x = 3; x <= 4; x++) {
+        var explainText = document.getElementsByClassName(`job${x}`);
+        for (let i = 0; i < explainText.length; i++) {
+            explainText[i].style.display = "none";
+        }
+    } 
+    for (let i = 0; i < textDisplay.length; i++) {
+        textDisplay[i].style.display = "block";
+    }
+    for (let i = 0; i < arrowHide.length; i++) {
+        arrowHide[i].style.display = "none";
+    }
+    for (let i = 0; i < arrowShow.length; i++) {
+        arrowShow[i].style.display = "block";
+    }
+}
 const conceptScreenHandle = (definitionNum) => {
     var allPanels = document.getElementsByTagName('section');
     switch (definitionNum) {
@@ -572,4 +626,18 @@ const manageRhombuses = (rhombuseNum) => {
         default:
             break;
     }   
+}
+
+const contactManager = (contact) => {
+    var allPanels = document.getElementsByTagName('section');
+    switch (rhombuseNum) {
+        case 0:
+            break;
+        case 1:
+            for (let i = 3; i < allPanels.length; i++) {
+                allPanels[i].style.display = 'none';
+                allPanels[29].style.display = 'block';
+            }
+            break;
+    }
 }
