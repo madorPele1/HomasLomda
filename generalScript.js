@@ -287,6 +287,48 @@ const clickHandler = (event) => {
         case "back-rhombuse-btn":
             manageRhombuses(0);
             break;
+        case "back-arrow":
+            changeTextPac('back');
+            break;
+        case "forward-arrow":
+            changeTextPac('next');
+            break;
+        case "contact1":
+            contactManager(1);
+            break;
+        case "contact2":
+            contactManager(2);
+            break;
+        case "contact3":
+            contactManager(3);
+            break;
+        case "contact4":
+            contactManager(4);
+            break;
+        case "contact5":
+            contactManager(5);
+            break;
+        case "contact6":
+            contactManager(6);
+            break;
+        case "contact7":
+            contactManager(7);
+            break;
+        case "contact8":
+            contactManager(8);
+            break;
+        case "contact9":
+            contactManager(9);
+            break;
+        case "contact10":
+            contactManager(10);
+            break;
+        case "contact11":
+            contactManager(11);
+            break;
+        case "contact12":
+            contactManager(12);
+            break;
         default:
             break;
     }
