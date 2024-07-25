@@ -72,7 +72,6 @@ var soldierUnit4 = [
    "explaining-screen",
    "protection-wearing", 
    "drag-drop-game",
-   "drag-drop-game",
    "questions-screen",
    "risk-areas-levels",
    "explaining-screen",
@@ -151,7 +150,6 @@ var commanderUnit4 = [
     "explaining-screen",
     "explaining-screen",
     "protection-wearing",
-   "drag-drop-game",
    "drag-drop-game",
    "questions-screen",
    "risk-areas-levels",
@@ -328,6 +326,9 @@ const clickHandler = (event) => {
             break;
         case "contact12":
             contactManager(12);
+            break;
+        case "start-dragging-btn":
+            setupDragAndDrop();
             break;
         default:
             break;
@@ -681,5 +682,60 @@ const contactManager = (contact) => {
                 allPanels[29].style.display = 'block';
             }
             break;
+    }
+}
+
+const setupDragAndDrop = () => {
+    const resetDraggingBtn = document.getElementsByClassName("reset-dragging-btn")[1]; 
+    const finishDraggingBtn = document.getElementsByClassName("finish-dragging-btn")[1];
+    
+    const draggableClothing = document.getElementsByClassName("dragging-character-body");
+    const droppedClothing = document.getElementsByClassName("character-body-part");
+    
+    const startDraggingBtn = document.getElementsByClassName("start-dragging-btn")[1]; 
+    startDraggingBtn.style.display = "none";
+
+    let draggedItem = null;
+    let selectedOrder = []; // Array to track the order of selected items
+
+    // Add event listeners for touching the dragged element
+    for (let i = 0; i < draggableClothing.length; i++) {
+        draggableClothing[i].addEventListener("touchstart", touchStart);
+    }
+
+    function touchStart(e) {
+        draggedItem = this;
+        draggedItem.style.display = "none";
+    }
+
+    // Add event listeners for dropping the dragged element
+    for (let i = 0; i < draggableClothing.length; i++) {
+        draggableClothing[i].addEventListener("touchend", touchEnd);
+    }
+
+    function touchEnd(e) {
+        if (!draggedItem) return;
+        let type = draggedItem.alt.replace("protection-character-", "");
+        selectedOrder.push(type);
+
+        // // Find the corresponding character part to change
+        const characterPart = document.getElementsByClassName(`${type}`);
+        // Change the character part image source
+        if (characterPart) {
+            for (let i = 0; i < characterPart.length; i++) {
+                characterPart[i].src = draggedItem.src;;
+            }
+        }
+        if (selectedOrder.length === 5) {
+            finishDraggingBtn.style.display = "block";
+            if (
+            selectedOrder[0] === "pants" && 
+            selectedOrder[1] === "shoes" && 
+            selectedOrder[2] === "shirt" && 
+            selectedOrder[3] === "head" && 
+            selectedOrder[4] === "hands") {
+            }
+        }
+        draggedItem = null;
     }
 }

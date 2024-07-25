@@ -1141,6 +1141,49 @@ li {
     right: 48%;
 }
 
+/* drag-and-drop */
+.dragging-explanation-div {
+    height: 75svh;
+    background: #fbf7eda3;
+    display: block;
+    position: relative;
+    z-index: 0;
+    margin: auto;
+    width: 80%;
+    border-radius: 10vh;
+}
+
+.character-body-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    bottom: 57svh;
+    right: 13svw;
+    width: 30svw;
+}
+
+.character-body-part {
+    position: relative;
+    width: 23svw;
+}
+
+.draggable-elements-container {
+    position: relative;
+    display: flex;
+    flex-direction: row-reverse;
+    bottom: 102svh;
+    right: 40svw;
+    width: 47svw;
+    flex-wrap: wrap;
+    background: #a9887042;
+    border-radius: 10vw;
+}
+
+.dragging-character-body {
+    position: relative;
+    width: 23svw;
+}
+
 
 /* missile-animation */
 .missile-animation-div {
