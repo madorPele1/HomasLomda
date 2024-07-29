@@ -975,6 +975,7 @@ li {
     @supports (animation-timeline: scroll()) {
         .hapak-contact {
             animation: fade-up 2.5s cubic-bezier(1, -1.11, 0, 2) both;
+            -webkit-animation: fade-up 2.5s cubic-bezier(1, -1.11, 0, 2) both;            
             animation-timeline: view(); 
         }
     }
