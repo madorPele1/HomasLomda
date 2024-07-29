@@ -509,22 +509,42 @@
                         <section class="panel" id="drag-drop-game">
             
                             <div class="drag-drop-game">
-                                    <div class="dragging-explanation-div">
-                                        <b class="static-explanation">ועכשיו לתרגול! <br> לחצו על פריטי המיגון בסדר הלבישה הנכון.</b>
-                                        
-                                        <button id="reset-dragging-btn" class="reset-dragging-btn" style="width: 17svw;position: relative;border-color: transparent;background: transparent;top: 55svh;right: 58svw;z-index: 3;">
-                                            <img src="assets/units/unit4/reset.png" alt="reset-dragging-btn" style="width: 10svw;">
-                                        </button>                            
-                                        <button id="start-dragging-btn" class="btn start-dragging-btn" style="width: 22svw; z-index: 3;">התחילו</button>                                
-                                        <button id="finish-dragging-btn" class="btn finish-dragging-btn" style="width: 22svw; z-index: 3; display:none">סיימתי</button>                                
+                                <div class="dragging-explanation-div">
+                                    <b class="static-explanation">ועכשיו לתרגול! <br> לחצו על פריטי המיגון בסדר הלבישה הנכון.</b>
+                                    
+                                    <button id="reset-dragging-btn" class="reset-dragging-btn" style="width: 17svw;position: relative;border-color: transparent;background: transparent;top: 62svh;right: 58svw;z-index: 3;">
+                                        <img src="assets/units/unit4/reset.png" alt="reset-dragging-btn" style="width: 10svw;">
+                                    </button>                            
+                                    <button id="start-dragging-btn" class="btn start-dragging-btn" style="width: 22svw; z-index: 3;">התחילו</button>                                
+                                    <button id="finish-dragging-btn" class="btn finish-dragging-btn" style="width: 22svw; z-index: 3; display:none">סיימתי</button>                                
                                 </div>
                         
                                 <div class="character-body-container">
-                                    <img class="character-body-part head" src="assets/units/unit4/drag-drop/head.svg" alt="character-head">
-                                    <img class="character-body-part shirt" src="assets/units/unit4/drag-drop/shirt.svg" alt="character-shirt">
-                                    <img class="character-body-part hands" src="assets/units/unit4/drag-drop/hands.svg" alt="character-hands">
-                                    <img class="character-body-part pants" src="assets/units/unit4/drag-drop/pants.svg" alt="character-pants">
-                                    <img class="character-body-part shoes" src="assets/units/unit4/drag-drop/shoes.svg" alt="character-shoes">
+                                    <div style="display: flex; align-items: center;">
+                                        <img class="character-body-part head" src="assets/units/unit4/drag-drop/head.svg" alt="character-head" style="z-index: 2;">
+                                        <div class="num"></div>
+                                    </div>
+                                    
+                                    <div style="display: flex; align-items: center;">
+                                        <img class="character-body-part shirt" src="assets/units/unit4/drag-drop/shirt.svg" alt="character-shirt">
+                                        <div class="num"></div>
+                                    </div>
+                                    
+                                    <div style="display: flex; align-items: center;">
+                                        <img class="character-body-part hands" src="assets/units/unit4/drag-drop/hands.svg" alt="character-hands" style="bottom: 18px;">
+                                        <div class="num"></div>
+
+                                    </div>
+
+                                    <div style="display: flex; align-items: center;">
+                                        <img class="character-body-part pants" src="assets/units/unit4/drag-drop/pants.svg" alt="character-pants" style="bottom: 50px;">
+                                        <div class="num"></div>
+                                    </div>
+
+                                    <div style="display: flex; align-items: center;">
+                                        <img class="character-body-part shoes" src="assets/units/unit4/drag-drop/shoes.svg" alt="character-shoes" style="top: -60px;">
+                                        <div class="num"></div>
+                                    </div>
                                 </div>
                         
                                 <div class="draggable-elements-container">
@@ -534,9 +554,17 @@
                                     <img class="dragging-character-body" src="assets/units/unit4/drag-drop/protection-pants.svg" alt="protection-character-pants">
                                     <img class="dragging-character-body" src="assets/units/unit4/drag-drop/protection-shoes.svg" alt="protection-character-shoes">
                                 </div>
+
+                                <div class="success-message">
+                                    <p>כל הכבוד! שמתם את המיגון בסדר הנכון.</p>
+                                </div>
+
+                                <div class="failure-message">
+                                    <p>הפעם לא הצלחתם... לא נורא, ככה לומדים!</p>
+                                </div>
                             </div>
                             
-                        </section>    
+                        </section> 
                         <section class="panel" id="risk-areas-levels"></section>
                     </section>
                 </div>

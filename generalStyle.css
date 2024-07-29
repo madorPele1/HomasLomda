@@ -1144,7 +1144,7 @@ li {
 
 /* drag-and-drop */
 .dragging-explanation-div {
-    height: 75svh;
+    height: 82svh;
     background: #fbf7eda3;
     display: block;
     position: relative;
@@ -1157,15 +1157,17 @@ li {
 .character-body-container {
     position: relative;
     display: flex;
+    bottom: 58svh;
+    right: 11svw;
+    width: 34svw;
     flex-direction: column;
-    bottom: 57svh;
-    right: 13svw;
-    width: 30svw;
 }
 
 .character-body-part {
     position: relative;
-    width: 23svw;
+    width: 33svw;
+    z-index: 1;
+    margin-bottom: -42px;
 }
 
 .draggable-elements-container {
@@ -1183,6 +1185,30 @@ li {
 .dragging-character-body {
     position: relative;
     width: 23svw;
+}
+
+.num {
+    background: white;
+    height: 5svh;
+    width: 18svw;
+    border-radius: 2vh;
+    position: absolute;
+    z-index: 0;
+    display: none;
+    left: 16svw;
+    font-weight: bold;
+    margin-top: -3svh;
+    padding: 8px;
+}
+
+.success-message, .failure-message {
+    position: relative;
+    bottom: 90svh;
+    right: 46svw;
+    width: 40svw;
+    text-align: center;
+    display: none;
+    font-weight: bold;
 }
 
 

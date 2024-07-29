@@ -691,9 +691,14 @@ const setupDragAndDrop = () => {
     
     const draggableClothing = document.getElementsByClassName("dragging-character-body");
     const droppedClothing = document.getElementsByClassName("character-body-part");
+    const nums = document.getElementsByClassName("num");
     
     const startDraggingBtn = document.getElementsByClassName("start-dragging-btn")[1]; 
     startDraggingBtn.style.display = "none";
+    
+    for (let i = 0; i < nums.length; i++) {
+        nums[i].style.display = "block";
+    }
 
     let draggedItem = null;
     let selectedOrder = []; // Array to track the order of selected items
@@ -718,24 +723,71 @@ const setupDragAndDrop = () => {
         let type = draggedItem.alt.replace("protection-character-", "");
         selectedOrder.push(type);
 
-        // // Find the corresponding character part to change
-        const characterPart = document.getElementsByClassName(`${type}`);
-        // Change the character part image source
-        if (characterPart) {
+        // Find the corresponding character part to change
+        const characterPart = document.getElementsByClassName(type);
+        if (characterPart.length) {
             for (let i = 0; i < characterPart.length; i++) {
-                characterPart[i].src = draggedItem.src;;
+                characterPart[i].src = draggedItem.src;
+                const numElement = characterPart[i].nextElementSibling;
+                if (numElement && numElement.classList.contains('num')) {
+                    numElement.innerHTML = selectedOrder.length;
+                }
             }
         }
+        
         if (selectedOrder.length === 5) {
             finishDraggingBtn.style.display = "block";
-            if (
+            finishDraggingBtn.addEventListener("click", checkOrder);
+        }
+        draggedItem = null;
+    }
+
+    function checkOrder() {
+        finishDraggingBtn.style.display = "none";
+        if (
             selectedOrder[0] === "pants" && 
             selectedOrder[1] === "shoes" && 
             selectedOrder[2] === "shirt" && 
             selectedOrder[3] === "head" && 
-            selectedOrder[4] === "hands") {
-            }
+            selectedOrder[4] === "hands"
+        ) {
+            const successMessage = document.getElementsByClassName("success-message")[1]; 
+            successMessage.style.display = "block";
+            resetDraggingBtn.style.display = "none";
         }
-        draggedItem = null;
+        else {
+            const failureMessage = document.getElementsByClassName("failure-message")[1];
+            failureMessage.style.display = "revert"; 
+            resetDraggingBtn.style.display = "none";
+        }
     }
+
+    function resetGame() {
+        // Reset the array and game state
+        selectedOrder = [];
+        
+        // Reset draggable clothing elements
+        for (let i = 0; i < draggableClothing.length; i++) {
+            draggableClothing[i].style.display = "block"; // Ensure they are visible
+            // Optionally, you could reset their positions if needed
+        }
+        
+        // Reset character body parts and nums
+        for (let i = 0; i < droppedClothing.length; i++) {
+            droppedClothing[i].src = "assets/units/unit4/drag-drop/" + droppedClothing[i].classList[1] + ".svg";
+        }
+        for (let i = 0; i < nums.length; i++) {
+            nums[i].innerHTML = "";
+        }
+        
+        // Hide messages
+        const successMessage = document.getElementsByClassName("success-message")[1]; 
+        const failureMessage = document.getElementsByClassName("failure-message")[1];
+        if (successMessage) successMessage.style.display = "none";
+        if (failureMessage) failureMessage.style.display = "none";
+        finishDraggingBtn.style.display = "none";
+    }
+
+    resetDraggingBtn.addEventListener("click", resetGame);
 }
+
