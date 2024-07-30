@@ -56,6 +56,7 @@ section {
     display: flex;
     align-items: center;
     justify-content: center;
+    background-size: cover;
 }
 
 /* opening and ending screen */
@@ -141,6 +142,7 @@ section {
     top: 0svh;
 }
 
+
 .explaining-text {
     position: relative;
     margin: 5vw;
@@ -151,7 +153,7 @@ section {
 .character-body {
     width: 60vw;
     position: absolute;
-    bottom: 20px;
+    bottom: 2%;
     left: 40%;
 }
 
@@ -162,22 +164,15 @@ section {
     margin: 10px; 
 }
 
-/* Media queries for responsiveness */
-@media (max-height: 600px) {
-    .character-body {
-        bottom: 5%; /* Adjust for smaller screens */
-    }
-}
-
 @media (min-height: 700px) {
-    .character-body {
-        bottom: 15%; /* Adjust for larger screens */
+    .explaining-div {
+        top: 16svh; 
     }
 }
 
 @media (min-height: 800px) {
-    .character-body {
-        bottom: 20%; /* Adjust for larger screens */
+    .explaining-div {
+        top: 16svh; 
     }
 }
 
