@@ -330,6 +330,9 @@ const clickHandler = (event) => {
         case "start-dragging-btn":
             setupDragAndDrop();
             break;
+        case "shual-computer-img":
+            shualOpening();
+            break;
         default:
             break;
     }
@@ -791,3 +794,11 @@ const setupDragAndDrop = () => {
     resetDraggingBtn.addEventListener("click", resetGame);
 }
 
+const shualOpening = () => {
+    document.getElementsByClassName("fullpage")[1].style.display = "block";
+    document.getElementsByClassName("shual-phone")[1].style.display = "none";
+    document.getElementsByClassName("x-btn-shual")[1].addEventListener("click", () => {
+        document.getElementsByClassName("fullpage")[1].style.display = "none";
+        document.getElementsByClassName("shual-phone")[1].style.display = "block";
+    });
+}

@@ -1523,3 +1523,59 @@ li {
     position: relative;
     right: 0%;
 }
+
+/* shual-opening */
+.fullpage {
+    display: none;
+    position: relative;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 200vh;
+    background-size: 100vw 200vh;
+    background-repeat: no-repeat no-repeat;
+    background-image: url(assets/units/unit2/shual-screen-for-phone.png);
+}
+
+#shual-opening {
+  overflow: scroll;
+}
+
+.shual-phone {
+  background-image: url(assets/units/unit2/shual-phone.png);
+  height: 76svh;
+  border-radius: 6vh;
+  width: 69svw;
+  background-color: white;
+  background-repeat: no-repeat;
+  background-position: center;
+  position: relative;
+  right: 12svw;
+  top: 5svh;
+}
+
+.shual-computer-img {
+  width: 30svh;
+  display: block;
+  margin: auto;
+  position: relative;
+  top: 9svh;
+}
+
+.shual-text {
+    width: 42svw;
+    text-align: center;
+    margin: auto;
+    margin-top: 11svh;
+}
+
+.x-btn-shual {
+    font-size: 5vh;
+    font-weight: bold;
+    position: sticky;
+    top: 6px;
+    display: inline;
+    left: 4px;
+    margin-right: 12px;
+}
