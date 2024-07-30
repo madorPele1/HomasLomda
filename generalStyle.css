@@ -139,9 +139,8 @@ section {
     position: absolute;
     background-position: center;
     margin: 0 auto;
-    top: 0svh;
+    top: 12svh;
 }
-
 
 .explaining-text {
     position: relative;
@@ -267,17 +266,25 @@ section {
 .answers {
     background-color: #fff8ffce;
     border-radius: 90svw;
-    padding: 10px; 
-    width: 93vw; 
-    margin-bottom: 10px; 
-    font-size: 1.6vw; 
+    padding: 10px;
+    margin-bottom: 10px;
+    min-width: 80vw;
+    max-width: 100svw;
+    min-height: 13svh;
+    max-height: 18svh;   
 }
 
 .answer-right, .answer-left {
-    flex-grow: 1; 
-    word-wrap: break-word; 
-    font-size: 3.5vw; 
+    word-wrap: break-word;
+    font-size: calc(11px + 0.4svh);    
     margin: 2.5vw;
+    margin-right: 27svw;
+    position: relative;
+    bottom: 5svh;
+}
+
+.answer-left {
+    left: 19svw;
 }
 
 /* clouds */
@@ -312,7 +319,7 @@ section {
     left: 18px; 
 }
 
-.even-cloud {
+.left-cloud {
     right: 70vw;
 }
 
