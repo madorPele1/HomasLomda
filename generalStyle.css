@@ -119,7 +119,6 @@ section {
     font-size: 4svw;
 }
 
-
 /* explaining screen */
 #explaining-screen {
     position: relative;
@@ -141,6 +140,7 @@ section {
     margin: 0 auto;
     top: 12svh;
 }
+
 
 .explaining-text {
     position: relative;
@@ -281,10 +281,30 @@ section {
     margin-right: 27svw;
     position: relative;
     bottom: 5svh;
+    pointer-events: none;
 }
 
 .answer-left {
     left: 19svw;
+}
+
+.disabled {
+    pointer-events: none; /* Prevents clicks */
+    opacity: 0.9; /* Optional: visually indicate that the option is disabled */
+}
+
+.feedback-div {
+    display: none; 
+    background-color: #f5ebc9c7;
+    width: 70svw;
+    height: 36svh;
+    border-radius: 10vh;
+    position: relative;
+    bottom: 62svh;
+    font-weight: bold; 
+    align-items: center;
+    justify-content: space-evenly;
+    margin: auto;
 }
 
 /* clouds */
@@ -295,7 +315,7 @@ section {
     box-shadow: 5px 5px rgba(145, 145, 145, 0.295); 
     border-radius: 50px; 
     position: relative;
-    
+    pointer-events: none;
 }
 
 .cloud::before, .cloud::after {
@@ -1251,7 +1271,6 @@ li {
     display: none;
     font-weight: bold;
 }
-
 
 /* missile-animation */
 .missile-animation-div {

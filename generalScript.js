@@ -206,6 +206,7 @@ const removeEventListeners = () => {
 
 const clickHandler = (event) => {
     const targetId = event.target.id;
+    const target = event.target;
     switch (targetId) {
         case "end-btn":
             endUnit();
@@ -333,8 +334,14 @@ const clickHandler = (event) => {
         case "shual-computer-img":
             shualOpening();
             break;
-        default:
+            case "option1":
+            case "option2":
+            case "option3":
+            case "option4":
+                    questionAnswer(parseInt(targetId.replace('option', '')), target);
             break;
+        default:
+            break
     }
 }
 
@@ -375,6 +382,7 @@ const addText = async () => {
 
     var questionText = document.querySelectorAll('.unit-screens .question-text'); 
     var answersText = document.querySelectorAll('.unit-screens .answer-text'); 
+    var answersDiv = document.querySelectorAll('.unit-screens .answers'); 
     questionText.forEach((questionElement, index) => {
         let questionKey = `q${index + 1}`;
         questionElement.textContent = data[key][questionKey]["question-text"];
@@ -384,6 +392,12 @@ const addText = async () => {
         answersText[index * options.length + 1].textContent = options[1];
         answersText[index * options.length + 2].textContent = options[2];
         answersText[index * options.length + 3].textContent = options[3];
+
+        answersDiv[index * options.length].classList.add(questionKey);
+        answersDiv[index * options.length + 1].classList.add(questionKey);
+        answersDiv[index * options.length + 2].classList.add(questionKey);
+        answersDiv[index * options.length + 3].classList.add(questionKey);
+
     });  // adds the questions and answers text
 
     var explainingTitle = document.querySelectorAll('.unit-screens .explaining-title'); 
@@ -688,6 +702,7 @@ const contactManager = (contact) => {
     }
 }
 
+
 const setupDragAndDrop = () => {
     const resetDraggingBtn = document.getElementsByClassName("reset-dragging-btn")[1]; 
     const finishDraggingBtn = document.getElementsByClassName("finish-dragging-btn")[1];
@@ -801,4 +816,33 @@ const shualOpening = () => {
         document.getElementsByClassName("fullpage")[1].style.display = "none";
         document.getElementsByClassName("shual-phone")[1].style.display = "block";
     });
+}
+
+const questionAnswer = async (answer, clickedAnswer) => {
+    const response = await fetch('newText.json');
+    const data = await response.json();
+    const key = `${role}-unit${unit}`;
+    
+    // Extract question number from the class
+    let questionNumber = clickedAnswer.classList[2];
+    var correctAnswer = data[key][questionNumber]["answer"];
+
+    // Disable all options for the same question
+    const questionOptions = document.querySelectorAll(`.${questionNumber}`);
+    questionOptions.forEach(option => {
+        option.classList.add('disabled');
+        option.removeEventListener('click', clickHandler); // Remove click events from disabled options
+    });
+
+    // Set background color based on the answer
+    if (answer == correctAnswer) {
+        clickedAnswer.style.backgroundColor = "rgb(218, 248, 210)";
+    } else {
+        clickedAnswer.style.backgroundColor = "rgb(255, 219, 219)";
+    }
+
+    if (data[key][questionNumber]["feedback"]) {
+        const feedbackScreen = document.querySelectorAll(`.feedback-div`);
+        
+    }
 }
