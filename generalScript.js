@@ -824,8 +824,8 @@ const questionAnswer = async (answer, clickedAnswer) => {
     const key = `${role}-unit${unit}`;
     
     // Extract question number from the class
-    let questionNumber = clickedAnswer.classList[2];
-    var correctAnswer = data[key][questionNumber]["answer"];
+    let questionNumber = (clickedAnswer.classList[2]);
+    var correctAnswer = Number(data[key][questionNumber]["answer"]);
 
     // Disable all options for the same question
     const questionOptions = document.querySelectorAll(`.${questionNumber}`);
@@ -842,7 +842,13 @@ const questionAnswer = async (answer, clickedAnswer) => {
     }
 
     if (data[key][questionNumber]["feedback"]) {
+        let index = parseInt(questionNumber.replace('q', ''));
         const feedbackScreen = document.querySelectorAll(`.feedback-div`);
+        
+        if (answer !== correctAnswer) {
+            feedbackScreen[index].style.display = "flex";
+            feedbackScreen[index].innerHTML = data[key][questionNumber]["feedback"];
+        }
         
     }
 }
