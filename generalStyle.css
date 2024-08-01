@@ -294,7 +294,7 @@ section {
     border-radius: 90svw;
     padding: 10px;
     margin-bottom: 10px;
-    width: 80svw;
+    width: 85svw;
     min-height: 13svh;
     max-height: 19svh;   
 }
@@ -311,7 +311,7 @@ section {
 }
 
 .answer-left {
-    left: 19svw;
+    left: 23svw;
 }
 
 .disabled {
