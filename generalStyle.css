@@ -133,24 +133,49 @@ section {
     min-height: 36vh;
     height: fit-content;
     background-repeat: no-repeat;
-    background-size: 100% 100%;
-    background-image: url(assets/general/speechBubble.svg);
+    /* background-size: 100% 100%;
+    background-image: url(assets/general/speechBubble.svg); */
     position: absolute;
     background-position: center;
     margin: 0 auto;
     top: 12svh;
 }
 
-
 .explaining-text {
     position: relative;
     margin: 5vw;
     top: 2vh;
-    font-size: 1.9vh;
+    font-size: 2.3vh;
+}
+
+.explaining-bubble {
+    position: relative;
+    background: #e1e9f7;
+    color: #000000;
+    font-family: Arial;
+    font-size: 20px;
+    line-height: 25px;
+    box-shadow: 4px 3px 6px 3px rgba(163, 163, 163, 0.93);
+    text-align: center;
+    border-radius: 29px;
+    padding-bottom: 15px;
+}
+.explaining-bubble:after {
+    content: '';
+    position: absolute;
+    display: block;
+    width: 0;
+    border-style: solid;
+    border-color: #e1e9f7 transparent;
+    border-width: 48px 24px 0;
+    bottom: -45px;
+    left: 86%;
+    margin-left: -24px;
+    
 }
 
 .character-body {
-    width: 60vw;
+    width: 57vw;
     position: absolute;
     bottom: 2%;
     left: 40%;
@@ -253,8 +278,9 @@ section {
 .question-text {
     font-weight: bold;
     text-align: center;
-    font-size: 4svw;
+    font-size: 3.4svw;
     margin: auto;
+    padding: 12px;
 }
 
 .answers-div {
@@ -268,10 +294,9 @@ section {
     border-radius: 90svw;
     padding: 10px;
     margin-bottom: 10px;
-    min-width: 80vw;
-    max-width: 100svw;
+    width: 80svw;
     min-height: 13svh;
-    max-height: 18svh;   
+    max-height: 21svh;   
 }
 
 .answer-right, .answer-left {
@@ -282,6 +307,7 @@ section {
     position: relative;
     bottom: 5svh;
     pointer-events: none;
+    padding: 5px;
 }
 
 .answer-left {
@@ -340,7 +366,7 @@ section {
 }
 
 .left-cloud {
-    right: 70vw;
+    right: 58vw;
 }
 
 /* fox-map */
@@ -1130,36 +1156,20 @@ li {
 }
 
 .protection-character-body {
-    width: 60vw;
+    width: 250px;
     position: absolute;
-    bottom: 11svh;
+    bottom: -2svh;
     left: 40%;
-}
-
-@media (max-height: 600px) {
-    .protection-character-body {
-        bottom: 38svh; /* Adjust for smaller screens */
-    }
-}
-
-@media (min-height: 700px) {
-    .protection-character-body {
-        bottom: 17svh; /* Adjust for larger screens */
-    }
-}
-
-@media (min-height: 800px) {
-    .protection-character-body {
-        bottom: 18svh; /* Adjust for larger screens */
-    }
 }
 
 .protection-explanation-div {
     background-color: #ffffffb7;
-    border-radius: 20vw; 
+    border-radius: 20vw;
     width: 80%;
     height: 75%;
     margin: auto;
+    position: relative;
+    top: 10svh;
 }
 
 .static-explanation {
@@ -1187,7 +1197,7 @@ li {
     scroll-snap-align: start; 
 }
 
-.pants-panel { top: 7%; }
+.pants-panel { top: 20%; }
 .shoes-panel { top: 26%; }
 .shirt-panel { top: 72%; }
 .head-cover-panel { top: 145%; }
@@ -1213,12 +1223,13 @@ li {
     margin: auto;
     width: 80%;
     border-radius: 10vh;
+    top: 7svh;
 }
 
 .character-body-container {
     position: relative;
     display: flex;
-    bottom: 58svh;
+    bottom: 47svh;
     right: 11svw;
     width: 34svw;
     flex-direction: column;
@@ -1235,7 +1246,7 @@ li {
     position: relative;
     display: flex;
     flex-direction: row-reverse;
-    bottom: 102svh;
+    bottom: 83svh;
     right: 40svw;
     width: 47svw;
     flex-wrap: wrap;
@@ -1604,4 +1615,88 @@ li {
     display: inline;
     left: 4px;
     margin-right: 12px;
+}
+
+/* area-organizing */
+
+.area-map {
+    background-image: url(assets/units/unit1/pacMap.svg);
+    width: 90vw;
+    height: 50vh;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    position: relative;
+    right: 5%;
+    top: 18%;
+}
+
+#risk-areas-concept {
+    position: relative;
+}
+
+.area-explained {
+    width: 90vw;
+    position: relative;
+    right: 5%;
+    background-color: #DAE3F3;
+    padding: 4vw;
+    border-radius: 6vw;
+    box-shadow: #0726419c 0 2px 7px;
+    text-align: center;
+}
+.area {
+    position: absolute;
+    max-width: 29svw;
+    min-width: 17svw;
+    background-color: rgba(255, 255, 255, 0.856);
+    border-radius: 20px;
+    padding: 8px;
+    text-align: center;
+    box-shadow: #949393 10px 8px 11px;
+    font-size: 1.8svh;
+}
+
+#cold-area {
+    top: 8%;
+    right: -1%;
+}
+
+#focal-point-area {
+    top: 21%;
+    right: 33%;
+}
+
+#heat-area {
+    top: 28%;
+    right: 46%;
+}
+
+#warm-area {
+    top: 45%;
+    right: 46%;
+}
+
+#hapakim-area {
+    top: 29%;
+    right: 6%;
+}
+#commanding-area {
+    top: 46%;
+    right: 5%;
+}
+
+#mabar-area {
+    top: -1%;
+    right: 32%;
+}
+
+.area-container {
+    position: relative;
+    top: 10%;
+}
+
+.mouseClick {
+    width: 15px;
+    position: absolute;
+    left: 2px;
 }

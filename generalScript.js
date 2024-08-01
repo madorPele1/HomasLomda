@@ -152,7 +152,6 @@ var commanderUnit4 = [
     "protection-wearing",
    "drag-drop-game",
    "questions-screen",
-   "risk-areas-levels",
    "explaining-screen",
    "explaining-screen",
    "explaining-screen",
@@ -340,6 +339,15 @@ const clickHandler = (event) => {
             case "option4":
                     questionAnswer(parseInt(targetId.replace('option', '')), target);
             break;
+            case "heat-area":
+                areaOrganizing("heat-area");
+                break;
+            case "warm-area":
+                areaOrganizing("warm-area");
+                break;
+            case "mabar-area":
+                areaOrganizing("mabar-area");
+                break;
         default:
             break
     }
@@ -350,6 +358,13 @@ const addContent = () => { // function that completes all the non-text content i
     var characterBody = document.getElementsByClassName("character-body"); //change the main character body
     for (let i = 0; i < characterBody.length; i++) {
         document.getElementsByClassName("character-body")[i].src = `assets/general/characters/allCharacters/${role}.svg`;
+    }
+    if (unit == 4) {
+        document.getElementsByClassName("character-body")[2].style.width = "50vw"
+        document.getElementsByClassName("character-body")[4].style.width = "50vw"
+        document.getElementsByClassName("character-body")[5].style.width = "55vw"
+        document.getElementsByClassName("character-body")[6].style.width = "50vw"
+        document.getElementsByClassName("character-body")[6].style.left = "58%"
     }
     
     var characterCircle = document.getElementsByClassName("character-circle"); //change the main character circles
@@ -851,4 +866,13 @@ const questionAnswer = async (answer, clickedAnswer) => {
         }
         
     }
+}
+
+const areaOrganizing = (areaClicked) => {
+    document.getElementsByClassName("area-explained")[1].style.display = "block";
+    const areaExplained = document.getElementsByClassName("explaining-area");
+    for (let i = 0; i <  areaExplained.length; i++) {
+        areaExplained[i].style.display = "none";
+    }
+    document.getElementsByClassName(`${areaClicked}`)[1].style.display = "block";
 }

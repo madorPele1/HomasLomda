@@ -53,7 +53,9 @@
                     <h1 class="explaining-title"></h1>
                 </div>
                 <div class="explaining-div">
-                    <p class="explaining-text"></p>
+                    <div class="explaining-bubble">
+                        <p class="explaining-text"></p>
+                    </div>
                 </div>
                 
                 <div class="clothing-explaining-div"></div>
@@ -466,8 +468,57 @@
                                     </span>
                                 </div>
                             </div>
+
+                            <div style="background-color: rgb(253 250 218 / 63%);width: 88svw;height: 13svh;text-align: center;border-radius: 4vh;padding: 23px;margin: auto;position: relative;top: -75%;">לחצו על התגים הלחיצים במפה כדי לקרוא על האזורים השונים.</div>
+
                         </section>
-                        <section class="panel" id="area-organizing"></section>
+
+                        <section class="panel" id="area-organizing">
+
+                            <div style="background-color: rgb(253 250 218 / 63%);width: 88svw;height: 13svh;text-align: center;border-radius: 4vh;padding: 23px;margin: auto;position: relative;top: 5%;">לחצו על התגים הלחיצים במפה כדי לקרוא על האזורים השונים.</div>
+
+                            <div class="area-container">
+                                <div class="area-map" id="area-map">
+                                    <div class="area" id="cold-area">שטחי כינוס - קר</div>
+
+                                    <div class="area" id="heat-area">חם
+                                        <img class="mouseClick" src="assets/general/mouseClick.png" alt="mouseClick">
+                                    </div>
+
+                                    <div class="area" id="warm-area">פושר
+                                        <img class="mouseClick" src="assets/general/mouseClick.png" alt="mouseClick">
+                                    </div>
+
+                                    <div class="area" id="focal-point-area">מוקד</div>
+                                    <div class="area" id="commanding-area">מפקדת פלוגה/גדוד פו"ש</div>
+                                    <div class="area" id="hapakim-area">צבר חפ"קים</div>
+
+                                    <div class="area" id="mabar-area">מרחב בידוד ראשוני
+                                        <img class="mouseClick" src="assets/general/mouseClick.png" alt="mouseClick">
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="area-explained" style="display: none">
+                                    <div class="heat-explaining heat-area explaining-area" style="display: none;">
+                                        <p><b>האזור החם</b></p>
+                                        <p>באזור החם יפעלו רק כוחות ייעודיים, קרי, הצוות המפעלי, כב"ה ויס"מ.
+                                            מד"א יפעל באזור לפינוי נפגעים בהתאם להנחיות המפקד בשטח. לרוב סוג המיגון יהיה Level A.</p>
+                                    </div>
+
+                                    <div class="warm-explaining warm-area explaining-area" style="display: none;">
+                                        <p><b>האזור הפושר</b></p>
+                                        <p>באזור הפושר יגיבו כוחות פקע"ר, מ"י ומד"א. לרוב סוג המיגון יהיה LEVEL C, כולל שימוש במסנני ABEKP3 אלא אם נאמר אחרת ע"י נציג כב"ה בחפ"ק האחוד. ייתכן והכוחות הנ"ל יפעלו גם באזור החם בהתאם להנחיות מפקד וע"פ עיקרון מיגון מוכוון משימה.</p>
+                                    </div>
+
+                                    <div class="mabar-explaining mabar-area explaining-area" style="display: none;">
+                                        <p><b>מב"ר</b></p>
+                                        <p>מב"ר - במבנה סגור 100 מ', בשטח פתוח 200 מ'</p>
+                                    </div>
+                            </div>
+                            
+                        </section>
+
                     </section>
                 </div>
     
@@ -479,43 +530,43 @@
                                     <b class="static-explanation">ועכשיו לחלק המעניין באמת! גללו מטה כדי לעבור בין שלבי ההתמגנות.</b>
                                     <img class="protection-character-body" src="assets/general/characters/allCharacters/generalMan.svg" alt="character">
                                 </div>
-                                <p class="down-arrows" style="color: rgb(165, 86, 240);font-size: 10vmax;font-weight: bold;position: relative;z-index: 2;right: 54svw;bottom: 19svh;">︾</p>
+                                <p class="down-arrows" style="color: rgb(165, 86, 240);font-size: 10vmax;font-weight: bold;position: relative;z-index: 2;right: 54svw;bottom: 5svh;">︾</p>
                                                         
                                 <div class="scrolling-protection-explanation">
                                     <div class="scrolling-panel-protection pants-panel">
                                         
                                     <div class="scrolling-panel-protection pants-panel">
-                                        <p class="scrolling-protection-text">לבשו מכנס פחמי: ודאו כי כתפיות המכנס ('שלייקס') ישרות ולא מסובבות.התאימו את רצועת המותן לגוף.</p>
-                                        <img class="scrolling-protection-clothing" src="assets/units/unit4/bmp/pants.svg" style="width: 34svw;position: relative;top: 31svh;right: 5svw;">                                    </div>
+                                        <p class="scrolling-protection-text" style="top: 16svh">לבשו מכנס פחמי: ודאו כי כתפיות המכנס ('שלייקס') ישרות ולא מסובבות.התאימו את רצועת המותן לגוף.</p>
+                                        <img class="scrolling-protection-clothing" src="assets/units/unit4/bmp/pants.svg" style="width: 140px;position: absolute;top: 34vh;right: 0svw;">                                    </div>
                                     </div>
     
                                     <div class="scrolling-panel-protection shoes-panel">
-                                        <p class="scrolling-protection-text">נעלו ערדליים (על גבי הנעליים) ובצעו הרעפה. הדקו את רצועות הסקוץ'.</p>
+                                        <p class="scrolling-protection-text" style="top: 90svh">נעלו ערדליים (על גבי הנעליים) ובצעו הרעפה. הדקו את רצועות הסקוץ'.</p>
                                         <img class="scrolling-protection-clothing" src="assets/units/unit4/bmp/boots.svg" style="width: 35svw;position: relative;top: 55svh;right: 5svw;">
                                     </div>
                         
                                     <div class="scrolling-panel-protection shirt-panel">
-                                        <p class="scrolling-protection-text">לבשו חולצה פחמית ובצעו הרעפה.</p>
-                                        <img class="scrolling-protection-clothing" src="assets/units/unit4/bmp/shirt.svg" style=" width: 55svw; position: relative; top: 13svh; right: -5svw;">
+                                        <p class="scrolling-protection-text" style="top: 170svh">לבשו חולצה פחמית ובצעו הרעפה.</p>
+                                        <img class="scrolling-protection-clothing" src="assets/units/unit4/bmp/shirt.svg" style=" width: 55svw; position: relative; top: 21svh; right: -5svw;">
                                     </div>
                         
                                     <div class="scrolling-panel-protection head-cover-panel">
-                                        <p class="scrolling-protection-text">במידה והמיגון הנשימתי שבכוונתם ללבוש מכיל ברדס, קפלו את כיסוי הראש והשחילו אותו לתוך חולצת בגד המגן הפחמי.</p>
+                                        <p class="scrolling-protection-text" style="top: 232svh">במידה והמיגון הנשימתי שבכוונתם ללבוש מכיל ברדס, קפלו את כיסוי הראש והשחילו אותו לתוך חולצת בגד המגן הפחמי.</p>
                                     </div>
                         
                                     <div class="scrolling-panel-protection mask-panel">
-                                        <p class="scrolling-protection-text">חבשו מסיכה ובדקו אטימות. במידה והנכם חובשים מסיכת M15, חבשו את כיסוי הראש מעל המסיכה. בדקו אטימות פעם נוספת.</p>
-                                        <img class="scrolling-protection-clothing" src="assets/units/unit4/bmp/mask.svg" style="width: 45svw;position: relative;top: 1svh;right: 0svw;">
+                                        <p class="scrolling-protection-text" style="top: 299svh">חבשו מסיכה ובדקו אטימות. במידה והנכם חובשים מסיכת M15, חבשו את כיסוי הראש מעל המסיכה. בדקו אטימות פעם נוספת.</p>
+                                        <img class="scrolling-protection-clothing" src="assets/units/unit4/bmp/mask.svg" style="width: 45svw;position: relative;top: 10svh;right: 0svw;">
                                     </div>
                         
                                     <div class="scrolling-panel-protection cotton-gloves-panel">
-                                        <p class="scrolling-protection-text">לבשו כפפות כותנה לספיגת הזיעה.</p>
-                                        <img class="scrolling-protection-clothing" src="assets/units/unit4/bmp/gloves.svg" style="filter: contrast(0.3); width: 49svw;position: relative;top: 30svh;right: -2.5svw;">
+                                        <p class="scrolling-protection-text" style="top: 381svh" >לבשו כפפות כותנה לספיגת הזיעה.</p>
+                                        <img class="scrolling-protection-clothing" src="assets/units/unit4/bmp/gloves.svg" style="filter: contrast(0.3);width: 48svw;position: relative;top: 35svh;right: -4.5svw;">
                                     </div>
                         
                                     <div class="scrolling-panel-protection rubber-gloves-panel">
-                                        <p class="scrolling-protection-text">לבשו כפפות בוטיליות והדקו את שרוולי החולצה באמצעות הסקוצ'ים.</p>
-                                        <img class="scrolling-protection-clothing" src="assets/units/unit4/bmp/gloves.svg" style="width: 49svw;position: relative;top: 30svh;right: -2.5svw;">
+                                        <p class="scrolling-protection-text" style="top: 443svh">לבשו כפפות בוטיליות והדקו את שרוולי החולצה באמצעות הסקוצ'ים.</p>
+                                        <img class="scrolling-protection-clothing" src="assets/units/unit4/bmp/gloves.svg" style="width: 49svw;position: relative;top: 35svh;right: -4.5svw;">
                                     </div>
                                 </div>
                             </div>
@@ -530,8 +581,8 @@
                                     <button id="reset-dragging-btn" class="reset-dragging-btn" style="width: 17svw;position: relative;border-color: transparent;background: transparent;top: 62svh;right: 58svw;z-index: 3;">
                                         <img src="assets/units/unit4/reset.png" alt="reset-dragging-btn" style="width: 10svw;">
                                     </button>                            
-                                    <button id="start-dragging-btn" class="btn start-dragging-btn" style="width: 22svw; z-index: 3;">התחילו</button>                                
-                                    <button id="finish-dragging-btn" class="btn finish-dragging-btn" style="width: 22svw; z-index: 3; display:none">סיימתי</button>                                
+                                    <button id="start-dragging-btn" class="btn start-dragging-btn" style="width: 22svw; z-index: 3; top: 23px;">התחילו</button>                                
+                                    <button id="finish-dragging-btn" class="btn finish-dragging-btn" style="width: 22svw; z-index: 3; display:none; top: 23px;">סיימתי</button>                                
                                 </div>
                         
                                 <div class="character-body-container">
