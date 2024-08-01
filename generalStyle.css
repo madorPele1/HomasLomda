@@ -296,7 +296,7 @@ section {
     margin-bottom: 10px;
     width: 80svw;
     min-height: 13svh;
-    max-height: 21svh;   
+    max-height: 19svh;   
 }
 
 .answer-right, .answer-left {
@@ -320,17 +320,18 @@ section {
 }
 
 .feedback-div {
-    display: none; 
-    background-color: #f5ebc9c7;
+    display: none;
+    background-color: #f5ebc9e8;
     width: 70svw;
     height: 36svh;
     border-radius: 10vh;
     position: relative;
     bottom: 62svh;
-    font-weight: bold; 
+    font-weight: bold;
     align-items: center;
     justify-content: space-evenly;
     margin: auto;
+    text-align: center;
 }
 
 /* clouds */
@@ -1580,10 +1581,10 @@ li {
 }
 
 .shual-phone {
-  background-image: url(assets/units/unit2/shual-phone.png);
-  height: 76svh;
+  /* background-image: url(assets/units/unit2/shual-phone.png); */
+  height: 70svh;
   border-radius: 6vh;
-  width: 69svw;
+  width: 79svw;
   background-color: white;
   background-repeat: no-repeat;
   background-position: center;
@@ -1593,7 +1594,7 @@ li {
 }
 
 .shual-computer-img {
-  width: 30svh;
+  width: 40svh;
   display: block;
   margin: auto;
   position: relative;

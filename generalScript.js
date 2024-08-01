@@ -19,6 +19,7 @@ let visitedConcept1 = false;
 let visitedConcept2 = false;
 let visitedConcept3 = false;
 let visitedConcept4 = false;
+let score = 0;
 
 var soldierUnit1 = [
     "map", 
@@ -73,7 +74,7 @@ var soldierUnit4 = [
    "protection-wearing", 
    "drag-drop-game",
    "questions-screen",
-   "risk-areas-levels",
+//    "risk-areas-levels",
    "explaining-screen",
    "explaining-screen",
    "explaining-screen",
@@ -852,6 +853,7 @@ const questionAnswer = async (answer, clickedAnswer) => {
     // Set background color based on the answer
     if (answer == correctAnswer) {
         clickedAnswer.style.backgroundColor = "rgb(218, 248, 210)";
+        // score = score + 10;
     } else {
         clickedAnswer.style.backgroundColor = "rgb(255, 219, 219)";
     }
