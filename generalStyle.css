@@ -1198,14 +1198,6 @@ li {
     scroll-snap-align: start; 
 }
 
-.pants-panel { top: 20%; }
-.shoes-panel { top: 26%; }
-.shirt-panel { top: 72%; }
-.head-cover-panel { top: 145%; }
-.mask-panel { top: 309%; }
-.cotton-gloves-panel { top: 379%; }
-.rubber-gloves-panel { top: 460%; }
-
 .scrolling-protection-text {
     position: absolute;
     line-height: 5vh; 
@@ -1213,6 +1205,77 @@ li {
     text-align: center;
     right: 48%;
 }
+
+#pants { width: 140px; position: absolute; top: 52%; left: 60%; } 
+#shoes { width: 35svw; position: relative; top: 77%; left: -5%;}
+#shirt {width: 55svw; position: relative; top: 31%; left: 7%;}
+#mask {width: 45svw; position: relative; top: 17%; left: 2%;}
+#cotton-gloves {filter: contrast(0.3);width: 48svw; position: relative; top: 49%; right: -2.5svw;}
+#rubber-gloves {width: 49svw; position: relative; top: 49%; right: -2.5svw;}
+
+@media (min-height: 600px) {
+    #pants { top: 34%; }
+    #shoes { top: 72%; }
+    #shirt { top: 8%; }
+    #mask { top: -11%; }
+    #cotton-gloves { top: 32%; }
+    #rubber-gloves { top: 32%; }
+}
+
+@media (min-height: 700px) {
+    #pants { top: 40%; }
+    #shoes { top: 75%; }
+    #shirt { top: 17%; }
+    #mask { top: 0%; }
+    #cotton-gloves { top: 40%; }
+    #rubber-gloves { top: 40%; }
+}
+
+@media (min-height: 800px) {
+    #pants { top: 51%; }
+    #shoes { top: 77%; }
+    #shirt { top: 31%; }
+    #mask { top: 17%; }
+    #cotton-gloves { top: 49%; }
+    #rubber-gloves { top: 49%; }
+}
+
+@media (min-height: 850px) {
+    #pants { top: 51%; }
+    #shoes { top: 80%; }
+    #shirt { top: 29%; }
+    #mask { top: 20%; }
+    #cotton-gloves { top: 53%; }
+    #rubber-gloves { top: 53%; }
+}
+
+@media (min-height: 880px) {
+    #pants { top: 51%; }
+    #shoes { top: 77%; }
+    #shirt { top: 29%; }
+    #mask { top: 14%; }
+    #cotton-gloves { top: 48%; }
+    #rubber-gloves { top: 48%; }
+}
+
+@media (min-width: 500px) {
+    #pants { left: 56%; }
+    #shoes { left: -10%; }
+    #shirt { left: 1%; }
+    #mask { left: -3%; }
+    #cotton-gloves { left: 49%; }
+    #rubber-gloves { left: 49%; }
+}
+
+@media (max-width: 400px) {
+    #pants { left: 61%; }
+    #shoes { left: 2%; }
+    #shirt { left: 13%; }
+    #mask { left: 8%; }
+    #cotton-gloves { left: 49%; }
+    #rubber-gloves { left: 49%; }
+}
+
 
 /* drag-and-drop */
 .dragging-explanation-div {
@@ -1594,7 +1657,7 @@ li {
 }
 
 .shual-computer-img {
-  width: 40svh;
+  width: 79svw;
   display: block;
   margin: auto;
   position: relative;
@@ -1700,4 +1763,8 @@ li {
     width: 15px;
     position: absolute;
     left: 2px;
+}
+
+.profile-img, .contact-details {
+    pointer-events: none;
 }

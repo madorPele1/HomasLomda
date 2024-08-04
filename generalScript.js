@@ -19,7 +19,7 @@ let visitedConcept1 = false;
 let visitedConcept2 = false;
 let visitedConcept3 = false;
 let visitedConcept4 = false;
-let score = 0;
+let score;
 
 var soldierUnit1 = [
     "map", 
@@ -173,6 +173,7 @@ window.addEventListener("load", () => { // Initializing the lomda
     screenArrayName = `${role}Unit${unit}`;
     displayScreens(screenArrayName);
     conceptScreenHandle(0);
+    whatsappContactsHandle();
 })
 
 
@@ -214,6 +215,7 @@ const clickHandler = (event) => {
         case "back-btn":
             conceptScreenHandle(0);
             pacMap('pac-map');
+            whatsappContactsHandle();
             break;
         case "map-pin":
             mapAnimation();
@@ -292,42 +294,6 @@ const clickHandler = (event) => {
         case "forward-arrow":
             changeTextPac('next');
             break;
-        case "contact1":
-            contactManager(1);
-            break;
-        case "contact2":
-            contactManager(2);
-            break;
-        case "contact3":
-            contactManager(3);
-            break;
-        case "contact4":
-            contactManager(4);
-            break;
-        case "contact5":
-            contactManager(5);
-            break;
-        case "contact6":
-            contactManager(6);
-            break;
-        case "contact7":
-            contactManager(7);
-            break;
-        case "contact8":
-            contactManager(8);
-            break;
-        case "contact9":
-            contactManager(9);
-            break;
-        case "contact10":
-            contactManager(10);
-            break;
-        case "contact11":
-            contactManager(11);
-            break;
-        case "contact12":
-            contactManager(12);
-            break;
         case "start-dragging-btn":
             setupDragAndDrop();
             break;
@@ -348,6 +314,15 @@ const clickHandler = (event) => {
                 break;
             case "mabar-area":
                 areaOrganizing("mabar-area");
+                break;
+           case "contact1":
+           case "contact2":
+           case "contact3":
+           case "contact4":
+           case "contact5":
+           case "contact6":
+           case "contact7":
+            whatsappContactsHandle(parseInt(targetId.replace('contact', '')), target);
                 break;
         default:
             break
@@ -492,6 +467,9 @@ const animate = (stopNum) => {
     if (unit === '1') {
         conceptScreenHandle(0);
     }
+    else if (unit === '2') {
+        whatsappContactsHandle();
+    }
 }
 
 const carousel = (side) => {
@@ -576,7 +554,7 @@ const changeTextPac = (chosen) => {
     }
 }
 const conceptScreenHandle = (definitionNum) => {
-    var allPanels = document.getElementsByTagName('section');
+    let allPanels = document.getElementsByTagName('section');
     switch (definitionNum) {
         case -1:
             for (let i = 0; i < allPanels.length; i++) {
@@ -703,21 +681,6 @@ const manageRhombuses = (rhombuseNum) => {
             break;
     }   
 }
-
-const contactManager = (contact) => {
-    var allPanels = document.getElementsByTagName('section');
-    switch (rhombuseNum) {
-        case 0:
-            break;
-        case 1:
-            for (let i = 3; i < allPanels.length; i++) {
-                allPanels[i].style.display = 'none';
-                allPanels[29].style.display = 'block';
-            }
-            break;
-    }
-}
-
 
 const setupDragAndDrop = () => {
     const resetDraggingBtn = document.getElementsByClassName("reset-dragging-btn")[1]; 
@@ -853,7 +816,7 @@ const questionAnswer = async (answer, clickedAnswer) => {
     // Set background color based on the answer
     if (answer == correctAnswer) {
         clickedAnswer.style.backgroundColor = "rgb(218, 248, 210)";
-        // score = score + 10;
+        // score = score+
     } else {
         clickedAnswer.style.backgroundColor = "rgb(255, 219, 219)";
     }
@@ -877,4 +840,37 @@ const areaOrganizing = (areaClicked) => {
         areaExplained[i].style.display = "none";
     }
     document.getElementsByClassName(`${areaClicked}`)[1].style.display = "block";
+}
+
+const whatsappContactsHandle = (contact, target) => {
+    let allPanels = document.getElementsByTagName('section');
+
+    // Hide all panels
+    for (let i = 0; i < allPanels.length; i++) {
+        allPanels[i].style.display = "none";
+    }
+
+    // Show specific panels
+    allPanels[26].style.display = "block";
+    allPanels[27].style.display = "block";
+    allPanels[28].style.display = "block";
+
+    if (contact) {
+        console.log(contact, target, parseInt(contact));
+        allPanels[contact + 27].style.display = "block";
+
+        // Scroll to the bottom of the page
+        const scrollHeight = Math.max(
+            document.documentElement.scrollHeight,
+            document.body.scrollHeight,
+            document.documentElement.clientHeight,
+            document.body.clientHeight
+        );
+
+        // Using requestAnimationFrame to ensure the scroll happens after rendering
+        window.requestAnimationFrame(() => {
+            document.documentElement.scrollTop = scrollHeight;
+            document.body.scrollTop = scrollHeight; // For older browsers
+        });
+    }
 }
