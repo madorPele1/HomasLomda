@@ -20,6 +20,8 @@ let visitedConcept2 = false;
 let visitedConcept3 = false;
 let visitedConcept4 = false;
 let score;
+let completeWhatsappClicks = [];
+
 
 var soldierUnit1 = [
     "map", 
@@ -844,6 +846,7 @@ const areaOrganizing = (areaClicked) => {
 
 const whatsappContactsHandle = (contact, target) => {
     let allPanels = document.getElementsByTagName('section');
+    let contactClicked = target;
 
     // Hide all panels
     for (let i = 0; i < allPanels.length; i++) {
@@ -856,7 +859,6 @@ const whatsappContactsHandle = (contact, target) => {
     allPanels[28].style.display = "block";
 
     if (contact) {
-        console.log(contact, target, parseInt(contact));
         allPanels[contact + 27].style.display = "block";
 
         // Scroll to the bottom of the page
@@ -872,5 +874,17 @@ const whatsappContactsHandle = (contact, target) => {
             document.documentElement.scrollTop = scrollHeight;
             document.body.scrollTop = scrollHeight; // For older browsers
         });
+
+        if (!(contactClicked.classList.contains('visited-contact'))) {
+            completeWhatsappClicks++;
+        }
+        contactClicked.classList.add("visited-contact");
+        if (completeWhatsappClicks === 6) {
+            document.getElementsByClassName("completeContactsMessage")[1].style.display = "block";
+            
+            for (let showScreens = 36; showScreens < 40; showScreens++) {
+                allPanels[showScreens].style.display = "block";
+            }
+        }
     }
 }

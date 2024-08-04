@@ -875,6 +875,7 @@ li {
     display: flex;
     align-items: center;
     padding: 10px;
+    border-radius: 2vh;
 }
 
 .contact img {
@@ -1050,6 +1051,11 @@ li {
         }
     }
 }
+
+.visited-contact {
+    background-color: #eaffea;
+}
+
 
 /* missile-animation */
 .missile-animation-div {
