@@ -184,9 +184,22 @@ window.addEventListener("load", () => { // Initializing the lomda
 })
 
 
-const displayScreens = (screenArrayName) => { // function that gets the unit number and the role and displays the amount of the screens. The function creates a variable that contains the desired array and goes through each cell in the array and displays the screen with the corresponding name
+const iOS = () => {
+    return [
+        'iPad Simulator',
+        'iPhone Simulator',
+        'iPod Simulator',
+        'iPad',
+        'iPhone',
+        'iPod'
+    ].includes(navigator.platform)
+    // iPad on iOS 13 detection
+    || (navigator.userAgent.includes("Mac") && "ontouchend" in document);
+}
+
+const displayScreens = (screenArrayName) => { 
     if (role == undefined) {
-        alert("יש להתחבר לעמוד הראשי של הלומדה: \n https://madorpele1.github.io/HomasLomda/")
+        alert("יש להתחבר לעמוד הראשי של הלומדה: \n https://madorpele1.github.io/HomasLomda/");
     }
     
     document.querySelectorAll('.unit-screens').forEach(screen => screen.remove()); // removes the previous screens
@@ -199,14 +212,21 @@ const displayScreens = (screenArrayName) => { // function that gets the unit num
         document.body.appendChild(screenClone);
     });
 
+    if (iOS()) {
+        // The user is on an iOS device.
+        document.getElementsByClassName("car-video")[1].style.display = "none";
+        document.getElementsByClassName("car-img")[1].style.display = "flex";
+    }
+
     removeEventListeners(); // Remove previous event listeners
     addEventListeners(); // Add new event listeners
     addContent();
 
     let numOfQuestions = numOfQuestionsFor[role];
-    let score = (updatedScore/(numOfQuestions*10))*100;
-    console.log(updatedScore, numOfQuestions, score);
+    let score = (updatedScore / (numOfQuestions * 10)) * 100;
+    console.log(score);
 }
+
 
 const addEventListeners = () => {
     document.body.addEventListener("click", clickHandler); // Attach event listener to the document because for some reason it doesn't work for separate elements
@@ -478,11 +498,25 @@ const mapAnimation = () => {
 
 const animate = (stopNum) => {
     unit = stopNum.charAt(7);
+
     var animationContainer = document.getElementsByClassName('animation_container');
-    for (var i = 0; i < animationContainer.length; i++) {
-        animationContainer[i].setAttribute('src', `assets/car/zoomOutCarStop${unit}.mp4`);
-        document.getElementById('animation_container').currentTime = 0;
-    };
+    var carImg = document.getElementsByClassName('car-img');
+
+    if (iOS()) {
+        for (var i = 0; i <= carImg.length -1; i++) {
+            console.log(carImg[i]);
+            carImg[i].setAttribute('src', `assets/car/zoomOutCarStop${unit}.jpg`);
+        };     
+    }
+
+    else if (!(iOS())) {
+        for (var i = 0; i <= animationContainer.length; i++) {
+            animationContainer[i].setAttribute('src', `assets/car/zoomOutCarStop${unit}.mp4`);
+            document.getElementById('animation_container').currentTime = 0;
+        };
+    }
+
+
     screenArrayName = `${role}Unit${unit}`;
     displayScreens(screenArrayName);
     if (unit === '1') {
@@ -772,7 +806,7 @@ const setupDragAndDrop = () => {
             const successMessage = document.getElementsByClassName("success-message")[1]; 
             successMessage.style.display = "block";
             resetDraggingBtn.style.display = "none";
-            score = score + 10;
+            updatedScore = updatedScore  + 10;
         }
         else {
             const failureMessage = document.getElementsByClassName("failure-message")[1];
