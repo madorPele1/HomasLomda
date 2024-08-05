@@ -19,8 +19,13 @@ let visitedConcept1 = false;
 let visitedConcept2 = false;
 let visitedConcept3 = false;
 let visitedConcept4 = false;
-let score;
+let updatedScore = 0;
+const numOfQuestionsFor = {
+    soldier: 4,
+    commander: 9
+};
 let completeWhatsappClicks = [];
+let isWhatsappVisited;
 
 
 var soldierUnit1 = [
@@ -184,7 +189,6 @@ const displayScreens = (screenArrayName) => { // function that gets the unit num
         alert("יש להתחבר לעמוד הראשי של הלומדה: \n https://madorpele1.github.io/HomasLomda/")
     }
     
-    document.documentElement.scrollTo({ top: 0, behavior: 'smooth' });
     document.querySelectorAll('.unit-screens').forEach(screen => screen.remove()); // removes the previous screens
     var screenArray = window[screenArrayName];
     screenArray.forEach(screenId => {
@@ -198,6 +202,10 @@ const displayScreens = (screenArrayName) => { // function that gets the unit num
     removeEventListeners(); // Remove previous event listeners
     addEventListeners(); // Add new event listeners
     addContent();
+
+    let numOfQuestions = numOfQuestionsFor[role];
+    let score = (updatedScore/(numOfQuestions*10))*100;
+    console.log(updatedScore, numOfQuestions, score);
 }
 
 const addEventListeners = () => {
@@ -337,12 +345,23 @@ const addContent = () => { // function that completes all the non-text content i
     for (let i = 0; i < characterBody.length; i++) {
         document.getElementsByClassName("character-body")[i].src = `assets/general/characters/allCharacters/${role}.svg`;
     }
-    if (unit == 4) {
+    if (unit == 4) { // change unnecessary specific details
         document.getElementsByClassName("character-body")[2].style.width = "50vw"
         document.getElementsByClassName("character-body")[4].style.width = "50vw"
         document.getElementsByClassName("character-body")[5].style.width = "55vw"
         document.getElementsByClassName("character-body")[6].style.width = "50vw"
         document.getElementsByClassName("character-body")[6].style.left = "58%"
+        
+        const titleToRemove = document.getElementsByClassName("title-background-general")
+        for (let index = 1; index <= 6; index++) {
+            titleToRemove[index].style.display = "none";
+        }
+
+        const btnsToRemove = document.getElementsByClassName("back-btn")
+        for (let jindex = 1; jindex < btnsToRemove.length; jindex++) {
+            btnsToRemove[jindex].style.display = "none";
+        }
+
     }
     
     var characterCircle = document.getElementsByClassName("character-circle"); //change the main character circles
@@ -425,9 +444,9 @@ const endUnit = () => {
     document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
 }
 
-// onclick functions
 const backToMap = () => { // function for returning to map (by clicking the car) by changing the number of unit, also ables clicking on lower number of units the user already done
-
+    document.body.scrollTop = 0; // For Safari
+    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
 }
 
 const mapAnimation = () => {
@@ -753,6 +772,7 @@ const setupDragAndDrop = () => {
             const successMessage = document.getElementsByClassName("success-message")[1]; 
             successMessage.style.display = "block";
             resetDraggingBtn.style.display = "none";
+            score = score + 10;
         }
         else {
             const failureMessage = document.getElementsByClassName("failure-message")[1];
@@ -818,7 +838,7 @@ const questionAnswer = async (answer, clickedAnswer) => {
     // Set background color based on the answer
     if (answer == correctAnswer) {
         clickedAnswer.style.backgroundColor = "rgb(218, 248, 210)";
-        // score = score+
+        updatedScore = updatedScore+10;
     } else {
         clickedAnswer.style.backgroundColor = "rgb(255, 219, 219)";
     }
@@ -847,6 +867,10 @@ const areaOrganizing = (areaClicked) => {
 const whatsappContactsHandle = (contact, target) => {
     let allPanels = document.getElementsByTagName('section');
     let contactClicked = target;
+
+    if (isWhatsappVisited) {
+        return;
+    }
 
     // Hide all panels
     for (let i = 0; i < allPanels.length; i++) {
@@ -881,10 +905,27 @@ const whatsappContactsHandle = (contact, target) => {
         contactClicked.classList.add("visited-contact");
         if (completeWhatsappClicks === 6) {
             document.getElementsByClassName("completeContactsMessage")[1].style.display = "block";
-            
-            for (let showScreens = 36; showScreens < 40; showScreens++) {
-                allPanels[showScreens].style.display = "block";
-            }
-        }
+            document.getElementsByClassName("completeContactsMessage")[1].addEventListener("click", () => {
+
+                let startScreen;
+                let endScreen;
+                if (role == "commander") {
+                    startScreen = 36;
+                    endScreen = 39;
+                } else if (role == "soldier") {
+                    startScreen = 35;
+                    endScreen = 36;
+                }
+                for (startScreen; startScreen <= endScreen ; startScreen++) {
+                    isWhatsappVisited = true;
+                    allPanels[startScreen].style.display = "block";
+                        window.requestAnimationFrame(() => { // scroll to the bottom of the page
+                            document.documentElement.scrollTop = 0.75*scrollHeight;
+                            document.body.scrollTop = 0.75*scrollHeight; // For older browsers
+                        });
+                }
+                  
+        })
     }
+}
 }

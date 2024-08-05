@@ -57,6 +57,7 @@ section {
     align-items: center;
     justify-content: center;
     background-size: cover;
+    position: relative;
 }
 
 /* opening and ending screen */
@@ -874,7 +875,7 @@ li {
 .contact {
     display: flex;
     align-items: center;
-    padding: 10px;
+    padding: 1vh;    
     border-radius: 2vh;
 }
 
@@ -1658,7 +1659,7 @@ li {
   background-repeat: no-repeat;
   background-position: center;
   position: relative;
-  right: 12svw;
+  margin: auto;  
   top: 5svh;
 }
 
@@ -1675,6 +1676,7 @@ li {
     text-align: center;
     margin: auto;
     margin-top: 11svh;
+    font-size: 2.1vh;
 }
 
 .x-btn-shual {
