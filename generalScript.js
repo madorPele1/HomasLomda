@@ -504,18 +504,16 @@ const animate = (stopNum) => {
 
     if (iOS()) {
         for (var i = 0; i <= carImg.length -1; i++) {
-            console.log(carImg[i]);
             carImg[i].setAttribute('src', `assets/car/zoomOutCarStop${unit}.jpg`);
         };     
     }
 
     else if (!(iOS())) {
-        for (var i = 0; i <= animationContainer.length; i++) {
+        for (var i = 0; i <= animationContainer.length -1; i++) {
             animationContainer[i].setAttribute('src', `assets/car/zoomOutCarStop${unit}.mp4`);
             document.getElementById('animation_container').currentTime = 0;
         };
     }
-
 
     screenArrayName = `${role}Unit${unit}`;
     displayScreens(screenArrayName);
