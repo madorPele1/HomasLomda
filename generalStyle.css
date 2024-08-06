@@ -109,7 +109,7 @@ section {
     z-index: 2;
 }
 
-.start-text, .ending-text {
+.start-text, .ending-text, .score {
     position: relative;
     margin: 8vw;
     margin-bottom: 1vh;

@@ -20,6 +20,7 @@ let visitedConcept2 = false;
 let visitedConcept3 = false;
 let visitedConcept4 = false;
 let updatedScore = 0;
+var score = 0;
 const numOfQuestionsFor = {
     soldier: 4,
     commander: 9
@@ -223,8 +224,7 @@ const displayScreens = (screenArrayName) => {
     addContent();
 
     let numOfQuestions = numOfQuestionsFor[role];
-    let score = (updatedScore / (numOfQuestions * 10)) * 100;
-    console.log(score);
+    score = (updatedScore / (numOfQuestions * 10)) * 100;
 }
 
 
@@ -462,6 +462,14 @@ const endUnit = () => {
     animate(`stopNum${unit}`);
     document.body.scrollTop = 0; // For Safari
     document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+
+    if (unit == 5) {
+        console.log(score);
+        document.getElementsByClassName("end-btn")[1].style.display = "none";
+        document.getElementsByClassName("score")[1].innerHTML = `${score}`;
+
+    }
+
 }
 
 const backToMap = () => { // function for returning to map (by clicking the car) by changing the number of unit, also ables clicking on lower number of units the user already done

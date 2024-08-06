@@ -24,7 +24,7 @@
 
                     <img class="car-img" src="assets/car/zoomOutCarStop1.jpg" alt="car-img" style="display: none; width: 100%; height: 100svh;">
 
-                    <video class="car-video animation_container" id="animation_container" autoplay muted>
+                    <video style="z-index: -2;" class="car-video animation_container" id="animation_container" autoplay muted>
                       <source src="assets/car/zoomOutCarStop1.mp4" playsinline type="video/mp4" id="car-video">
                     </video>
 
@@ -45,7 +45,8 @@
                 <div class="ending-div">
                     <img id="main-character-circle-ending" class="character-circle" alt="character-img">
                     <p class="ending-text"></p>
-                    <button id="end-btn" class="btn">לפרק הבא</button>
+                    <p class="score"></p>
+                    <button id="end-btn" class="btn end-btn">לפרק הבא</button>
                 </div>
                 <button class="back-to-map-car-button">
                     <img src="assets/general/cars/sideView.svg" alt="back-to-map-car-button">
@@ -730,8 +731,10 @@
                 </div>
     
                 <div class="units" id="unit5">
-                    <section class="panel" id="haremez">
-                    </section>
+                    <section class="panel" id="haremez"></section>
+                    <!-- <section id="end-lomda-screen" class="panel" style="display: none">
+                        <div style="background-color: white"></div>
+                    </section> -->
                 </div>
             
             </div> 
