@@ -217,6 +217,8 @@ const displayScreens = (screenArrayName) => {
         // The user is on an iOS device.
         document.getElementsByClassName("car-video")[1].style.display = "none";
         document.getElementsByClassName("car-img")[1].style.display = "flex";
+    } else {
+        document.getElementsByClassName("car-video")[1].style.display = "block";
     }
 
     removeEventListeners(); // Remove previous event listeners
@@ -291,29 +293,22 @@ const clickHandler = (event) => {
         case "pac-map":
             pacMap('pac-map');
             break;
-                case "definition1":
-            conceptScreenHandle(1);
-            break;
+        case "definition1":
         case "definition2":
-            conceptScreenHandle(2);
-            break;
         case "definition3":
-            conceptScreenHandle(3);
-            break;
         case "definition4":
-            conceptScreenHandle(4);
+        case "definition5":
+        case "definition6":
+        case "definition7":
+            conceptScreenHandle(parseInt(targetId.replace('definition', '')));
             break;
         case "end-concept-btn": 
             conceptScreenHandle(-1);
             break;
         case "rhombuse1":
-            manageRhombuses(1);
-            break;
         case "rhombuse2":
-            manageRhombuses(2);
-            break;
         case "rhombuse3":
-            manageRhombuses(3);
+            manageRhombuses(parseInt(targetId.replace('manageRhombuses', '')));
             break;
         case "back-rhombuse-btn":
             manageRhombuses(0);
@@ -365,7 +360,7 @@ const addContent = () => { // function that completes all the non-text content i
     for (let i = 0; i < characterBody.length; i++) {
         document.getElementsByClassName("character-body")[i].src = `assets/general/characters/allCharacters/${role}.svg`;
     }
-    if (unit == 4) { // change unnecessary specific details
+    if (unit == 4) { // change specific details
         document.getElementsByClassName("character-body")[2].style.width = "50vw"
         document.getElementsByClassName("character-body")[4].style.width = "50vw"
         document.getElementsByClassName("character-body")[5].style.width = "55vw"
@@ -382,6 +377,14 @@ const addContent = () => { // function that completes all the non-text content i
             btnsToRemove[jindex].style.display = "none";
         }
 
+        document.getElementsByTagName("section")[29].innerHTML +=
+            `<img class="example-clothing" style="" src="assets/units/unit4/bmp/boots.svg" alt="boots">
+            <img class="example-clothing" style="" src="assets/units/unit4/bmp/mask.svg" alt="mask">
+            <img class="example-clothing" style="" src="assets/units/unit4/bmp/gloves.svg" alt="gloves">`;
+
+        document.getElementsByTagName("section")[30].innerHTML +=
+            `<img class="example-clothing" style="" src="assets/units/unit4/bmp/mask.svg" alt="mask">
+            <img class="example-clothing" style="" src="assets/units/unit4/m15.svg" alt="m15-mask">`;
     }
     
     var characterCircle = document.getElementsByClassName("character-circle"); //change the main character circles
@@ -454,22 +457,26 @@ const addText = async () => {
 
 
 const endUnit = () => {
-    if (unit <= 4) {
-        unit++;
-        screenArrayName = `${role}Unit${unit}`;
-        displayScreens(screenArrayName);
-    }
+    unit++;
+    screenArrayName = `${role}Unit${unit}`;
+    displayScreens(screenArrayName);
     animate(`stopNum${unit}`);
     document.body.scrollTop = 0; // For Safari
     document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
 
     if (unit == 5) {
-        console.log(score);
         document.getElementsByClassName("end-btn")[1].style.display = "none";
-        document.getElementsByClassName("score")[1].innerHTML = `${score}`;
+        score = Math.round(score);
 
+        if (score <= 50) {
+            document.getElementsByClassName("score")[1].innerHTML = `${score} <br> כדאי לך לחזור על הלומדה... `;
+            document.getElementsByClassName("ending-div")[1].innerHTML +=
+            `<button id="start-over-btn" class="btn" style="bottom: 6vh;">נסו שנית</button>`;
+            document.getElementById("start-over-btn").addEventListener("click", startOver);
+        } else {
+            document.getElementsByClassName("score")[1].innerHTML = `כל הכבוד! ${score}`;
+        }
     }
-
 }
 
 const backToMap = () => { // function for returning to map (by clicking the car) by changing the number of unit, also ables clicking on lower number of units the user already done
@@ -530,7 +537,19 @@ const animate = (stopNum) => {
     }
     else if (unit === '2') {
         whatsappContactsHandle();
-    }
+    } else if (unit === '5') {
+            document.getElementsByClassName("end-btn")[1].style.display = "none";
+            score = Math.round(score);
+    
+            if (score <= 50) {
+                document.getElementsByClassName("score")[1].innerHTML = `${score} <br> כדאי לך לחזור על הלומדה... `;
+                document.getElementsByClassName("ending-div")[1].innerHTML +=
+                `<button id="start-over-btn" class="btn" style="bottom: 6vh;">נסו שנית</button>`;
+                document.getElementById("start-over-btn").addEventListener("click", startOver);
+            } else {
+                document.getElementsByClassName("score")[1].innerHTML = `כל הכבוד! ${score}`;
+            }
+        }
 }
 
 const carousel = (side) => {
@@ -616,82 +635,93 @@ const changeTextPac = (chosen) => {
 }
 const conceptScreenHandle = (definitionNum) => {
     let allPanels = document.getElementsByTagName('section');
-    switch (definitionNum) {
-        case -1:
-            for (let i = 0; i < allPanels.length; i++) {
-                allPanels[i].style.display = 'none';
-                allPanels[41].style.display = 'block';
-                allPanels[42].style.display = 'block';
-            }
-            break;
-        case 0:
-            var checkMark = document.getElementsByClassName("checkMark1");
-            for (let i = 0; i < checkMark.length; i++) { 
-                if (visitedRhombuse1 &&  visitedRhombuse2 && visitedRhombuse3) {
+
+    if (role == "soldier") {
+
+        switch (definitionNum) {
+            case -1:
+                for (let i = 0; i < allPanels.length; i++) {
+                    allPanels[i].style.display = 'none';
+                    allPanels[41].style.display = 'block';
+                    allPanels[42].style.display = 'block';
+                }
+                break;
+            case 0:
+                var checkMark = document.getElementsByClassName("checkMark1");
+                for (let i = 0; i < checkMark.length; i++) { 
+                    if (visitedRhombuse1 &&  visitedRhombuse2 && visitedRhombuse3) {
+                        checkMark[i].style.display = 'inline';
+                    }
+                    visitedConcept1 = true;
+                }
+                var endConceptButton = document.getElementsByClassName('end-concept-btn');
+                for (let i = 0; i < endConceptButton.length; i++) { 
+                    if (visitedConcept1 &&  visitedConcept2 && visitedConcept3 && visitedConcept4) {
+                        endConceptButton[i].style.display = 'block';
+                    }
+                }
+                for (let i = 0; i < allPanels.length; i++) {
+                    allPanels[i].style.display = 'none';
+                    allPanels[26].style.display = 'block';
+                    allPanels[27].style.display = 'block';
+                    allPanels[28].style.display = 'block';
+                }
+                break;
+            case 1:
+                for (let i = 0; i < allPanels.length; i++) {
+                    allPanels[i].style.display = 'none';
+                    allPanels[29].style.display = 'block';
+                    allPanels[30].style.display = 'block';
+                    allPanels[31].style.display = 'block';
+                }
+                break;
+            case 2:
+                var checkMark = document.getElementsByClassName("checkMark2"); 
+                for (let i = 0; i < checkMark.length; i++) {
                     checkMark[i].style.display = 'inline';
                 }
-                visitedConcept1 = true;
-            }
-            var endConceptButton = document.getElementsByClassName('end-concept-btn');
-            for (let i = 0; i < endConceptButton.length; i++) { 
-                if (visitedConcept1 &&  visitedConcept2 && visitedConcept3 && visitedConcept4) {
-                    endConceptButton[i].style.display = 'block';
+                visitedConcept2 = true;
+                for (let i = 0; i < allPanels.length; i++) {
+                    allPanels[i].style.display = 'none';
+                    allPanels[35].style.display = 'block';
+                    allPanels[36].style.display = 'block';
                 }
-            }
-            for (let i = 0; i < allPanels.length; i++) {
-                allPanels[i].style.display = 'none';
-                allPanels[26].style.display = 'block';
-                allPanels[27].style.display = 'block';
-                allPanels[28].style.display = 'block';
-            }
-            break;
-        case 1:
-            for (let i = 0; i < allPanels.length; i++) {
-                allPanels[i].style.display = 'none';
-                allPanels[29].style.display = 'block';
-                allPanels[30].style.display = 'block';
-                allPanels[31].style.display = 'block';
-            }
-            break;
-        case 2:
-            var checkMark = document.getElementsByClassName("checkMark2"); 
-            for (let i = 0; i < checkMark.length; i++) {
-                checkMark[i].style.display = 'inline';
-            }
-            visitedConcept2 = true;
-            for (let i = 0; i < allPanels.length; i++) {
-                allPanels[i].style.display = 'none';
-                allPanels[35].style.display = 'block';
-                allPanels[36].style.display = 'block';
-            }
-            break;
-        case 3:
-            var checkMark = document.getElementsByClassName("checkMark3"); 
-            for (let i = 0; i < checkMark.length; i++) {
-                checkMark[i].style.display = 'inline';
-            }
-            visitedConcept3 = true;
-            for (let i = 0; i < allPanels.length; i++) {
-                allPanels[i].style.display = 'none';
-                allPanels[37].style.display = 'block';
-            }
-            break;
-        case 4:
-            var checkMark = document.getElementsByClassName("checkMark4"); 
-            for (let i = 0; i < checkMark.length; i++) {
-                checkMark[i].style.display = 'inline';
-            }
-            visitedConcept4 = true;
-            for (let i = 0; i < allPanels.length; i++) {
-                allPanels[i].style.display = 'none';
-                allPanels[38].style.display = 'block';
-                allPanels[39].style.display = 'block';
-                allPanels[40].style.display = 'block';
-            }
-            break;
-        default:
-            break;
-    }   
+                break;
+            case 3:
+                var checkMark = document.getElementsByClassName("checkMark3"); 
+                for (let i = 0; i < checkMark.length; i++) {
+                    checkMark[i].style.display = 'inline';
+                }
+                visitedConcept3 = true;
+                for (let i = 0; i < allPanels.length; i++) {
+                    allPanels[i].style.display = 'none';
+                    allPanels[37].style.display = 'block';
+                }
+                break;
+            case 4:
+                var checkMark = document.getElementsByClassName("checkMark4"); 
+                for (let i = 0; i < checkMark.length; i++) {
+                    checkMark[i].style.display = 'inline';
+                }
+                visitedConcept4 = true;
+                for (let i = 0; i < allPanels.length; i++) {
+                    allPanels[i].style.display = 'none';
+                    allPanels[38].style.display = 'block';
+                    allPanels[39].style.display = 'block';
+                    allPanels[40].style.display = 'block';
+                }
+                break;
+            default:
+                break;
+        }   
+
+    } else if (role == "commander"){
+        // code
+    }
+
+    
+
+
 }
 
 const manageRhombuses = (rhombuseNum) => {
@@ -968,4 +998,15 @@ const whatsappContactsHandle = (contact, target) => {
         })
     }
 }
+}
+
+const startOver = () => {
+    num = 1;
+    role = sessionStorage.getItem("role");
+    unit = 1;
+    screenArrayName = `${role}Unit${unit}`;
+    displayScreens(screenArrayName);
+    conceptScreenHandle(0);
+    whatsappContactsHandle();
+    animate("stopNum1");
 }

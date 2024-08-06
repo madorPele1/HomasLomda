@@ -161,19 +161,6 @@ section {
     border-radius: 29px;
     padding-bottom: 15px;
 }
-.explaining-bubble:after {
-    content: '';
-    position: absolute;
-    display: block;
-    width: 0;
-    border-style: solid;
-    border-color: #e1e9f7 transparent;
-    border-width: 48px 24px 0;
-    bottom: -45px;
-    left: 86%;
-    margin-left: -24px;
-    
-}
 
 .character-body {
     width: 57vw;
@@ -187,6 +174,7 @@ section {
     bottom: 20px;
     left: 60%; 
     margin: 10px; 
+    z-index: 5;
 }
 
 @media (min-height: 700px) {
@@ -588,7 +576,7 @@ li {
     margin-top: 15%;
     font-size: 3vmax;
     text-align: center;
-    border-radius: 5vw;
+    border-radius: 10vw;
     padding-top: 3vh;
 }
 
@@ -671,6 +659,15 @@ li {
 }
 
 /* weraing protection explaining */
+.example-clothing {
+    width: 110px;
+    position: relative;
+    bottom: 5svh;
+    right: 52svw;
+    display: flex;
+    flex-direction: column;
+}
+
 .clothing-explaining-div {
     position: relative;
     z-index: 0;
@@ -748,7 +745,7 @@ li {
 .pac-explained {
     width: 90vw;
     position: relative;
-    top: 10%;
+    top: 15%;
     right: 5%;
     background-color: #DAE3F3;
     padding: 4vw;
@@ -824,7 +821,7 @@ li {
 
 .pac-container {
     position: relative;
-    top: 18%;
+    top: 28%;
 }
 
 /* whatsapp */
@@ -1185,7 +1182,7 @@ li {
     width: 70%;
     margin: auto;
     position: relative;
-    top: 7%;
+    top: 3%;
     display: block;
 }
 
