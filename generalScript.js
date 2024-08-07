@@ -19,6 +19,10 @@ let visitedConcept1 = false;
 let visitedConcept2 = false;
 let visitedConcept3 = false;
 let visitedConcept4 = false;
+let visitedConcept5 = false;
+let visitedConcept6 = false;
+let visitedConcept7 = false;
+let visitedConcept8 = false;
 let updatedScore = 0;
 var score = 0;
 const numOfQuestionsFor = {
@@ -102,14 +106,16 @@ var commanderUnit1 = [
     "concepts-list",
     "explaining-screen",
     "explaining-screen",
-    "explaining-screen",
-    "explaining-screen",
-    "explaining-screen",
-    "explaining-screen",
     "rhombuses",
     "rhombuses1",
     "rhombuses2",
     "rhombuses3",
+    "explaining-screen",
+    "explaining-screen",
+    "explaining-screen",
+    "explaining-screen",
+    "explaining-screen",
+    "explaining-screen",
     "explaining-screen",
     "hazardous-material-factory",
     "explaining-screen",
@@ -245,7 +251,9 @@ const clickHandler = (event) => {
             endUnit();
             break;
         case "back-btn":
-            conceptScreenHandle(0);
+            if (unit == 1) {
+                conceptScreenHandle(0);
+            }
             pacMap('pac-map');
             whatsappContactsHandle();
             break;
@@ -300,6 +308,7 @@ const clickHandler = (event) => {
         case "definition5":
         case "definition6":
         case "definition7":
+        case "definition8":
             conceptScreenHandle(parseInt(targetId.replace('definition', '')));
             break;
         case "end-concept-btn": 
@@ -633,19 +642,26 @@ const changeTextPac = (chosen) => {
         arrowShow[i].style.display = "block";
     }
 }
-const conceptScreenHandle = (definitionNum) => {
+const conceptScreenHandle = (definitionNum) => {    
     let allPanels = document.getElementsByTagName('section');
 
     if (role == "soldier") {
+        document.getElementsByClassName("concept")[12].style.display = "none";
+        document.getElementsByClassName("concept")[13].style.display = "none";
+        document.getElementsByClassName("concept")[14].style.display = "none";
+        document.getElementsByClassName("concept")[15].style.display = "none";
+        // displaying "none" the non-relavent concepts for soldiers
 
         switch (definitionNum) {
             case -1:
                 for (let i = 0; i < allPanels.length; i++) {
                     allPanels[i].style.display = 'none';
+                    allPanels[40].style.display = 'block';
                     allPanels[41].style.display = 'block';
                     allPanels[42].style.display = 'block';
                 }
                 break;
+
             case 0:
                 var checkMark = document.getElementsByClassName("checkMark1");
                 for (let i = 0; i < checkMark.length; i++) { 
@@ -667,6 +683,7 @@ const conceptScreenHandle = (definitionNum) => {
                     allPanels[28].style.display = 'block';
                 }
                 break;
+
             case 1:
                 for (let i = 0; i < allPanels.length; i++) {
                     allPanels[i].style.display = 'none';
@@ -675,6 +692,7 @@ const conceptScreenHandle = (definitionNum) => {
                     allPanels[31].style.display = 'block';
                 }
                 break;
+                
             case 2:
                 var checkMark = document.getElementsByClassName("checkMark2"); 
                 for (let i = 0; i < checkMark.length; i++) {
@@ -687,6 +705,7 @@ const conceptScreenHandle = (definitionNum) => {
                     allPanels[36].style.display = 'block';
                 }
                 break;
+
             case 3:
                 var checkMark = document.getElementsByClassName("checkMark3"); 
                 for (let i = 0; i < checkMark.length; i++) {
@@ -698,6 +717,7 @@ const conceptScreenHandle = (definitionNum) => {
                     allPanels[37].style.display = 'block';
                 }
                 break;
+
             case 4:
                 var checkMark = document.getElementsByClassName("checkMark4"); 
                 for (let i = 0; i < checkMark.length; i++) {
@@ -708,20 +728,150 @@ const conceptScreenHandle = (definitionNum) => {
                     allPanels[i].style.display = 'none';
                     allPanels[38].style.display = 'block';
                     allPanels[39].style.display = 'block';
-                    allPanels[40].style.display = 'block';
                 }
                 break;
             default:
                 break;
-        }   
 
-    } else if (role == "commander"){
-        // code
+            }
+
+    } else if (role == "commander") {
+        switch (definitionNum) {
+            case -1:
+                for (let i = 0; i < allPanels.length; i++) {
+                    allPanels[i].style.display = 'none';
+                    allPanels[46].style.display = 'block';
+                    allPanels[47].style.display = 'block';
+                    allPanels[48].style.display = 'block';
+                }
+                break;
+
+            case 0:
+                var checkMark = document.getElementsByClassName("checkMark1");
+                for (let i = 0; i < checkMark.length; i++) { 
+                    if (visitedRhombuse1 &&  visitedRhombuse2 && visitedRhombuse3) {
+                        checkMark[i].style.display = 'inline';
+                    }
+                    visitedConcept1 = true;
+                }
+                var endConceptButton = document.getElementsByClassName('end-concept-btn');
+                for (let i = 0; i < endConceptButton.length; i++) { 
+                    if (visitedConcept1 &&  visitedConcept2 && visitedConcept3 && visitedConcept4 && visitedConcept5 && visitedConcept6 && visitedConcept7 && visitedConcept8) {
+                        endConceptButton[i].style.display = 'block';
+                    }
+                }
+                for (let i = 0; i < allPanels.length; i++) {
+                    allPanels[i].style.display = 'block';
+                    allPanels[26].style.display = 'block';
+                    allPanels[27].style.display = 'block';
+                    allPanels[31].style.display = 'block';
+                }
+                break;
+
+            case 1:
+                for (let i = 0; i < allPanels.length; i++) {
+                    allPanels[i].style.display = 'none';
+                    allPanels[29].style.display = 'block';
+                    allPanels[30].style.display = 'block';
+                    allPanels[31].style.display = 'block';
+                }
+                break;
+                
+            case 2:
+                var checkMark = document.getElementsByClassName("checkMark2"); 
+                for (let i = 0; i < checkMark.length; i++) {
+                    checkMark[i].style.display = 'inline';
+                }
+                visitedConcept2 = true;
+                for (let i = 0; i < allPanels.length; i++) {
+                    allPanels[i].style.display = 'none';
+                    allPanels[35].style.display = 'block';
+                    allPanels[42].style.display = 'block';
+                }
+                break;
+
+            case 3:
+                var checkMark = document.getElementsByClassName("checkMark3"); 
+                for (let i = 0; i < checkMark.length; i++) {
+                    checkMark[i].style.display = 'inline';
+                }
+                visitedConcept3 = true;
+                for (let i = 0; i < allPanels.length; i++) {
+                    allPanels[i].style.display = 'none';
+                    allPanels[36].style.display = 'block';
+                }
+                break;
+
+            case 4:
+                var checkMark = document.getElementsByClassName("checkMark4"); 
+                for (let i = 0; i < checkMark.length; i++) {
+                    checkMark[i].style.display = 'inline';
+                }
+                visitedConcept4 = true;
+                for (let i = 0; i < allPanels.length; i++) {
+                    allPanels[i].style.display = 'none';
+                    allPanels[37].style.display = 'block';
+                    allPanels[45].style.display = 'block';
+                }
+                break;
+
+            case 5:
+                var checkMark = document.getElementsByClassName("checkMark5"); 
+                for (let i = 0; i < checkMark.length; i++) {
+                    checkMark[i].style.display = 'inline';
+                }
+                visitedConcept5 = true;
+                for (let i = 0; i < allPanels.length; i++) {
+                    allPanels[i].style.display = 'none';
+                    allPanels[38].style.display = 'block';  
+                    allPanels[39].style.display = 'block';  // add graphics of hapak here
+                }
+                break;
+
+            case 6:
+                var checkMark = document.getElementsByClassName("checkMark6"); 
+                for (let i = 0; i < checkMark.length; i++) {
+                    checkMark[i].style.display = 'inline';
+                }
+                visitedConcept6 = true;
+                for (let i = 0; i < allPanels.length; i++) {
+                    allPanels[i].style.display = 'none';
+                    allPanels[40].style.display = 'block';  // add graphics of mitham homas here
+                }
+                break;
+
+            case 7:
+                var checkMark = document.getElementsByClassName("checkMark7"); 
+                for (let i = 0; i < checkMark.length; i++) {
+                    checkMark[i].style.display = 'inline';
+                }
+                visitedConcept7 = true;
+                for (let i = 0; i < allPanels.length; i++) {
+                    allPanels[i].style.display = 'none';
+                    allPanels[43].style.display = 'block'; 
+                    allPanels[44].style.display = 'block'; 
+                }
+                break;
+
+            case 8:
+                var checkMark = document.getElementsByClassName("checkMark8"); 
+                for (let i = 0; i < checkMark.length; i++) {
+                    checkMark[i].style.display = 'inline';
+                }
+                visitedConcept8 = true;
+                for (let i = 0; i < allPanels.length; i++) {
+                    allPanels[i].style.display = 'none';
+                    allPanels[41].style.display = 'block'; 
+                }
+                break;
+
+            default:
+                break;
+
+            }
+
     }
-
-    
-
-
+       
 }
 
 const manageRhombuses = (rhombuseNum) => {
@@ -980,7 +1130,7 @@ const whatsappContactsHandle = (contact, target) => {
                 let startScreen;
                 let endScreen;
                 if (role == "commander") {
-                    startScreen = 36;
+                    startScreen = 35;
                     endScreen = 39;
                 } else if (role == "soldier") {
                     startScreen = 35;

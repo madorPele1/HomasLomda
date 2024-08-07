@@ -547,10 +547,17 @@ section {
 }
 
 /* concepts */
-ul {
+.list {
     position: relative;
+    display: grid;
     bottom: 4%;
-    list-style-type: none;
+    margin: auto;
+    width: 95vw;
+    grid-template-columns: 43vw 28vh;
+    padding: 10px;
+    height: 76vh;
+    justify-items: center;
+    align-items: center;
 }
 
 .concepts-list-title {
@@ -569,15 +576,16 @@ ul {
     display: none;
 }
 
-li {
+.concept {
     background-color: #f0dafee1;
-    width: 80vw;
-    height: 11svh;
+    width: 40vw;
+    min-height: 14svh;
+    max-height: 20svh;
     margin-top: 15%;
-    font-size: 3vmax;
+    font-size: 2.5vmax;
     text-align: center;
     border-radius: 10vw;
-    padding-top: 3vh;
+    padding: 3vh;
 }
 
 /* rhombuses */
