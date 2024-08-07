@@ -1043,6 +1043,26 @@ section {
         opacity: 1;
     }
 }
+@-moz-keyframes fade-up {
+    from {
+        -moz-transform: translate3d(0, 6vh, 0);
+        opacity: 0;
+    }
+    to {
+        -moz-transform: translate3d(0, 0, 0);
+        opacity: 1;
+    }
+}
+@-o-keyframes fade-up {
+    from {
+        -o-transform: translate3d(0, 6vh, 0);
+        opacity: 0;
+    }
+    to {
+        -o-transform: translate3d(0, 0, 0);
+        opacity: 1;
+    }
+}
 
 .hapak-contact {
     opacity: 0; 
