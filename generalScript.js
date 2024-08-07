@@ -317,7 +317,7 @@ const clickHandler = (event) => {
         case "rhombuse1":
         case "rhombuse2":
         case "rhombuse3":
-            manageRhombuses(parseInt(targetId.replace('manageRhombuses', '')));
+            manageRhombuses(parseInt(targetId.replace('rhombuse', '')));
             break;
         case "back-rhombuse-btn":
             manageRhombuses(0);
