@@ -120,7 +120,7 @@
                             <div class="list">
                                 <div class="concept" id="definition1"><img src="assets/general/checkMark.svg" alt="checkMark" class="checkMark checkMark1" id="checkMark1"> חומר מסוכן</div>
                                 <div class="concept" id="definition2"><img src="assets/general/checkMark.svg" alt="checkMark" class="checkMark checkMark2" id="checkMark2"> מחזיק חומ"ס</div>
-                                <div class="concept" id="definition3"><img src="assets/general/checkMark.svg" alt="checkMark" class="checkMark checkMark3" id="checkMark3"> מחזיק חומ"ס בעל פוטנציאל סיכון לאוכלוסייה</div>
+                                <div class="concept" id="definition3" style="font-size: 2vmax;"><img src="assets/general/checkMark.svg" alt="checkMark" class="checkMark checkMark3" id="checkMark3"> מחזיק חומ"ס בעל פוטנציאל סיכון לאוכלוסייה</div>
                                 <div class="concept" id="definition4"><img src="assets/general/checkMark.svg" alt="checkMark" class="checkMark checkMark4" id="checkMark4"> אירוע חומ"ס</div>
                                 <div class="concept" id="definition5"><img src="assets/general/checkMark.svg" alt="checkMark" class="checkMark checkMark5" id="checkMark5"> חפ"ק אחוד</div>
                                 <div class="concept" id="definition6"><img src="assets/general/checkMark.svg" alt="checkMark" class="checkMark checkMark6" id="checkMark6"> מתחם חומ"ס</div>
@@ -240,14 +240,13 @@
                                 <div>
                                     <p class="explaine-map" id="explaine-map">הערה: לחומרים מסכני אוכלוסייה יש פתרונות מיגוניים שאושרו ע"י פקע"ר (כמו הדוגמאות שניתן לראות בתמונה, אתרים מבוטנים, סגירת חזית רביעית בקוביות בטון/לוחות פלדה, מכולות מיגון וכד'...) לא נדון בהם כאן...</p>
                                 </div>
+                                <p style="color: white; display: none" class="x-btn-shual-unit1">x</p>
                                 <button type="button" id="back-btn" class="btn back-btn">חזרה</button>
                                 <div>
                                     <img src="assets/units/unit1/mapPin.svg" alt="map-pin" id="map-pin" class="map-pin">
                                     <img src="assets/units/unit1/mapImageSquare.jpg" alt="mapImageSquare" class="map-square" id="map-square"/>
                                 </div>
                             </div>
-
-                            <button id="back-btn" class="back-btn btn">חזרה</button>
 
                             <button class="back-to-map-car-button" onclick="backToMap()">
                                 <img src="assets/general/cars/sideView.svg" alt="back-to-map-car-button">
@@ -262,6 +261,8 @@
                                 <img src="assets/units/unit1/missileHit/missile.svg" alt="missile" class="missile" id="missile">
                                 <img src="assets/units/unit1/missileHit/manCoughing.svg" alt="man-coughing" class="man-coughing">
                             </div>
+
+                            <button id="back-btn" class="back-btn btn">חזרה</button>
 
                             <button class="back-to-map-car-button" onclick="backToMap()">
                                 <img src="assets/general/cars/sideView.svg" alt="back-to-map-car-button">
@@ -287,10 +288,18 @@
                                     <p><b>פוש‌ר, אזור סיכון עיקרי (ΡAC-2) -</b>השפעה בריאותית חמו​רה, בלתי הפיכה וארוכת טווח, או הפוגעת​ ביכולת ההימל​טות מאזור האי‌רוע.</p>
                                 </div>
                                 <div class="pac-map" id="pac-map">
-                                    <p class="pac" id="cold">קר</p>
-                                    <p class="pac" id="focus">מוקד</p>
-                                    <p class="pac" id="heat">חם</p>
-                                    <p class="pac" id="warm">פושר</p>
+                                    <div class="pac" id="cold">קר
+                                        <img class="mouseClick" src="assets/general/mouseClick.png" alt="mouseClick">
+                                    </div>
+                                    <div class="pac" id="focus">מוקד
+                                        <img class="mouseClick" src="assets/general/mouseClick.png" alt="mouseClick">
+                                    </div>
+                                    <div class="pac" id="heat">חם
+                                        <img class="mouseClick" src="assets/general/mouseClick.png" alt="mouseClick">
+                                    </div>
+                                    <div class="pac" id="warm">פושר
+                                        <img class="mouseClick" src="assets/general/mouseClick.png" alt="mouseClick">
+                                    </div>
                                 </div>
                             </div>
                             <div class="pac-explained">

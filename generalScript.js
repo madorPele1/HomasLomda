@@ -12,7 +12,7 @@
 var role = "soldier"; //the role of the user
 var unit; //the changing number of unit
 var screenArrayName; //saving the name of the array that have the screens
-let visitedRhombuse1 = false;
+let visitedRhombuse = false;
 let visitedRhombuse2 = false;
 let visitedRhombuse3 = false;
 let visitedConcept1 = false;
@@ -252,6 +252,16 @@ const clickHandler = (event) => {
             break;
         case "back-btn":
             if (unit == 1) {
+                const scrollHeight = Math.max(
+                    document.documentElement.scrollHeight,
+                    document.body.scrollHeight,
+                    document.documentElement.clientHeight,
+                    document.body.clientHeight
+                );
+                window.requestAnimationFrame(() => {
+                    document.documentElement.scrollTop = scrollHeight*2;
+                    document.body.scrollTop = scrollHeight*2; // For older browsers
+                }); //scroll the bottom of the page
                 conceptScreenHandle(0);
             }
             pacMap('pac-map');
@@ -261,23 +271,11 @@ const clickHandler = (event) => {
             mapAnimation();
             break;
         case "carStop1":
-            animate('carStop1');
-            pacMap('pac-map');
-            break;
         case "carStop2":
-            animate('carStop2');
-            pacMap('pac-map');
-            break;
         case "carStop3":
-            animate('carStop3');
-            pacMap('pac-map');
-            break;
         case "carStop4":
-            animate('carStop4');
-            pacMap('pac-map');
-            break;
         case "carStop5":
-            animate('carStop5');
+            animate(targetId);
             pacMap('pac-map');
             break;
         case "prev":
@@ -287,19 +285,11 @@ const clickHandler = (event) => {
             carousel();
             break;
         case "cold":
-            pacMap('cold');
-            break;
         case "focus":
-            pacMap('focus');
-            break;
         case "heat":
-            pacMap('heat');
-            break;
         case "warm":
-            pacMap('warm');
-            break;
         case "pac-map":
-            pacMap('pac-map');
+            pacMap(targetId);
             break;
         case "definition1":
         case "definition2":
@@ -341,14 +331,10 @@ const clickHandler = (event) => {
                     questionAnswer(parseInt(targetId.replace('option', '')), target);
             break;
             case "heat-area":
-                areaOrganizing("heat-area");
-                break;
             case "warm-area":
-                areaOrganizing("warm-area");
-                break;
             case "mabar-area":
-                areaOrganizing("mabar-area");
-                break;
+                areaOrganizing(targetId);
+            break;
            case "contact1":
            case "contact2":
            case "contact3":
@@ -494,30 +480,35 @@ const backToMap = () => { // function for returning to map (by clicking the car)
 }
 
 const mapAnimation = () => {
-    var mapPin = document.getElementsByClassName("map-pin"); 
-    var mapSquare = document.getElementsByClassName("map-square"); 
 
-    for (let i = 0; i < mapPin.length; i++) {
-        mapPin[i].style.animation = "resize-pin 3s forwards";
-    }
+    let imgBackground = document.getElementsByClassName("img-background"); 
+    let explaineMap = document.getElementsByClassName("explaine-map"); 
+    let mapPin = document.getElementsByClassName("map-pin"); 
+    let mapSquare = document.getElementsByClassName("map-square"); 
+    let xBtn = document.getElementsByClassName("x-btn-shual-unit1"); 
 
-    for (let i = 0; i < mapSquare.length; i++) {
-        mapSquare[i].style.animation = "resize 2s forwards";
-    }
+    mapPin[1].style.animation = "resize-pin 3s forwards"; 
+    mapSquare[1].style.animation = "resize 2s forwards";
+    xBtn[1].style.display = "block";
 
     setTimeout(() => { 
-        var imgBackground = document.getElementsByClassName("img-background"); 
-        var explaineMap = document.getElementsByClassName("explaine-map"); 
-    
-        for (let i = 0; i < imgBackground.length; i++) {
-            imgBackground[i].style.display = "flex";
-            imgBackground[i].style.animation = "fade-in 1s forwards";
-        }
-        for (let i = 0; i < explaineMap.length; i++) {
-            explaineMap[i].style.display = "block";
-            explaineMap[i].style.animation = "fade-in 1s forwards";
-        }
+        imgBackground[1].style.display = "flex";
+        imgBackground[1].style.animation = "fade-in 1s forwards";
+        explaineMap[1].style.display = "block";
+        explaineMap[1].style.animation = "fade-in 1s forwards";
     }, 2200);
+
+    // closing the pop-up screen
+    document.getElementsByClassName("x-btn-shual-unit1")[1].addEventListener("click", () => {
+        mapPin[1].style.animation = ""; 
+        mapSquare[1].style.animation = "";
+        xBtn[1].style.display = "none";
+
+        imgBackground[1].style.display = "none";
+        imgBackground[1].animation = "";
+        explaineMap[1].style.display = "none";
+        explaineMap[1].animation = "";
+    })
 }
 
 const animate = (stopNum) => {
@@ -644,6 +635,7 @@ const changeTextPac = (chosen) => {
 }
 const conceptScreenHandle = (definitionNum) => {    
     let allPanels = document.getElementsByTagName('section');
+    allPanels[28].style.display = 'block';
 
     if (role == "soldier") {
         document.getElementsByClassName("concept")[12].style.display = "none";
@@ -659,6 +651,8 @@ const conceptScreenHandle = (definitionNum) => {
                     allPanels[40].style.display = 'block';
                     allPanels[41].style.display = 'block';
                     allPanels[42].style.display = 'block';
+                    document.body.scrollTop = 0; // For Safari
+                    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
                 }
                 break;
 
@@ -681,6 +675,8 @@ const conceptScreenHandle = (definitionNum) => {
                     allPanels[26].style.display = 'block';
                     allPanels[27].style.display = 'block';
                     allPanels[28].style.display = 'block';
+                    document.body.scrollTop = 0; // For Safari
+                    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
                 }
                 break;
 
@@ -690,6 +686,8 @@ const conceptScreenHandle = (definitionNum) => {
                     allPanels[29].style.display = 'block';
                     allPanels[30].style.display = 'block';
                     allPanels[31].style.display = 'block';
+                    document.body.scrollTop = 0; // For Safari
+                    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
                 }
                 break;
                 
@@ -703,6 +701,8 @@ const conceptScreenHandle = (definitionNum) => {
                     allPanels[i].style.display = 'none';
                     allPanels[35].style.display = 'block';
                     allPanels[36].style.display = 'block';
+                    document.body.scrollTop = 0; // For Safari
+                    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
                 }
                 break;
 
@@ -715,6 +715,8 @@ const conceptScreenHandle = (definitionNum) => {
                 for (let i = 0; i < allPanels.length; i++) {
                     allPanels[i].style.display = 'none';
                     allPanels[37].style.display = 'block';
+                    document.body.scrollTop = 0; // For Safari
+                    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
                 }
                 break;
 
@@ -728,6 +730,8 @@ const conceptScreenHandle = (definitionNum) => {
                     allPanels[i].style.display = 'none';
                     allPanels[38].style.display = 'block';
                     allPanels[39].style.display = 'block';
+                    document.body.scrollTop = 0; // For Safari
+                    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
                 }
                 break;
             default:
@@ -761,10 +765,12 @@ const conceptScreenHandle = (definitionNum) => {
                     }
                 }
                 for (let i = 0; i < allPanels.length; i++) {
-                    allPanels[i].style.display = 'block';
+                    allPanels[i].style.display = 'none';
                     allPanels[26].style.display = 'block';
                     allPanels[27].style.display = 'block';
                     allPanels[31].style.display = 'block';
+                    document.body.scrollTop = 0; // For Safari
+                    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
                 }
                 break;
 
@@ -774,6 +780,8 @@ const conceptScreenHandle = (definitionNum) => {
                     allPanels[29].style.display = 'block';
                     allPanels[30].style.display = 'block';
                     allPanels[31].style.display = 'block';
+                    document.body.scrollTop = 0; // For Safari
+                    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
                 }
                 break;
                 
@@ -787,6 +795,8 @@ const conceptScreenHandle = (definitionNum) => {
                     allPanels[i].style.display = 'none';
                     allPanels[35].style.display = 'block';
                     allPanels[42].style.display = 'block';
+                    document.body.scrollTop = 0; // For Safari
+                    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
                 }
                 break;
 
@@ -799,6 +809,8 @@ const conceptScreenHandle = (definitionNum) => {
                 for (let i = 0; i < allPanels.length; i++) {
                     allPanels[i].style.display = 'none';
                     allPanels[36].style.display = 'block';
+                    document.body.scrollTop = 0; // For Safari
+                    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
                 }
                 break;
 
@@ -812,6 +824,8 @@ const conceptScreenHandle = (definitionNum) => {
                     allPanels[i].style.display = 'none';
                     allPanels[37].style.display = 'block';
                     allPanels[45].style.display = 'block';
+                    document.body.scrollTop = 0; // For Safari
+                    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
                 }
                 break;
 
@@ -825,6 +839,8 @@ const conceptScreenHandle = (definitionNum) => {
                     allPanels[i].style.display = 'none';
                     allPanels[38].style.display = 'block';  
                     allPanels[39].style.display = 'block';  // add graphics of hapak here
+                    document.body.scrollTop = 0; // For Safari
+                    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
                 }
                 break;
 
@@ -837,6 +853,8 @@ const conceptScreenHandle = (definitionNum) => {
                 for (let i = 0; i < allPanels.length; i++) {
                     allPanels[i].style.display = 'none';
                     allPanels[40].style.display = 'block';  // add graphics of mitham homas here
+                    document.body.scrollTop = 0; // For Safari
+                    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
                 }
                 break;
 
@@ -850,6 +868,8 @@ const conceptScreenHandle = (definitionNum) => {
                     allPanels[i].style.display = 'none';
                     allPanels[43].style.display = 'block'; 
                     allPanels[44].style.display = 'block'; 
+                    document.body.scrollTop = 0; // For Safari
+                    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
                 }
                 break;
 
@@ -862,7 +882,10 @@ const conceptScreenHandle = (definitionNum) => {
                 for (let i = 0; i < allPanels.length; i++) {
                     allPanels[i].style.display = 'none';
                     allPanels[41].style.display = 'block'; 
+                    document.body.scrollTop = 0; // For Safari
+                    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
                 }
+                
                 break;
 
             default:
