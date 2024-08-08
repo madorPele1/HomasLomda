@@ -734,7 +734,7 @@ section {
     @supports (animation-timeline: scroll()) {
         .clothing-explaining {
             animation: wipe-in-left 2.5s cubic-bezier(0.14, 0.63, 0.06, 2) both;
-            animation-timeline: view(); /* Animation triggers when in view */
+            animation-timeline: view(20vh 20vh); /* Animation triggers when in view */
         }
     }
 }
@@ -1062,7 +1062,7 @@ section {
         .hapak-contact {
             animation: fade-up 2.5s cubic-bezier(1, -1.11, 0, 2) both;
             -webkit-animation: fade-up 2.5s cubic-bezier(1, -1.11, 0, 2) both;            
-            animation-timeline: view(); 
+            animation-timeline: view(20vh 20vh); 
         }
     }
 }
@@ -1666,7 +1666,7 @@ section {
 
 .shual-phone {
   /* background-image: url(assets/units/unit2/shual-phone.png); */
-  height: 70svh;
+  height: 80svh;
   border-radius: 6vh;
   width: 79svw;
   background-color: white;
