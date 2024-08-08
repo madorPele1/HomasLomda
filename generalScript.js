@@ -12,25 +12,19 @@
 var role = "soldier"; //the role of the user
 var unit; //the changing number of unit
 var screenArrayName; //saving the name of the array that have the screens
-let visitedRhombuse = false;
-let visitedRhombuse2 = false;
-let visitedRhombuse3 = false;
-let visitedConcept1 = false;
-let visitedConcept2 = false;
-let visitedConcept3 = false;
-let visitedConcept4 = false;
-let visitedConcept5 = false;
-let visitedConcept6 = false;
-let visitedConcept7 = false;
-let visitedConcept8 = false;
+
+let completeRhombuse = 0;
+let completeConcept = 0;
+let completeWhatsappClicks = [];
+let isWhatsappVisited;
+
 let updatedScore = 0;
 var score = 0;
 const numOfQuestionsFor = {
     soldier: 4,
     commander: 9
 };
-let completeWhatsappClicks = [];
-let isWhatsappVisited;
+
 
 
 var soldierUnit1 = [
@@ -186,7 +180,6 @@ window.addEventListener("load", () => { // Initializing the lomda
     unit = 1;
     screenArrayName = `${role}Unit${unit}`;
     displayScreens(screenArrayName);
-    conceptScreenHandle(0);
     whatsappContactsHandle();
 })
 
@@ -246,6 +239,7 @@ const removeEventListeners = () => {
 const clickHandler = (event) => {
     const targetId = event.target.id;
     const target = event.target;
+
     switch (targetId) {
         case "end-btn":
             endUnit();
@@ -262,7 +256,7 @@ const clickHandler = (event) => {
                     document.documentElement.scrollTop = scrollHeight*2;
                     document.body.scrollTop = scrollHeight*2; // For older browsers
                 }); //scroll the bottom of the page
-                conceptScreenHandle(0);
+                conceptScreenHandle(-2, target);
             }
             pacMap('pac-map');
             whatsappContactsHandle();
@@ -299,17 +293,29 @@ const clickHandler = (event) => {
         case "definition6":
         case "definition7":
         case "definition8":
-            conceptScreenHandle(parseInt(targetId.replace('definition', '')));
+            conceptScreenHandle(parseInt(targetId.replace('definition', '')), target);
             break;
         case "end-concept-btn": 
-            conceptScreenHandle(-1);
+            conceptScreenHandle(-1, target);
             break;
         case "rhombuse1":
         case "rhombuse2":
         case "rhombuse3":
-            manageRhombuses(parseInt(targetId.replace('rhombuse', '')));
+            manageRhombuses(parseInt(targetId.replace('rhombuse', '')), target);
             break;
         case "back-rhombuse-btn":
+            const scrollHeight = Math.max(
+                document.documentElement.scrollHeight,
+                document.body.scrollHeight,
+                document.documentElement.clientHeight,
+                document.body.clientHeight
+            );
+    
+            // Using requestAnimationFrame to ensure the scroll happens after rendering
+            window.requestAnimationFrame(() => {
+                document.documentElement.scrollTop = 2*scrollHeight;
+                document.body.scrollTop = 2*scrollHeight; // For older browsers
+            });
             manageRhombuses(0);
             break;
         case "back-arrow":
@@ -533,7 +539,12 @@ const animate = (stopNum) => {
     screenArrayName = `${role}Unit${unit}`;
     displayScreens(screenArrayName);
     if (unit === '1') {
-        conceptScreenHandle(0);
+        let allPanels = document.getElementsByTagName('section');
+
+        for (let index = 29; index < allPanels.length; index++) {
+            allPanels[index].style.display = "none";
+        }
+        
     }
     else if (unit === '2') {
         whatsappContactsHandle();
@@ -633,9 +644,17 @@ const changeTextPac = (chosen) => {
         arrowShow[i].style.display = "block";
     }
 }
-const conceptScreenHandle = (definitionNum) => {    
+const conceptScreenHandle = (definitionNum, target) => { 
+
+    let clickedConcept = target;
     let allPanels = document.getElementsByTagName('section');
-    allPanels[28].style.display = 'block';
+
+    var checkMark = document.getElementsByClassName("checkMark1");
+        for (let i = 0; i < checkMark.length; i++) { 
+            if (completeRhombuse == 3) {
+                checkMark[i].style.display = 'inline';
+            }
+        }
 
     if (role == "soldier") {
         document.getElementsByClassName("concept")[12].style.display = "none";
@@ -644,52 +663,59 @@ const conceptScreenHandle = (definitionNum) => {
         document.getElementsByClassName("concept")[15].style.display = "none";
         // displaying "none" the non-relavent concepts for soldiers
 
+        var endConceptButton = document.getElementsByClassName('end-concept-btn');
+        for (let i = 0; i < endConceptButton.length; i++) { 
+            if (completeConcept == 4) {
+                endConceptButton[i].style.display = 'block';
+            }
+        }
+
         switch (definitionNum) {
+            
+            case -2:
+                break;
+
             case -1:
                 for (let i = 0; i < allPanels.length; i++) {
                     allPanels[i].style.display = 'none';
-                    allPanels[40].style.display = 'block';
-                    allPanels[41].style.display = 'block';
-                    allPanels[42].style.display = 'block';
-                    document.body.scrollTop = 0; // For Safari
-                    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
                 }
-                break;
+                document.body.scrollTop = 0; // For Safari
+                document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+                allPanels[40].style.display = 'block';
+                allPanels[41].style.display = 'block';
+                allPanels[42].style.display = 'block';
+            break;
 
             case 0:
-                var checkMark = document.getElementsByClassName("checkMark1");
-                for (let i = 0; i < checkMark.length; i++) { 
-                    if (visitedRhombuse1 &&  visitedRhombuse2 && visitedRhombuse3) {
-                        checkMark[i].style.display = 'inline';
-                    }
-                    visitedConcept1 = true;
-                }
-                var endConceptButton = document.getElementsByClassName('end-concept-btn');
-                for (let i = 0; i < endConceptButton.length; i++) { 
-                    if (visitedConcept1 &&  visitedConcept2 && visitedConcept3 && visitedConcept4) {
-                        endConceptButton[i].style.display = 'block';
-                    }
-                }
                 for (let i = 0; i < allPanels.length; i++) {
                     allPanels[i].style.display = 'none';
-                    allPanels[26].style.display = 'block';
-                    allPanels[27].style.display = 'block';
-                    allPanels[28].style.display = 'block';
-                    document.body.scrollTop = 0; // For Safari
-                    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
                 }
-                break;
+
+                allPanels[26].style.display = 'block';
+                allPanels[27].style.display = 'block';
+                allPanels[28].style.display = 'block';
+
+                document.body.scrollTop = 0; // For Safari
+                document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+            break;
 
             case 1:
                 for (let i = 0; i < allPanels.length; i++) {
                     allPanels[i].style.display = 'none';
-                    allPanels[29].style.display = 'block';
-                    allPanels[30].style.display = 'block';
-                    allPanels[31].style.display = 'block';
-                    document.body.scrollTop = 0; // For Safari
-                    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
                 }
-                break;
+
+                allPanels[29].style.display = 'block';
+                allPanels[30].style.display = 'block';
+                allPanels[31].style.display = 'block';
+
+                document.body.scrollTop = 0; // For Safari
+                document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+                
+                if (!(clickedConcept.classList.contains('visited-concept'))) {
+                    completeConcept++;
+                }
+                clickedConcept.classList.add("visited-concept");
+            break;
                 
             case 2:
                 var checkMark = document.getElementsByClassName("checkMark2"); 
@@ -699,12 +725,18 @@ const conceptScreenHandle = (definitionNum) => {
                 visitedConcept2 = true;
                 for (let i = 0; i < allPanels.length; i++) {
                     allPanels[i].style.display = 'none';
-                    allPanels[35].style.display = 'block';
-                    allPanels[36].style.display = 'block';
-                    document.body.scrollTop = 0; // For Safari
-                    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
                 }
-                break;
+                allPanels[35].style.display = 'block';
+                allPanels[36].style.display = 'block';
+
+                document.body.scrollTop = 0; // For Safari
+                document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+
+                if (!(clickedConcept.classList.contains('visited-concept'))) {
+                    completeConcept++;
+                }
+                clickedConcept.classList.add("visited-concept");
+            break;
 
             case 3:
                 var checkMark = document.getElementsByClassName("checkMark3"); 
@@ -714,11 +746,17 @@ const conceptScreenHandle = (definitionNum) => {
                 visitedConcept3 = true;
                 for (let i = 0; i < allPanels.length; i++) {
                     allPanels[i].style.display = 'none';
-                    allPanels[37].style.display = 'block';
-                    document.body.scrollTop = 0; // For Safari
-                    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
                 }
-                break;
+                allPanels[37].style.display = 'block';
+
+                document.body.scrollTop = 0; // For Safari
+                document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+
+                if (!(clickedConcept.classList.contains('visited-concept'))) {
+                    completeConcept++;
+                }
+                clickedConcept.classList.add("visited-concept");
+            break;
 
             case 4:
                 var checkMark = document.getElementsByClassName("checkMark4"); 
@@ -728,61 +766,73 @@ const conceptScreenHandle = (definitionNum) => {
                 visitedConcept4 = true;
                 for (let i = 0; i < allPanels.length; i++) {
                     allPanels[i].style.display = 'none';
-                    allPanels[38].style.display = 'block';
-                    allPanels[39].style.display = 'block';
-                    document.body.scrollTop = 0; // For Safari
-                    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
                 }
-                break;
+
+                allPanels[38].style.display = 'block';
+                allPanels[39].style.display = 'block';
+
+                document.body.scrollTop = 0; // For Safari
+                document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+
+                if (!(clickedConcept.classList.contains('visited-concept'))) {
+                    completeConcept++;
+                }
+                clickedConcept.classList.add("visited-concept");
+            break;
+
             default:
                 break;
-
             }
 
     } else if (role == "commander") {
+
+        var endConceptButton = document.getElementsByClassName('end-concept-btn');
+        for (let i = 0; i < endConceptButton.length; i++) { 
+            if (completeConcept == 8) {
+                endConceptButton[i].style.display = 'block';
+            }
+        }
+
         switch (definitionNum) {
+            case -2:
+                break;
+
             case -1:
                 for (let i = 0; i < allPanels.length; i++) {
                     allPanels[i].style.display = 'none';
-                    allPanels[46].style.display = 'block';
-                    allPanels[47].style.display = 'block';
-                    allPanels[48].style.display = 'block';
                 }
-                break;
+                document.body.scrollTop = 0; // For Safari
+                document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+                allPanels[46].style.display = 'block';
+                allPanels[47].style.display = 'block';
+                allPanels[48].style.display = 'block';
+            break;
 
             case 0:
-                var checkMark = document.getElementsByClassName("checkMark1");
-                for (let i = 0; i < checkMark.length; i++) { 
-                    if (visitedRhombuse1 &&  visitedRhombuse2 && visitedRhombuse3) {
-                        checkMark[i].style.display = 'inline';
-                    }
-                    visitedConcept1 = true;
-                }
-                var endConceptButton = document.getElementsByClassName('end-concept-btn');
-                for (let i = 0; i < endConceptButton.length; i++) { 
-                    if (visitedConcept1 &&  visitedConcept2 && visitedConcept3 && visitedConcept4 && visitedConcept5 && visitedConcept6 && visitedConcept7 && visitedConcept8) {
-                        endConceptButton[i].style.display = 'block';
-                    }
-                }
+
                 for (let i = 0; i < allPanels.length; i++) {
                     allPanels[i].style.display = 'none';
-                    allPanels[26].style.display = 'block';
-                    allPanels[27].style.display = 'block';
-                    allPanels[31].style.display = 'block';
-                    document.body.scrollTop = 0; // For Safari
-                    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
                 }
+                allPanels[26].style.display = 'block';
+                allPanels[27].style.display = 'block';
+                allPanels[31].style.display = 'block';
+                document.body.scrollTop = 0; // For Safari
+                document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
                 break;
 
             case 1:
                 for (let i = 0; i < allPanels.length; i++) {
                     allPanels[i].style.display = 'none';
-                    allPanels[29].style.display = 'block';
-                    allPanels[30].style.display = 'block';
-                    allPanels[31].style.display = 'block';
-                    document.body.scrollTop = 0; // For Safari
-                    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
                 }
+                allPanels[29].style.display = 'block';
+                allPanels[30].style.display = 'block';
+                allPanels[31].style.display = 'block';
+                document.body.scrollTop = 0; // For Safari
+                document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+                if (!(clickedConcept.classList.contains('visited-concept'))) {
+                    completeConcept++;
+                }
+                clickedConcept.classList.add("visited-concept");
                 break;
                 
             case 2:
@@ -793,11 +843,16 @@ const conceptScreenHandle = (definitionNum) => {
                 visitedConcept2 = true;
                 for (let i = 0; i < allPanels.length; i++) {
                     allPanels[i].style.display = 'none';
-                    allPanels[35].style.display = 'block';
-                    allPanels[42].style.display = 'block';
-                    document.body.scrollTop = 0; // For Safari
-                    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
                 }
+                allPanels[35].style.display = 'block';
+                allPanels[42].style.display = 'block';
+                document.body.scrollTop = 0; // For Safari
+                document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+                if (!(clickedConcept.classList.contains('visited-concept'))) {
+                    completeConcept++;
+
+                }
+                clickedConcept.classList.add("visited-concept");
                 break;
 
             case 3:
@@ -808,10 +863,15 @@ const conceptScreenHandle = (definitionNum) => {
                 visitedConcept3 = true;
                 for (let i = 0; i < allPanels.length; i++) {
                     allPanels[i].style.display = 'none';
-                    allPanels[36].style.display = 'block';
-                    document.body.scrollTop = 0; // For Safari
-                    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
                 }
+                allPanels[36].style.display = 'block';
+                document.body.scrollTop = 0; // For Safari
+                document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+                if (!(clickedConcept.classList.contains('visited-concept'))) {
+                    completeConcept++;
+
+                }
+                clickedConcept.classList.add("visited-concept");
                 break;
 
             case 4:
@@ -822,11 +882,16 @@ const conceptScreenHandle = (definitionNum) => {
                 visitedConcept4 = true;
                 for (let i = 0; i < allPanels.length; i++) {
                     allPanels[i].style.display = 'none';
-                    allPanels[37].style.display = 'block';
-                    allPanels[45].style.display = 'block';
-                    document.body.scrollTop = 0; // For Safari
-                    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
                 }
+                allPanels[37].style.display = 'block';
+                allPanels[45].style.display = 'block';
+                document.body.scrollTop = 0; // For Safari
+                document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+                if (!(clickedConcept.classList.contains('visited-concept'))) {
+                    completeConcept++;
+
+                }
+                clickedConcept.classList.add("visited-concept");
                 break;
 
             case 5:
@@ -837,11 +902,16 @@ const conceptScreenHandle = (definitionNum) => {
                 visitedConcept5 = true;
                 for (let i = 0; i < allPanels.length; i++) {
                     allPanels[i].style.display = 'none';
-                    allPanels[38].style.display = 'block';  
-                    allPanels[39].style.display = 'block';  // add graphics of hapak here
-                    document.body.scrollTop = 0; // For Safari
-                    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
                 }
+                allPanels[38].style.display = 'block';  
+                allPanels[39].style.display = 'block';  // add graphics of hapak here
+                document.body.scrollTop = 0; // For Safari
+                document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+                if (!(clickedConcept.classList.contains('visited-concept'))) {
+                    completeConcept++;
+
+                }
+                clickedConcept.classList.add("visited-concept");
                 break;
 
             case 6:
@@ -852,10 +922,15 @@ const conceptScreenHandle = (definitionNum) => {
                 visitedConcept6 = true;
                 for (let i = 0; i < allPanels.length; i++) {
                     allPanels[i].style.display = 'none';
-                    allPanels[40].style.display = 'block';  // add graphics of mitham homas here
-                    document.body.scrollTop = 0; // For Safari
-                    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
                 }
+                allPanels[40].style.display = 'block';  // add graphics of mitham homas here
+                document.body.scrollTop = 0; // For Safari
+                document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+                if (!(clickedConcept.classList.contains('visited-concept'))) {
+                    completeConcept++;
+
+                }
+                clickedConcept.classList.add("visited-concept");
                 break;
 
             case 7:
@@ -866,11 +941,16 @@ const conceptScreenHandle = (definitionNum) => {
                 visitedConcept7 = true;
                 for (let i = 0; i < allPanels.length; i++) {
                     allPanels[i].style.display = 'none';
-                    allPanels[43].style.display = 'block'; 
-                    allPanels[44].style.display = 'block'; 
-                    document.body.scrollTop = 0; // For Safari
-                    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
                 }
+                allPanels[43].style.display = 'block'; 
+                allPanels[44].style.display = 'block'; 
+                document.body.scrollTop = 0; // For Safari
+                document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+                if (!(clickedConcept.classList.contains('visited-concept'))) {
+                    completeConcept++;
+
+                }
+                clickedConcept.classList.add("visited-concept");
                 break;
 
             case 8:
@@ -881,24 +961,28 @@ const conceptScreenHandle = (definitionNum) => {
                 visitedConcept8 = true;
                 for (let i = 0; i < allPanels.length; i++) {
                     allPanels[i].style.display = 'none';
-                    allPanels[41].style.display = 'block'; 
-                    document.body.scrollTop = 0; // For Safari
-                    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
                 }
-                
+                allPanels[41].style.display = 'block'; 
+                document.body.scrollTop = 0; // For Safari
+                document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+                if (!(clickedConcept.classList.contains('visited-concept'))) {
+                    completeConcept++;
+                }
+                clickedConcept.classList.add("visited-concept");
                 break;
 
             default:
                 break;
 
             }
-
     }
        
 }
 
-const manageRhombuses = (rhombuseNum) => {
+const manageRhombuses = (rhombuseNum, target) => {
     var allPanels = document.getElementsByTagName('section');
+    rhombuseClicked = target;
+
     switch (rhombuseNum) {
         case 0:
             for (let i = 3; i < allPanels.length; i++) {
@@ -909,37 +993,37 @@ const manageRhombuses = (rhombuseNum) => {
             }
             break;
         case 1:
-            var rhombuses = document.getElementsByClassName("rhombuse1"); 
-            for (let i = 0; i < rhombuses.length; i++) {
-                rhombuses[i].setAttribute('src', 'assets/units/unit1/homasTypes/flammableGasesCheck.svg');
-            }
+            var rhombuses = document.getElementsByClassName("rhombuse1")[1].setAttribute('src', 'assets/units/unit1/homasTypes/flammableGasesCheck.svg');
             for (let i = 0; i < allPanels.length; i++) {
                 allPanels[i].style.display = 'none';
                 allPanels[33].style.display = 'block';
             }
-            visitedRhombuse1 = true;
+            if (!(rhombuseClicked.classList.contains('visited-rhombuse'))) {
+                completeRhombuse++;
+            }
+            rhombuseClicked.classList.add("visited-rhombuse");
             break;
         case 2:
-            var rhombuses = document.getElementsByClassName("rhombuse2"); 
-            for (let i = 0; i < rhombuses.length; i++) {
-                rhombuses[i].setAttribute('src', 'assets/units/unit1/homasTypes/toxicGasesCheck.svg');
-            }
+            var rhombuses = document.getElementsByClassName("rhombuse2")[1].setAttribute('src', 'assets/units/unit1/homasTypes/flammableGasesCheck.svg');
             for (let i = 0; i < allPanels.length; i++) {
                 allPanels[i].style.display = 'none';
                 allPanels[34].style.display = 'block';
             }
-            visitedRhombuse2 = true;
+            if (!(rhombuseClicked.classList.contains('visited-rhombuse'))) {
+                completeRhombuse++;
+            }
+            rhombuseClicked.classList.add("visited-rhombuse");
             break;
         case 3:
-            var rhombuses = document.getElementsByClassName("rhombuse3"); 
-            for (let i = 0; i < rhombuses.length; i++) {
-                rhombuses[i].setAttribute('src', 'assets/units/unit1/homasTypes/explosiveSubstancesCheck.svg');
-            }
+            var rhombuses = document.getElementsByClassName("rhombuse3")[1].setAttribute('src', 'assets/units/unit1/homasTypes/flammableGasesCheck.svg');
             for (let i = 0; i < allPanels.length; i++) {
                 allPanels[i].style.display = 'none';
                 allPanels[32].style.display = 'block';
             }
-            visitedRhombuse3 = true;
+            if (!(rhombuseClicked.classList.contains('visited-rhombuse'))) {
+                completeRhombuse++;
+            }
+            rhombuseClicked.classList.add("visited-rhombuse");            
             break;
         default:
             break;
@@ -1179,7 +1263,6 @@ const startOver = () => {
     unit = 1;
     screenArrayName = `${role}Unit${unit}`;
     displayScreens(screenArrayName);
-    conceptScreenHandle(0);
     whatsappContactsHandle();
     animate("stopNum1");
 }
