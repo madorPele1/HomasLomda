@@ -990,7 +990,7 @@ const conceptScreenHandle = (definitionNum, target) => {
        
 }
 
-const manageRhombuses = (rhombuseNum, target) => {
+const manageRhombuses = (rhombuseNum) => {
     var allPanels = document.getElementsByTagName('section');
     if (rhombuseNum === 0) {
         for (let i = 3; i < allPanels.length; i++) {
@@ -1007,7 +1007,6 @@ const manageRhombuses = (rhombuseNum, target) => {
         for (let i = 0; i < allPanels.length; i++) {
             allPanels[i].style.display = 'none';
         }
-            rhombuseClicked = target;
         switch (rhombuseNum) {
             case 1:
                 visitedRhombuse1 = true;
@@ -1024,6 +1023,7 @@ const manageRhombuses = (rhombuseNum, target) => {
                 default:
             break;
         }
+        rhombuseClicked = document.getElementById(`rhombuse${rhombuseNum}`);
         if (!(rhombuseClicked.classList.contains('visited-rhombuse'))) {
             completeRhombuse++;
         }
