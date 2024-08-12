@@ -436,6 +436,18 @@ const addText = async () => {
 
     });  // adds the questions and answers text
 
+    if (unit == 2) { // change specific details
+        answersText[0].style.fontSize = "calc(10px + 0.4svh)";
+        answersText[1].style.fontSize = "calc(10px + 0.4svh)";
+        answersText[2].style.fontSize = "calc(10px + 0.4svh)";
+        answersText[3].style.fontSize = "calc(10px + 0.4svh)";
+    }
+
+    if (unit == 3) { // change specific answers details
+        console.log(answersDiv);
+        answersText[14].style.fontSize = "calc(9px + 0.4svh)";
+    }
+
     var explainingTitle = document.querySelectorAll('.unit-screens .explaining-title'); 
     var explainingText = document.querySelectorAll('.unit-screens .explaining-text');  
     for (let i = 0; i < explainingText.length; i++) {
