@@ -374,6 +374,7 @@ const addContent = () => { // function that completes all the non-text content i
 
     if (unit == 1) { // change specific details
         document.getElementsByClassName("character-body")[7].style.display = "none"
+        document.getElementsByClassName("character-body")[8].style.display = "none"
     }
     if (unit == 4) { // change specific details
         document.getElementsByClassName("character-body")[2].style.width = "50vw"
@@ -670,8 +671,8 @@ const changeTextPac = (chosen) => {
         arrowShow[i].style.display = "block";
     }
 }
-const conceptScreenHandle = (definitionNum, target) => { 
 
+const conceptScreenHandle = (definitionNum, target) => { 
     let clickedConcept = target;
     let allPanels = document.getElementsByTagName('section');
 
@@ -930,7 +931,13 @@ const conceptScreenHandle = (definitionNum, target) => {
                     allPanels[i].style.display = 'none';
                 }
                 allPanels[38].style.display = 'block';  
-                allPanels[39].style.display = 'block';  // add graphics of hapak here
+                allPanels[39].style.display = 'block';  
+                allPanels[39].style.display = 'block';  
+                if (!addingHapakImg) {
+                    allPanels[39].innerHTML += `<img src="assets/units/unit1/hapak.svg" alt="hapak" style="display: block; position: relative;bottom: 24%;border-radius: 6vh;background-color: white;">`
+                    addingHapakImg = true;
+                }
+
                 document.body.scrollTop = 0; // For Safari
                 document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
                 if (!(clickedConcept.classList.contains('visited-concept'))) {
@@ -949,7 +956,11 @@ const conceptScreenHandle = (definitionNum, target) => {
                 for (let i = 0; i < allPanels.length; i++) {
                     allPanels[i].style.display = 'none';
                 }
-                allPanels[40].style.display = 'block';  // add graphics of mitham homas here
+                allPanels[40].style.display = 'block';  
+                if (!addingHomasImg) {
+                    allPanels[40].innerHTML += `<img src="assets/units/unit1/mithamHomas.png" alt="mitham-homas" style="display: block; width: 99%; position: relative;bottom: 24%;border-radius: 6vh;">`
+                    addingHomasImg = true;
+                }
                 document.body.scrollTop = 0; // For Safari
                 document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
                 if (!(clickedConcept.classList.contains('visited-concept'))) {
