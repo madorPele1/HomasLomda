@@ -1018,7 +1018,7 @@ const manageRhombuses = (rhombuseNum) => {
                 break;
             case 3:
                 visitedRhombuse3 = true;
-                allPanels[33].style.display = 'block';
+                allPanels[32].style.display = 'block';
                 break;
                 default:
             break;
