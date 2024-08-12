@@ -444,7 +444,6 @@ const addText = async () => {
     }
 
     if (unit == 3) { // change specific answers details
-        console.log(answersDiv);
         answersText[14].style.fontSize = "calc(9px + 0.4svh)";
     }
 
@@ -482,12 +481,10 @@ const endUnit = () => {
         score = Math.round(score);
 
         if (score <= 50) {
-            document.getElementsByClassName("score")[1].innerHTML = `${score} <br> כדאי לך לחזור על הלומדה... `;
-            document.getElementsByClassName("ending-div")[1].innerHTML +=
-            `<button id="start-over-btn" class="btn" style="bottom: 6vh;">נסו שנית</button>`;
+            document.getElementsByClassName("score")[1].innerHTML = ` ציונכם הוא: ${score} <br> כדאי לכם לחזור על הלומדה... `;
             document.getElementById("start-over-btn").addEventListener("click", startOver);
         } else {
-            document.getElementsByClassName("score")[1].innerHTML = `כל הכבוד! ${score}`;
+            document.getElementsByClassName("score")[1].innerHTML = ` ציונכם הוא: ${score} <br> כל הכבוד! `;
         }
     }
 }
@@ -565,12 +562,12 @@ const animate = (stopNum) => {
             score = Math.round(score);
     
             if (score <= 50) {
-                document.getElementsByClassName("score")[1].innerHTML = `${score} <br> כדאי לך לחזור על הלומדה... `;
+                document.getElementsByClassName("score")[1].innerHTML = ` ציונכם הוא: ${score} <br> כדאי לכם לחזור על הלומדה... `;
                 document.getElementsByClassName("ending-div")[1].innerHTML +=
                 `<button id="start-over-btn" class="btn" style="bottom: 6vh;">נסו שנית</button>`;
                 document.getElementById("start-over-btn").addEventListener("click", startOver);
             } else {
-                document.getElementsByClassName("score")[1].innerHTML = `כל הכבוד! ${score}`;
+                document.getElementsByClassName("score")[1].innerHTML = `כל הכבוד! ${score} ציונכם הוא:`;
             }
         }
 }
@@ -1053,6 +1050,12 @@ const setupDragAndDrop = () => {
     const startDraggingBtn = document.getElementsByClassName("start-dragging-btn")[1]; 
     startDraggingBtn.style.display = "none";
     
+    if (sessionStorage.getItem("completeDragAndDrop")) {
+        // If already completed, do nothing
+        startDraggingBtn.style.display = "none";
+        return;
+    }
+
     for (let i = 0; i < nums.length; i++) {
         nums[i].style.display = "block";
     }
@@ -1101,6 +1104,8 @@ const setupDragAndDrop = () => {
 
     function checkOrder() {
         finishDraggingBtn.style.display = "none";
+            // Save the question as answered in sessionStorage
+            sessionStorage.setItem("completeDragAndDrop", 'true');
         if (
             selectedOrder[0] === "pants" && 
             selectedOrder[1] === "shoes" && 
@@ -1159,13 +1164,20 @@ const shualOpening = () => {
 }
 
 const questionAnswer = async (answer, clickedAnswer) => {
+    // Fetch the data from the JSON file
     const response = await fetch('newText.json');
     const data = await response.json();
     const key = `${role}-unit${unit}`;
     
     // Extract question number from the class
-    let questionNumber = (clickedAnswer.classList[2]);
+    let questionNumber = clickedAnswer.classList[2];
     var correctAnswer = Number(data[key][questionNumber]["answer"]);
+
+    // Check if the question has already been answered
+    if (sessionStorage.getItem(`answered-${questionNumber}-${unit}`)) {
+        // If already answered, do nothing
+        return;
+    }
 
     // Disable all options for the same question
     const questionOptions = document.querySelectorAll(`.${questionNumber}`);
@@ -1177,11 +1189,15 @@ const questionAnswer = async (answer, clickedAnswer) => {
     // Set background color based on the answer
     if (answer == correctAnswer) {
         clickedAnswer.style.backgroundColor = "rgb(218, 248, 210)";
-        updatedScore = updatedScore+10;
+        updatedScore += 10;
     } else {
         clickedAnswer.style.backgroundColor = "rgb(255, 219, 219)";
     }
 
+    // Save the question as answered in sessionStorage
+    sessionStorage.setItem(`answered-${questionNumber}-${unit}`, 'true');
+
+    // Display feedback if available
     if (data[key][questionNumber]["feedback"]) {
         let index = parseInt(questionNumber.replace('q', ''));
         const feedbackScreen = document.querySelectorAll(`.feedback-div`);
@@ -1190,9 +1206,9 @@ const questionAnswer = async (answer, clickedAnswer) => {
             feedbackScreen[index].style.display = "flex";
             feedbackScreen[index].innerHTML = data[key][questionNumber]["feedback"];
         }
-        
     }
 }
+
 
 const areaOrganizing = (areaClicked) => {
     document.getElementsByClassName("area-explained")[1].style.display = "block";
@@ -1270,11 +1286,6 @@ const whatsappContactsHandle = (contact, target) => {
 }
 
 const startOver = () => {
-    num = 1;
-    role = sessionStorage.getItem("role");
-    unit = 1;
-    screenArrayName = `${role}Unit${unit}`;
-    displayScreens(screenArrayName);
-    whatsappContactsHandle();
-    animate("stopNum1");
+    sessionStorage.clear();
+    window.location.href = "index.html";
 }
