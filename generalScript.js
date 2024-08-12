@@ -1014,11 +1014,11 @@ const manageRhombuses = (rhombuseNum) => {
                 break;
             case 2:
                 visitedRhombuse2 = true;
-                allPanels[34].style.display = 'block';
+                allPanels[32].style.display = 'block';
                 break;
             case 3:
                 visitedRhombuse3 = true;
-                allPanels[32].style.display = 'block';
+                allPanels[34].style.display = 'block';
                 break;
                 default:
             break;
