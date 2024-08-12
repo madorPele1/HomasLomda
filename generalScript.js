@@ -990,7 +990,7 @@ const conceptScreenHandle = (definitionNum, target) => {
        
 }
 
-const manageRhombuses = (rhombuseNum) => {
+const manageRhombuses = (rhombuseNum, target) => {
     var allPanels = document.getElementsByTagName('section');
     if (rhombuseNum === 0) {
         for (let i = 3; i < allPanels.length; i++) {
