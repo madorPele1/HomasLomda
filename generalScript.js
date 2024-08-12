@@ -17,6 +17,8 @@ let completeRhombuse = 0;
 let completeConcept = 0;
 let completeWhatsappClicks = [];
 let isWhatsappVisited;
+let addingHapakImg;
+let addingHomasImg;
 
 let updatedScore = 0;
 var score = 0;
@@ -183,6 +185,12 @@ window.addEventListener("load", () => { // Initializing the lomda
     screenArrayName = `${role}Unit${unit}`;
     displayScreens(screenArrayName);
     whatsappContactsHandle();
+
+    // Hide the loader
+    const loader = document.getElementById("loader");
+    if (loader) {
+        loader.style.display = "none";
+    }
 })
 
 
@@ -363,6 +371,10 @@ const addContent = () => { // function that completes all the non-text content i
     for (let i = 0; i < characterBody.length; i++) {
         document.getElementsByClassName("character-body")[i].src = `assets/general/characters/allCharacters/${role}.svg`;
     }
+
+    if (unit == 1) { // change specific details
+        document.getElementsByClassName("character-body")[7].style.display = "none"
+    }
     if (unit == 4) { // change specific details
         document.getElementsByClassName("character-body")[2].style.width = "50vw"
         document.getElementsByClassName("character-body")[4].style.width = "50vw"
@@ -466,6 +478,9 @@ const addText = async () => {
                 clothingExplainingDiv[8].innerHTML = `<div transition-style="in:wipe:left" class="clothing-explaining suit">"מסכה ומסנן/אבן ספיר"</div><div class="clothing-explaining breath">חליפת סרבל</div><div class="clothing-explaining gloves">כפפות</div><div class="clothing-explaining boots">מגפיים</div>`
             } 
         } // adds the protection level explanation tags
+    }
+    if (unit == 1) {
+        explainingTitle[3].style.fontSize = "19px";
     }
 }
 
