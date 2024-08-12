@@ -24,7 +24,9 @@ const numOfQuestionsFor = {
     soldier: 4,
     commander: 9
 };
-
+var rhombuse1Pic = 'flammableGasesCheck';
+var rhombuse2Pic = 'toxicGasesCheck';
+var rhombuse3Pic = 'explosiveSubstancesCheck';
 
 
 var soldierUnit1 = [
@@ -1005,6 +1007,7 @@ const manageRhombuses = (rhombuseNum) => {
         for (let i = 0; i < allPanels.length; i++) {
             allPanels[i].style.display = 'none';
         }
+            rhombuseClicked = target;
         switch (rhombuseNum) {
             case 1:
                 visitedRhombuse1 = true;
@@ -1021,6 +1024,10 @@ const manageRhombuses = (rhombuseNum) => {
                 default:
             break;
         }
+        if (!(rhombuseClicked.classList.contains('visited-rhombuse'))) {
+            completeRhombuse++;
+        }
+        rhombuseClicked.classList.add("visited-rhombuse");
     }     
 }
 
