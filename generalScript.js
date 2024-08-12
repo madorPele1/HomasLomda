@@ -988,55 +988,40 @@ const conceptScreenHandle = (definitionNum, target) => {
        
 }
 
-const manageRhombuses = (rhombuseNum, target) => {
+const manageRhombuses = (rhombuseNum) => {
     var allPanels = document.getElementsByTagName('section');
-    rhombuseClicked = target;
-
-    switch (rhombuseNum) {
-        case 0:
-            for (let i = 3; i < allPanels.length; i++) {
-                allPanels[i].style.display = 'none';
-                allPanels[29].style.display = 'block';
-                allPanels[30].style.display = 'block';
-                allPanels[31].style.display = 'block';
-            }
-            break;
-        case 1:
-            var rhombuses = document.getElementsByClassName("rhombuse1")[1].setAttribute('src', 'assets/units/unit1/homasTypes/flammableGasesCheck.svg');
-            for (let i = 0; i < allPanels.length; i++) {
-                allPanels[i].style.display = 'none';
+    if (rhombuseNum === 0) {
+        for (let i = 3; i < allPanels.length; i++) {
+            allPanels[i].style.display = 'none';
+            allPanels[29].style.display = 'block';
+            allPanels[30].style.display = 'block';
+            allPanels[31].style.display = 'block';
+        }
+    } else {
+        var rhombuses = document.getElementsByClassName(`rhombuse${rhombuseNum}`); 
+        for (let i = 0; i < rhombuses.length; i++) {
+            rhombuses[i].setAttribute('src', `assets/units/unit1/homasTypes/${window[`rhombuse${rhombuseNum}Pic`]}.svg`);
+        }
+        for (let i = 0; i < allPanels.length; i++) {
+            allPanels[i].style.display = 'none';
+        }
+        switch (rhombuseNum) {
+            case 1:
+                visitedRhombuse1 = true;
                 allPanels[33].style.display = 'block';
-            }
-            if (!(rhombuseClicked.classList.contains('visited-rhombuse'))) {
-                completeRhombuse++;
-            }
-            rhombuseClicked.classList.add("visited-rhombuse");
-            break;
-        case 2:
-            var rhombuses = document.getElementsByClassName("rhombuse2")[1].setAttribute('src', 'assets/units/unit1/homasTypes/flammableGasesCheck.svg');
-            for (let i = 0; i < allPanels.length; i++) {
-                allPanels[i].style.display = 'none';
-                allPanels[34].style.display = 'block';
-            }
-            if (!(rhombuseClicked.classList.contains('visited-rhombuse'))) {
-                completeRhombuse++;
-            }
-            rhombuseClicked.classList.add("visited-rhombuse");
-            break;
-        case 3:
-            var rhombuses = document.getElementsByClassName("rhombuse3")[1].setAttribute('src', 'assets/units/unit1/homasTypes/flammableGasesCheck.svg');
-            for (let i = 0; i < allPanels.length; i++) {
-                allPanels[i].style.display = 'none';
+                break;
+            case 2:
+                visitedRhombuse2 = true;
                 allPanels[32].style.display = 'block';
-            }
-            if (!(rhombuseClicked.classList.contains('visited-rhombuse'))) {
-                completeRhombuse++;
-            }
-            rhombuseClicked.classList.add("visited-rhombuse");            
+                break;
+            case 3:
+                visitedRhombuse3 = true;
+                allPanels[34].style.display = 'block';
+                break;
+                default:
             break;
-        default:
-            break;
-    }   
+        }
+    }     
 }
 
 const setupDragAndDrop = () => {
