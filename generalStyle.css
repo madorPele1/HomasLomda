@@ -729,6 +729,7 @@ section {
 
 .clothing-explaining {
     opacity: 0; /* Initially hidden */
+        animation: wipe-in-left 2.5s forwards;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -967,6 +968,7 @@ section {
     display: flex;
     align-items: center;
     padding: 10px;
+    animation: fade-up 2.5s forwards;
 }
 
 .hapak-contact img {
