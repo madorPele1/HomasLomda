@@ -671,8 +671,8 @@ const changeTextPac = (chosen) => {
         arrowShow[i].style.display = "block";
     }
 }
-
 const conceptScreenHandle = (definitionNum, target) => { 
+
     let clickedConcept = target;
     let allPanels = document.getElementsByTagName('section');
 
@@ -1046,8 +1046,8 @@ const manageRhombuses = (rhombuseNum) => {
                 visitedRhombuse3 = true;
                 allPanels[32].style.display = 'block';
                 break;
-                default:
-            break;
+            default:
+                break;
         }
         rhombuseClicked = document.getElementById(`rhombuse${rhombuseNum}`);
         if (!(rhombuseClicked.classList.contains('visited-rhombuse'))) {

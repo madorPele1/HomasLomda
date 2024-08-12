@@ -1057,9 +1057,14 @@ section {
 }
 
 .hapak-contact {
-    opacity: 0; 
+    opacity: 1;
+
 }
 
+.invisible-hapak {
+    visibility: hidden;
+}
+/* 
 @media (prefers-reduced-motion: no-preference) {
     @supports (animation-timeline: scroll()) {
         .hapak-contact {
@@ -1068,7 +1073,7 @@ section {
             animation-timeline: view(20% 50%);
         }
     }
-}
+} */
 
 .visited-contact {
     background-color: #eaffea;
@@ -1822,6 +1827,15 @@ section {
 
 .profile-img, .contact-details {
     pointer-events: none;
+}
+
+.behind-footer {
+    z-index: 1;
+    background-color: #8f8b88;
+    width: 100vw;
+    height: 10vh;
+    position: fixed;
+    bottom: 0;
 }
 
 /* loader */
