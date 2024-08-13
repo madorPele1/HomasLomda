@@ -962,6 +962,8 @@ section {
 .hapak-contacts {
     display: flex;
     flex-direction: column;
+    position: relative;
+    bottom: 14vh;
 }
 
 .hapak-contact {
@@ -1328,17 +1330,11 @@ section {
     flex-direction: column;
 }
 
-@media screen and (min-width: 390px) {
-    .character-body-container {
-        width: 30svw;
-    }
-}
-
 .character-body-part {
     position: relative;
     width: 33svw;
     z-index: 1;
-    margin-bottom: -42px;
+    margin-bottom: -45px;
 }
 
 .draggable-elements-container {
@@ -1371,14 +1367,20 @@ section {
 }
 
 
+@media screen and (max-width: 500px) and (max-height: 950px) {
+    .character-body-part {
+        margin-bottom: -52px;
+    }
+    
+}  
+
 @media screen and (min-width: 450px) and (max-height: 1000px) {
     .draggable-elements-container {
         bottom: 81svh;
     }
     .character-body-part {
-        margin-bottom: -51px;
+        margin-bottom: -62px;
     }
-    
 }  
 
 .num {
@@ -1830,12 +1832,13 @@ section {
 }
 
 .behind-footer {
-    z-index: 1;
     background-color: #8f8b88;
-    width: 100vw;
-    height: 10vh;
-    position: fixed;
-    bottom: 0;
+    display: flex;
+    align-items: center;
+    padding: 6vh;
+    position: sticky;
+    top: 90vh;
+    z-index: 1;
 }
 
 /* loader */
@@ -1849,5 +1852,6 @@ section {
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 4; /* Ensure it's above other content */
+    z-index: 4; 
 }
+
