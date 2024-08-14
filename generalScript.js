@@ -511,6 +511,7 @@ const addText = async () => {
 
 const endUnit = () => {
     unit++;
+    document.getElementsByClassName(`carStop${unit}`)[0].style.display = "block";
     screenArrayName = `${role}Unit${unit}`;
     displayScreens(screenArrayName);
     animate(`stopNum${unit}`);
@@ -818,13 +819,7 @@ const conceptScreenHandle = (definitionNum, target) => {
                     allPanels[i].style.display = 'none';
                 }
 
-                allPanels[38].style.display = 'block';
                 allPanels[39].style.display = 'block';
-
-                setTimeout(() => { 
-                    allPanels[38].style.display = 'block';
-                    allPanels[39].style.display = 'none';
-                }, 6500);
                 document.getElementsByClassName("down-arrows")[6].style.display = "none"; 
 
 
@@ -941,11 +936,6 @@ const conceptScreenHandle = (definitionNum, target) => {
                     allPanels[i].style.display = 'none';
                 }
                 allPanels[45].style.display = 'block';
-                
-                setTimeout(() => { 
-                    allPanels[37].style.display = 'block';
-                    allPanels[45].style.display = 'none';
-                }, 6500);
                 document.getElementsByClassName("down-arrows")[6].style.display = "none"; 
                 document.body.scrollTop = 0; // For Safari
                 document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
