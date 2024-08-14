@@ -746,6 +746,7 @@ const conceptScreenHandle = (definitionNum, target) => {
 
                 document.body.scrollTop = 0; // For Safari
                 document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+                document.getElementsByClassName("down-arrows")[6].style.display = "block"; 
                 
                 if (!(clickedConcept.classList.contains('visited-concept'))) {
                     completeConcept++;
@@ -804,8 +805,14 @@ const conceptScreenHandle = (definitionNum, target) => {
                     allPanels[i].style.display = 'none';
                 }
 
-                allPanels[38].style.display = 'block';
                 allPanels[39].style.display = 'block';
+
+                setTimeout(() => { 
+                    allPanels[38].style.display = 'block';
+                    allPanels[39].style.display = 'none';
+                }, 6500);
+                document.getElementsByClassName("down-arrows")[6].style.display = "none"; 
+
 
                 document.body.scrollTop = 0; // For Safari
                 document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
@@ -828,7 +835,6 @@ const conceptScreenHandle = (definitionNum, target) => {
                 endConceptButton[i].style.display = 'block';
             }
         }
-
         switch (definitionNum) {
             case -2:
                 break;
@@ -919,8 +925,13 @@ const conceptScreenHandle = (definitionNum, target) => {
                 for (let i = 0; i < allPanels.length; i++) {
                     allPanels[i].style.display = 'none';
                 }
-                allPanels[37].style.display = 'block';
                 allPanels[45].style.display = 'block';
+                
+                setTimeout(() => { 
+                    allPanels[37].style.display = 'block';
+                    allPanels[45].style.display = 'none';
+                }, 6500);
+                document.getElementsByClassName("down-arrows")[6].style.display = "none"; 
                 document.body.scrollTop = 0; // For Safari
                 document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
                 if (!(clickedConcept.classList.contains('visited-concept'))) {
@@ -940,7 +951,6 @@ const conceptScreenHandle = (definitionNum, target) => {
                     allPanels[i].style.display = 'none';
                 }
                 allPanels[38].style.display = 'block';  
-                allPanels[39].style.display = 'block';  
                 allPanels[39].style.display = 'block';  
                 if (!addingHapakImg) {
                     document.getElementsByClassName("character-body")[7].style.display = "none"
@@ -1027,7 +1037,6 @@ const conceptScreenHandle = (definitionNum, target) => {
 
             default:
                 break;
-
             }
     }
        
