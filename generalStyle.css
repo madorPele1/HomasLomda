@@ -236,6 +236,7 @@ section {
     height: 17%;
     bottom: 25%;
     right: 48%;
+    display: none;
 }
 
 .stop-pick:nth-child(3) {
@@ -243,6 +244,7 @@ section {
     height: 13%;
     bottom: 50%;
     right: 12%;
+    display: none;
 }
 
 .stop-pick:nth-child(4) {
@@ -250,6 +252,7 @@ section {
     height: 11%;
     bottom: 62%;
     right: 47%;
+    display: none;
 }
 
 .stop-pick:nth-child(5) {
@@ -257,6 +260,7 @@ section {
     height: 13%;
     bottom: 82%;
     right: 42%;
+    display: none;
 }
 
 /* questions */
@@ -1860,3 +1864,21 @@ section {
     z-index: 4; 
 }
 
+.position-center {
+    position: absolute;
+    right: 10vw;
+}
+
+.position-center-div {
+    position: absolute;
+    right: 3.5vw;
+    z-index: 2;
+}
+
+.explaine-text {
+    position: relative;
+    margin: auto;
+    font-size: 2.3vh;
+    max-width: 80vw;
+    padding: 10px;
+}
