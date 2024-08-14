@@ -1446,6 +1446,7 @@ section {
     top: 0vh;
     transform: rotate(30deg);
     opacity: 0;
+    animation: missile-animation 2s forwards;
 }
 
 .man-coughing {
@@ -1454,6 +1455,8 @@ section {
     top: 53vh;
     left: 25%;
     opacity: 0;
+    animation: man-coughing-animation 2s forwards;
+    animation-delay: 4s;
 }
 
 .bomb {
@@ -1463,6 +1466,8 @@ section {
     top: 40vh;
     z-index: 2;
     opacity: 0;
+    animation: bomb-animation 1.5s forwards;
+    animation-delay: 1.5s;
 }
 
 .smoke {
@@ -1471,6 +1476,9 @@ section {
     top: 30vh;
     right: 10%;
     opacity: 0;
+    animation: smoke-animation 1.5s forwards;
+    animation-delay: 3s;
+
 }
 
 @keyframes missile-animation {
@@ -1535,7 +1543,7 @@ section {
     }
     100% {
         transform: rotate(0deg); 
-        opacity: 1; 
+        opacity: 0; 
     }
 }
 
@@ -1573,27 +1581,6 @@ section {
         opacity: 0;
         width: 45vw;
         top: 40vh;
-    }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-    @supports (animation-timeline: scroll()) {
-        .missile {
-            animation: missile-animation 2.5s;
-            animation-timeline: view(55vh 0vh); 
-        }
-        .man-coughing {
-            animation: man-coughing-animation 2.5s forwards;
-            animation-timeline: view(10vh 80vh);
-        }
-        .bomb {
-            animation: bomb-animation .5s;
-            animation-timeline: view(70vh 20vh);
-        }
-        .smoke {
-            animation: smoke-animation 1.5s;
-            animation-timeline: view(0vh 60vh);
-        }
     }
 }
 
@@ -1856,16 +1843,6 @@ section {
 
 .profile-img, .contact-details {
     pointer-events: none;
-}
-
-.behind-footer {
-    background-color: #8f8b88;
-    display: flex;
-    align-items: center;
-    padding: 6vh;
-    position: sticky;
-    top: 90vh;
-    z-index: 1;
 }
 
 /* loader */
