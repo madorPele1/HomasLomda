@@ -372,10 +372,6 @@ const addContent = () => { // function that completes all the non-text content i
         document.getElementsByClassName("character-body")[i].src = `assets/general/characters/allCharacters/${role}.svg`;
     }
 
-    if (unit == 1) { // change specific details
-        document.getElementsByClassName("character-body")[7].style.display = "none"
-        document.getElementsByClassName("character-body")[8].style.display = "none"
-    }
     if (unit == 4) { // change specific details
         document.getElementsByClassName("character-body")[2].style.width = "50vw"
         document.getElementsByClassName("character-body")[4].style.width = "50vw"
@@ -456,10 +452,24 @@ const addText = async () => {
         answersText[1].style.fontSize = "calc(10px + 0.4svh)";
         answersText[2].style.fontSize = "calc(10px + 0.4svh)";
         answersText[3].style.fontSize = "calc(10px + 0.4svh)";
+
+        let arrows = document.getElementsByClassName("down-arrows");          
+        for (let lindex = 0; lindex < arrows.length; lindex++) {
+            arrows[lindex].style.display = "none";              
+        }
     }
 
-    if (unit == 3) { // change specific answers details
+    if (unit == 3 && role == 'commander') { // change specific answers details
+        document.getElementsByTagName('section')[34].style.display = "none";
         answersText[14].style.fontSize = "calc(9px + 0.4svh)";
+    }
+
+    if (unit == 4) { 
+        document.getElementsByTagName('section')[40].style.display = "none";
+        let arrows = document.getElementsByClassName("down-arrows"); 
+        arrows[9].style.display = "none";
+        arrows[10].style.display = "none";
+        arrows[11].style.display = "none";
     }
 
     var explainingTitle = document.querySelectorAll('.unit-screens .explaining-title'); 
@@ -710,7 +720,6 @@ const conceptScreenHandle = (definitionNum, target) => {
                 document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
                 allPanels[40].style.display = 'block';
                 allPanels[41].style.display = 'block';
-                allPanels[42].style.display = 'block';
             break;
 
             case 0:
@@ -775,7 +784,7 @@ const conceptScreenHandle = (definitionNum, target) => {
                     allPanels[i].style.display = 'none';
                 }
                 allPanels[37].style.display = 'block';
-
+                document.getElementsByClassName("down-arrows")[5].style.display = "none";  
                 document.body.scrollTop = 0; // For Safari
                 document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
 
@@ -832,7 +841,6 @@ const conceptScreenHandle = (definitionNum, target) => {
                 document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
                 allPanels[46].style.display = 'block';
                 allPanels[47].style.display = 'block';
-                allPanels[48].style.display = 'block';
             break;
 
             case 0:
@@ -892,6 +900,7 @@ const conceptScreenHandle = (definitionNum, target) => {
                     allPanels[i].style.display = 'none';
                 }
                 allPanels[36].style.display = 'block';
+                document.getElementsByClassName("down-arrows")[5].style.display = "none";  
                 document.body.scrollTop = 0; // For Safari
                 document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
                 if (!(clickedConcept.classList.contains('visited-concept'))) {
@@ -934,6 +943,8 @@ const conceptScreenHandle = (definitionNum, target) => {
                 allPanels[39].style.display = 'block';  
                 allPanels[39].style.display = 'block';  
                 if (!addingHapakImg) {
+                    document.getElementsByClassName("character-body")[7].style.display = "none"
+                    document.getElementsByClassName("down-arrows")[8].style.display = "none";  
                     allPanels[39].innerHTML += `<img src="assets/units/unit1/hapak.svg" alt="hapak" style="display: block; position: relative;bottom: 24%;border-radius: 6vh;background-color: white;">`
                     addingHapakImg = true;
                 }
@@ -958,6 +969,8 @@ const conceptScreenHandle = (definitionNum, target) => {
                 }
                 allPanels[40].style.display = 'block';  
                 if (!addingHomasImg) {
+                    document.getElementsByClassName("character-body")[8].style.display = "none"
+                    document.getElementsByClassName("down-arrows")[9].style.display = "none"; 
                     allPanels[40].innerHTML += `<img src="assets/units/unit1/mithamHomas.png" alt="mitham-homas" style="display: block; width: 99%; position: relative;bottom: 24%;border-radius: 6vh;">`
                     addingHomasImg = true;
                 }
@@ -981,6 +994,8 @@ const conceptScreenHandle = (definitionNum, target) => {
                 }
                 allPanels[43].style.display = 'block'; 
                 allPanels[44].style.display = 'block'; 
+                document.getElementsByClassName("character-body")[8].style.display = "none"
+                document.getElementsByClassName("down-arrows")[12].style.display = "none"; 
                 document.body.scrollTop = 0; // For Safari
                 document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
                 if (!(clickedConcept.classList.contains('visited-concept'))) {
@@ -1000,6 +1015,8 @@ const conceptScreenHandle = (definitionNum, target) => {
                     allPanels[i].style.display = 'none';
                 }
                 allPanels[41].style.display = 'block'; 
+                document.getElementsByClassName("down-arrows")[10].style.display = "none"; 
+                document.getElementsByClassName("character-body")[9].style.width = "45svw"; 
                 document.body.scrollTop = 0; // For Safari
                 document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
                 if (!(clickedConcept.classList.contains('visited-concept'))) {
@@ -1225,6 +1242,26 @@ const questionAnswer = async (answer, clickedAnswer) => {
             feedbackScreen[index].innerHTML = data[key][questionNumber]["feedback"];
         }
     }
+    
+    let allPanels = document.getElementsByTagName('section');
+    if (unit == 1 && role == 'commander') {
+        allPanels[48].style.display = "block";
+
+    } else if (unit == 1 && role == 'soldier') {
+        allPanels[42].style.display = 'block';
+
+    } else if (unit == 2 && role == 'commander') {
+        allPanels[39].style.display = "block";
+
+    } else if (unit == 2 && role == 'soldier') {
+        allPanels[36].style.display = "block";
+        
+    } else if (unit == 3 && role == 'commander') {
+        document.getElementsByTagName('section')[34].style.display = "block";
+
+    } else if (unit == 4) {
+        document.getElementsByTagName('section')[40].style.display = "block";
+    }
 }
 
 
@@ -1284,10 +1321,10 @@ const whatsappContactsHandle = (contact, target) => {
                 let endScreen;
                 if (role == "commander") {
                     startScreen = 35;
-                    endScreen = 39;
+                    endScreen = 38;
                 } else if (role == "soldier") {
                     startScreen = 35;
-                    endScreen = 36;
+                    endScreen = 35;
                 }
                 for (startScreen; startScreen <= endScreen ; startScreen++) {
                     isWhatsappVisited = true;

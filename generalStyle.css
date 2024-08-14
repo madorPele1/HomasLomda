@@ -191,6 +191,18 @@ section {
     }
 }
 
+@keyframes up-down {
+    0% {
+        top: 52vh;
+    }
+    50% {
+        top: 50vh;
+    }
+    100% {
+        top: 52vh;
+    }
+}
+
 /* roadMap */
 
 #map {
@@ -500,13 +512,15 @@ section {
     top: 2%;
     right: 5%;
     z-index: 6;
+    padding: 10px;
 }
+
 .explaine-map {
     text-align: center;
     padding: 4%;
     width: 90vw;
     background-color: rgba(246, 251, 255, 0.854);
-    border-radius: 10%;
+    border-radius: 5vh;
     position: absolute;
     bottom: 12%;
     left: 5%;
@@ -1307,8 +1321,7 @@ section {
     #rubber-gloves { left: 49%; }
 }
 
-
-/* drag-and-drop */
+/* drag and drop */
 .dragging-explanation-div {
     height: 82svh;
     background: #fbf7eda3;
@@ -1324,10 +1337,10 @@ section {
 .character-body-container {
     position: relative;
     display: flex;
+    flex-direction: column;
     bottom: 47svh;
     right: 11svw;
     width: 34svw;
-    flex-direction: column;
 }
 
 .character-body-part {
@@ -1349,39 +1362,10 @@ section {
     border-radius: 10vw;
 }
 
-@media screen and (min-width: 390px) {
-    .draggable-elements-container {
-        bottom: 78svh;
-    }
-}  
-
-@media screen and (min-width: 350px) and (max-height: 790px) {
-    .draggable-elements-container {
-        bottom: 87svh;
-    }
-}  
-
 .dragging-character-body {
     position: relative;
     width: 23svw;
 }
-
-
-@media screen and (max-width: 500px) and (max-height: 950px) {
-    .character-body-part {
-        margin-bottom: -52px;
-    }
-    
-}  
-
-@media screen and (min-width: 450px) and (max-height: 1000px) {
-    .draggable-elements-container {
-        bottom: 81svh;
-    }
-    .character-body-part {
-        margin-bottom: -62px;
-    }
-}  
 
 .num {
     background: white;
@@ -1405,6 +1389,49 @@ section {
     text-align: center;
     display: none;
     font-weight: bold;
+}
+
+/* Media Queries */
+@media screen and (max-width: 400px) {
+    .character-body-part {
+        margin-bottom: -40px;
+    }
+
+    .draggable-elements-container {
+        bottom: 87svh;
+        right: 20svw;
+        width: 70svw; 
+    }
+
+    .dragging-character-body {
+        width: 25svw; 
+    }
+}
+
+@media screen and (min-width: 401px) and (max-height: 900px) {
+    .character-body-part {
+        margin-bottom: -52px;
+    }
+
+    .draggable-elements-container {
+        bottom: 81svh;
+    }
+}
+
+@media screen and (min-width: 421px) and (max-height: 1000px) {
+    .character-body-part {
+        margin-bottom: -63px;
+    }
+
+    .draggable-elements-container {
+        bottom: 81svh;
+    }
+}
+
+@media screen and (min-width: 501px) and (max-height: 950px) {
+    .character-body-part {
+        margin-bottom: -52px;
+    }
 }
 
 /* missile-animation */
@@ -1776,7 +1803,7 @@ section {
     min-width: 17svw;
     background-color: rgba(255, 255, 255, 0.856);
     border-radius: 20px;
-    padding: 8px;
+    padding: 10px;
     text-align: center;
     box-shadow: #949393 10px 8px 11px;
     font-size: 1.8svh;
