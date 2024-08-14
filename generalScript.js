@@ -187,10 +187,7 @@ window.addEventListener("load", () => { // Initializing the lomda
     whatsappContactsHandle();
 
     // Hide the loader
-    const loader = document.getElementById("loader");
-    if (loader) {
-        loader.style.display = "none";
-    }
+
 })
 
 
@@ -210,6 +207,11 @@ const iOS = () => {
 const displayScreens = (screenArrayName) => { 
     if (role == undefined) {
         alert("יש להתחבר לעמוד הראשי של הלומדה: \n https://madorpele1.github.io/HomasLomda/");
+    }
+
+    const loader = document.getElementById("loader");
+    if (loader) {
+        loader.style.display = "none";
     }
     
     document.querySelectorAll('.unit-screens').forEach(screen => screen.remove()); // removes the previous screens
@@ -233,9 +235,14 @@ const displayScreens = (screenArrayName) => {
     removeEventListeners(); // Remove previous event listeners
     addEventListeners(); // Add new event listeners
     addContent();
-
-    let numOfQuestions = numOfQuestionsFor[role];
-    score = (updatedScore / (numOfQuestions * 10)) * 100;
+    if (unit == 1) {
+        conceptScreenHandle();
+    }
+    if (unit == 5) {  
+        let numOfQuestions = numOfQuestionsFor[role];
+        updatedScore = sessionStorage.getItem("updated-score");
+        score = (updatedScore / (numOfQuestions * 10)) * 100;
+    }
 }
 
 
@@ -460,11 +467,17 @@ const addText = async () => {
     }
 
     if (unit == 3 && role == 'commander') { // change specific answers details
+        document.getElementsByTagName('section')[31].style.display = "none";
+        document.getElementsByTagName('section')[32].style.display = "none";
+        document.getElementsByTagName('section')[33].style.display = "none";
         document.getElementsByTagName('section')[34].style.display = "none";
         answersText[14].style.fontSize = "calc(9px + 0.4svh)";
     }
 
     if (unit == 4) { 
+        document.getElementsByTagName('section')[37].style.display = "none";
+        document.getElementsByTagName('section')[38].style.display = "none";
+        document.getElementsByTagName('section')[39].style.display = "none";
         document.getElementsByTagName('section')[40].style.display = "none";
         let arrows = document.getElementsByClassName("down-arrows"); 
         arrows[9].style.display = "none";
@@ -595,7 +608,7 @@ const animate = (stopNum) => {
                 `<button id="start-over-btn" class="btn" style="bottom: 6vh;">נסו שנית</button>`;
                 document.getElementById("start-over-btn").addEventListener("click", startOver);
             } else {
-                document.getElementsByClassName("score")[1].innerHTML = `כל הכבוד! ${score} ציונכם הוא:`;
+                document.getElementsByClassName("score")[1].innerHTML = ` ציונכם הוא: ${score} <br> כל הכבוד! `;
             }
         }
 }
@@ -805,6 +818,7 @@ const conceptScreenHandle = (definitionNum, target) => {
                     allPanels[i].style.display = 'none';
                 }
 
+                allPanels[38].style.display = 'block';
                 allPanels[39].style.display = 'block';
 
                 setTimeout(() => { 
@@ -835,6 +849,7 @@ const conceptScreenHandle = (definitionNum, target) => {
                 endConceptButton[i].style.display = 'block';
             }
         }
+
         switch (definitionNum) {
             case -2:
                 break;
@@ -952,6 +967,7 @@ const conceptScreenHandle = (definitionNum, target) => {
                 }
                 allPanels[38].style.display = 'block';  
                 allPanels[39].style.display = 'block';  
+                allPanels[39].style.display = 'block';  
                 if (!addingHapakImg) {
                     document.getElementsByClassName("character-body")[7].style.display = "none"
                     document.getElementsByClassName("down-arrows")[8].style.display = "none";  
@@ -982,6 +998,7 @@ const conceptScreenHandle = (definitionNum, target) => {
                     document.getElementsByClassName("character-body")[8].style.display = "none"
                     document.getElementsByClassName("down-arrows")[9].style.display = "none"; 
                     allPanels[40].innerHTML += `<img src="assets/units/unit1/mithamHomas.png" alt="mitham-homas" style="display: block; width: 99%; position: relative;bottom: 24%;border-radius: 6vh;">`
+                    allPanels[40].innerHTML += `<div style="background-color: rgb(230 234 241);font-weight: bold; position: relative;padding: 10px;bottom: 55%;border-radius: 10vh;width: 60vw;margin: auto;">מתחם בז"ן</div>`
                     addingHomasImg = true;
                 }
                 document.body.scrollTop = 0; // For Safari
@@ -1004,7 +1021,7 @@ const conceptScreenHandle = (definitionNum, target) => {
                 }
                 allPanels[43].style.display = 'block'; 
                 allPanels[44].style.display = 'block'; 
-                document.getElementsByClassName("character-body")[8].style.display = "none"
+                document.getElementsByClassName("character-body")[10].style.width = "50vw"
                 document.getElementsByClassName("down-arrows")[12].style.display = "none"; 
                 document.body.scrollTop = 0; // For Safari
                 document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
@@ -1037,6 +1054,7 @@ const conceptScreenHandle = (definitionNum, target) => {
 
             default:
                 break;
+
             }
     }
        
@@ -1160,7 +1178,8 @@ const setupDragAndDrop = () => {
             const successMessage = document.getElementsByClassName("success-message")[1]; 
             successMessage.style.display = "block";
             resetDraggingBtn.style.display = "none";
-            updatedScore = updatedScore  + 10;
+            updatedScore = updatedScore + 10;
+            sessionStorage.setItem("updated-score", updatedScore);
         }
         else {
             const failureMessage = document.getElementsByClassName("failure-message")[1];
@@ -1234,6 +1253,7 @@ const questionAnswer = async (answer, clickedAnswer) => {
     if (answer == correctAnswer) {
         clickedAnswer.style.backgroundColor = "rgb(218, 248, 210)";
         updatedScore += 10;
+        sessionStorage.setItem("updated-score", updatedScore);
     } else {
         clickedAnswer.style.backgroundColor = "rgb(255, 219, 219)";
     }
@@ -1260,15 +1280,30 @@ const questionAnswer = async (answer, clickedAnswer) => {
         allPanels[42].style.display = 'block';
 
     } else if (unit == 2 && role == 'commander') {
-        allPanels[39].style.display = "block";
+        allPanels[38].style.display = "block";
+        if (sessionStorage.getItem("answered-q2-2")) {
+            document.getElementsByTagName('section')[39].style.display = "block";
+        }
 
     } else if (unit == 2 && role == 'soldier') {
         allPanels[36].style.display = "block";
         
     } else if (unit == 3 && role == 'commander') {
-        document.getElementsByTagName('section')[34].style.display = "block";
+        document.getElementsByTagName('section')[31].style.display = "block";
+        if (sessionStorage.getItem("answered-q2-3")) {
+            document.getElementsByTagName('section')[32].style.display = "block";
+            if (sessionStorage.getItem("answered-q3-3")) {
+                document.getElementsByTagName('section')[33].style.display = "block";
+                if (sessionStorage.getItem("answered-q4-3")) {
+                    document.getElementsByTagName('section')[34].style.display = "block";
+                }
+            }
+        }
 
     } else if (unit == 4) {
+        document.getElementsByTagName('section')[37].style.display = "block";
+        document.getElementsByTagName('section')[38].style.display = "block";
+        document.getElementsByTagName('section')[39].style.display = "block";
         document.getElementsByTagName('section')[40].style.display = "block";
     }
 }
@@ -1330,7 +1365,7 @@ const whatsappContactsHandle = (contact, target) => {
                 let endScreen;
                 if (role == "commander") {
                     startScreen = 35;
-                    endScreen = 38;
+                    endScreen = 37;
                 } else if (role == "soldier") {
                     startScreen = 35;
                     endScreen = 35;
