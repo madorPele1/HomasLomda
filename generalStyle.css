@@ -982,7 +982,7 @@ section {
     display: flex;
     flex-direction: column;
     position: relative;
-    bottom: 14vh;
+    bottom: 4vh;
 }
 
 .hapak-contact {
@@ -1399,7 +1399,7 @@ section {
 /* Media Queries */
 @media screen and (max-width: 400px) {
     .character-body-part {
-        margin-bottom: -40px;
+        margin-bottom: -38px;
     }
 
     .draggable-elements-container {
@@ -1415,7 +1415,7 @@ section {
 
 @media screen and (min-width: 401px) and (max-height: 900px) {
     .character-body-part {
-        margin-bottom: -52px;
+        margin-bottom: -49px;
     }
 
     .draggable-elements-container {
@@ -1425,7 +1425,7 @@ section {
 
 @media screen and (min-width: 421px) and (max-height: 1000px) {
     .character-body-part {
-        margin-bottom: -63px;
+        margin-bottom: -60px;
     }
 
     .draggable-elements-container {
@@ -1435,7 +1435,7 @@ section {
 
 @media screen and (min-width: 501px) and (max-height: 950px) {
     .character-body-part {
-        margin-bottom: -52px;
+        margin-bottom: -50px;
     }
 }
 

@@ -387,7 +387,7 @@ const addContent = () => { // function that completes all the non-text content i
         document.getElementsByClassName("character-body")[6].style.left = "58%"
         
         const titleToRemove = document.getElementsByClassName("title-background-general")
-        for (let index = 1; index <= 6; index++) {
+        for (let index = 1; index <= 7; index++) {
             titleToRemove[index].style.display = "none";
         }
 
