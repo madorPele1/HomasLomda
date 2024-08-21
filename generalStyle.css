@@ -1992,7 +1992,6 @@ section {
     bottom: 17px;
     right: 10px;
 }
-
 /* table unit 5 */
 
 .table-wrap {
@@ -2025,7 +2024,9 @@ section {
 }
 
 .fixed-side {
-    position: fixed;
+    position: sticky;
+    position: absolute;
+    left: 71%;
     font-size: 1.5vmax;
     width: 25vw;
     height: 6.5vh;
@@ -2034,7 +2035,7 @@ section {
 }
 
 .middle {
-    height: 10vh;
+    height: 17vh;
     padding-top: 7vh;
 
 }
@@ -2053,12 +2054,13 @@ section {
 
 .top {
     border-top-right-radius: 2vw;
-    background-color: rgba(177, 222, 252, 1) ;
+    background-color: rgba(177, 222, 252, 1);
+    height: 7vh;
 }
 
 .bottom {
     border-bottom-right-radius: 2vw;
-    height: 10vh;
+    height: 17vh;
     padding-top: 7vh;
     background-color: rgba(187, 176, 217, 1);
 }
@@ -2068,14 +2070,14 @@ section {
     width: 65vw;
     height: 17vh;
     scroll-snap-align: center;
-    padding-right: 25vw;
+    padding-right: 20vw;
     word-wrap: break-word;
     border:1px solid #d6eaf3;
-
+    background-color: rgb(248, 248, 255);
 }
 
-.head {
-    width: 65vw;
+.head-table {
+    width: 90vw;
     font-size: 1.5vmax;
     padding-right: 25vw;
 }
