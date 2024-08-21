@@ -609,7 +609,7 @@ const animate = (stopNum) => {
     else if (unit === '2') {
         whatsappContactsHandle();
     } else if (unit === '5') {
-        document.getElementsByClassName("title-background-general")[3].style.display = "none";
+        document.getElementsByClassName("title-background-general")[2].style.display = "none";
         let allPanels = document.getElementsByTagName('section');
          allPanels[30].innerHTML = `<div id="table-scroll" class="table-scroll">
             <div class="table-wrap" id="table-wrap">
