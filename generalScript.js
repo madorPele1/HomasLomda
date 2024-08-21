@@ -611,15 +611,15 @@ const animate = (stopNum) => {
     } else if (unit === '5') {
         document.getElementsByClassName("title-background-general")[3].style.display = "none";
         let allPanels = document.getElementsByTagName('section');
-        allPanels[30].innerHTML = `<div id="table-scroll" class="table-scroll">
+         allPanels[30].innerHTML = `<div id="table-scroll" class="table-scroll">
             <div class="table-wrap" id="table-wrap">
               <table class="main-table">
                   <tr class="little">
                     <td class="fixed-side top"><p id="dot-slider" class="dot-slider"><span class="selected-dot">●</span>●●●</p></td>
-                    <td class="head">מ-פ' עד "פ+10"</td>
-                    <td class="head">מ-"פ+10" עד "פ+30"</td>
-                    <td class="head">מ-"פ+30" עד "פ+60"</td>
-                    <td class="head">מ-"פ+60" עד תום האירוע</td>
+                    <td class="head-table">מ-פ' עד "פ+10"</td>
+                    <td class="head-table">מ-"פ+10" עד "פ+30"</td>
+                    <td class="head-table">מ-"פ+30" עד "פ+60"</td>
+                    <td class="head-table">מ-"פ+60" עד תום האירוע</td>
                   </tr>
                   <tr>
                     <td class="fixed-side middle one">פעילות בשטח</td>
@@ -631,12 +631,12 @@ const animate = (stopNum) => {
                   <tr>
                     <td class="fixed-side middle two">פעילות במפקדה</td>
                     <td class="reg">חיתוך מצב <br> שלילה או הכרזה על אירוע חומ"ס</td>
-                    <td class="reg">הפצת הנחיות מצילות חיים <br>והודעות משלימות ניתוח אזורי סיכון ותכנון מענה</td>
+                    <td class="reg">הפצת הנחיות מצילות חיים <br>והודעות משלימות ניתוח אזורי סיכון<br> ותכנון מענה</td>
                     <td class="reg">עדכון הנחיות בהתאם להע"ס דינאמית <br> תמיכה לוגיסטית בכוחות בשטח</td>
                     <td class="reg">שחרור האוכלוסייה <br> וידוא חזל"כ לכוחות</td>
                   </tr>
                   <tr>
-                    <td class="fixed-side middle three">התנהגות אוכלוסייה</td>
+                    <td class="fixed-side middle three">התנהגות<p>אוכלוסייה</p></td>
                     <td class="reg">התמגנות למשך 10 דקות</td>
                     <td class="reg">פעילות עפ"י ההנחיות <br> (הסתגרות, התפנות ועוד)</td>
                     <td class="reg">המשך פעילות עפ"י ההנחיות</td>
@@ -644,14 +644,14 @@ const animate = (stopNum) => {
                   </tr>
                   <tr>
                     <td class="fixed-side bottom">תפקידי הגדוד</td>
-                    <td class="reg">קבלת התרעה על חשש לאירוע חומ"ס בגזרת הגדוד</td>
-                    <td class="reg">הגעה לאירוע והקמת חפ"ק אחוד, ניהול האירוע,<br> העברת מידע לרמה הממונה באופן שוטף</td>
-                    <td class="reg">בהתאם להערכת מצב - ביצוע סריקות לפינוי נפגעים בשטח <br>תחת סיכון מתן טיפול ראשוני תומך בשטח <br>עד לפינוי הנפגעים</td>
-                    <td class="reg">המשך ניהול האירוע עד להכרזה על תום האירוע</td>
+                    <td class="reg">קבלת התרעה על חשש לאירוע חומ"ס <br> בגזרת הגדוד</td>
+                    <td class="reg">הגעה לאירוע והקמת חפ"ק אחוד, <br>ניהול האירוע, העברת מידע<br> לרמה הממונה באופן שוטף</td>
+                    <td class="reg">בהתאם להערכת מצב - ביצוע סריקות<br> לפינוי נפגעים בשטח תחת סיכון מתן <br> טיפול ראשוני תומך בשטח <br>עד לפינוי הנפגעים</td>
+                    <td class="reg">המשך ניהול האירוע <br>עד להכרזה על תום האירוע</td>
                   </tr>
               </table>
             </div>
-          </div>`
+          </div>`;
 
             document.getElementById("table-wrap").addEventListener("scroll", scrolling);
             dotSlider = document.getElementById("dot-slider");
