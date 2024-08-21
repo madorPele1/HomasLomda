@@ -1882,3 +1882,218 @@ section {
     max-width: 80vw;
     padding: 10px;
 }
+
+/* handling event stages */
+.stages-main-title {
+    background-color: #f0e4ff;
+    text-align: center;
+    padding: 3vh;
+    border-radius: 9vh;
+    font-size: 4vh;
+    font-weight: bold;
+    width: 90%;
+    margin: auto;
+    position: relative;
+    top: 2vh;
+}
+
+.road-stages {
+    background-image: url(assets/units/unit5/remezRoad.svg);
+    width: 100vw;
+    height: 80vh;
+    background-repeat: no-repeat;
+    background-position-y: -38px;
+    display: flex;
+    flex-direction: column;
+}
+
+.explain-stages {
+    background-color: #f0e4ff;
+    text-align: center;
+    padding: 3vh;
+    border-radius: 6vh;
+    font-size: 2.5vh;
+    font-weight: bold;
+    width: 95%;
+    margin: auto;
+    position: relative;
+    bottom: 11vh;
+}
+
+.cloud-stages {
+    width: 41vw;
+    position: relative;
+    top: 2vh;
+}
+
+
+@keyframes growing-cloud1 {
+    0% {
+        transform: scale(1) translate(0, 0);
+    }
+    100% {
+        transform: scale(2) translate(-15vw, -7vh);
+    }
+}
+@keyframes growing-cloud2 {
+    0% {
+        transform: scale(1) translate(0, 0);
+    }
+    100% {
+        transform: scale(2) translate(14vw, -13vh)
+    }
+}
+@keyframes growing-cloud3 {
+    0% {
+        transform: scale(1) translate(0, 0);
+    }
+    100% {
+        transform: scale(2) translate(-15vw, -20vh)
+    }
+}
+@keyframes growing-cloud4 {
+    0% {
+        transform: scale(1) translate(0, 0);
+    }
+    100% {
+        transform: scale(2) translate(15vw, -26vh)
+    }
+}
+@keyframes growing-cloud5 {
+    0% {
+        transform: scale(1) translate(0, 0);
+    }
+    100% {
+        transform: scale(2) translate(-14vw, -34vh);
+    }
+}
+
+.stage-img {
+    width: 51vw;
+    position: absolute;
+    top: 43vh;
+    left: 2vw;
+}
+
+.stage-div {
+    margin: auto;
+    text-align: center;
+    position: relative;
+    top: 29vh;
+    font-size: 1.5rem;
+    line-height: 56px;
+    font-weight: bold;
+    display: none;
+}
+
+.display-map-btn {
+    margin: auto;
+    position: absolute;
+    bottom: 17px;
+    right: 10px;
+}
+
+/* table unit 5 */
+
+.table-wrap {
+	width:90vw;
+    height: 76.5vh;
+	overflow:auto;
+    scroll-snap-type: x mandatory;
+  /* margin: 30px auto; */
+  /* white-space: nowrap; */
+  aspect-ratio: 1/1;
+  overflow-x: scroll;
+  border-radius: 2vw;
+
+  /* overflow-y: scroll; */
+}
+
+.table-scroll td {
+	white-space:nowrap;
+}
+
+.main-table {
+    width: 90vw;
+    height: max-content;
+    border-collapse: collapse;
+    table-layout: fixed;
+    border-radius: 10vw;
+    text-align: center;
+    word-wrap: break-word;
+
+}
+
+.fixed-side {
+    position: fixed;
+    font-size: 1.5vmax;
+    width: 25vw;
+    height: 6.5vh;
+    border-bottom:3px solid #274b5d39;
+    box-shadow: -4px 0 3px rgba(183, 200, 213, 0.464);
+}
+
+.middle {
+    height: 10vh;
+    padding-top: 7vh;
+
+}
+
+.one {
+    background-color: rgba(177, 222, 252, 1) ;
+}
+
+.two {
+    background: linear-gradient(180deg, rgba(177, 222, 252, 1) 10%, rgb(194, 200, 235) 150%); 
+}
+
+.three {
+    background: linear-gradient(0deg, rgba(187, 176, 217, 1) 10%, rgba(177, 222, 252, 1) 150%);
+}
+
+.top {
+    border-top-right-radius: 2vw;
+    background-color: rgba(177, 222, 252, 1) ;
+}
+
+.bottom {
+    border-bottom-right-radius: 2vw;
+    height: 10vh;
+    padding-top: 7vh;
+    background-color: rgba(187, 176, 217, 1);
+}
+
+.reg {
+    font-size: 1.5vmax;
+    width: 65vw;
+    height: 17vh;
+    scroll-snap-align: center;
+    padding-right: 25vw;
+    word-wrap: break-word;
+    border:1px solid #d6eaf3;
+
+}
+
+.head {
+    width: 65vw;
+    font-size: 1.5vmax;
+    padding-right: 25vw;
+}
+
+tr {
+    height: 17vh;
+}
+
+.little {
+    height: 7vh;
+    background: linear-gradient(90deg, rgba(187, 176, 217, 1) 0%, rgba(177, 222, 252, 1) 100%);
+}
+
+.selected-dot {
+    color: blue;
+}
+
+.dot-slider {
+    color: rgb(248, 248, 255);
+    font-size: 2vmax;
+}

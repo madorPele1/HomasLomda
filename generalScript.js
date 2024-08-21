@@ -30,6 +30,8 @@ var rhombuse1Pic = 'flammableGasesCheck';
 var rhombuse2Pic = 'toxicGasesCheck';
 var rhombuse3Pic = 'explosiveSubstancesCheck';
 
+var scrollPercentage;
+let dotSlider;
 
 var soldierUnit1 = [
     "map", 
@@ -73,8 +75,8 @@ var soldierUnit3 = [
 ];
 
 var soldierUnit4 = [
-    "map",
-    "opening-screen",
+   "map",
+   "opening-screen",
    "explaining-screen",
    "explaining-screen",
    "explaining-screen",
@@ -84,7 +86,6 @@ var soldierUnit4 = [
    "protection-wearing", 
    "drag-drop-game",
    "questions-screen",
-//    "risk-areas-levels",
    "explaining-screen",
    "explaining-screen",
    "explaining-screen",
@@ -92,9 +93,11 @@ var soldierUnit4 = [
 ];
 
 var soldierUnit5 = [
-    "map",
-    "opening-screen",
-    "haremez",
+   "map",
+   "opening-screen",
+   "handling-event-stages",
+   "explaining-screen",
+   "explaining-screen",
    "ending-screen"
 ];
 
@@ -174,8 +177,10 @@ var commanderUnit4 = [
 var commanderUnit5 = [
     "map",
     "opening-screen",
-    "haremez",
-   "ending-screen"
+    "handling-event-stages",
+    "explaining-screen",
+    "explaining-screen",   
+    "ending-screen"
 ];
 
 window.addEventListener("load", () => { // Initializing the lomda
@@ -185,9 +190,6 @@ window.addEventListener("load", () => { // Initializing the lomda
     screenArrayName = `${role}Unit${unit}`;
     displayScreens(screenArrayName);
     whatsappContactsHandle();
-
-    // Hide the loader
-
 })
 
 
@@ -366,6 +368,13 @@ const clickHandler = (event) => {
            case "contact6":
            case "contact7":
             whatsappContactsHandle(parseInt(targetId.replace('contact', '')), target);
+                break;
+           case "cloud1":
+           case "cloud2":
+           case "cloud3":
+           case "cloud4":
+           case "cloud5":
+            stagesRoad(parseInt(targetId.replace('cloud', '')), target);
                 break;
         default:
             break
@@ -600,6 +609,54 @@ const animate = (stopNum) => {
     else if (unit === '2') {
         whatsappContactsHandle();
     } else if (unit === '5') {
+        document.getElementsByClassName("title-background-general")[3].style.display = "none";
+        let allPanels = document.getElementsByTagName('section');
+        allPanels[30].innerHTML = `<div id="table-scroll" class="table-scroll">
+            <div class="table-wrap" id="table-wrap">
+              <table class="main-table">
+                  <tr class="little">
+                    <td class="fixed-side top"><p id="dot-slider" class="dot-slider"><span class="selected-dot">●</span>●●●</p></td>
+                    <td class="head">מ-פ' עד "פ+10"</td>
+                    <td class="head">מ-"פ+10" עד "פ+30"</td>
+                    <td class="head">מ-"פ+30" עד "פ+60"</td>
+                    <td class="head">מ-"פ+60" עד תום האירוע</td>
+                  </tr>
+                  <tr>
+                    <td class="fixed-side middle one">פעילות בשטח</td>
+                    <td class="reg">התרעה ופעולות איתור</td>
+                    <td class="reg">הפעלת מענה משולב והקמת חפ"ק אחוד</td>
+                    <td class="reg">ניטור ועדכון הע"ס דינאמית <br> פעולות להצלת חיים והכלת המוקד</td>
+                    <td class="reg">סיום הטיפול במוקד <br> שלילת הסכנה והכרזה על תום אירוע</td>
+                  </tr>
+                  <tr>
+                    <td class="fixed-side middle two">פעילות במפקדה</td>
+                    <td class="reg">חיתוך מצב <br> שלילה או הכרזה על אירוע חומ"ס</td>
+                    <td class="reg">הפצת הנחיות מצילות חיים <br>והודעות משלימות ניתוח אזורי סיכון ותכנון מענה</td>
+                    <td class="reg">עדכון הנחיות בהתאם להע"ס דינאמית <br> תמיכה לוגיסטית בכוחות בשטח</td>
+                    <td class="reg">שחרור האוכלוסייה <br> וידוא חזל"כ לכוחות</td>
+                  </tr>
+                  <tr>
+                    <td class="fixed-side middle three">התנהגות אוכלוסייה</td>
+                    <td class="reg">התמגנות למשך 10 דקות</td>
+                    <td class="reg">פעילות עפ"י ההנחיות <br> (הסתגרות, התפנות ועוד)</td>
+                    <td class="reg">המשך פעילות עפ"י ההנחיות</td>
+                    <td class="reg">חזרה לשגרה</td>
+                  </tr>
+                  <tr>
+                    <td class="fixed-side bottom">תפקידי הגדוד</td>
+                    <td class="reg">קבלת התרעה על חשש לאירוע חומ"ס בגזרת הגדוד</td>
+                    <td class="reg">הגעה לאירוע והקמת חפ"ק אחוד, ניהול האירוע,<br> העברת מידע לרמה הממונה באופן שוטף</td>
+                    <td class="reg">בהתאם להערכת מצב - ביצוע סריקות לפינוי נפגעים בשטח <br>תחת סיכון מתן טיפול ראשוני תומך בשטח <br>עד לפינוי הנפגעים</td>
+                    <td class="reg">המשך ניהול האירוע עד להכרזה על תום האירוע</td>
+                  </tr>
+              </table>
+            </div>
+          </div>`
+
+            document.getElementById("table-wrap").addEventListener("scroll", scrolling);
+            dotSlider = document.getElementById("dot-slider");
+        
+
             document.getElementsByClassName("end-btn")[1].style.display = "none";
             score = Math.round(score);
     
@@ -1372,6 +1429,33 @@ const whatsappContactsHandle = (contact, target) => {
         })
     }
 }
+}
+
+const stagesRoad = (cloudNumber, targetCloud) => {
+    targetCloud.style.animation = `growing-cloud${cloudNumber} 3s forwards`;
+    targetCloud.style.zIndex = "3";
+    document.getElementsByClassName("stages-explain-div")[1].style.display = "block";
+    document.getElementsByClassName(`stage-div${cloudNumber}`)[1].style.display = "block";
+
+    document.getElementsByClassName("display-map-btn")[1].addEventListener("click", () => { 
+        targetCloud.style.animation = '';
+        targetCloud.style.zIndex = 0;
+        document.getElementsByClassName("stages-explain-div")[1].style.display = "none";
+        document.getElementsByClassName(`stage-div${cloudNumber}`)[1].style.display = "none";
+    });
+}
+
+const scrolling = (event) => {
+    var scrollPercentage = -100 * event.target.scrollLeft / (event.target.scrollWidth-event.target.clientWidth);
+    if ( scrollPercentage > 0 && scrollPercentage < 30 ) {
+        dotSlider.innerHTML = "<span class='selected-dot'>●</span>●●●";
+    } else if ( scrollPercentage > 30 && scrollPercentage < 60 ) {
+        dotSlider.innerHTML = "●<span class='selected-dot'>●</span>●●";
+    } else if ( scrollPercentage > 60 && scrollPercentage < 90 ) {
+        dotSlider.innerHTML = "●●<span class='selected-dot'>●</span>●";
+    } else if ( scrollPercentage > 90 ) {
+        dotSlider.innerHTML = "●●●<span class='selected-dot'>●</span>";
+    }
 }
 
 const startOver = () => {
