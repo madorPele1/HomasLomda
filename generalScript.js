@@ -489,6 +489,8 @@ const addText = async () => {
         document.getElementsByTagName('section')[39].style.display = "none";
         document.getElementsByTagName('section')[40].style.display = "none";
         let arrows = document.getElementsByClassName("down-arrows"); 
+        arrows[3].style.display = "none";
+        arrows[4].style.display = "none";
         arrows[9].style.display = "none";
         arrows[10].style.display = "none";
         arrows[11].style.display = "none";
@@ -508,7 +510,7 @@ const addText = async () => {
                 var clothingExplainingDiv = document.querySelectorAll('.unit-screens .clothing-explaining-div'); 
                 clothingExplainingDiv[6].innerHTML = `<div transition-style="in:wipe:left" class="clothing-explaining suit">חליפה כמוסה</div><div class="clothing-explaining breath">מנ"פ</div><div class="clothing-explaining gloves">כפפות</div><div class="clothing-explaining boots">מגפיים</div>`
                 clothingExplainingDiv[7].innerHTML = `<div transition-style="in:wipe:left" class="clothing-explaining suit">חליפת סרבל</div><div class="clothing-explaining breath">מנפ</div><div class="clothing-explaining gloves">כפפות</div><div class="clothing-explaining boots">מגפיים</div>`
-                clothingExplainingDiv[8].innerHTML = `<div transition-style="in:wipe:left" class="clothing-explaining suit">"מסכה ומסנן/אבן ספיר"</div><div class="clothing-explaining breath">חליפת סרבל</div><div class="clothing-explaining gloves">כפפות</div><div class="clothing-explaining boots">מגפיים</div>`
+                clothingExplainingDiv[8].innerHTML = `<div transition-style="in:wipe:left" class="clothing-explaining suit">מסכה ומסנן/אבן ספיר</div><div class="clothing-explaining breath">חליפת סרבל</div><div class="clothing-explaining gloves">כפפות</div><div class="clothing-explaining boots">מגפיים</div>`
             } 
         } // adds the protection level explanation tags
     }
@@ -531,7 +533,7 @@ const endUnit = () => {
         document.getElementsByClassName("end-btn")[1].style.display = "none";
         score = Math.round(score);
 
-        if (score <= 50) {
+        if (score <= 75) {
             document.getElementsByClassName("score")[1].innerHTML = ` ציונכם הוא: ${score} <br> כדאי לכם לחזור על הלומדה... `;
             document.getElementById("start-over-btn").addEventListener("click", startOver);
         } else {
@@ -644,10 +646,10 @@ const animate = (stopNum) => {
                   </tr>
                   <tr>
                     <td class="fixed-side bottom">תפקידי הגדוד</td>
-                    <td class="reg">קבלת התרעה על חשש לאירוע חומ"ס <br> בגזרת הגדוד</td>
-                    <td class="reg">הגעה לאירוע והקמת חפ"ק אחוד, <br>ניהול האירוע, העברת מידע<br> לרמה הממונה באופן שוטף</td>
-                    <td class="reg">בהתאם להערכת מצב - ביצוע סריקות<br> לפינוי נפגעים בשטח תחת סיכון מתן <br> טיפול ראשוני תומך בשטח <br>עד לפינוי הנפגעים</td>
-                    <td class="reg">המשך ניהול האירוע <br>עד להכרזה על תום האירוע</td>
+                    <td class="reg dif-color-td">קבלת התרעה על חשש לאירוע חומ"ס <br> בגזרת הגדוד</td>
+                    <td class="reg dif-color-td">הגעה לאירוע והקמת חפ"ק אחוד, <br>ניהול האירוע, העברת מידע<br> לרמה הממונה באופן שוטף</td>
+                    <td class="reg dif-color-td">בהתאם להערכת מצב - ביצוע סריקות<br> לפינוי נפגעים בשטח תחת סיכון מתן <br> טיפול ראשוני תומך בשטח <br>עד לפינוי הנפגעים</td>
+                    <td class="reg dif-color-td">המשך ניהול האירוע <br>עד להכרזה על תום האירוע</td>
                   </tr>
               </table>
             </div>
@@ -660,7 +662,7 @@ const animate = (stopNum) => {
             document.getElementsByClassName("end-btn")[1].style.display = "none";
             score = Math.round(score);
     
-            if (score <= 50) {
+            if (score <= 75) {
                 document.getElementsByClassName("score")[1].innerHTML = ` ציונכם הוא: ${score} <br> כדאי לכם לחזור על הלומדה... `;
                 document.getElementsByClassName("ending-div")[1].innerHTML +=
                 `<button id="start-over-btn" class="btn" style="bottom: 6vh;">נסו שנית</button>`;
