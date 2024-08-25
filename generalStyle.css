@@ -679,6 +679,49 @@ section {
     right: 22.5%;
 }
 
+.bomb-pic {
+    width: 30vw;
+    position: relative;
+    top: 20vh;
+    left: 12%;
+    animation: bomb-pic-animate 1.5s forwards;
+}
+
+.smoke-pic {
+    width: 30vw;
+    position: absolute;
+    top: 45vh;
+    left: 35%;
+    animation: smoke-pic-animate 1.5s forwards;
+}
+
+@keyframes bomb-pic-animate {
+    0% {
+        width: 30vw;
+    }
+    50% {
+        width: 40vw;
+        left: 15%;
+    }
+    100% {
+        width: 30vw;
+    }
+}
+
+@keyframes smoke-pic-animate {
+    0% {
+        width: 30vw;
+    }
+    50% {
+        width: 40vw;
+        left: 30%;
+        top: 40vh;
+    }
+    100% {
+        width: 30vw;
+    }
+}
+
 #rhombuse1 {
     filter: drop-shadow(0px 0px 5px rgb(244, 30, 30));
 }
