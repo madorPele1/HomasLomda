@@ -85,10 +85,10 @@ var soldierUnit4 = [
    "explaining-screen",
    "protection-wearing", 
    "drag-drop-game",
+   "explaining-screen",
+   "explaining-screen",
+   "explaining-screen",
    "questions-screen",
-   "explaining-screen",
-   "explaining-screen",
-   "explaining-screen",
    "ending-screen"
 ];
 
@@ -167,10 +167,10 @@ var commanderUnit4 = [
     "explaining-screen",
     "protection-wearing",
    "drag-drop-game",
+   "explaining-screen",
+   "explaining-screen",
+   "explaining-screen",
    "questions-screen",
-   "explaining-screen",
-   "explaining-screen",
-   "explaining-screen",
    "ending-screen"
 ];
 
@@ -484,9 +484,10 @@ const addText = async () => {
     }
 
     if (unit == 4) { 
-        document.getElementsByTagName('section')[37].style.display = "none";
-        document.getElementsByTagName('section')[38].style.display = "none";
-        document.getElementsByTagName('section')[39].style.display = "none";
+        if (role === 'soldier') {
+            document.getElementsByTagName('section')[36].style.display = "none";
+            document.getElementsByTagName('section')[37].style.display = "none";
+        }
         document.getElementsByTagName('section')[40].style.display = "none";
         let arrows = document.getElementsByClassName("down-arrows"); 
         arrows[3].style.display = "none";
@@ -741,10 +742,15 @@ const pacMap = (chosen) => {
                 explainText[i].style.display = "none";
             } 
         }
+
         if (chosen === 'cold') {
             var explainText = document.getElementsByClassName(`job1`);
         } else if (chosen === 'pac-map') {
-            var explainText = document.getElementsByClassName(`general-job`);
+            if (role === 'commander') {
+                var explainText = document.getElementsByClassName(`general-job`);
+            } else {
+                var explainText = document.getElementsByClassName('none');
+            }
         } else {
             var explainText = document.getElementsByClassName(`job2`);
         }
@@ -1100,7 +1106,11 @@ const conceptScreenHandle = (definitionNum, target) => {
                 }
                 allPanels[43].style.display = 'block'; 
                 allPanels[44].style.display = 'block'; 
-                document.getElementsByClassName("character-body")[10].style.width = "50vw"
+                document.getElementsByClassName("character-body")[10].style.width = "55vw";
+                let changePic = document.getElementsByClassName('character-body'); 
+                for (let i = 10; i < 12; i++) {
+                    changePic[i].setAttribute('src', `assets/units/unit1/pakal.svg`);
+                }
                 document.getElementsByClassName("down-arrows")[12].style.display = "none"; 
                 document.body.scrollTop = 0; // For Safari
                 document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
@@ -1380,9 +1390,6 @@ const questionAnswer = async (answer, clickedAnswer) => {
         }
 
     } else if (unit == 4) {
-        document.getElementsByTagName('section')[37].style.display = "block";
-        document.getElementsByTagName('section')[38].style.display = "block";
-        document.getElementsByTagName('section')[39].style.display = "block";
         document.getElementsByTagName('section')[40].style.display = "block";
     }
 }
@@ -1415,6 +1422,10 @@ const whatsappContactsHandle = (contact, target) => {
     allPanels[27].style.display = "block";
     allPanels[28].style.display = "block";
 
+    if (role === 'commander') {
+        document.getElementsByClassName('contact1')[0].style.display = "none";
+        document.getElementById('contact2-name').innerText = 'את/ה - מפקד בפקע"ר';
+    }
     if (contact) {
         allPanels[contact + 27].style.display = "block";
 
