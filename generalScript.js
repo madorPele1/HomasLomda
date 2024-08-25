@@ -13,10 +13,11 @@ var role = "soldier"; //the role of the user
 var unit; //the changing number of unit
 var screenArrayName; //saving the name of the array that have the screens
 
-let completeRhombuse = 0;
-let completeConcept = 0;
 let completeWhatsappClicks = [];
 let isWhatsappVisited;
+let completeRhombuse = 0;
+let completeConcept = 0;
+let completeCloudStages = 0;
 let addingHapakImg;
 let addingHomasImg;
 
@@ -32,6 +33,8 @@ var rhombuse3Pic = 'explosiveSubstancesCheck';
 
 var scrollPercentage;
 let dotSlider;
+
+const scrollHeight = document.documentElement.scrollHeight;
 
 var soldierUnit1 = [
     "map", 
@@ -190,33 +193,26 @@ window.addEventListener("load", () => { // Initializing the lomda
     screenArrayName = `${role}Unit${unit}`;
     displayScreens(screenArrayName);
     whatsappContactsHandle();
+    animate(`stopNum${unit}`);
+    setTimeout(() => { 
+        window.requestAnimationFrame(() => {
+            document.documentElement.scrollTop = scrollHeight;
+            document.body.scrollTop = scrollHeight; // For older browsers
+        });
+    }, 3000);
 })
 
 
 const iOS = () => {
-    return [
-        'iPad Simulator',
-        'iPhone Simulator',
-        'iPod Simulator',
-        'iPad',
-        'iPhone',
-        'iPod'
-    ].includes(navigator.platform)
-    // iPad on iOS 13 detection
-    || (navigator.userAgent.includes("Mac") && "ontouchend" in document);
+    return ['iPad Simulator', 'iPhone Simulator', 'iPod Simulator', 'iPad', 'iPhone', 'iPod'].includes(navigator.platform) || (navigator.userAgent.includes("Mac") && "ontouchend" in document);
 }
 
 const displayScreens = (screenArrayName) => { 
-    if (role == undefined) {
-        alert("יש להתחבר לעמוד הראשי של הלומדה: \n https://madorpele1.github.io/HomasLomda/");
-    }
-
+    if (role == undefined) {alert("יש להתחבר לעמוד הראשי של הלומדה: \n https://madorpele1.github.io/HomasLomda/");} // alert that user is in the wrong page
     const loader = document.getElementById("loader");
-    if (loader) {
-        loader.style.display = "none";
-    }
+    if (loader) {loader.style.display = "none";} // removing loader element
     
-    document.querySelectorAll('.unit-screens').forEach(screen => screen.remove()); // removes the previous screens
+    document.querySelectorAll('.unit-screens').forEach(screen => screen.remove()); // removes the previous unit's screens
     var screenArray = window[screenArrayName];
     screenArray.forEach(screenId => {
         const screenNode = document.getElementById(screenId);
@@ -240,7 +236,11 @@ const displayScreens = (screenArrayName) => {
     if (unit == 1) {
         conceptScreenHandle();
     }
-    if (unit == 5) {  
+    else if (unit == 5) {  
+        let allPanels = document.getElementsByTagName('section');
+        allPanels[29].style.display = "none";
+        allPanels[30].style.display = "none";
+        allPanels[31].style.display = "none";
         let numOfQuestions = numOfQuestionsFor[role];
         updatedScore = sessionStorage.getItem("updated-score");
         score = (updatedScore / (numOfQuestions * 10)) * 100;
@@ -265,12 +265,6 @@ const clickHandler = (event) => {
             break;
         case "back-btn":
             if (unit == 1) {
-                const scrollHeight = Math.max(
-                    document.documentElement.scrollHeight,
-                    document.body.scrollHeight,
-                    document.documentElement.clientHeight,
-                    document.body.clientHeight
-                );
                 window.requestAnimationFrame(() => {
                     document.documentElement.scrollTop = scrollHeight*2;
                     document.body.scrollTop = scrollHeight*2; // For older browsers
@@ -323,13 +317,6 @@ const clickHandler = (event) => {
             manageRhombuses(parseInt(targetId.replace('rhombuse', '')), target);
             break;
         case "back-rhombuse-btn":
-            const scrollHeight = Math.max(
-                document.documentElement.scrollHeight,
-                document.body.scrollHeight,
-                document.documentElement.clientHeight,
-                document.body.clientHeight
-            );
-    
             // Using requestAnimationFrame to ensure the scroll happens after rendering
             window.requestAnimationFrame(() => {
                 document.documentElement.scrollTop = 2*scrollHeight;
@@ -599,6 +586,17 @@ const animate = (stopNum) => {
         };
     }
 
+
+    document.getElementsByTagName("body")[0].style.overflowY = "hidden";
+    
+    setTimeout(() => { 
+        window.requestAnimationFrame(() => {
+            document.documentElement.scrollTop = scrollHeight;
+            document.body.scrollTop = scrollHeight; // For older browsers
+            document.getElementsByTagName("body")[0].style.overflowY = "auto";
+        });
+    }, 2900);
+
     screenArrayName = `${role}Unit${unit}`;
     displayScreens(screenArrayName);
     if (unit === '1') {
@@ -607,10 +605,12 @@ const animate = (stopNum) => {
         for (let index = 29; index < allPanels.length; index++) {
             allPanels[index].style.display = "none";
         }
-        
     }
     else if (unit === '2') {
         whatsappContactsHandle();
+    }
+    else if (unit === '3') {
+        pacMap();
     } else if (unit === '5') {
         document.getElementsByClassName("title-background-general")[2].style.display = "none";
         let allPanels = document.getElementsByTagName('section');
@@ -721,6 +721,13 @@ const carousel = (side) => {
 }
 
 const pacMap = (chosen) => {
+    if (role == 'commander' && sessionStorage.getItem("answered-q1-3")) {
+        document.getElementsByTagName('section')[31].style.display = "block";
+        document.getElementsByTagName('section')[32].style.display = "block";
+        document.getElementsByTagName('section')[33].style.display = "block";
+        document.getElementsByTagName('section')[34].style.display = "block";
+    }
+
     var explainContainer = document.getElementsByClassName("explaine-container"); 
     for (let i = 0; i < explainContainer.length; i++) {
          explainContainer[i].style.display = "none";
@@ -742,7 +749,6 @@ const pacMap = (chosen) => {
                 explainText[i].style.display = "none";
             } 
         }
-
         if (chosen === 'cold') {
             var explainText = document.getElementsByClassName(`job1`);
         } else if (chosen === 'pac-map') {
@@ -839,6 +845,9 @@ const conceptScreenHandle = (definitionNum, target) => {
                 allPanels[26].style.display = 'block';
                 allPanels[27].style.display = 'block';
                 allPanels[28].style.display = 'block';
+                if (sessionStorage.getItem("answered-q1-1")) {
+                    allPanels[29].style.display = 'block';
+                }
 
                 document.body.scrollTop = 0; // For Safari
                 document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
@@ -952,6 +961,9 @@ const conceptScreenHandle = (definitionNum, target) => {
                 document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
                 allPanels[46].style.display = 'block';
                 allPanels[47].style.display = 'block';
+                if (sessionStorage.getItem("answered-q1-1")) {
+                    allPanels[48].style.display = 'block';
+                }
             break;
 
             case 0:
@@ -1390,6 +1402,9 @@ const questionAnswer = async (answer, clickedAnswer) => {
         }
 
     } else if (unit == 4) {
+        document.getElementsByTagName('section')[37].style.display = "block";
+        document.getElementsByTagName('section')[38].style.display = "block";
+        document.getElementsByTagName('section')[39].style.display = "block";
         document.getElementsByTagName('section')[40].style.display = "block";
     }
 }
@@ -1409,6 +1424,8 @@ const whatsappContactsHandle = (contact, target) => {
     let contactClicked = target;
 
     if (isWhatsappVisited) {
+        allPanels[38].style.display = "block";
+        allPanels[39].style.display = "block";
         return;
     }
 
@@ -1430,7 +1447,7 @@ const whatsappContactsHandle = (contact, target) => {
         allPanels[contact + 27].style.display = "block";
 
         // Scroll to the bottom of the page
-        const scrollHeight = Math.max(
+        const scrollHeightWhatsapp = Math.max(
             document.documentElement.scrollHeight,
             document.body.scrollHeight,
             document.documentElement.clientHeight,
@@ -1439,8 +1456,8 @@ const whatsappContactsHandle = (contact, target) => {
 
         // Using requestAnimationFrame to ensure the scroll happens after rendering
         window.requestAnimationFrame(() => {
-            document.documentElement.scrollTop = scrollHeight;
-            document.body.scrollTop = scrollHeight; // For older browsers
+            document.documentElement.scrollTop = scrollHeightWhatsapp;
+            document.body.scrollTop = scrollHeightWhatsapp; // For older browsers
         });
 
         if (!(contactClicked.classList.contains('visited-contact'))) {
@@ -1464,11 +1481,10 @@ const whatsappContactsHandle = (contact, target) => {
                     isWhatsappVisited = true;
                     allPanels[startScreen].style.display = "block";
                         window.requestAnimationFrame(() => { // scroll to the bottom of the page
-                            document.documentElement.scrollTop = 0.75*scrollHeight;
-                            document.body.scrollTop = 0.75*scrollHeight; // For older browsers
+                            document.documentElement.scrollTop = 0.75*scrollHeightWhatsapp;
+                            document.body.scrollTop = 0.75*scrollHeightWhatsapp; // For older browsers
                         });
-                }
-                  
+                }      
         })
     }
 }
@@ -1481,10 +1497,21 @@ const stagesRoad = (cloudNumber, targetCloud) => {
     document.getElementsByClassName(`stage-div${cloudNumber}`)[1].style.display = "block";
 
     document.getElementsByClassName("display-map-btn")[1].addEventListener("click", () => { 
-        targetCloud.style.animation = '';
-        targetCloud.style.zIndex = 0;
         document.getElementsByClassName("stages-explain-div")[1].style.display = "none";
         document.getElementsByClassName(`stage-div${cloudNumber}`)[1].style.display = "none";
+        targetCloud.style.animation = '';
+        targetCloud.style.zIndex = 0;
+        if (!(targetCloud.classList.contains('visited-cloud-stage'))) {
+            completeCloudStages++;
+        }
+        targetCloud.classList.add("visited-cloud-stage");
+       if (completeCloudStages == 5) {
+            document.getElementsByClassName("explain-stages")[1].textContent = "המשיכו לגלול למטה";
+            let allPanels = document.getElementsByTagName('section');
+            allPanels[29].style.display = "block";
+            allPanels[30].style.display = "block";
+            allPanels[31].style.display = "block";
+       }
     });
 }
 

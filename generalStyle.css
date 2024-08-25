@@ -139,8 +139,20 @@ section {
     position: absolute;
     background-position: center;
     margin: 0 auto;
-    top: 12svh;
+    top: 17svh;
 }
+
+/* @media (min-height: 700px) {
+    .explaining-div {
+        top: 16svh; 
+    }
+}
+
+@media (min-height: 800px) {
+    .explaining-div {
+        top: 16svh; 
+    }
+} */
 
 .explaining-text {
     position: relative;
@@ -177,18 +189,6 @@ section {
     left: 60%; 
     margin: 10px; 
     z-index: 5;
-}
-
-@media (min-height: 700px) {
-    .explaining-div {
-        top: 16svh; 
-    }
-}
-
-@media (min-height: 800px) {
-    .explaining-div {
-        top: 16svh; 
-    }
 }
 
 @keyframes up-down {
@@ -1972,6 +1972,10 @@ section {
     top: 2vh;
 }
 
+.visited-cloud-stage {
+    filter: invert(10%) sepia(16%) saturate(658%) hue-rotate(81deg) brightness(99%) contrast(97%);
+}
+
 
 @keyframes growing-cloud1 {
     0% {
@@ -2073,7 +2077,7 @@ section {
     position: sticky;
     position: absolute;
     left: 71%;
-    font-size: 2vmax;
+    font-size: 1.5vmax;
     width: 25vw;
     height: 6.5vh;
     border-bottom:3px solid #274b5d39;
