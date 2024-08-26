@@ -186,7 +186,7 @@ var commanderUnit5 = [
     "ending-screen"
 ];
 
-window.addEventListener("load", () => { // Initializing the lomda
+window.addEventListener("load", () => { // Initializing the lomdasma
     num = 1;
     role = sessionStorage.getItem("role");
     unit = 1;
@@ -283,7 +283,6 @@ const clickHandler = (event) => {
         case "carStop4":
         case "carStop5":
             animate(targetId);
-            pacMap('pac-map');
             break;
         case "prev":
             carousel();
@@ -400,6 +399,12 @@ const addContent = () => { // function that completes all the non-text content i
         document.getElementsByTagName("section")[30].innerHTML +=
             `<img class="example-clothing" style="" src="assets/units/unit4/bmp/mask.svg" alt="mask">
             <img class="example-clothing" style="" src="assets/units/unit4/m15.svg" alt="m15-mask">`;
+    }
+
+    else if (unit == 5) { // change specific details
+        document.getElementsByClassName("back-btn")[3].style.display = "none"
+        document.getElementsByClassName("ending-text")[1].style.fontSize = "3.5vw";
+        document.getElementsByClassName("ending-text")[1].style.lineHeight = "4vh";
     }
     
     var characterCircle = document.getElementsByClassName("character-circle"); //change the main character circles
@@ -521,7 +526,7 @@ const endUnit = () => {
         document.getElementsByClassName("end-btn")[1].style.display = "none";
         score = Math.round(score);
 
-        if (score <= 75) {
+        if (score < 75) {
             document.getElementsByClassName("score")[1].innerHTML = ` ציונכם הוא: ${score} <br> כדאי לכם לחזור על הלומדה... `;
             document.getElementById("start-over-btn").addEventListener("click", startOver);
         } else {
@@ -693,7 +698,7 @@ const animate = (stopNum) => {
             document.getElementsByClassName("end-btn")[1].style.display = "none";
             score = Math.round(score);
     
-            if (score <= 75) {
+            if (score < 75) {
                 document.getElementsByClassName("score")[1].innerHTML = ` ציונכם הוא: ${score} <br> כדאי לכם לחזור על הלומדה... `;
                 document.getElementsByClassName("ending-div")[1].innerHTML +=
                 `<button id="start-over-btn" class="btn" style="bottom: 6vh;">נסו שנית</button>`;

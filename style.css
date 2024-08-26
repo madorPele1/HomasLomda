@@ -55,7 +55,7 @@ h1 {
 
 .explaine-text {
     color: rgb(4, 22, 38);
-    font-size: 4vmax;
+    font-size: 3.5vmax;
     width: 80vw;
     position: relative;
     right: 8%;
@@ -105,6 +105,16 @@ h1 {
     padding-top: 1vh;
     padding-bottom: 2vh;
     padding-right: 5vw;
+}
+
+.container {
+    background-color: #ffffff42;
+    border-radius: 5vh;
+    width: 90svw;
+    margin: auto;
+    position: relative;
+    top: 10vh;
+    height: 80vh;
 }
 
 .bold {
@@ -364,10 +374,10 @@ h1 {
 
 @keyframes clouds-moving {
     0% {
-        left: 94vw;
+        left: 83vw;
     }
     100% {
-        left: -105vw;
+        left: -86vw;
     }
  }
 

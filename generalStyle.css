@@ -120,6 +120,10 @@ section {
     font-size: 4svw;
 }
 
+.score {
+    font-size: 5svw;
+}
+
 /* explaining screen */
 #explaining-screen {
     position: relative;
@@ -1967,13 +1971,13 @@ section {
 }
 
 .cloud-stages {
-    width: 41vw;
+    width: 39vw;
     position: relative;
-    top: 2vh;
+    top: 6vh;
 }
 
 .visited-cloud-stage {
-    filter: invert(10%) sepia(16%) saturate(658%) hue-rotate(81deg) brightness(99%) contrast(97%);
+    filter: invert(10%) sepia(16%) saturate(658%) hue-rotate(217deg) brightness(99%) contrast(97%);
 }
 
 
@@ -2019,18 +2023,18 @@ section {
 }
 
 .stage-img {
-    width: 51vw;
-    position: absolute;
+    width: 35vw;
+    /* position: absolute;
     top: 43vh;
-    left: 2vw;
+    left: 2vw; */
 }
 
 .stage-div {
     margin: auto;
     text-align: center;
     position: relative;
-    top: 29vh;
-    font-size: 1.5rem;
+    top: 21vh;
+    font-size: 1.3rem;
     line-height: 56px;
     font-weight: bold;
     display: none;
