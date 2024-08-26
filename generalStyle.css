@@ -699,13 +699,6 @@ section {
     animation: smoke-pic-animate 1.5s forwards;
 }
 
-.flower-animation {
-    width: 40vw;
-    position: absolute;
-    top: 80%;
-    left: 30%;
-}
-
 @keyframes bomb-pic-animate {
     0% {
         width: 30vw;

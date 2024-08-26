@@ -20,6 +20,7 @@ let completeConcept = 0;
 let completeCloudStages = 0;
 let addingHapakImg;
 let addingHomasImg;
+let duplicateMithamHomas;
 
 let updatedScore = 0;
 var score = 0;
@@ -121,6 +122,7 @@ var commanderUnit1 = [
     "explaining-screen",
     "explaining-screen",
     "explaining-screen",
+    "explaining-screen",
     "hazardous-material-factory",
     "explaining-screen",
     "explaining-screen",
@@ -186,7 +188,7 @@ var commanderUnit5 = [
     "ending-screen"
 ];
 
-window.addEventListener("load", () => { // Initializing the lomdasma
+window.addEventListener("load", () => { // Initializing the lomda
     num = 1;
     role = sessionStorage.getItem("role");
     unit = 1;
@@ -333,6 +335,7 @@ const clickHandler = (event) => {
             setupDragAndDrop();
             break;
         case "shual-computer-img":
+        case "mitham-homas":
             shualOpening();
             break;
             case "option1":
@@ -964,10 +967,10 @@ const conceptScreenHandle = (definitionNum, target) => {
                 }
                 document.body.scrollTop = 0; // For Safari
                 document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
-                allPanels[46].style.display = 'block';
                 allPanels[47].style.display = 'block';
+                allPanels[48].style.display = 'block';
                 if (sessionStorage.getItem("answered-q1-1")) {
-                    allPanels[48].style.display = 'block';
+                    allPanels[49].style.display = 'block';
                 }
             break;
 
@@ -1008,7 +1011,7 @@ const conceptScreenHandle = (definitionNum, target) => {
                     allPanels[i].style.display = 'none';
                 }
                 allPanels[35].style.display = 'block';
-                allPanels[42].style.display = 'block';
+                allPanels[43].style.display = 'block';
                 document.body.scrollTop = 0; // For Safari
                 document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
                 if (!(clickedConcept.classList.contains('visited-concept'))) {
@@ -1047,7 +1050,7 @@ const conceptScreenHandle = (definitionNum, target) => {
                 for (let i = 0; i < allPanels.length; i++) {
                     allPanels[i].style.display = 'none';
                 }
-                allPanels[45].style.display = 'block';
+                allPanels[46].style.display = 'block';
                 document.getElementsByClassName("down-arrows")[6].style.display = "none"; 
                 document.body.scrollTop = 0; // For Safari
                 document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
@@ -1069,11 +1072,11 @@ const conceptScreenHandle = (definitionNum, target) => {
                 }
                 allPanels[38].style.display = 'block';  
                 allPanels[39].style.display = 'block';  
-                allPanels[39].style.display = 'block';  
+                allPanels[40].style.display = 'block';  
                 if (!addingHapakImg) {
-                    document.getElementsByClassName("character-body")[7].style.display = "none"
-                    document.getElementsByClassName("down-arrows")[8].style.display = "none";  
-                    allPanels[39].innerHTML += `<img src="assets/units/unit1/hapak.svg" alt="hapak" style="display: block; position: relative;bottom: 24%;border-radius: 6vh;background-color: white;">`
+                    document.getElementsByClassName("character-body")[8].style.display = "none"
+                    document.getElementsByClassName("down-arrows")[9].style.display = "none";  
+                    allPanels[40].innerHTML += `<img src="assets/units/unit1/hapak.svg" alt="hapak" style="display: block; position: relative;bottom: 24%;border-radius: 6vh;background-color: white;">`
                     addingHapakImg = true;
                 }
 
@@ -1095,12 +1098,12 @@ const conceptScreenHandle = (definitionNum, target) => {
                 for (let i = 0; i < allPanels.length; i++) {
                     allPanels[i].style.display = 'none';
                 }
-                allPanels[40].style.display = 'block';  
+                allPanels[41].style.display = 'block';  
                 if (!addingHomasImg) {
-                    document.getElementsByClassName("character-body")[8].style.display = "none"
-                    document.getElementsByClassName("down-arrows")[9].style.display = "none"; 
-                    allPanels[40].innerHTML += `<img src="assets/units/unit1/mithamHomas.png" alt="mitham-homas" style="display: block; width: 99%; position: relative;bottom: 24%;border-radius: 6vh;">`
-                    allPanels[40].innerHTML += `<div style="background-color: rgb(230 234 241);font-weight: bold; position: relative;padding: 10px;bottom: 55%;border-radius: 10vh;width: 60vw;margin: auto;">מתחם בז"ן</div>`
+                    document.getElementsByClassName("character-body")[9].style.display = "none"
+                    document.getElementsByClassName("down-arrows")[10].style.display = "none"; 
+                    allPanels[41].innerHTML += `<img src="assets/units/unit1/mithamHomas.png" id="mitham-homas" alt="mitham-homas" style="display: block; width: 99%; position: relative;bottom: 24%;border-radius: 6vh;">`
+                    allPanels[41].innerHTML += `<div style="background-color: rgb(230 234 241);font-weight: bold; position: relative;padding: 10px;bottom: 55%;border-radius: 10vh;width: 60vw;margin: auto;">מתחם בז"ן</div>`
                     addingHomasImg = true;
                 }
                 document.body.scrollTop = 0; // For Safari
@@ -1121,14 +1124,14 @@ const conceptScreenHandle = (definitionNum, target) => {
                 for (let i = 0; i < allPanels.length; i++) {
                     allPanels[i].style.display = 'none';
                 }
-                allPanels[43].style.display = 'block'; 
                 allPanels[44].style.display = 'block'; 
+                allPanels[45].style.display = 'block'; 
                 document.getElementsByClassName("character-body")[10].style.width = "55vw";
                 let changePic = document.getElementsByClassName('character-body'); 
                 for (let i = 10; i < 12; i++) {
                     changePic[i].setAttribute('src', `assets/units/unit1/pakal.svg`);
                 }
-                document.getElementsByClassName("down-arrows")[12].style.display = "none"; 
+                document.getElementsByClassName("down-arrows")[13].style.display = "none"; 
                 document.body.scrollTop = 0; // For Safari
                 document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
                 if (!(clickedConcept.classList.contains('visited-concept'))) {
@@ -1147,9 +1150,9 @@ const conceptScreenHandle = (definitionNum, target) => {
                 for (let i = 0; i < allPanels.length; i++) {
                     allPanels[i].style.display = 'none';
                 }
-                allPanels[41].style.display = 'block'; 
-                document.getElementsByClassName("down-arrows")[10].style.display = "none"; 
-                document.getElementsByClassName("character-body")[9].style.width = "45svw"; 
+                allPanels[42].style.display = 'block'; 
+                document.getElementsByClassName("down-arrows")[11].style.display = "none"; 
+                document.getElementsByClassName("character-body")[10].style.width = "45svw"; 
                 document.body.scrollTop = 0; // For Safari
                 document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
                 if (!(clickedConcept.classList.contains('visited-concept'))) {
@@ -1191,11 +1194,6 @@ const manageRhombuses = (rhombuseNum) => {
             case 2:
                 visitedRhombuse2 = true;
                 allPanels[34].style.display = 'block';
-                var animationFlower = document.getElementsByClassName('flower-animation');
-                for (var i = 0; i <= animationFlower.length -1; i++) {
-                    animationFlower[i].setAttribute('src', `assets/units/unit1/flowerAnimation.mp4`);
-                    document.getElementById('flower-animation').currentTime = 0;
-                };
                 break;
             case 3:
                 visitedRhombuse3 = true;
@@ -1329,13 +1327,21 @@ const setupDragAndDrop = () => {
 }
 
 const shualOpening = () => {
-    document.getElementsByClassName("fullpage")[1].style.display = "block";
-    document.getElementsByClassName("shual-phone")[1].style.display = "none";
-    document.getElementsByClassName("x-btn-shual")[1].addEventListener("click", () => {
-        document.getElementsByClassName("fullpage")[1].style.display = "none";
-        document.getElementsByClassName("shual-phone")[1].style.display = "block";
-    });
+    if (unit == 2) {
+        document.getElementsByClassName("fullpage")[1].style.display = "block";
+        document.getElementsByClassName("shual-phone")[1].style.display = "none";
+        document.getElementsByClassName("x-btn-shual")[1].addEventListener("click", () => {
+            document.getElementsByClassName("fullpage")[1].style.display = "none";
+            document.getElementsByClassName("shual-phone")[1].style.display = "block";
+        });
+    } 
+    else if (unit == 1 && !duplicateMithamHomas) {
+        document.getElementsByTagName("section")[41].innerHTML += `<img src="assets/units/unit1/mithamHomas.png" id="mitham-homas" alt="mitham-homas" style="display: block;width: 140%;height: 50%;position: relative;bottom: 24%;border-radius: 6vh;bottom: 55%;left: 31%;">`
+        duplicateMithamHomas = true;
+    }
+    
 }
+    
 
 const questionAnswer = async (answer, clickedAnswer) => {
     // Fetch the data from the JSON file
@@ -1385,7 +1391,7 @@ const questionAnswer = async (answer, clickedAnswer) => {
     
     let allPanels = document.getElementsByTagName('section');
     if (unit == 1 && role == 'commander') {
-        allPanels[48].style.display = "block";
+        allPanels[49].style.display = "block";
 
     } else if (unit == 1 && role == 'soldier') {
         allPanels[42].style.display = 'block';
