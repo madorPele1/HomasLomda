@@ -603,11 +603,7 @@ const animate = (stopNum) => {
             animationContainer[i].setAttribute('src', `assets/car/zoomOutCarStop${unit}.mp4`);
             document.getElementById('animation_container').currentTime = 0;
         };
-    }
-
-
     document.getElementsByTagName("body")[0].style.overflowY = "hidden";
-    
     setTimeout(() => { 
         window.requestAnimationFrame(() => {
             document.documentElement.scrollTop = scrollHeight;
@@ -615,6 +611,7 @@ const animate = (stopNum) => {
             document.getElementsByTagName("body")[0].style.overflowY = "auto";
         });
     }, 2900);
+    }
 
     screenArrayName = `${role}Unit${unit}`;
     displayScreens(screenArrayName);
@@ -770,10 +767,6 @@ const pacMap = (chosen) => {
         }
         if (chosen === 'cold') {
             var explainText = document.getElementsByClassName(`job1`);
-            if (!(document.getElementById('cold').classList.contains('visited-concept'))) {
-                completePac++;
-            }
-            document.getElementById('cold').classList.add("visited-concept");
         } else if (chosen === 'pac-map') {
             if (role === 'commander') {
                 var explainText = document.getElementsByClassName(`general-job`);
@@ -782,11 +775,6 @@ const pacMap = (chosen) => {
             }
         } else {
             var explainText = document.getElementsByClassName(`job2`);
-            if (!(document.getElementById('heat').classList.contains('visited-concept') || (document.getElementById('heat').classList.contains('visited-concept')))) {
-                completePac++;
-            }
-            document.getElementById('heat').classList.add("visited-concept");
-            document.getElementById('warm').classList.add("visited-concept");
         }
         for (let i = 0; i < explainText.length; i++) {
             explainText[i].style.display = "block";
@@ -1129,7 +1117,7 @@ const conceptScreenHandle = (definitionNum, target) => {
                     document.getElementsByClassName("character-body")[9].style.display = "none"
                     document.getElementsByClassName("down-arrows")[10].style.display = "none"; 
                     allPanels[41].innerHTML += `<img src="assets/units/unit1/mithamHomas.png" id="mitham-homas" alt="mitham-homas" style="display: block; width: 99%; position: relative;bottom: 24%;border-radius: 6vh;">`
-                    allPanels[41].innerHTML += `<div style="background-color: rgb(230 234 241);font-weight: bold; position: relative;padding: 10px;bottom: 55%;border-radius: 10vh;width: 60vw;margin: auto;">מתחם בז"ן</div>`
+                    allPanels[41].innerHTML += `<div style="background-color: rgb(230 234 241);font-weight: bold;position: relative;padding: 10px;bottom: 55%;border-radius: 10vh;width: 86vw;margin: auto;">מתחם בז"ן <br> לחצו על התמונה כדי להגדיל אותה</div>`
                     addingHomasImg = true;
                 }
                 document.body.scrollTop = 0; // For Safari
@@ -1459,6 +1447,8 @@ const areaOrganizing = (areaClicked) => {
         areaExplained[i].style.display = "none";
     }
     document.getElementsByClassName(`${areaClicked}`)[1].style.display = "block";
+    let glowPath = areaClicked.replace('-area', '');
+    document.getElementsByClassName("glow-area")[1].src = `assets/units/unit3/glow${glowPath}.png`
 }
 
 const whatsappContactsHandle = (contact, target) => {

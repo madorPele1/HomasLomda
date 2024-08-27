@@ -1847,39 +1847,13 @@ section {
     font-size: 1.8svh;
 }
 
-#cold-area {
-    top: 8%;
-    right: -1%;
-}
-
-#focal-point-area {
-    top: 21%;
-    right: 33%;
-}
-
-#heat-area {
-    top: 28%;
-    right: 46%;
-}
-
-#warm-area {
-    top: 45%;
-    right: 50%;
-}
-
-#hapakim-area {
-    top: 29%;
-    right: 6%;
-}
-#commanding-area {
-    top: 46%;
-    right: 5%;
-}
-
-#mabar-area {
-    top: -1%;
-    right: 32%;
-}
+#focal-point-area { top: 21%; right: 33%;}
+#cold-area { top: -12%; right: -1%; } 
+#mabar-area { top: -14%; right: 32%; } 
+#hapakim-area { top: -11%; right: 70%; } 
+#commanding-area { top: 59%; right: 0%; } 
+#warm-area { top: 63%; right: 41%; } 
+#heat-area { top: 63%; right: 66%; }
 
 .area-container {
     position: relative;
@@ -1957,17 +1931,18 @@ section {
     flex-direction: column;
 }
 
+
+
 .explain-stages {
     background-color: #f0e4ff;
     text-align: center;
-    padding: 3vh;
+    padding: 2vh;
     border-radius: 6vh;
     font-size: 2.5vh;
     font-weight: bold;
     width: 95%;
     margin: auto;
-    position: relative;
-    bottom: 11vh;
+    margin-top: -39px;
 }
 
 .cloud-stages {
@@ -1977,9 +1952,18 @@ section {
 }
 
 .visited-cloud-stage {
-    filter: invert(10%) sepia(16%) saturate(658%) hue-rotate(217deg) brightness(99%) contrast(97%);
+    filter: invert(12%) sepia(10%) saturate(652%) hue-rotate(190deg) brightness(100%) contrast(101%);
 }
 
+@media screen and (max-width: 450px) and (max-height: 750px) {
+    .road-stages {
+        width: 90vw;
+    }
+
+    .cloud-stages {
+        width: 33vw;
+    }
+}
 
 @keyframes growing-cloud1 {
     0% {
@@ -2024,9 +2008,8 @@ section {
 
 .stage-img {
     width: 35vw;
-    /* position: absolute;
-    top: 43vh;
-    left: 2vw; */
+    position: absolute;
+    bottom: 0;
 }
 
 .stage-div {
@@ -2034,10 +2017,11 @@ section {
     text-align: center;
     position: relative;
     top: 21vh;
-    font-size: 1.3rem;
+    font-size: 2.2vmax;
     line-height: 56px;
     font-weight: bold;
     display: none;
+    height: 79vh;
 }
 
 .display-map-btn {
@@ -2046,6 +2030,13 @@ section {
     bottom: 17px;
     right: 10px;
 }
+
+ul li::marker {
+    color: #ffffff;
+    font-size: 1.5em;
+    content: '☁︎ ';
+  }
+
 /* table unit 5 */
 
 .table-wrap {
