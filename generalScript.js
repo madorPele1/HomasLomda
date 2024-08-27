@@ -16,6 +16,7 @@ var screenArrayName; //saving the name of the array that have the screens
 let completeWhatsappClicks = [];
 let isWhatsappVisited;
 let completeRhombuse = 0;
+let completePac = 0;
 let completeConcept = 0;
 let completeCloudStages = 0;
 let addingHapakImg;
@@ -759,6 +760,10 @@ const pacMap = (chosen) => {
         }
         if (chosen === 'cold') {
             var explainText = document.getElementsByClassName(`job1`);
+            if (!(document.getElementById('cold').classList.contains('visited-concept'))) {
+                completePac++;
+            }
+            document.getElementById('cold').classList.add("visited-concept");
         } else if (chosen === 'pac-map') {
             if (role === 'commander') {
                 var explainText = document.getElementsByClassName(`general-job`);
@@ -767,10 +772,21 @@ const pacMap = (chosen) => {
             }
         } else {
             var explainText = document.getElementsByClassName(`job2`);
+            if (!(document.getElementById('heat').classList.contains('visited-concept') || (document.getElementById('heat').classList.contains('visited-concept')))) {
+                completePac++;
+            }
+            document.getElementById('heat').classList.add("visited-concept");
+            document.getElementById('warm').classList.add("visited-concept");
         }
         for (let i = 0; i < explainText.length; i++) {
             explainText[i].style.display = "block";
-        } 
+        }
+        if (completePac === 2) {
+            document.getElementsByTagName('section')[29].style.display = "block";
+            if (role === 'commander') {
+                document.getElementsByTagName('section')[30].style.display = "block";
+            }
+        }
     }
 }
 
