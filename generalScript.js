@@ -471,14 +471,24 @@ const addText = async () => {
         }
     }
 
-    if (unit == 3 && role == 'commander') { // change specific answers details
+        if (unit == 3 && role == 'commander') { // change specific answers details
+        document.getElementsByTagName('section')[29].style.display = "none";
+        document.getElementsByTagName('section')[30].style.display = "none";
         document.getElementsByTagName('section')[31].style.display = "none";
         document.getElementsByTagName('section')[32].style.display = "none";
         document.getElementsByTagName('section')[33].style.display = "none";
         document.getElementsByTagName('section')[34].style.display = "none";
         answersText[14].style.fontSize = "calc(9px + 0.4svh)";
+        if (completePac === 2) {
+            document.getElementsByTagName('section')[29].style.display = "block";
+            document.getElementsByTagName('section')[30].style.display = "block";
+        }
+    } else if (unit == 3 && role == 'soldier') {
+        document.getElementsByTagName('section')[29].style.display = "none";
+        if (completePac === 2) {
+            document.getElementsByTagName('section')[29].style.display = "block";
+        }
     }
-
     if (unit == 4) { 
         if (role === 'soldier') {
             document.getElementsByTagName('section')[36].style.display = "none";
