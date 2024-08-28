@@ -681,6 +681,7 @@ section {
     width:42vw;
     position: relative;
     right: 27.5%;
+    z-index: 2;
 }
 
 .bomb-pic {
