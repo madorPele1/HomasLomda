@@ -18,6 +18,7 @@ let isWhatsappVisited;
 let completeRhombuse = 0;
 let completePac = 0;
 let completeConcept = 0;
+let completeArea = 0;
 let completeCloudStages = 0;
 let addingHapakImg;
 let addingHomasImg;
@@ -781,7 +782,7 @@ const pacMap = (chosen) => {
         }
         if (completePac === 2) {
             document.getElementsByTagName('section')[29].style.display = "block";
-            if (role === 'commander') {
+            if (completeArea === 3) {
                 document.getElementsByTagName('section')[30].style.display = "block";
             }
         }
@@ -1440,15 +1441,22 @@ const questionAnswer = async (answer, clickedAnswer) => {
 }
 
 
+
 const areaOrganizing = (areaClicked) => {
     document.getElementsByClassName("area-explained")[1].style.display = "block";
     const areaExplained = document.getElementsByClassName("explaining-area");
     for (let i = 0; i <  areaExplained.length; i++) {
         areaExplained[i].style.display = "none";
     }
+    if (!(document.getElementsByClassName(`${areaClicked}`)[0].classList.contains('visited-concept'))) {
+        completeArea++;
+    }
+    document.getElementsByClassName(`${areaClicked}`)[0].classList.add("visited-concept");
     document.getElementsByClassName(`${areaClicked}`)[1].style.display = "block";
-    let glowPath = areaClicked.replace('-area', '');
-    document.getElementsByClassName("glow-area")[1].src = `assets/units/unit3/glow${glowPath}.png`
+
+    if (completeArea === 3) {
+        document.getElementsByTagName('section')[30].style.display = "block";
+    }
 }
 
 const whatsappContactsHandle = (contact, target) => {
