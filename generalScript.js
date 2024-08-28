@@ -191,6 +191,7 @@ var commanderUnit5 = [
 ];
 
 window.addEventListener("load", () => { // Initializing the lomda
+    document.getElementsByClassName("carStop4")[0].style.display = "block";
     num = 1;
     role = sessionStorage.getItem("role");
     unit = 1;
@@ -496,6 +497,13 @@ const addText = async () => {
         arrows[9].style.display = "none";
         arrows[10].style.display = "none";
         arrows[11].style.display = "none";
+
+        document.getElementsByClassName("protection-tags")[7].style.display = "block";
+        document.getElementsByClassName("protection-tags")[8].style.display = "block";
+        document.getElementsByClassName("protection-tags")[9].style.display = "block";
+        document.getElementsByClassName("protection-tags")[7].innerHTML += `<li>אזור סיכון מותר לפעולה: אזור חם</li><li>משימה כללית: סיור וחילוץ נפגעים בשטח פתוח בסמוך למוקד, סריקת מבנה הנגוע בחומ"ס</li><li>כוחות מצוידים: משטרה</li>`;
+        document.getElementsByClassName("protection-tags")[8].innerHTML += `<li>אזור סיכון מותר לפעולה: אזור פושר</li><li> משימה כללית: חילוץ נפגעים מאזור חם, סיור ועבודה בשטח פתוח שאיננו סמוך למוקד</li><li>כוחות מצוידים: משטרה, מד"א, פקע"ר</li>`;
+        document.getElementsByClassName("protection-tags")[9].innerHTML += `<li>אזור סיכון מותר לפעולה: אזור פושר</li><li> משימה כללית: חילוץ נפגעים מאזור חם, סיור ועבודה בשטח פתוח שאיננו סמוך למוקד</li><li>כוחות מצוידים: משטרה, מד"א, פקע"ר</li>`;
     }
 
     var explainingTitle = document.querySelectorAll('.unit-screens .explaining-title'); 
@@ -1129,7 +1137,7 @@ const conceptScreenHandle = (definitionNum, target) => {
                     document.getElementsByClassName("character-body")[9].style.display = "none"
                     document.getElementsByClassName("down-arrows")[10].style.display = "none"; 
                     allPanels[41].innerHTML += `<img src="assets/units/unit1/mithamHomas.png" id="mitham-homas" alt="mitham-homas" style="display: block; width: 99%; position: relative;bottom: 24%;border-radius: 6vh;">`
-                    allPanels[41].innerHTML += `<div style="background-color: rgb(230 234 241);font-weight: bold;position: relative;padding: 10px;bottom: 55%;border-radius: 10vh;width: 86vw;margin: auto;">מתחם בז"ן <br> לחצו על התמונה כדי להגדיל אותה</div>`
+                    allPanels[41].innerHTML += `<div style="background-color: rgb(230 234 241);position: relative;padding: 10px;bottom: 55%;border-radius: 10vh;width: 86vw;margin: auto;">מתחם בז"ן <br> <b> לחצו על התמונה כדי להגדיל אותה</b></div>`
                     addingHomasImg = true;
                 }
                 document.body.scrollTop = 0; // For Safari
@@ -1221,11 +1229,6 @@ const manageRhombuses = (rhombuseNum) => {
             case 2:
                 visitedRhombuse2 = true;
                 allPanels[34].style.display = 'block';
-                var animationFlower = document.getElementsByClassName('flower-animation');
-                for (var i = 0; i <= animationFlower.length -1; i++) {
-                    animationFlower[i].setAttribute('src', `assets/units/unit1/flowerAnimation.mp4`);
-                    document.getElementById('flower-animation').currentTime = 0;
-                };
                 break;
             case 3:
                 visitedRhombuse3 = true;
