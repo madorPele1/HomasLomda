@@ -766,8 +766,12 @@ const pacMap = (chosen) => {
                 explainText[i].style.display = "none";
             } 
         }
-        if (chosen === 'cold') {
+if (chosen === 'cold') {
             var explainText = document.getElementsByClassName(`job1`);
+            if (!(document.getElementById('cold').classList.contains('visited-concept'))) {
+                completePac++;
+            }
+            document.getElementById('cold').classList.add("visited-concept");
         } else if (chosen === 'pac-map') {
             if (role === 'commander') {
                 var explainText = document.getElementsByClassName(`general-job`);
@@ -776,6 +780,11 @@ const pacMap = (chosen) => {
             }
         } else {
             var explainText = document.getElementsByClassName(`job2`);
+            if (!(document.getElementById('heat').classList.contains('visited-concept') || (document.getElementById('heat').classList.contains('visited-concept')))) {
+                completePac++;
+            }
+            document.getElementById('heat').classList.add("visited-concept");
+            document.getElementById('warm').classList.add("visited-concept");
         }
         for (let i = 0; i < explainText.length; i++) {
             explainText[i].style.display = "block";
