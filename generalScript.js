@@ -645,14 +645,14 @@ const animate = (stopNum) => {
                     <td class="head-table">מ-"פ+60" עד תום האירוע</td>
                   </tr>
                   <tr>
-                    <td class="fixed-side middle one">פעילות בשטח</td>
+                    <td class="fixed-side middle one">פעילות<br> בשטח</td>
                     <td class="reg">התרעה ופעולות איתור</td>
                     <td class="reg">הפעלת מענה משולב והקמת חפ"ק אחוד</td>
                     <td class="reg">ניטור ועדכון הע"ס דינאמית <br> פעולות להצלת חיים והכלת המוקד</td>
                     <td class="reg">סיום הטיפול במוקד <br> שלילת הסכנה והכרזה על תום אירוע</td>
                   </tr>
                   <tr>
-                    <td class="fixed-side middle two">פעילות במפקדה</td>
+                    <td class="fixed-side middle two">פעילות<br> במפקדה</td>
                     <td class="reg">חיתוך מצב <br> שלילה או הכרזה על אירוע חומ"ס</td>
                     <td class="reg">הפצת הנחיות מצילות חיים <br>והודעות משלימות ניתוח אזורי סיכון<br> ותכנון מענה</td>
                     <td class="reg">עדכון הנחיות בהתאם להע"ס דינאמית <br> תמיכה לוגיסטית בכוחות בשטח</td>
@@ -666,7 +666,7 @@ const animate = (stopNum) => {
                     <td class="reg">חזרה לשגרה</td>
                   </tr>
                   <tr>
-                    <td class="fixed-side bottom">תפקידי הגדוד</td>
+                    <td class="fixed-side bottom">תפקידי<br> הגדוד</td>
                     <td class="reg dif-color-td">קבלת התרעה על חשש לאירוע חומ"ס <br> בגזרת הגדוד</td>
                     <td class="reg dif-color-td">הגעה לאירוע והקמת חפ"ק אחוד, <br>ניהול האירוע, העברת מידע<br> לרמה הממונה באופן שוטף</td>
                     <td class="reg dif-color-td">בהתאם להערכת מצב - ביצוע סריקות<br> לפינוי נפגעים בשטח תחת סיכון מתן <br> טיפול ראשוני תומך בשטח <br>עד לפינוי הנפגעים</td>
@@ -687,14 +687,14 @@ const animate = (stopNum) => {
                         <td class="head-table">מ-"פ+60" עד תום האירוע</td>
                       </tr>
                       <tr>
-                        <td class="fixed-side middle one">פעילות בשטח</td>
+                        <td class="fixed-side middle one">פעילות<br> בשטח</td>
                         <td class="reg">התרעה ופעולות איתור</td>
                         <td class="reg">הפעלת מענה משולב והקמת חפ"ק אחוד</td>
                         <td class="reg">ניטור ועדכון הע"ס דינאמית <br> פעולות להצלת חיים והכלת המוקד</td>
                         <td class="reg">סיום הטיפול במוקד <br> שלילת הסכנה והכרזה על תום אירוע</td>
                       </tr>
                       <tr>
-                        <td class="fixed-side bottom">תפקידי הגדוד</td>
+                        <td class="fixed-side bottom">תפקידי<br> הגדוד</td>
                         <td class="reg dif-color-td">קבלת התרעה על חשש לאירוע חומ"ס <br> בגזרת הגדוד</td>
                         <td class="reg dif-color-td">הגעה לאירוע והקמת חפ"ק אחוד, <br>ניהול האירוע, העברת מידע<br> לרמה הממונה באופן שוטף</td>
                         <td class="reg dif-color-td">בהתאם להערכת מצב - ביצוע סריקות<br> לפינוי נפגעים בשטח תחת סיכון מתן <br> טיפול ראשוני תומך בשטח <br>עד לפינוי הנפגעים</td>
