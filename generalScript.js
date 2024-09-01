@@ -17,6 +17,7 @@ let completeWhatsappClicks = [];
 let isWhatsappVisited;
 let completeRhombuse = 0;
 let completePac = 0;
+let completePacConcepts = 0;
 let completeConcept = 0;
 let completeArea = 0;
 let completeCloudStages = 0;
@@ -235,6 +236,13 @@ const displayScreens = (screenArrayName) => {
     if (unit == 1) {
         conceptScreenHandle();
     }
+    else if (unit == 4) {  
+        let allPanels = document.getElementsByTagName('section');
+        allPanels[36].style.display = "none";
+        allPanels[37].style.display = "none";
+        allPanels[38].style.display = "none";
+        allPanels[39].style.display = "none";
+    }
     else if (unit == 5) {  
         let allPanels = document.getElementsByTagName('section');
         allPanels[29].style.display = "none";
@@ -270,7 +278,6 @@ const clickHandler = (event) => {
                 }); //scroll the bottom of the page
                 conceptScreenHandle(-2, target);
             }
-            pacMap('pac-map');
             whatsappContactsHandle();
             break;
         case "map-pin":
@@ -293,7 +300,11 @@ const clickHandler = (event) => {
         case "focus":
         case "heat":
         case "warm":
-        case "pac-map":
+        case "cold-roles":
+        case "focus-roles":
+        case "heat-roles":
+        case "warm-roles":
+        case "pac-map-concepts":
             pacMap(targetId);
             break;
         case "definition1":
@@ -466,25 +477,27 @@ const addText = async () => {
             arrows[lindex].style.display = "none";              
         }
     }
-
-        if (unit == 3 && role == 'commander') { // change specific answers details
-        document.getElementsByTagName('section')[29].style.display = "none";
-        document.getElementsByTagName('section')[30].style.display = "none";
-        document.getElementsByTagName('section')[31].style.display = "none";
-        document.getElementsByTagName('section')[32].style.display = "none";
-        document.getElementsByTagName('section')[33].style.display = "none";
-        document.getElementsByTagName('section')[34].style.display = "none";
-        answersText[14].style.fontSize = "calc(9px + 0.4svh)";
-        if (completePac === 2) {
-            document.getElementsByTagName('section')[29].style.display = "block";
-            document.getElementsByTagName('section')[30].style.display = "block";
-        }
-    } else if (unit == 3 && role == 'soldier') {
-        document.getElementsByTagName('section')[29].style.display = "none";
-        if (completePac === 2) {
-            document.getElementsByTagName('section')[29].style.display = "block";
-        }
+    if (unit == 3) { 
+        if (role == 'commander') { // change specific answers details
+            document.getElementsByTagName('section')[29].style.display = "none";
+            document.getElementsByTagName('section')[30].style.display = "none";
+            document.getElementsByTagName('section')[31].style.display = "none";
+            document.getElementsByTagName('section')[32].style.display = "none";
+            document.getElementsByTagName('section')[33].style.display = "none";
+            document.getElementsByTagName('section')[34].style.display = "none";
+            answersText[14].style.fontSize = "calc(9px + 0.4svh)";
+                if (completePac === 2) {
+                    document.getElementsByTagName('section')[29].style.display = "block";
+                    document.getElementsByTagName('section')[30].style.display = "block";
+                }
+        } else if (role == 'soldier') {
+            document.getElementsByTagName('section')[29].style.display = "none";
+            if (completePac === 2) {
+                document.getElementsByTagName('section')[29].style.display = "block";
+            }
+        }   
     }
+
     if (unit == 4) { 
         if (role === 'soldier') {
             document.getElementsByTagName('section')[36].style.display = "none";
@@ -501,9 +514,9 @@ const addText = async () => {
         document.getElementsByClassName("protection-tags")[7].style.display = "block";
         document.getElementsByClassName("protection-tags")[8].style.display = "block";
         document.getElementsByClassName("protection-tags")[9].style.display = "block";
-        document.getElementsByClassName("protection-tags")[7].innerHTML += `<li>אזור סיכון מותר לפעולה: אזור חם</li><li>משימה כללית: סיור וחילוץ נפגעים בשטח פתוח בסמוך למוקד, סריקת מבנה הנגוע בחומ"ס</li><li>כוחות מצוידים: משטרה</li>`;
-        document.getElementsByClassName("protection-tags")[8].innerHTML += `<li>אזור סיכון מותר לפעולה: אזור פושר</li><li> משימה כללית: חילוץ נפגעים מאזור חם, סיור ועבודה בשטח פתוח שאיננו סמוך למוקד</li><li>כוחות מצוידים: משטרה, מד"א, פקע"ר</li>`;
-        document.getElementsByClassName("protection-tags")[9].innerHTML += `<li>אזור סיכון מותר לפעולה: אזור פושר</li><li> משימה כללית: חילוץ נפגעים מאזור חם, סיור ועבודה בשטח פתוח שאיננו סמוך למוקד</li><li>כוחות מצוידים: משטרה, מד"א, פקע"ר</li>`;
+        document.getElementsByClassName("protection-tags")[7].innerHTML = `<li class="list-risk-area">אזור סיכון מותר לפעולה: אזור חם</li><li class="list-risk-area">משימה כללית: סיור וחילוץ נפגעים בשטח פתוח בסמוך למוקד, סריקת מבנה הנגוע בחומ"ס</li><li class="list-risk-area">כוחות מצוידים: משטרה</li>`;
+        document.getElementsByClassName("protection-tags")[8].innerHTML = `<li class="list-risk-area">אזור סיכון מותר לפעולה: אזור פושר</li><li class="list-risk-area"> משימה כללית: חילוץ נפגעים מאזור חם, סיור ועבודה בשטח פתוח שאיננו סמוך למוקד</li><li class="list-risk-area">כוחות מצוידים: משטרה, מד"א, פקע"ר</li>`;
+        document.getElementsByClassName("protection-tags")[9].innerHTML = `<li class="list-risk-area">אזור סיכון מותר לפעולה: אזור פושר</li><li class="list-risk-area"> משימה כללית: חילוץ נפגעים מאזור חם, סיור ועבודה בשטח פתוח שאיננו סמוך למוקד</li><li class="list-risk-area">כוחות מצוידים: משטרה, מד"א, פקע"ר</li>`;
     }
 
     var explainingTitle = document.querySelectorAll('.unit-screens .explaining-title'); 
@@ -627,9 +640,6 @@ const animate = (stopNum) => {
     }
     else if (unit === '2') {
         whatsappContactsHandle();
-    }
-    else if (unit === '3') {
-        pacMap();
     } else if (unit === '5') {
         document.getElementsByClassName("title-background-general")[2].style.display = "none";
         let allPanels = document.getElementsByTagName('section');
@@ -751,12 +761,30 @@ const pacMap = (chosen) => {
     for (let i = 0; i < explainContainer.length; i++) {
          explainContainer[i].style.display = "none";
     }
+
     if (chosen !== 'pac-map') {
         var specificExplainContainer = document.getElementsByClassName(`${chosen}-explain`); 
         for (let i = 0; i < specificExplainContainer.length; i++) {
             specificExplainContainer[i].style.display = "block";
         }
     }
+
+    if (unit === '1') {
+            if (!(document.getElementById(`${chosen}`).classList.contains('visited-concept'))) {
+                completePacConcepts++;
+                document.getElementById(`${chosen}`).classList.add("visited-concept");
+            }
+                if (role == 'commander') { // change specific answers details
+                    if (completePacConcepts === 4) {
+                        document.getElementsByTagName('section')[48].style.display = "block";
+                    }
+                } else if (role == 'soldier') {
+                    if (completePacConcepts === 4) {
+                        document.getElementsByTagName('section')[41].style.display = "block";
+                    }
+                }
+    }
+
     if (unit === '3') {
         var explainText = document.getElementsByClassName(`general-job`); 
         for (let i = 0; i < explainText.length; i++) {
@@ -768,26 +796,32 @@ const pacMap = (chosen) => {
                 explainText[i].style.display = "none";
             } 
         }
-if (chosen === 'cold') {
-            var explainText = document.getElementsByClassName(`job1`);
-            if (!(document.getElementById('cold').classList.contains('visited-concept'))) {
-                completePac++;
-            }
-            document.getElementById('cold').classList.add("visited-concept");
-        } else if (chosen === 'pac-map') {
-            if (role === 'commander') {
-                var explainText = document.getElementsByClassName(`general-job`);
-            } else {
-                var explainText = document.getElementsByClassName('none');
-            }
-        } else {
-            var explainText = document.getElementsByClassName(`job2`);
-            if (!(document.getElementById('heat').classList.contains('visited-concept') || (document.getElementById('heat').classList.contains('visited-concept')))) {
-                completePac++;
-            }
-            document.getElementById('heat').classList.add("visited-concept");
-            document.getElementById('warm').classList.add("visited-concept");
+        chosen.replace('-roles', '');
+        if (!(document.getElementById(`${chosen}`).classList.contains('visited-concept'))) {
+            console.log(chosen, completePac);
+            completePac++;
+            document.getElementById(`${chosen}`).classList.add("visited-concept");
         }
+
+        var explainText;
+        switch (chosen) {
+            case 'cold':
+                explainText = document.getElementsByClassName(`job1`);
+            break;
+
+            case 'pac-map':
+                if (role === 'commander') {
+                explainText = document.getElementsByClassName(`general-job`);
+                } else {
+                explainText = document.getElementsByClassName('none');
+                }
+            break;
+            
+            default:
+                var explainText = document.getElementsByClassName(`job2`);
+            break;
+        }
+
         for (let i = 0; i < explainText.length; i++) {
             explainText[i].style.display = "block";
         }
@@ -830,6 +864,7 @@ const changeTextPac = (chosen) => {
         arrowShow[i].style.display = "block";
     }
 }
+
 const conceptScreenHandle = (definitionNum, target) => { 
 
     let clickedConcept = target;
@@ -868,7 +903,6 @@ const conceptScreenHandle = (definitionNum, target) => {
                 document.body.scrollTop = 0; // For Safari
                 document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
                 allPanels[40].style.display = 'block';
-                allPanels[41].style.display = 'block';
             break;
 
             case 0:
@@ -996,7 +1030,6 @@ const conceptScreenHandle = (definitionNum, target) => {
                 document.body.scrollTop = 0; // For Safari
                 document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
                 allPanels[47].style.display = 'block';
-                allPanels[48].style.display = 'block';
                 if (sessionStorage.getItem("answered-q1-1")) {
                     allPanels[49].style.display = 'block';
                 }
@@ -1330,6 +1363,11 @@ const setupDragAndDrop = () => {
             failureMessage.style.display = "revert"; 
             resetDraggingBtn.style.display = "none";
         }
+        let allPanels = document.getElementsByTagName('section');
+        allPanels[36].style.display = "block";
+        allPanels[37].style.display = "block";
+        allPanels[38].style.display = "block";
+        allPanels[39].style.display = "block";
     }
 
     function resetGame() {

@@ -825,13 +825,17 @@ section {
 .pac-explained {
     width: 90vw;
     position: relative;
-    top: 11%;    
+    top: 6%;  
     right: 5%;
     background-color: #DAE3F3;
     padding: 4vw;
     border-radius: 6vw;
     box-shadow: #0726419c 0 2px 7px;
     text-align: center;
+}
+
+.pac-explained-concepts {
+    top: 15%;  
 }
 
 .pac {
@@ -844,25 +848,25 @@ section {
     border-radius: 14px;
 }
 
-#cold {
+#cold, #cold-roles {
     position: absolute;
     top: 10%;
     right: 10%;
 }
 
-#focus {
+#focus, #focus-roles {
     position: absolute;
     top: 12%;
     right: 34.5%;
 }
 
-#heat {
+#heat, #heat-roles{
     position: absolute;
     top: 32%;
     right: 36%;
 }
 
-#warm {
+#warm, #warm-roles{
     position: absolute;
     top: 55%;
     right: 40%;
@@ -873,39 +877,45 @@ section {
     box-shadow: #07264181 0 2px 7px;
     padding: 2vw;
     border-radius: 3vw;
-    width: 55vw;
+    max-width: 62vw;
     position: absolute;
     z-index: 5;
     font-size: 2vmax;
+    word-break: keep-all;
 }
 
 .cold-explain {
-    top: 18%;
-    right: 6%;
+    top: -18%;
+    right: 22%;
     display: none;
 }
 
 #focus-explain {
-    top: 21%;
-    right: 42%;
+    top: -18%;
+    right: 22%;
     display: none;
 }
 
 .heat-explain {
-    top: 40%;
-    right: 40%;
+    top: -18%;
+    right: 22%;
     display: none;
 }
 
 .warm-explain {
-    top: 65%;
-    right: 15%;
+    top: -18%;
+    right: 22%;
     display: none;
 }
 
-.pac-container {
+.pac-container-concepts {
     position: relative;
-    top: 27%;
+    top: 32%;
+}
+
+.pac-container-roles {
+    position: relative;
+    top: 23%;
 }
 
 /* whatsapp */
@@ -1309,7 +1319,76 @@ section {
     text-align: center;
     right: 48%;
 }
-#cotton-gloves {filter: contrast(0.3);}
+
+#pants { width: 140px; position: absolute; top: 52%; left: 60%; } 
+#shoes { width: 35svw; position: relative; top: 77%; left: -5%;}
+#shirt {width: 55svw; position: relative; top: 31%; left: 7%;}
+#mask {width: 45svw; position: relative; top: 17%; left: 2%;}
+#cotton-gloves {filter: contrast(0.3);width: 48svw; position: relative; top: 49%; right: -2.5svw;}
+#rubber-gloves {width: 49svw; position: relative; top: 49%; right: -2.5svw;}
+
+@media (min-height: 600px) {
+    #pants { top: 34%; }
+    #shoes { top: 72%; }
+    #shirt { top: 8%; }
+    #mask { top: -11%; }
+    #cotton-gloves { top: 32%; }
+    #rubber-gloves { top: 32%; }
+}
+
+@media (min-height: 700px) {
+    #pants { top: 40%; }
+    #shoes { top: 75%; }
+    #shirt { top: 17%; }
+    #mask { top: 0%; }
+    #cotton-gloves { top: 40%; }
+    #rubber-gloves { top: 40%; }
+}
+
+@media (min-height: 800px) {
+    #pants { top: 51%; }
+    #shoes { top: 77%; }
+    #shirt { top: 31%; }
+    #mask { top: 17%; }
+    #cotton-gloves { top: 49%; }
+    #rubber-gloves { top: 49%; }
+}
+
+@media (min-height: 850px) {
+    #pants { top: 51%; }
+    #shoes { top: 80%; }
+    #shirt { top: 29%; }
+    #mask { top: 20%; }
+    #cotton-gloves { top: 53%; }
+    #rubber-gloves { top: 53%; }
+}
+
+@media (min-height: 880px) {
+    #pants { top: 51%; }
+    #shoes { top: 77%; }
+    #shirt { top: 29%; }
+    #mask { top: 14%; }
+    #cotton-gloves { top: 48%; }
+    #rubber-gloves { top: 48%; }
+}
+
+@media (min-width: 500px) {
+    #pants { left: 56%; }
+    #shoes { left: -10%; }
+    #shirt { left: 1%; }
+    #mask { left: -3%; }
+    #cotton-gloves { left: 49%; }
+    #rubber-gloves { left: 49%; }
+}
+
+@media (max-width: 400px) {
+    #pants { left: 61%; }
+    #shoes { left: 2%; }
+    #shirt { left: 13%; }
+    #mask { left: 8%; }
+    #cotton-gloves { left: 49%; }
+    #rubber-gloves { left: 49%; }
+}
 
 /* drag and drop */
 .dragging-explanation-div {
@@ -1355,6 +1434,10 @@ section {
 .dragging-character-body {
     position: relative;
     width: 23svw;
+}
+
+.drag-drop-game {
+    height: 100%;
 }
 
 .num {
@@ -1614,8 +1697,8 @@ section {
 }
 
 .job-explain2 {
-    top: 15%;
-    right: 55%;
+    top: -17%;
+    right: 58%;
     width: 40vw;
     display: flex;
     align-items: center;
@@ -1624,8 +1707,8 @@ section {
 }
 
 .job-explain3 {
-    top: 38%;
-    right: 35%;
+    top: -20%;
+    right: 2%;
     width: 60vw;
     display: flex;
     align-items: center;
@@ -1962,6 +2045,10 @@ section {
     color: #ffffff;
     font-size: 1.5em;
     content: '☁︎ ';
+  }
+
+  .list-risk-area {
+    font-size: smaller;
 }
 
 /* table unit 5 */
@@ -2008,7 +2095,7 @@ section {
 
 .middle {
     height: 17vh;
-    padding-top: 5.3vh;
+    padding-top: 7vh;
 
 }
 
@@ -2035,7 +2122,7 @@ section {
 .bottom {
     border-bottom-right-radius: 2vw;
     height: 17vh;
-    padding-top: 5.3vh;
+    padding-top: 7vh;
     background-color: rgba(187, 176, 217, 1);
 }
 

@@ -263,9 +263,9 @@
                             <div class="title-background">
                                 <h1 class="title-text">אזורי סיכון</h1>
                             </div>
-                            <div class="pac-container">
+                            <div class="pac-container-concepts">
                                 <div class="explaine-container cold-explain" id="cold-explain">
-                                    <p><b>קר (P‌AC-1  ומטה) – ללא השפעות או השפעות חולפות, שאינן פוגעות בריאותית.</p>
+                                    <p><b>קר (P‌AC-1  ומטה) </b> – ללא השפעות או השפעות חולפות, שאינן פוגעות בריאותית.</p>
                                 </div>
                                 <div class="explaine-container focus-explain" id="focus-explain">
                                     <p><b>מוקד - </b>האיזור בו מתרחשת הדליפה, בשטח המפעל עצמו</p>
@@ -276,7 +276,7 @@
                                 <div class="explaine-container warm-explain" id="warm-explain">
                                     <p><b>פוש‌ר, אזור סיכון עיקרי (ΡAC-2) -</b>השפעה בריאותית חמו​רה, בלתי הפיכה וארוכת טווח, או הפוגעת​ ביכולת ההימל​טות מאזור האי‌רוע.</p>
                                 </div>
-                                <div class="pac-map" id="pac-map">
+                                <div class="pac-map pac-map-concepts" id="pac-map-concepts">
                                     <div class="pac" id="cold">קר
                                         <img class="mouseClick" src="assets/general/mouseClick.png" alt="mouseClick">
                                     </div>
@@ -291,7 +291,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="pac-explained">
+                            <div class="pac-explained pac-explained-concepts">
                                 <p dir="ltr"><b>PAC (Protective Action Criteria)</b></p>
                                 <p>(Protective Action Criteria) –  הריכוז באוויר של חומר, מעליו האוכלוסייה הכללית, כולל אוכלוסיה רגישה, בחשיפה של שעה צפויה לחוות השפעות בדרגות שונות.</p>
                             </div>
@@ -481,21 +481,13 @@
                     <section id="roles">
 
                         <section class="panel" id="rescue-roles">
-                            <div class="pac-container">
+                            <div class="pac-container-roles">
                                 <div class="explaine-container cold-explain cold-job" id="cold-explain">
                                     <img src="assets/units/unit3/coldAreaPic.svg" alt="cold-area-pic" class="cold-area-pic">
                                     <p class="cold-text"><b>מפקדת פלוגה/גדוד פו"ש</b></p>
                                 </div>
                                 <div class="explaine-container focus-explain" id="focus-explain">
                                     <p><b>מוקד - </b>האיזור בו מתרחשת הדליפה, בשטח המפעל עצמו</p>
-                                </div>
-                                <div class="explaine-container heat-explain warm-explain job-explain2" id="heat-explain">
-                                    <div class="img-span">
-                                        <img src="assets/units/unit3/jobAreaPic2.svg" alt="job-area-pic2" class="heat-area-pic">
-                                    </div>
-                                    <div class="warm-text">
-                                        <p class="heat-text"><b>פלר​"ג ע"ר ופינוי נפגעים</b></p>
-                                    </div>
                                 </div>
                                 <div class="explaine-container heat-explain warm-explain job-explain3" id="warm-explain">
                                     <div class="img-span">
@@ -505,17 +497,25 @@
                                         <p class="heat-text"><b>מחלקת חילוץ‌ פינוי נפגעים וסריקות סלקטיביות</b></p>
                                     </div>
                                 </div>
-                                <div class="pac-map" id="pac-map">
-                                    <div class="pac" id="cold">קר
+                                <div class="explaine-container heat-explain warm-explain job-explain2" id="heat-explain">
+                                    <div class="img-span">
+                                        <img src="assets/units/unit3/jobAreaPic2.svg" alt="job-area-pic2" class="heat-area-pic">
+                                    </div>
+                                    <div class="warm-text">
+                                        <p class="heat-text"><b>פלר​"ג ע"ר ופינוי נפגעים</b></p>
+                                    </div>
+                                </div>
+                                <div class="pac-map" id="pac-map-rescue-roles">
+                                    <div class="pac" id="cold-roles">קר
                                         <img class="mouseClick" src="assets/general/mouseClick.png" alt="mouseClick">
                                     </div>
-                                    <div class="pac" id="focus">מוקד
+                                    <div class="pac" id="focus-roles">מוקד
                                         <img class="mouseClick" src="assets/general/mouseClick.png" alt="mouseClick">
                                     </div>
-                                    <div class="pac" id="heat">חם
+                                    <div class="pac" id="heat-roles">חם
                                         <img class="mouseClick" src="assets/general/mouseClick.png" alt="mouseClick">
                                     </div>
-                                    <div class="pac" id="warm">פושר
+                                    <div class="pac" id="warm-roles">פושר
                                         <img class="mouseClick" src="assets/general/mouseClick.png" alt="mouseClick">
                                     </div>
                                 </div>
@@ -610,7 +610,7 @@
                     </section>
                 </div>
     
-                 <div class="units" id="unit4">
+                <div class="units" id="unit4">
                     <section id="protection-levels">
                         <section class="panel" id="protection-wearing">
                             <div class="protection-wearing-container">
