@@ -2136,3 +2136,10 @@ tr {
 .dif-color-td {
     background-color: rgb(229, 219, 255);
 }
+
+.flower-animation {
+    width: 40vw;
+    position: absolute;
+    top: 80%;
+    left: 30%;
+}
