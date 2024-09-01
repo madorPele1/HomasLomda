@@ -1958,11 +1958,11 @@ section {
     right: 10px;
 }
 
-ul li::marker {
+.cloud-list-unit5 li::marker {
     color: #ffffff;
     font-size: 1.5em;
     content: '☁︎ ';
-  }
+}
 
 /* table unit 5 */
 
