@@ -1262,6 +1262,10 @@ const manageRhombuses = (rhombuseNum) => {
             case 2:
                 visitedRhombuse2 = true;
                 allPanels[34].style.display = 'block';
+                var flower = document.getElementsByClassName(`flower-animation`); 
+                for (let i = 0; i < flower.length; i++) {
+                    setTimeout(function() { flower[i].setAttribute('src', `assets/units/unit1/flowerAnimation.gif`); }, 0);
+                }
                 break;
             case 3:
                 visitedRhombuse3 = true;
