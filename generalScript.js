@@ -762,10 +762,19 @@ const pacMap = (chosen) => {
          explainContainer[i].style.display = "none";
     }
 
+    var specificExplainContainer = document.getElementsByClassName("explaine-container"); 
+    for (let i = 0; i < specificExplainContainer.length; i++) {
+        specificExplainContainer[i].style.display = "none";
+   }
+
     if (chosen !== 'pac-map') {
-        var specificExplainContainer = document.getElementsByClassName(`${chosen}-explain`); 
+        specificExplainContainer = document.getElementsByClassName(`${chosen}-explain`); 
         for (let i = 0; i < specificExplainContainer.length; i++) {
             specificExplainContainer[i].style.display = "block";
+            if (chosen == "warm-roles" || chosen == "heat-roles") {
+                 document.getElementsByClassName("warm-explain")[3].style.display = "block"; 
+                 document.getElementsByClassName("heat-explain")[4].style.display = "block"; 
+            }
         }
     }
 
@@ -786,6 +795,10 @@ const pacMap = (chosen) => {
     }
 
     if (unit === '3') {
+        if (role == 'soldier') {
+            document.getElementsByClassName("forward-arrow")[1].style.display= "none";
+        }
+
         var explainText = document.getElementsByClassName(`general-job`); 
         for (let i = 0; i < explainText.length; i++) {
                 explainText[i].style.display = "none";
@@ -796,16 +809,14 @@ const pacMap = (chosen) => {
                 explainText[i].style.display = "none";
             } 
         }
-        chosen.replace('-roles', '');
+
         if (!(document.getElementById(`${chosen}`).classList.contains('visited-concept'))) {
-            console.log(chosen, completePac);
             completePac++;
             document.getElementById(`${chosen}`).classList.add("visited-concept");
         }
 
-        var explainText;
         switch (chosen) {
-            case 'cold':
+            case 'cold-roles':
                 explainText = document.getElementsByClassName(`job1`);
             break;
 
@@ -816,9 +827,13 @@ const pacMap = (chosen) => {
                 explainText = document.getElementsByClassName('none');
                 }
             break;
+
+            case 'heat-roles':
+            case 'warm-roles':
+                var explainText = document.getElementsByClassName(`job2`);
+            break;
             
             default:
-                var explainText = document.getElementsByClassName(`job2`);
             break;
         }
 
@@ -836,33 +851,36 @@ const pacMap = (chosen) => {
 
 const changeTextPac = (chosen) => {
     switch (chosen) {
-        case 'next':
-            var textDisplay = document.getElementsByClassName("job4");
-            var arrowHide = document.getElementsByClassName("forward-arrow");
-            var arrowShow = document.getElementsByClassName("back-arrow");
-            break;
-        case 'back':
-            var textDisplay = document.getElementsByClassName("job3");
-            var arrowHide = document.getElementsByClassName("back-arrow");
-            var arrowShow = document.getElementsByClassName("forward-arrow");
+            case 'next':
+                var textDisplay = document.getElementsByClassName("job4");
+                var arrowHide = document.getElementsByClassName("forward-arrow");
+                var arrowShow = document.getElementsByClassName("back-arrow");
+                break;
+            case 'back':
+                var textDisplay = document.getElementsByClassName("job3");
+                var arrowHide = document.getElementsByClassName("back-arrow");
+                var arrowShow = document.getElementsByClassName("forward-arrow");
 
             break;
     }
-    for (let x = 3; x <= 4; x++) {
-        var explainText = document.getElementsByClassName(`job${x}`);
-        for (let i = 0; i < explainText.length; i++) {
-            explainText[i].style.display = "none";
+    if (role == "commander") {
+        document.getElementsByClassName("back-to-map-car-button")[14].style.display="none"
+        for (let x = 3; x <= 4; x++) {
+            var explainText = document.getElementsByClassName(`job${x}`);
+            for (let i = 0; i < explainText.length; i++) {
+                explainText[i].style.display = "none";
+            }
+        } 
+        for (let i = 0; i < textDisplay.length; i++) {
+            textDisplay[i].style.display = "block";
+        }
+        for (let i = 0; i < arrowHide.length; i++) {
+            arrowHide[i].style.display = "none";
+        }
+        for (let i = 0; i < arrowShow.length; i++) {
+            arrowShow[i].style.display = "block";
         }
     } 
-    for (let i = 0; i < textDisplay.length; i++) {
-        textDisplay[i].style.display = "block";
-    }
-    for (let i = 0; i < arrowHide.length; i++) {
-        arrowHide[i].style.display = "none";
-    }
-    for (let i = 0; i < arrowShow.length; i++) {
-        arrowShow[i].style.display = "block";
-    }
 }
 
 const conceptScreenHandle = (definitionNum, target) => { 
