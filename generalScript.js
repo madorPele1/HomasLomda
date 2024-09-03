@@ -242,6 +242,17 @@ const displayScreens = (screenArrayName) => {
         allPanels[37].style.display = "none";
         allPanels[38].style.display = "none";
         allPanels[39].style.display = "none";
+        if (sessionStorage.getItem("completeDragAndDrop")) {
+            const startDraggingBtn = document.getElementsByClassName("start-dragging-btn")[1]; 
+            startDraggingBtn.style.display = "none";
+            allPanels[36].style.display = "block";
+            allPanels[37].style.display = "block";
+            allPanels[38].style.display = "block";
+            allPanels[39].style.display = "block";
+            if (sessionStorage.getItem("answered-q1-4")) {
+                allPanels[40].style.display = "block";
+            }         
+        }
     }
     else if (unit == 5) {  
         let allPanels = document.getElementsByTagName('section');
