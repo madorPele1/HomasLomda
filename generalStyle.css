@@ -1912,7 +1912,8 @@ section {
         transform: scale(1) translate(0, 0);
     }
     100% {
-        transform: scale(2) translate(-15vw, -7vh);
+        transform: scale(2) translate(-15vw, -1vh);
+        position: absolute;
     }
 }
 @keyframes growing-cloud2 {
@@ -1920,7 +1921,8 @@ section {
         transform: scale(1) translate(0, 0);
     }
     100% {
-        transform: scale(2) translate(14vw, -13vh)
+        transform: scale(2) translate(14vw, -1vh);
+        position: absolute;
     }
 }
 @keyframes growing-cloud3 {
@@ -1928,7 +1930,8 @@ section {
         transform: scale(1) translate(0, 0);
     }
     100% {
-        transform: scale(2) translate(-15vw, -20vh)
+        transform: scale(2) translate(-17vw, -1vh);
+        position: absolute;
     }
 }
 @keyframes growing-cloud4 {
@@ -1936,7 +1939,8 @@ section {
         transform: scale(1) translate(0, 0);
     }
     100% {
-        transform: scale(2) translate(15vw, -26vh)
+        transform: scale(2) translate(12vw, -1vh);
+        position: absolute;
     }
 }
 @keyframes growing-cloud5 {
@@ -1944,7 +1948,8 @@ section {
         transform: scale(1) translate(0, 0);
     }
     100% {
-        transform: scale(2) translate(-14vw, -34vh);
+        transform: scale(2) translate(-16vw, -1vh);
+        position: absolute;
     }
 }
 
@@ -1969,7 +1974,7 @@ section {
 .display-map-btn {
     margin: auto;
     position: absolute;
-    bottom: 17px;
+    bottom: 7%;
     right: 10px;
 }
 
@@ -1978,6 +1983,11 @@ section {
     font-size: 1.5em;
     content: '☁︎ ';
   }
+
+.cloud-list-unit5 {
+    position: relative;
+    top: 3%;
+}
 
   .list-risk-area {
     font-size: smaller;
