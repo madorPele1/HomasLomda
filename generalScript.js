@@ -794,11 +794,7 @@ const pacMap = (chosen) => {
                 }
     }
 
-    if (unit === '3') {
-        if (role == 'soldier') {
-            document.getElementsByClassName("forward-arrow")[1].style.display= "none";
-        }
-
+ if (unit === '3') {
         var explainText = document.getElementsByClassName(`general-job`); 
         for (let i = 0; i < explainText.length; i++) {
                 explainText[i].style.display = "none";
@@ -809,31 +805,42 @@ const pacMap = (chosen) => {
                 explainText[i].style.display = "none";
             } 
         }
-
+        chosen.replace('-roles', '');
         if (!(document.getElementById(`${chosen}`).classList.contains('visited-concept'))) {
             completePac++;
             document.getElementById(`${chosen}`).classList.add("visited-concept");
         }
 
+        var explainText;
         switch (chosen) {
             case 'cold-roles':
                 explainText = document.getElementsByClassName(`job1`);
+                explainDiv = document.getElementsByClassName('cold-explain');
             break;
 
-            case 'pac-map':
-                if (role === 'commander') {
-                explainText = document.getElementsByClassName(`general-job`);
+            case 'warm-roles':         
+            case 'heat-roles':
+                if (role === "commander") {
+                    var explainText = document.getElementsByClassName(`job2`);
                 } else {
-                explainText = document.getElementsByClassName('none');
+                    var explainText = document.getElementsByClassName('job2');
+                    var arrowHide = document.getElementsByClassName("forward-arrow");
+                    var textHide = document.getElementsByClassName('job3');
+                    var textDisplay = document.getElementsByClassName('job4');
+                    for (let i = 0; i < arrowHide.length; i++) {
+                        arrowHide[i].style.display = "none";
+                        textHide[i].style.display = "none";
+                        textDisplay[i].style.display = "block";
+                    }
                 }
             break;
 
-            case 'heat-roles':
-            case 'warm-roles':
-                var explainText = document.getElementsByClassName(`job2`);
-            break;
-            
             default:
+                if (role === 'commander') {
+                    explainText = document.getElementsByClassName(`general-job`);
+                } else {
+                    explainText = document.getElementsByClassName('none');
+                }
             break;
         }
 
@@ -851,33 +858,23 @@ const pacMap = (chosen) => {
 
 const changeTextPac = (chosen) => {
     switch (chosen) {
-            case 'next':
-                var textDisplay = document.getElementsByClassName("job4");
-                var arrowHide = document.getElementsByClassName("forward-arrow");
-                var arrowShow = document.getElementsByClassName("back-arrow");
-                break;
-            case 'back':
-                var textDisplay = document.getElementsByClassName("job3");
-                var arrowHide = document.getElementsByClassName("back-arrow");
-                var arrowShow = document.getElementsByClassName("forward-arrow");
-
+        case 'next':
+            var textDisplay = document.getElementsByClassName("job4");
+            var arrowHide = document.getElementsByClassName("forward-arrow");
+            var arrowShow = document.getElementsByClassName("back-arrow");
+            break;
+        case 'back':
+            var textDisplay = document.getElementsByClassName("job3");
+            var arrowHide = document.getElementsByClassName("back-arrow");
+            var arrowShow = document.getElementsByClassName("forward-arrow");
             break;
     }
-    if (role == "commander") {
-        document.getElementsByClassName("back-to-map-car-button")[14].style.display="none"
-        for (let x = 3; x <= 4; x++) {
-            var explainText = document.getElementsByClassName(`job${x}`);
-            for (let i = 0; i < explainText.length; i++) {
-                explainText[i].style.display = "none";
-            }
-        } 
-        for (let i = 0; i < textDisplay.length; i++) {
+    for (let x = 3; x <= 4; x++) {
+        var explainText = document.getElementsByClassName(`job${x}`);
+        for (let i = 0; i < explainText.length; i++) {
+            explainText[i].style.display = "none";
             textDisplay[i].style.display = "block";
-        }
-        for (let i = 0; i < arrowHide.length; i++) {
             arrowHide[i].style.display = "none";
-        }
-        for (let i = 0; i < arrowShow.length; i++) {
             arrowShow[i].style.display = "block";
         }
     } 
