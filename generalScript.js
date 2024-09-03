@@ -825,8 +825,8 @@ const pacMap = (chosen) => {
                 } else {
                     var explainText = document.getElementsByClassName('job2');
                     var arrowHide = document.getElementsByClassName("forward-arrow");
-                    var textHide = document.getElementsByClassName('job3');
-                    var textDisplay = document.getElementsByClassName('job4');
+                    var textHide = document.getElementsByClassName('job4');
+                    var textDisplay = document.getElementsByClassName('job3');
                     for (let i = 0; i < arrowHide.length; i++) {
                         arrowHide[i].style.display = "none";
                         textHide[i].style.display = "none";
