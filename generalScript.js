@@ -831,7 +831,7 @@ const pacMap = (chosen) => {
         }
     }
 
-    if (unit === 1) {
+    if (unit == 1) {
             if (!(document.getElementById(`${chosen}`).classList.contains('visited-concept'))) {
                 completePacConcepts++;
                 document.getElementById(`${chosen}`).classList.add("visited-concept");
@@ -847,7 +847,7 @@ const pacMap = (chosen) => {
                 }
     }
 
- if (unit === '3') {
+ if (unit == 3) {
         var explainText = document.getElementsByClassName(`general-job`); 
         for (let i = 0; i < explainText.length; i++) {
                 explainText[i].style.display = "none";
