@@ -24,6 +24,7 @@ let completeCloudStages = 0;
 let addingHapakImg;
 let addingHomasImg;
 let duplicateMithamHomas;
+let num = 1; // carousel
 
 let updatedScore = 0;
 var score = 0;
@@ -192,26 +193,22 @@ var commanderUnit5 = [
 ];
 
 window.addEventListener("load", () => { // Initializing the lomda
-    document.getElementsByClassName("carStop4")[0].style.display = "block";
-    num = 1;
-    role = sessionStorage.getItem("role");
     unit = 1;
+    role = sessionStorage.getItem("role");
     screenArrayName = `${role}Unit${unit}`;
     displayScreens(screenArrayName);
-    whatsappContactsHandle();
     animate(`stopNum${unit}`);
 })
 
 
 const iOS = () => {
     return ['iPad Simulator', 'iPhone Simulator', 'iPod Simulator', 'iPad', 'iPhone', 'iPod'].includes(navigator.platform) || (navigator.userAgent.includes("Mac") && "ontouchend" in document);
-}
+} // check if the user's device is ios
 
 const displayScreens = (screenArrayName) => { 
     if (role == undefined) {alert("יש להתחבר לעמוד הראשי של הלומדה: \n https://madorpele1.github.io/HomasLomda/");} // alert that user is in the wrong page
     const loader = document.getElementById("loader");
     if (loader) {loader.style.display = "none";} // removing loader element
-    
     document.querySelectorAll('.unit-screens').forEach(screen => screen.remove()); // removes the previous unit's screens
     var screenArray = window[screenArrayName];
     screenArray.forEach(screenId => {
@@ -224,7 +221,6 @@ const displayScreens = (screenArrayName) => {
 
     if (iOS()) {
         // The user is on an iOS device.
-        document.getElementsByClassName("car-video")[1].style.display = "none";
         document.getElementsByClassName("car-img")[1].style.display = "flex";
     } else {
         document.getElementsByClassName("car-video")[1].style.display = "block";
@@ -233,11 +229,100 @@ const displayScreens = (screenArrayName) => {
     removeEventListeners(); // Remove previous event listeners
     addEventListeners(); // Add new event listeners
     addContent();
+    changeSpecificDetails();
+}
+
+
+const addEventListeners = () => {
+    document.body.addEventListener("click", clickHandler); // Attach event listener to the document because for some reason it doesn't work for separate elements
+}
+const removeEventListeners = () => {
+    document.body.removeEventListener("click", clickHandler);
+}
+
+const changeSpecificDetails = () => {
+    let allPanels;
+
     if (unit == 1) {
         conceptScreenHandle();
+        var explainingTitle = document.querySelectorAll('.unit-screens .explaining-title'); 
+        explainingTitle[3].style.fontSize = "19px";
+        allPanels = document.getElementsByTagName('section');
+        for (let index = 29; index < allPanels.length; index++) {
+            allPanels[index].style.display = "none";
+        }
+
+        if (sessionStorage.getItem("answered-q1-1") && role == 'commander') {
+            allPanels[49].style.display = "block";
+    
+        } else if (sessionStorage.getItem("answered-q1-1") && role == 'soldier') {
+            allPanels[42].style.display = 'block';
+        }
     }
+
+
+    else if (unit == 2) {  
+        whatsappContactsHandle();
+        allPanels = document.getElementsByTagName('section');
+
+        let arrows = document.getElementsByClassName("down-arrows");          
+        for (let lindex = 0; lindex < arrows.length; lindex++) {
+            arrows[lindex].style.display = "none";              
+        }
+
+        if (sessionStorage.getItem("answered-q1-2") && role == 'commander') {
+            allPanels[38].style.display = "block";
+            if (sessionStorage.getItem("answered-q2-2")) {
+                document.getElementsByTagName('section')[39].style.display = "block";
+            }
+    
+        } else if (sessionStorage.getItem("answered-q1-2") && role == 'soldier') {
+            allPanels[36].style.display = "block";
+        }
+    }
+
+
+    else if (unit == 3) { 
+        if (role == 'commander') { // change specific answers details
+            document.getElementsByTagName('section')[29].style.display = "none";
+            document.getElementsByTagName('section')[30].style.display = "none";
+            document.getElementsByTagName('section')[31].style.display = "none";
+            document.getElementsByTagName('section')[32].style.display = "none";
+            document.getElementsByTagName('section')[33].style.display = "none";
+            document.getElementsByTagName('section')[34].style.display = "none";
+           
+                if (completePac === 2) {
+                    document.getElementsByTagName('section')[29].style.display = "block";
+                    document.getElementsByTagName('section')[30].style.display = "block";
+                }
+
+                if (sessionStorage.getItem("answered-q1-3")) {
+                    document.getElementsByTagName('section')[29].style.display = "block";
+                    document.getElementsByTagName('section')[30].style.display = "block";
+                    document.getElementsByTagName('section')[31].style.display = "block";
+                    if (sessionStorage.getItem("answered-q2-3")) {
+                        document.getElementsByTagName('section')[32].style.display = "block";
+                        if (sessionStorage.getItem("answered-q3-3")) {
+                            document.getElementsByTagName('section')[33].style.display = "block";
+                            if (sessionStorage.getItem("answered-q4-3")) {
+                                document.getElementsByTagName('section')[34].style.display = "block";
+                            }
+                        }
+                    }
+            
+                } 
+
+        } else if (role == 'soldier') {
+            document.getElementsByTagName('section')[29].style.display = "none";
+            if (completePac === 2) {
+                document.getElementsByTagName('section')[29].style.display = "block";
+            }
+        }   
+    }
+
+
     else if (unit == 4) {  
-        let allPanels = document.getElementsByTagName('section');
+        allPanels = document.getElementsByTagName('section');
         allPanels[36].style.display = "none";
         allPanels[37].style.display = "none";
         allPanels[38].style.display = "none";
@@ -253,24 +338,155 @@ const displayScreens = (screenArrayName) => {
                 allPanels[40].style.display = "block";
             }         
         }
-    }
+        document.getElementsByClassName("character-body")[2].style.width = "50vw"
+        document.getElementsByClassName("character-body")[4].style.width = "50vw"
+        document.getElementsByClassName("character-body")[5].style.width = "55vw"
+        document.getElementsByClassName("character-body")[6].style.width = "50vw"
+        document.getElementsByClassName("character-body")[6].style.left = "58%"
+        
+        const titleToRemove = document.getElementsByClassName("title-background-general")
+        for (let index = 1; index <= 7; index++) {
+            titleToRemove[index].style.display = "none";
+        }
+
+        const btnsToRemove = document.getElementsByClassName("back-btn")
+        for (let jindex = 1; jindex < btnsToRemove.length; jindex++) {
+            btnsToRemove[jindex].style.display = "none";
+        }
+
+        document.getElementsByTagName("section")[29].innerHTML +=
+            `<img class="example-clothing" style="" src="assets/units/unit4/bmp/boots.svg" alt="boots">
+            <img class="example-clothing" style="" src="assets/units/unit4/bmp/mask.svg" alt="mask">
+            <img class="example-clothing" style="" src="assets/units/unit4/bmp/gloves.svg" alt="gloves">`;
+
+        document.getElementsByTagName("section")[30].innerHTML +=
+            `<img class="example-clothing" style="" src="assets/units/unit4/bmp/mask.svg" alt="mask">
+            <img class="example-clothing" style="" src="assets/units/unit4/m15.svg" alt="m15-mask">`;
+
+            if (role === 'soldier') {
+                document.getElementsByTagName('section')[36].style.display = "none";
+                document.getElementsByTagName('section')[37].style.display = "none";
+            }
+            document.getElementsByTagName('section')[40].style.display = "none";
+            let arrows = document.getElementsByClassName("down-arrows"); 
+            arrows[3].style.display = "none";
+            arrows[4].style.display = "none";
+            arrows[9].style.display = "none";
+            arrows[10].style.display = "none";
+            arrows[11].style.display = "none";
+    
+            document.getElementsByClassName("protection-tags")[7].style.display = "block";
+            document.getElementsByClassName("protection-tags")[8].style.display = "block";
+            document.getElementsByClassName("protection-tags")[9].style.display = "block";
+            document.getElementsByClassName("protection-tags")[7].innerHTML = `<li class="list-risk-area">אזור סיכון מותר לפעולה: אזור חם</li><li class="list-risk-area">משימה כללית: סיור וחילוץ נפגעים בשטח פתוח בסמוך למוקד, סריקת מבנה הנגוע בחומ"ס</li><li class="list-risk-area">כוחות מצוידים: משטרה</li>`;
+            document.getElementsByClassName("protection-tags")[8].innerHTML = `<li class="list-risk-area">אזור סיכון מותר לפעולה: אזור פושר</li><li class="list-risk-area"> משימה כללית: חילוץ נפגעים מאזור חם, סיור ועבודה בשטח פתוח שאיננו סמוך למוקד</li><li class="list-risk-area">כוחות מצוידים: משטרה, מד"א, פקע"ר</li>`;
+            document.getElementsByClassName("protection-tags")[9].innerHTML = `<li class="list-risk-area">אזור סיכון מותר לפעולה: אזור פושר</li><li class="list-risk-area"> משימה כללית: חילוץ נפגעים מאזור חם, סיור ועבודה בשטח פתוח שאיננו סמוך למוקד</li><li class="list-risk-area">כוחות מצוידים: משטרה, מד"א, פקע"ר</li>`;
+        
+            if (sessionStorage.getItem("answered-q1-4")) {
+                document.getElementsByTagName('section')[40].style.display = "block";
+            }
+        }
+
+
     else if (unit == 5) {  
-        let allPanels = document.getElementsByTagName('section');
+        allPanels = document.getElementsByTagName('section');
         allPanels[29].style.display = "none";
         allPanels[30].style.display = "none";
         allPanels[31].style.display = "none";
-        let numOfQuestions = numOfQuestionsFor[role];
-        updatedScore = sessionStorage.getItem("updated-score");
-        score = (updatedScore / (numOfQuestions * 10)) * 100;
+        document.getElementsByClassName("back-btn")[3].style.display = "none"
+        document.getElementsByClassName("ending-text")[1].style.fontSize = "3.5vw";
+        document.getElementsByClassName("ending-text")[1].style.lineHeight = "4vh";
+
+        
+        document.getElementsByClassName("title-background-general")[2].style.display = "none";        
+        if (role === 'commander') {
+            allPanels[30].innerHTML = `<div id="table-scroll" class="table-scroll">
+            <div class="table-wrap" id="table-wrap">
+              <table class="main-table">
+                  <tr class="little">
+                    <td class="fixed-side top"><p id="dot-slider" class="dot-slider"><span class="selected-dot">●</span>●●●</p></td>
+                    <td class="head-table">מ-פ' עד "פ+10"</td>
+                    <td class="head-table">מ-"פ+10" עד "פ+30"</td>
+                    <td class="head-table">מ-"פ+30" עד "פ+60"</td>
+                    <td class="head-table">מ-"פ+60" עד תום האירוע</td>
+                  </tr>
+                  <tr>
+                    <td class="fixed-side middle one">פעילות<br> בשטח</td>
+                    <td class="reg">התרעה ופעולות איתור</td>
+                    <td class="reg">הפעלת מענה משולב והקמת חפ"ק אחוד</td>
+                    <td class="reg">ניטור ועדכון הע"ס דינאמית <br> פעולות להצלת חיים והכלת המוקד</td>
+                    <td class="reg">סיום הטיפול במוקד <br> שלילת הסכנה והכרזה על תום אירוע</td>
+                  </tr>
+                  <tr>
+                    <td class="fixed-side middle two">פעילות<br> במפקדה</td>
+                    <td class="reg">חיתוך מצב <br> שלילה או הכרזה על אירוע חומ"ס</td>
+                    <td class="reg">הפצת הנחיות מצילות חיים <br>והודעות משלימות ניתוח אזורי סיכון<br> ותכנון מענה</td>
+                    <td class="reg">עדכון הנחיות בהתאם להע"ס דינאמית <br> תמיכה לוגיסטית בכוחות בשטח</td>
+                    <td class="reg">שחרור האוכלוסייה <br> וידוא חזל"כ לכוחות</td>
+                  </tr>
+                  <tr>
+                    <td class="fixed-side middle three">התנהגות<p>אוכלוסייה</p></td>
+                    <td class="reg">התמגנות למשך 10 דקות</td>
+                    <td class="reg">פעילות עפ"י ההנחיות <br> (הסתגרות, התפנות ועוד)</td>
+                    <td class="reg">המשך פעילות עפ"י ההנחיות</td>
+                    <td class="reg">חזרה לשגרה</td>
+                  </tr>
+                  <tr>
+                    <td class="fixed-side bottom">תפקידי<br> הגדוד</td>
+                    <td class="reg dif-color-td">קבלת התרעה על חשש לאירוע חומ"ס <br> בגזרת הגדוד</td>
+                    <td class="reg dif-color-td">הגעה לאירוע והקמת חפ"ק אחוד, <br>ניהול האירוע, העברת מידע<br> לרמה הממונה באופן שוטף</td>
+                    <td class="reg dif-color-td">בהתאם להערכת מצב - ביצוע סריקות<br> לפינוי נפגעים בשטח תחת סיכון מתן <br> טיפול ראשוני תומך בשטח <br>עד לפינוי הנפגעים</td>
+                    <td class="reg dif-color-td">המשך ניהול האירוע <br>עד להכרזה על תום האירוע</td>
+                  </tr>
+              </table>
+            </div>
+          </div>`;
+            } else {
+                allPanels[30].innerHTML = `<div id="table-scroll" class="table-scroll">
+                <div class="table-wrap" id="table-wrap">
+                  <table class="main-table">
+                      <tr class="little">
+                        <td class="fixed-side top"><p id="dot-slider" class="dot-slider"><span class="selected-dot">●</span>●●●</p></td>
+                        <td class="head-table">מ-פ' עד "פ+10"</td>
+                        <td class="head-table">מ-"פ+10" עד "פ+30"</td>
+                        <td class="head-table">מ-"פ+30" עד "פ+60"</td>
+                        <td class="head-table">מ-"פ+60" עד תום האירוע</td>
+                      </tr>
+                      <tr>
+                        <td class="fixed-side middle one">פעילות<br> בשטח</td>
+                        <td class="reg">התרעה ופעולות איתור</td>
+                        <td class="reg">הפעלת מענה משולב והקמת חפ"ק אחוד</td>
+                        <td class="reg">ניטור ועדכון הע"ס דינאמית <br> פעולות להצלת חיים והכלת המוקד</td>
+                        <td class="reg">סיום הטיפול במוקד <br> שלילת הסכנה והכרזה על תום אירוע</td>
+                      </tr>
+                      <tr>
+                        <td class="fixed-side bottom">תפקידי<br> הגדוד</td>
+                        <td class="reg dif-color-td">קבלת התרעה על חשש לאירוע חומ"ס <br> בגזרת הגדוד</td>
+                        <td class="reg dif-color-td">הגעה לאירוע והקמת חפ"ק אחוד, <br>ניהול האירוע, העברת מידע<br> לרמה הממונה באופן שוטף</td>
+                        <td class="reg dif-color-td">בהתאם להערכת מצב - ביצוע סריקות<br> לפינוי נפגעים בשטח תחת סיכון מתן <br> טיפול ראשוני תומך בשטח <br>עד לפינוי הנפגעים</td>
+                        <td class="reg dif-color-td">המשך ניהול האירוע <br>עד להכרזה על תום האירוע</td>
+                      </tr>
+                  </table>
+                </div>
+              </div>`;
+            }
+
+            document.getElementById("table-wrap").addEventListener("scroll", scrolling);
+            dotSlider = document.getElementById("dot-slider");
+            document.getElementsByClassName("end-btn")[1].style.display = "none";
+            
+            let numOfQuestions = numOfQuestionsFor[role];
+            updatedScore = sessionStorage.getItem("updated-score");
+            score = (updatedScore / (numOfQuestions * 10)) * 100;
+            if (score < 75 && sessionStorage.getItem("completeCloudStages")) {
+                document.getElementsByClassName("ending-div")[1].innerHTML +=
+                `<button id="start-over-btn" class="btn" style="bottom: 6vh;">נסו שנית</button>`;
+                document.getElementsByClassName("score")[1].innerHTML = ` ציונכם הוא: ${score} <br> כדאי לכם לחזור על הלומדה... `;
+                document.getElementById("start-over-btn").addEventListener("click", startOver);
+            } else {
+                document.getElementsByClassName("score")[1].innerHTML = ` ציונכם הוא: ${score} <br> כל הכבוד! `;
+            }
     }
-}
-
-
-const addEventListeners = () => {
-    document.body.addEventListener("click", clickHandler); // Attach event listener to the document because for some reason it doesn't work for separate elements
-}
-const removeEventListeners = () => {
-    document.body.removeEventListener("click", clickHandler);
 }
 
 const clickHandler = (event) => {
@@ -395,39 +611,6 @@ const addContent = () => { // function that completes all the non-text content i
     for (let i = 0; i < characterBody.length; i++) {
         document.getElementsByClassName("character-body")[i].src = `assets/general/characters/allCharacters/${role}.svg`;
     }
-
-    if (unit == 4) { // change specific details
-        document.getElementsByClassName("character-body")[2].style.width = "50vw"
-        document.getElementsByClassName("character-body")[4].style.width = "50vw"
-        document.getElementsByClassName("character-body")[5].style.width = "55vw"
-        document.getElementsByClassName("character-body")[6].style.width = "50vw"
-        document.getElementsByClassName("character-body")[6].style.left = "58%"
-        
-        const titleToRemove = document.getElementsByClassName("title-background-general")
-        for (let index = 1; index <= 7; index++) {
-            titleToRemove[index].style.display = "none";
-        }
-
-        const btnsToRemove = document.getElementsByClassName("back-btn")
-        for (let jindex = 1; jindex < btnsToRemove.length; jindex++) {
-            btnsToRemove[jindex].style.display = "none";
-        }
-
-        document.getElementsByTagName("section")[29].innerHTML +=
-            `<img class="example-clothing" style="" src="assets/units/unit4/bmp/boots.svg" alt="boots">
-            <img class="example-clothing" style="" src="assets/units/unit4/bmp/mask.svg" alt="mask">
-            <img class="example-clothing" style="" src="assets/units/unit4/bmp/gloves.svg" alt="gloves">`;
-
-        document.getElementsByTagName("section")[30].innerHTML +=
-            `<img class="example-clothing" style="" src="assets/units/unit4/bmp/mask.svg" alt="mask">
-            <img class="example-clothing" style="" src="assets/units/unit4/m15.svg" alt="m15-mask">`;
-    }
-
-    else if (unit == 5) { // change specific details
-        document.getElementsByClassName("back-btn")[3].style.display = "none"
-        document.getElementsByClassName("ending-text")[1].style.fontSize = "3.5vw";
-        document.getElementsByClassName("ending-text")[1].style.lineHeight = "4vh";
-    }
     
     var characterCircle = document.getElementsByClassName("character-circle"); //change the main character circles
     for (let i = 0; i < characterCircle.length; i++) {
@@ -475,60 +658,17 @@ const addText = async () => {
         answersDiv[index * options.length + 2].classList.add(questionKey);
         answersDiv[index * options.length + 3].classList.add(questionKey);
 
+        if (unit == 2) {  
+            answersText[0].style.fontSize = "calc(10px + 0.4svh)";
+            answersText[1].style.fontSize = "calc(10px + 0.4svh)";
+            answersText[2].style.fontSize = "calc(10px + 0.4svh)";
+            answersText[3].style.fontSize = "calc(10px + 0.4svh)";
+        } else if (unit == 3) {
+            answersText[14].style.fontSize = "calc(9px + 0.4svh)";
+        }
     });  // adds the questions and answers text
 
-    if (unit == 2) { // change specific details
-        answersText[0].style.fontSize = "calc(10px + 0.4svh)";
-        answersText[1].style.fontSize = "calc(10px + 0.4svh)";
-        answersText[2].style.fontSize = "calc(10px + 0.4svh)";
-        answersText[3].style.fontSize = "calc(10px + 0.4svh)";
-
-        let arrows = document.getElementsByClassName("down-arrows");          
-        for (let lindex = 0; lindex < arrows.length; lindex++) {
-            arrows[lindex].style.display = "none";              
-        }
-    }
-    if (unit == 3) { 
-        if (role == 'commander') { // change specific answers details
-            document.getElementsByTagName('section')[29].style.display = "none";
-            document.getElementsByTagName('section')[30].style.display = "none";
-            document.getElementsByTagName('section')[31].style.display = "none";
-            document.getElementsByTagName('section')[32].style.display = "none";
-            document.getElementsByTagName('section')[33].style.display = "none";
-            document.getElementsByTagName('section')[34].style.display = "none";
-            answersText[14].style.fontSize = "calc(9px + 0.4svh)";
-                if (completePac === 2) {
-                    document.getElementsByTagName('section')[29].style.display = "block";
-                    document.getElementsByTagName('section')[30].style.display = "block";
-                }
-        } else if (role == 'soldier') {
-            document.getElementsByTagName('section')[29].style.display = "none";
-            if (completePac === 2) {
-                document.getElementsByTagName('section')[29].style.display = "block";
-            }
-        }   
-    }
-
-    if (unit == 4) { 
-        if (role === 'soldier') {
-            document.getElementsByTagName('section')[36].style.display = "none";
-            document.getElementsByTagName('section')[37].style.display = "none";
-        }
-        document.getElementsByTagName('section')[40].style.display = "none";
-        let arrows = document.getElementsByClassName("down-arrows"); 
-        arrows[3].style.display = "none";
-        arrows[4].style.display = "none";
-        arrows[9].style.display = "none";
-        arrows[10].style.display = "none";
-        arrows[11].style.display = "none";
-
-        document.getElementsByClassName("protection-tags")[7].style.display = "block";
-        document.getElementsByClassName("protection-tags")[8].style.display = "block";
-        document.getElementsByClassName("protection-tags")[9].style.display = "block";
-        document.getElementsByClassName("protection-tags")[7].innerHTML = `<li class="list-risk-area">אזור סיכון מותר לפעולה: אזור חם</li><li class="list-risk-area">משימה כללית: סיור וחילוץ נפגעים בשטח פתוח בסמוך למוקד, סריקת מבנה הנגוע בחומ"ס</li><li class="list-risk-area">כוחות מצוידים: משטרה</li>`;
-        document.getElementsByClassName("protection-tags")[8].innerHTML = `<li class="list-risk-area">אזור סיכון מותר לפעולה: אזור פושר</li><li class="list-risk-area"> משימה כללית: חילוץ נפגעים מאזור חם, סיור ועבודה בשטח פתוח שאיננו סמוך למוקד</li><li class="list-risk-area">כוחות מצוידים: משטרה, מד"א, פקע"ר</li>`;
-        document.getElementsByClassName("protection-tags")[9].innerHTML = `<li class="list-risk-area">אזור סיכון מותר לפעולה: אזור פושר</li><li class="list-risk-area"> משימה כללית: חילוץ נפגעים מאזור חם, סיור ועבודה בשטח פתוח שאיננו סמוך למוקד</li><li class="list-risk-area">כוחות מצוידים: משטרה, מד"א, פקע"ר</li>`;
-    }
+    
 
     var explainingTitle = document.querySelectorAll('.unit-screens .explaining-title'); 
     var explainingText = document.querySelectorAll('.unit-screens .explaining-text');  
@@ -548,11 +688,7 @@ const addText = async () => {
             } 
         } // adds the protection level explanation tags
     }
-    if (unit == 1) {
-        explainingTitle[3].style.fontSize = "19px";
-    }
 }
-
 
 const endUnit = () => {
     unit++;
@@ -569,7 +705,11 @@ const endUnit = () => {
 
         if (score < 75) {
             document.getElementsByClassName("score")[1].innerHTML = ` ציונכם הוא: ${score} <br> כדאי לכם לחזור על הלומדה... `;
-            document.getElementById("start-over-btn").addEventListener("click", startOver);
+            if (!(document.getElementById("start-over-btn"))) {
+                document.getElementsByClassName("ending-div")[1].innerHTML +=
+                `<button id="start-over-btn" class="btn" style="bottom: 6vh;">נסו שנית</button>`;
+                document.getElementById("start-over-btn").addEventListener("click", startOver); 
+            }
         } else {
             document.getElementsByClassName("score")[1].innerHTML = ` ציונכם הוא: ${score} <br> כל הכבוד! `;
         }
@@ -625,7 +765,7 @@ const animate = (stopNum) => {
         };     
     }
 
-    else if (!(iOS())) {
+    else {
         for (var i = 0; i <= animationContainer.length -1; i++) {
             animationContainer[i].setAttribute('src', `assets/car/zoomOutCarStop${unit}.mp4`);
             document.getElementById('animation_container').currentTime = 0;
@@ -639,109 +779,11 @@ const animate = (stopNum) => {
         });
     }, 2900);
     }
-
+    if (unit == 5) {
+        changeSpecificDetails();
+    }
     screenArrayName = `${role}Unit${unit}`;
     displayScreens(screenArrayName);
-    if (unit === '1') {
-        let allPanels = document.getElementsByTagName('section');
-
-        for (let index = 29; index < allPanels.length; index++) {
-            allPanels[index].style.display = "none";
-        }
-    }
-    else if (unit === '2') {
-        whatsappContactsHandle();
-    } else if (unit === '5') {
-        document.getElementsByClassName("title-background-general")[2].style.display = "none";
-        let allPanels = document.getElementsByTagName('section');
-        if (role === 'commander') {
-         allPanels[30].innerHTML = `<div id="table-scroll" class="table-scroll">
-            <div class="table-wrap" id="table-wrap">
-              <table class="main-table">
-                  <tr class="little">
-                    <td class="fixed-side top"><p id="dot-slider" class="dot-slider"><span class="selected-dot">●</span>●●●</p></td>
-                    <td class="head-table">מ-פ' עד "פ+10"</td>
-                    <td class="head-table">מ-"פ+10" עד "פ+30"</td>
-                    <td class="head-table">מ-"פ+30" עד "פ+60"</td>
-                    <td class="head-table">מ-"פ+60" עד תום האירוע</td>
-                  </tr>
-                  <tr>
-                    <td class="fixed-side middle one">פעילות<br> בשטח</td>
-                    <td class="reg">התרעה ופעולות איתור</td>
-                    <td class="reg">הפעלת מענה משולב והקמת חפ"ק אחוד</td>
-                    <td class="reg">ניטור ועדכון הע"ס דינאמית <br> פעולות להצלת חיים והכלת המוקד</td>
-                    <td class="reg">סיום הטיפול במוקד <br> שלילת הסכנה והכרזה על תום אירוע</td>
-                  </tr>
-                  <tr>
-                    <td class="fixed-side middle two">פעילות<br> במפקדה</td>
-                    <td class="reg">חיתוך מצב <br> שלילה או הכרזה על אירוע חומ"ס</td>
-                    <td class="reg">הפצת הנחיות מצילות חיים <br>והודעות משלימות ניתוח אזורי סיכון<br> ותכנון מענה</td>
-                    <td class="reg">עדכון הנחיות בהתאם להע"ס דינאמית <br> תמיכה לוגיסטית בכוחות בשטח</td>
-                    <td class="reg">שחרור האוכלוסייה <br> וידוא חזל"כ לכוחות</td>
-                  </tr>
-                  <tr>
-                    <td class="fixed-side middle three">התנהגות<p>אוכלוסייה</p></td>
-                    <td class="reg">התמגנות למשך 10 דקות</td>
-                    <td class="reg">פעילות עפ"י ההנחיות <br> (הסתגרות, התפנות ועוד)</td>
-                    <td class="reg">המשך פעילות עפ"י ההנחיות</td>
-                    <td class="reg">חזרה לשגרה</td>
-                  </tr>
-                  <tr>
-                    <td class="fixed-side bottom">תפקידי<br> הגדוד</td>
-                    <td class="reg dif-color-td">קבלת התרעה על חשש לאירוע חומ"ס <br> בגזרת הגדוד</td>
-                    <td class="reg dif-color-td">הגעה לאירוע והקמת חפ"ק אחוד, <br>ניהול האירוע, העברת מידע<br> לרמה הממונה באופן שוטף</td>
-                    <td class="reg dif-color-td">בהתאם להערכת מצב - ביצוע סריקות<br> לפינוי נפגעים בשטח תחת סיכון מתן <br> טיפול ראשוני תומך בשטח <br>עד לפינוי הנפגעים</td>
-                    <td class="reg dif-color-td">המשך ניהול האירוע <br>עד להכרזה על תום האירוע</td>
-                  </tr>
-              </table>
-            </div>
-          </div>`;
-            } else {
-                allPanels[30].innerHTML = `<div id="table-scroll" class="table-scroll">
-                <div class="table-wrap" id="table-wrap">
-                  <table class="main-table">
-                      <tr class="little">
-                        <td class="fixed-side top"><p id="dot-slider" class="dot-slider"><span class="selected-dot">●</span>●●●</p></td>
-                        <td class="head-table">מ-פ' עד "פ+10"</td>
-                        <td class="head-table">מ-"פ+10" עד "פ+30"</td>
-                        <td class="head-table">מ-"פ+30" עד "פ+60"</td>
-                        <td class="head-table">מ-"פ+60" עד תום האירוע</td>
-                      </tr>
-                      <tr>
-                        <td class="fixed-side middle one">פעילות<br> בשטח</td>
-                        <td class="reg">התרעה ופעולות איתור</td>
-                        <td class="reg">הפעלת מענה משולב והקמת חפ"ק אחוד</td>
-                        <td class="reg">ניטור ועדכון הע"ס דינאמית <br> פעולות להצלת חיים והכלת המוקד</td>
-                        <td class="reg">סיום הטיפול במוקד <br> שלילת הסכנה והכרזה על תום אירוע</td>
-                      </tr>
-                      <tr>
-                        <td class="fixed-side bottom">תפקידי<br> הגדוד</td>
-                        <td class="reg dif-color-td">קבלת התרעה על חשש לאירוע חומ"ס <br> בגזרת הגדוד</td>
-                        <td class="reg dif-color-td">הגעה לאירוע והקמת חפ"ק אחוד, <br>ניהול האירוע, העברת מידע<br> לרמה הממונה באופן שוטף</td>
-                        <td class="reg dif-color-td">בהתאם להערכת מצב - ביצוע סריקות<br> לפינוי נפגעים בשטח תחת סיכון מתן <br> טיפול ראשוני תומך בשטח <br>עד לפינוי הנפגעים</td>
-                        <td class="reg dif-color-td">המשך ניהול האירוע <br>עד להכרזה על תום האירוע</td>
-                      </tr>
-                  </table>
-                </div>
-              </div>`;
-            }
-
-            document.getElementById("table-wrap").addEventListener("scroll", scrolling);
-            dotSlider = document.getElementById("dot-slider");
-        
-
-            document.getElementsByClassName("end-btn")[1].style.display = "none";
-            score = Math.round(score);
-    
-            if (score < 75) {
-                document.getElementsByClassName("score")[1].innerHTML = ` ציונכם הוא: ${score} <br> כדאי לכם לחזור על הלומדה... `;
-                document.getElementsByClassName("ending-div")[1].innerHTML +=
-                `<button id="start-over-btn" class="btn" style="bottom: 6vh;">נסו שנית</button>`;
-                document.getElementById("start-over-btn").addEventListener("click", startOver);
-            } else {
-                document.getElementsByClassName("score")[1].innerHTML = ` ציונכם הוא: ${score} <br> כל הכבוד! `;
-            }
-        }
 }
 
 const carousel = (side) => {
@@ -789,7 +831,7 @@ const pacMap = (chosen) => {
         }
     }
 
-    if (unit === '1') {
+    if (unit === 1) {
             if (!(document.getElementById(`${chosen}`).classList.contains('visited-concept'))) {
                 completePacConcepts++;
                 document.getElementById(`${chosen}`).classList.add("visited-concept");
@@ -926,23 +968,21 @@ const conceptScreenHandle = (definitionNum, target) => {
                 for (let i = 0; i < allPanels.length; i++) {
                     allPanels[i].style.display = 'none';
                 }
-                document.body.scrollTop = 0; // For Safari
-                document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
-                allPanels[40].style.display = 'block';
+                    allPanels[40].style.display = 'block';
+                        if (sessionStorage.getItem("answered-q1-1")) {
+                            allPanels[41].style.display = 'block';
+                            allPanels[42].style.display = 'block';
+                        } else {
+                            document.body.scrollTop = 0; // For Safari
+                            document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+                        }
+
             break;
 
             case 0:
                 for (let i = 0; i < allPanels.length; i++) {
                     allPanels[i].style.display = 'none';
                 }
-
-                allPanels[26].style.display = 'block';
-                allPanels[27].style.display = 'block';
-                allPanels[28].style.display = 'block';
-                if (sessionStorage.getItem("answered-q1-1")) {
-                    allPanels[29].style.display = 'block';
-                }
-                
                 document.body.scrollTop = 0; // For Safari
                 document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
             break;
@@ -1053,10 +1093,9 @@ const conceptScreenHandle = (definitionNum, target) => {
                 for (let i = 0; i < allPanels.length; i++) {
                     allPanels[i].style.display = 'none';
                 }
-                document.body.scrollTop = 0; // For Safari
-                document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
                 allPanels[47].style.display = 'block';
                 if (sessionStorage.getItem("answered-q1-1")) {
+                    allPanels[48].style.display = 'block';
                     allPanels[49].style.display = 'block';
                 }
             break;
@@ -1443,8 +1482,7 @@ const shualOpening = () => {
         duplicateMithamHomas = true;
     }
     
-}
-    
+}  
 
 const questionAnswer = async (answer, clickedAnswer) => {
     // Fetch the data from the JSON file
@@ -1492,43 +1530,11 @@ const questionAnswer = async (answer, clickedAnswer) => {
         }
     }
     
-    let allPanels = document.getElementsByTagName('section');
-    if (unit == 1 && role == 'commander') {
-        allPanels[49].style.display = "block";
-
-    } else if (unit == 1 && role == 'soldier') {
-        allPanels[42].style.display = 'block';
-
-    } else if (unit == 2 && role == 'commander') {
-        allPanels[38].style.display = "block";
-        if (sessionStorage.getItem("answered-q2-2")) {
-            document.getElementsByTagName('section')[39].style.display = "block";
-        }
-
-    } else if (unit == 2 && role == 'soldier') {
-        allPanels[36].style.display = "block";
-        
-    } else if (unit == 3 && role == 'commander') {
-        document.getElementsByTagName('section')[31].style.display = "block";
-        if (sessionStorage.getItem("answered-q2-3")) {
-            document.getElementsByTagName('section')[32].style.display = "block";
-            if (sessionStorage.getItem("answered-q3-3")) {
-                document.getElementsByTagName('section')[33].style.display = "block";
-                if (sessionStorage.getItem("answered-q4-3")) {
-                    document.getElementsByTagName('section')[34].style.display = "block";
-                }
-            }
-        }
-
-    } else if (unit == 4) {
-        document.getElementsByTagName('section')[37].style.display = "block";
-        document.getElementsByTagName('section')[38].style.display = "block";
-        document.getElementsByTagName('section')[39].style.display = "block";
-        document.getElementsByTagName('section')[40].style.display = "block";
+    changeSpecificDetails();
+    if (unit == 1) {
+        conceptScreenHandle(-1);
     }
 }
-
-
 
 const areaOrganizing = (areaClicked) => {
     document.getElementsByClassName("area-explained")[1].style.display = "block";
@@ -1554,8 +1560,6 @@ const whatsappContactsHandle = (contact, target) => {
     let contactClicked = target;
 
     if (isWhatsappVisited) {
-        allPanels[38].style.display = "block";
-        allPanels[39].style.display = "block";
         return;
     }
 
@@ -1598,22 +1602,36 @@ const whatsappContactsHandle = (contact, target) => {
             document.getElementsByClassName("completeContactsMessage")[1].style.display = "block";
             document.getElementsByClassName("completeContactsMessage")[1].addEventListener("click", () => {
 
-                let startScreen;
+                let startScreen = 35;
                 let endScreen;
+
                 if (role == "commander") {
-                    startScreen = 35;
-                    endScreen = 37;
+                    if (sessionStorage.getItem("answered-q1-2")) {
+                        endScreen = 38;
+                        if (sessionStorage.getItem("answered-q2-2")) {
+                            endScreen = 39;
+                        }
+                    } else {
+                        endScreen = 37;
+                    }
+
                 } else if (role == "soldier") {
-                    startScreen = 35;
-                    endScreen = 35;
+                    if (sessionStorage.getItem("answered-q1-2")) {
+                        endScreen = 36;
+                    } else {
+                        endScreen = 35;
+                    }
                 }
-                for (startScreen; startScreen <= endScreen ; startScreen++) {
+
+                for (startScreen; startScreen <= endScreen; startScreen++) {
                     isWhatsappVisited = true;
                     allPanels[startScreen].style.display = "block";
+
                         window.requestAnimationFrame(() => { // scroll to the bottom of the page
                             document.documentElement.scrollTop = 0.75*scrollHeightWhatsapp;
                             document.body.scrollTop = 0.75*scrollHeightWhatsapp; // For older browsers
                         });
+
                 }      
         })
     }
@@ -1635,12 +1653,13 @@ const stagesRoad = (cloudNumber, targetCloud) => {
             completeCloudStages++;
         }
         targetCloud.classList.add("visited-cloud-stage");
-       if (completeCloudStages == 5) {
+       if (completeCloudStages == 5 || sessionStorage.getItem("completeCloudStages")) {
             document.getElementsByClassName("explain-stages")[1].textContent = "המשיכו לגלול למטה";
             let allPanels = document.getElementsByTagName('section');
             allPanels[29].style.display = "block";
             allPanels[30].style.display = "block";
             allPanels[31].style.display = "block";
+            sessionStorage.setItem("completeCloudStages", true);
        }
     });
 }
