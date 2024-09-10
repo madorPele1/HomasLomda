@@ -146,18 +146,6 @@ section {
     top: 17svh;
 }
 
-/* @media (min-height: 700px) {
-    .explaining-div {
-        top: 16svh; 
-    }
-}
-
-@media (min-height: 800px) {
-    .explaining-div {
-        top: 16svh; 
-    }
-} */
-
 .explaining-text {
     position: relative;
     margin: auto;
@@ -588,9 +576,12 @@ section {
 
 .concepts-list-title {
     font-weight: 800;
-    font-size: 5vmax;
+    font-size: 4vmax;
     margin: 5%;
     text-align: center;
+    background-color: #ffefdca1;
+    border-radius: 10vh;
+    padding: 10px;
 }
 
 #end-concept-btn {
@@ -603,14 +594,14 @@ section {
 }
 
 .concept {
-    background-color: #f0dafee1;
+    background-color: #f8effdc9;
     width: 40vw;
     min-height: 14svh;
     max-height: 20svh;
     margin-top: 15%;
     font-size: 2.5vmax;
     text-align: center;
-    border-radius: 10vw;
+    border-radius: 15vw;
     padding: 3vh;
     display: flex;
     align-items: center;
@@ -725,16 +716,14 @@ section {
         width: 30vw;
     }
 }
-#rhombuse1 {
-    filter: drop-shadow(0px 0px 5px rgb(244, 30, 30));
+#rhombuse1, #rhombuse2,  #rhombuse3{
+    filter: drop-shadow(0px 0px 10px rgb(38, 212, 218));
+    width: 33vw;
 }
 
-#rhombuse2 {
-    filter: drop-shadow(0px 0px 5px rgb(30, 198, 244));
-}
-
-#rhombuse3 {
-    filter: drop-shadow(0px 0px 5px rgb(255, 133, 11));
+.small-btn {
+    width: 21vw;
+    left: 73% !important;
 }
 
 /* weraing protection explaining */
@@ -1586,10 +1575,6 @@ section {
 .back-btn-container {
     position: relative;
     left: 15%;
-}
-
-.small-btn {
-    width: 20vw;
 }
 
 .checkMark {

@@ -98,13 +98,10 @@ h1 {
 }
 
 .instructions {
-    font-size: 3.5vmax;
+    font-size: 3vmax;
     text-align: center;
-    width: 88vw;
     position: relative;
-    padding-top: 1vh;
-    padding-bottom: 2vh;
-    padding-right: 5vw;
+    padding: 10px;
 }
 
 .container {

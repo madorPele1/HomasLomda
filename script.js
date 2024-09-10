@@ -15,7 +15,8 @@ window.addEventListener("load", () => {
 const startLomda = () => {
     document.getElementById('panel1').style.animation = 'fade-out 1s forwards';
     setTimeout(() => { 
-        document.getElementById('panel1').innerHTML = '<h1 class="main-title">השימוש בלומדה</h1><p class="instructions">המעבר בין עמוד לעמוד בלומדה יעשה באמצעות גלילה/החלקה מעלה.</p><p class="instructions">ניתן לחזור בכל עת למסלול ולחזור ליחידות הלימוד הקודמות באמצעות לחיצה על המכונית המופיעה בצד שמאל של המסך.</p><p class="instructions bold">גללו מטה כדי להמשיך..</p><p class="down-arrows">︾</p>';
+        document.getElementsByClassName('container')[0].innerHTML = '<h1 class="main-title">השימוש בלומדה</h1><p class="instructions">המעבר בין עמוד לעמוד בלומדה יעשה באמצעות גלילה/החלקה מעלה.</p><p class="instructions">ניתן לחזור בכל עת למסלול ולחזור ליחידות הלימוד הקודמות באמצעות לחיצה על המכונית המופיעה בצד שמאל של המסך.</p><p class="instructions bold">גללו מטה כדי להמשיך..</p><p class="down-arrows">︾</p>';
+        document.getElementsByClassName('container')[0].style.top = "0";
         document.getElementById('panel1').style.animation = 'fade-in 1s forwards';
         document.getElementById('panel2').style.display = 'block';
         document.getElementById('panel2').style.animation = 'fade-in 1s forwards';

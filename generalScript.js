@@ -206,6 +206,14 @@ const iOS = () => {
 } // check if the user's device is ios
 
 const displayScreens = (screenArrayName) => { 
+
+        //temp
+        document.getElementById("carStop5").style.display = "block";
+        document.getElementById("carStop2").style.display = "block";
+        document.getElementById("carStop3").style.display = "block";
+        //temp
+
+
     if (role == undefined) {alert("יש להתחבר לעמוד הראשי של הלומדה: \n https://madorpele1.github.io/HomasLomda/");} // alert that user is in the wrong page
     const loader = document.getElementById("loader");
     if (loader) {loader.style.display = "none";} // removing loader element
@@ -263,6 +271,8 @@ const changeSpecificDetails = () => {
 
     else if (unit == 2) {  
         whatsappContactsHandle();
+        document.getElementsByClassName("back-to-map-car-button")[21].style.display = "none";
+    
         allPanels = document.getElementsByTagName('section');
 
         let arrows = document.getElementsByClassName("down-arrows");          
@@ -284,6 +294,8 @@ const changeSpecificDetails = () => {
 
     else if (unit == 3) { 
         if (role == 'commander') { // change specific answers details
+            document.getElementsByClassName("back-to-map-car-button")[14].style.display = "none";
+
             document.getElementsByTagName('section')[29].style.display = "none";
             document.getElementsByTagName('section')[30].style.display = "none";
             document.getElementsByTagName('section')[31].style.display = "none";
@@ -1315,6 +1327,7 @@ const manageRhombuses = (rhombuseNum) => {
         var rhombuses = document.getElementsByClassName(`rhombuse${rhombuseNum}`); 
         for (let i = 0; i < rhombuses.length; i++) {
             rhombuses[i].setAttribute('src', `assets/units/unit1/homasTypes/${window[`rhombuse${rhombuseNum}Pic`]}.svg`);
+            rhombuses[i].style.filter = "drop-shadow(rgb(15, 165, 40) 0px 0px 2px)";
         }
         for (let i = 0; i < allPanels.length; i++) {
             allPanels[i].style.display = 'none';
@@ -1639,7 +1652,7 @@ const whatsappContactsHandle = (contact, target) => {
 }
 
 const stagesRoad = (cloudNumber, targetCloud) => {
-    targetCloud.style.animation = `growing-cloud${cloudNumber} 2s forwards`;
+    targetCloud.style.animation = `growing-cloud${cloudNumber} 0s forwards`;
     targetCloud.style.zIndex = "3";
     document.getElementsByClassName("stages-explain-div")[1].style.display = "block";
     document.getElementsByClassName(`stage-div${cloudNumber}`)[1].style.display = "block";
