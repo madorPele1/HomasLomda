@@ -907,6 +907,14 @@ section {
     top: 23%;
 }
 
+.hapakim-area {
+    display: none;
+}
+
+.commanding-area {
+    display: none;
+}
+
 /* whatsapp */
 .whatsapp-container {
     background-color: #fff;
