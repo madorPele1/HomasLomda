@@ -411,6 +411,7 @@ const changeSpecificDetails = () => {
 
         if (document.getElementsByClassName("title-background-general")[2]) {
             document.getElementsByClassName("title-background-general")[2].style.display = "none";        
+            document.getElementsByClassName("back-btn")[4].style.display = "none";        
         }
         if (role === 'commander') {
             allPanels[30].innerHTML = `<div id="table-scroll" class="table-scroll">
@@ -545,7 +546,7 @@ const clickHandler = (event) => {
         case "heat-roles":
         case "warm-roles":
         case "pac-map-concepts":
-            pacMap(targetId);
+            pacMap(targetId, target);
             break;
         case "definition1":
         case "definition2":
@@ -597,7 +598,7 @@ const clickHandler = (event) => {
             case "warm-area":
             case "mabar-area":
             case "cold-area":
-                areaOrganizing(targetId);
+                areaOrganizing(targetId, target);
             break;
            case "contact1":
            case "contact2":
@@ -817,7 +818,7 @@ const carousel = (side) => {
     document.getElementById('pic-shown').setAttribute('src', `assets/units/unit1/Picture${num}.jpg`);
 }
 
-const pacMap = (chosen) => {
+const pacMap = (chosen, clickedTag) => {
     if (role == 'commander' && sessionStorage.getItem("answered-q1-3")) {
         document.getElementsByTagName('section')[31].style.display = "block";
         document.getElementsByTagName('section')[32].style.display = "block";
@@ -845,6 +846,11 @@ const pacMap = (chosen) => {
             }
         }
     }
+
+    for (let index = 0; index < document.getElementsByClassName("pac").length; index++) {
+        document.getElementsByClassName("pac")[index].style.backgroundColor = "";
+    }
+    clickedTag.style.backgroundColor = "#99c7cde3";
 
     if (unit == 1) {
             if (!(document.getElementById(`${chosen}`).classList.contains('visited-concept'))) {
@@ -1271,10 +1277,7 @@ const conceptScreenHandle = (definitionNum, target) => {
                 allPanels[45].style.display = 'block'; 
                 document.getElementsByClassName("character-body")[10].style.width = "55vw";
                 document.getElementsByClassName("back-btn")[15].style.display = "none"; 
-                let changePic = document.getElementsByClassName('character-body'); 
-                for (let i = 10; i < 12; i++) {
-                    changePic[i].setAttribute('src', `assets/units/unit1/pakal.svg`);
-                }
+                document.getElementsByClassName('character-body')[11].setAttribute('src', `assets/units/unit1/pakal.svg`);
                 document.getElementsByClassName("down-arrows")[13].style.display = "none"; 
                 document.body.scrollTop = 0; // For Safari
                 document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
@@ -1297,6 +1300,8 @@ const conceptScreenHandle = (definitionNum, target) => {
                 allPanels[42].style.display = 'block'; 
                 document.getElementsByClassName("down-arrows")[11].style.display = "none"; 
                 document.getElementsByClassName("character-body")[10].style.width = "45svw"; 
+                document.getElementsByClassName('character-body')[10].style.bottom = "16%";
+                document.getElementsByClassName('character-body')[10].setAttribute('src', `assets/units/unit4/bmp/mask.svg`);
                 document.body.scrollTop = 0; // For Safari
                 document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
                 if (!(clickedConcept.classList.contains('visited-concept'))) {
@@ -1567,7 +1572,12 @@ const questionAnswer = async (answer, clickedAnswer) => {
     }
 }
 
-const areaOrganizing = (areaClicked) => {
+const areaOrganizing = (areaClicked, clickedTag) => {
+    for (let index = 0; index < document.getElementsByClassName("area").length; index++) {
+        document.getElementsByClassName("area")[index].style.backgroundColor = "";
+    }
+        clickedTag.style.backgroundColor = "#99c7cde3";
+
     document.getElementsByClassName("area-explained")[1].style.display = "block";
     const areaExplained = document.getElementsByClassName("explaining-area");
     for (let i = 0; i <  areaExplained.length; i++) {
