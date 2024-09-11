@@ -596,6 +596,7 @@ const clickHandler = (event) => {
             case "heat-area":
             case "warm-area":
             case "mabar-area":
+            case "cold-area":
                 areaOrganizing(targetId);
             break;
            case "contact1":
@@ -1580,7 +1581,15 @@ const areaOrganizing = (areaClicked) => {
     let glowPath = areaClicked.replace('-area', '');
     document.getElementsByClassName("glow-area")[1].src = `assets/units/unit3/glow${glowPath}.png`
 
-    if (completeArea === 3) {
+    if (areaClicked === "cold-area") {
+        document.getElementsByClassName(`hapakim-area`)[1].style.display = "block";
+        document.getElementsByClassName(`commanding-area`)[1].style.display = "block";
+    } else {
+        document.getElementsByClassName(`hapakim-area`)[1].style.display = "none";
+        document.getElementsByClassName(`commanding-area`)[1].style.display = "none";
+    }
+
+    if (completeArea === 4) {
         document.getElementsByTagName('section')[30].style.display = "block";
     }
 }
