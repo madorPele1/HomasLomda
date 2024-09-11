@@ -409,8 +409,9 @@ const changeSpecificDetails = () => {
         document.getElementsByClassName("ending-text")[1].style.fontSize = "3.5vw";
         document.getElementsByClassName("ending-text")[1].style.lineHeight = "4vh";
 
-        
-        document.getElementsByClassName("title-background-general")[2].style.display = "none";        
+        if (document.getElementsByClassName("title-background-general")[2]) {
+            document.getElementsByClassName("title-background-general")[2].style.display = "none";        
+        }
         if (role === 'commander') {
             allPanels[30].innerHTML = `<div id="table-scroll" class="table-scroll">
             <div class="table-wrap" id="table-wrap">
@@ -489,13 +490,13 @@ const changeSpecificDetails = () => {
             
             let numOfQuestions = numOfQuestionsFor[role];
             updatedScore = sessionStorage.getItem("updated-score");
-            score = (updatedScore / (numOfQuestions * 10)) * 100;
+            score = Math.round((updatedScore / (numOfQuestions * 10)) * 100);
             if (score < 75 && sessionStorage.getItem("completeCloudStages")) {
                 document.getElementsByClassName("ending-div")[1].innerHTML +=
                 `<button id="start-over-btn" class="btn" style="bottom: 6vh;">נסו שנית</button>`;
                 document.getElementsByClassName("score")[1].innerHTML = ` ציונכם הוא: ${score} <br> כדאי לכם לחזור על הלומדה... `;
                 document.getElementById("start-over-btn").addEventListener("click", startOver);
-            } else {
+            } else if (score > 75) {
                 document.getElementsByClassName("score")[1].innerHTML = ` ציונכם הוא: ${score} <br> כל הכבוד! `;
             }
     }
@@ -554,6 +555,7 @@ const clickHandler = (event) => {
         case "definition6":
         case "definition7":
         case "definition8":
+        case "definition9":
             conceptScreenHandle(parseInt(targetId.replace('definition', '')), target);
             break;
         case "end-concept-btn": 
@@ -848,15 +850,10 @@ const pacMap = (chosen) => {
                 completePacConcepts++;
                 document.getElementById(`${chosen}`).classList.add("visited-concept");
             }
-                if (role == 'commander') { // change specific answers details
-                    if (completePacConcepts === 4) {
-                        document.getElementsByTagName('section')[48].style.display = "block";
-                    }
-                } else if (role == 'soldier') {
-                    if (completePacConcepts === 4) {
-                        document.getElementsByTagName('section')[41].style.display = "block";
-                    }
-                }
+            if (completePacConcepts === 4) {
+                document.getElementsByClassName("back-btn")[18].style.display = "block";
+            }
+             
     }
 
  if (unit == 3) {
@@ -1010,8 +1007,8 @@ const conceptScreenHandle = (definitionNum, target) => {
 
                 document.body.scrollTop = 0; // For Safari
                 document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
-                document.getElementsByClassName("back-btn")[3].style.display = "none"; 
                 document.getElementsByClassName("back-btn")[4].style.display = "none"; 
+                document.getElementsByClassName("back-btn")[5].style.display = "none"; 
                 document.getElementsByClassName("down-arrows")[6].style.display = "block"; 
                 
                 if (!(clickedConcept.classList.contains('visited-concept'))) {
@@ -1031,7 +1028,7 @@ const conceptScreenHandle = (definitionNum, target) => {
                 }
                 allPanels[35].style.display = 'block';
                 allPanels[36].style.display = 'block';
-                document.getElementsByClassName("back-btn")[5].style.display = "none"; 
+                document.getElementsByClassName("back-btn")[6].style.display = "none"; 
                 document.body.scrollTop = 0; // For Safari
                 document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
 
@@ -1092,7 +1089,7 @@ const conceptScreenHandle = (definitionNum, target) => {
 
         var endConceptButton = document.getElementsByClassName('end-concept-btn');
         for (let i = 0; i < endConceptButton.length; i++) { 
-            if (completeConcept == 8) {
+            if (completeConcept == 9) {
                 endConceptButton[i].style.display = 'block';
             }
         }
@@ -1105,9 +1102,10 @@ const conceptScreenHandle = (definitionNum, target) => {
                 for (let i = 0; i < allPanels.length; i++) {
                     allPanels[i].style.display = 'none';
                 }
-                allPanels[47].style.display = 'block';
+                document.body.scrollTop = 0; // For Safari
+                document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+                allPanels[48].style.display = 'block';
                 if (sessionStorage.getItem("answered-q1-1")) {
-                    allPanels[48].style.display = 'block';
                     allPanels[49].style.display = 'block';
                 }
             break;
@@ -1131,8 +1129,8 @@ const conceptScreenHandle = (definitionNum, target) => {
                 allPanels[29].style.display = 'block';
                 allPanels[30].style.display = 'block';
                 allPanels[31].style.display = 'block';
-                document.getElementsByClassName("back-btn")[3].style.display = "none"; 
                 document.getElementsByClassName("back-btn")[4].style.display = "none"; 
+                document.getElementsByClassName("back-btn")[5].style.display = "none"; 
                 document.body.scrollTop = 0; // For Safari
                 document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
                 if (!(clickedConcept.classList.contains('visited-concept'))) {
@@ -1152,7 +1150,7 @@ const conceptScreenHandle = (definitionNum, target) => {
                 }
                 allPanels[35].style.display = 'block';
                 allPanels[43].style.display = 'block';
-                document.getElementsByClassName("back-btn")[5].style.display = "none"; 
+                document.getElementsByClassName("back-btn")[6].style.display = "none"; 
                 document.body.scrollTop = 0; // For Safari
                 document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
                 if (!(clickedConcept.classList.contains('visited-concept'))) {
@@ -1214,8 +1212,8 @@ const conceptScreenHandle = (definitionNum, target) => {
                 allPanels[38].style.display = 'block';  
                 allPanels[39].style.display = 'block';  
                 allPanels[40].style.display = 'block'; 
-                document.getElementsByClassName("back-btn")[8].style.display = "none"; 
                 document.getElementsByClassName("back-btn")[9].style.display = "none"; 
+                document.getElementsByClassName("back-btn")[10].style.display = "none"; 
  
                 if (!addingHapakImg) {
                     document.getElementsByClassName("character-body")[8].style.display = "none"
@@ -1271,7 +1269,7 @@ const conceptScreenHandle = (definitionNum, target) => {
                 allPanels[44].style.display = 'block'; 
                 allPanels[45].style.display = 'block'; 
                 document.getElementsByClassName("character-body")[10].style.width = "55vw";
-                document.getElementsByClassName("back-btn")[14].style.display = "none"; 
+                document.getElementsByClassName("back-btn")[15].style.display = "none"; 
                 let changePic = document.getElementsByClassName('character-body'); 
                 for (let i = 10; i < 12; i++) {
                     changePic[i].setAttribute('src', `assets/units/unit1/pakal.svg`);
@@ -1298,6 +1296,25 @@ const conceptScreenHandle = (definitionNum, target) => {
                 allPanels[42].style.display = 'block'; 
                 document.getElementsByClassName("down-arrows")[11].style.display = "none"; 
                 document.getElementsByClassName("character-body")[10].style.width = "45svw"; 
+                document.body.scrollTop = 0; // For Safari
+                document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+                if (!(clickedConcept.classList.contains('visited-concept'))) {
+                    completeConcept++;
+                }
+                clickedConcept.classList.add("visited-concept");
+                break;
+
+            case 9:
+                var checkMark = document.getElementsByClassName("checkMark9"); 
+                for (let i = 0; i < checkMark.length; i++) {
+                    checkMark[i].style.display = 'inline';
+                }
+                visitedConcept8 = true;
+                for (let i = 0; i < allPanels.length; i++) {
+                    allPanels[i].style.display = 'none';
+                }
+                allPanels[47].style.display = 'block'; 
+                document.getElementsByClassName("down-arrows")[12].style.display = "none"; 
                 document.body.scrollTop = 0; // For Safari
                 document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
                 if (!(clickedConcept.classList.contains('visited-concept'))) {

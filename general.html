@@ -118,20 +118,21 @@
                     <section id="concepts">
 
                         <section class="concept1 panel" id="concepts-list">
-                            <h1 class="concepts-list-title" style="font-size: 4vmax">לחצו על כל אחד מהמושגים כדי לראות את הגדרתו</h1>
+                            <h1 class="concepts-list-title">לחצו על כל אחד מהמושגים כדי לראות את הגדרתו</h1>
 
                             <div class="list">
                                 <div class="concept" id="definition1"><img src="assets/general/checkMark.svg" alt="checkMark" class="checkMark checkMark1" id="checkMark1"> חומר מסוכן</div>
                                 <div class="concept" id="definition2"><img src="assets/general/checkMark.svg" alt="checkMark" class="checkMark checkMark2" id="checkMark2"> מחזיק חומ"ס</div>
-                                <div class="concept" id="definition3" style="font-size: 2vmax;"><img src="assets/general/checkMark.svg" alt="checkMark" class="checkMark checkMark3" id="checkMark3"> מחזיק חומ"ס בעל פוטנציאל סיכון לאוכלוסייה</div>
+                                <div class="concept" id="definition3" style="font-size: 2vmax;"><img src="assets/general/checkMark.svg" alt="checkMark" class="checkMark checkMark3" id="checkMark3">מחזיק מסכן אוכלוסייה</div>
                                 <div class="concept" id="definition4"><img src="assets/general/checkMark.svg" alt="checkMark" class="checkMark checkMark4" id="checkMark4"> אירוע חומ"ס</div>
                                 <div class="concept" id="definition5"><img src="assets/general/checkMark.svg" alt="checkMark" class="checkMark checkMark5" id="checkMark5"> חפ"ק אחוד</div>
                                 <div class="concept" id="definition6"><img src="assets/general/checkMark.svg" alt="checkMark" class="checkMark checkMark6" id="checkMark6"> מתחם חומ"ס</div>
                                 <div class="concept" id="definition7"><img src="assets/general/checkMark.svg" alt="checkMark" class="checkMark checkMark7" id="checkMark7">פק"ל אופציות </div>
                                 <div class="concept" id="definition8"><img src="assets/general/checkMark.svg" alt="checkMark" class="checkMark checkMark8" id="checkMark8">מיגון מוטה משימה </div>
+                                <div class="concept" id="definition9"><img src="assets/general/checkMark.svg" alt="checkMark" class="checkMark checkMark9" id="checkMark9">אזורי סיכון </div>
                             </div>
 
-                            <button class="btn end-concept-btn" id="end-concept-btn">לסיכום</button>
+                            <button class="btn end-concept-btn" id="end-concept-btn" style="right: 11vh;bottom: 13vh;">סיימתי!</button>
 
                             <button class="back-to-map-car-button" onclick="backToMap()">
                                 <img src="assets/general/cars/sideView.svg" alt="back-to-map-car-button">
@@ -292,6 +293,7 @@
                                 <p>(Protective Action Criteria) –  הריכוז באוויר של חומר, מעליו האוכלוסייה הכללית, כולל אוכלוסיה רגישה, בחשיפה של שעה צפויה לחוות השפעות בדרגות שונות.</p>
                             </div>
                             <div style="background-color: rgb(253 250 218 / 63%);width: 88svw;height: 13svh;text-align: center;border-radius: 4vh;padding: 23px;position: absolute;bottom: 74%;right: 50%;Transform: translate(50%);">לחצו על התגים הלחיצים במפה כדי לקרוא על האזורים השונים.</div>
+                            <button type="button" id="back-btn" class="btn back-btn" style="display: none;">חזרה</button>
 
                             <button class="back-to-map-car-button" onclick="backToMap()">
                                 <img src="assets/general/cars/sideView.svg" alt="back-to-map-car-button">
@@ -543,7 +545,7 @@
                                 </div>
                             </div>
 
-                            <div style="background-color: rgb(253 250 218 / 63%);width: 88svw;height: 13svh;text-align: center;border-radius: 4vh;padding: 23px;position: absolute;bottom: 83%;right: 50%;Transform: translate(50%);">לחצו על התגים הלחיצים במפה כדי לקרוא על האזורים השונים.</div>
+                            <div style="background-color: rgb(253 250 218 / 63%);width: 94vw;height: 13svh;text-align: center;border-radius: 4vh;padding: 23px;position: absolute;bottom: 83%;right: 50%;Transform: translate(50%);">לחצו על התגים הלחיצים במפה כדי לקרוא על תפקידי הגדוד באזורים השונים.</div>
                             <button class="back-to-map-car-button" onclick="backToMap()">
                                 <img src="assets/general/cars/sideView.svg" alt="back-to-map-car-button">
                             </button>
@@ -552,7 +554,7 @@
 
                         <section class="panel" id="area-organizing">
 
-                            <div style="background-color: rgb(253 250 218 / 63%);width: 88svw;height: 13svh;text-align: center;border-radius: 4vh;padding: 23px;margin: auto;position: relative;top: 5%;">לחצו על התגים הלחיצים במפה כדי לקרוא על האזורים השונים.</div>
+                            <div style="background-color: rgb(253 250 218 / 63%);width: 88svw;height: 13svh;text-align: center;border-radius: 4vh;padding: 23px;margin: auto;position: relative;top: 5%;">לחצו על התגים הלחיצים במפה כדי לקרוא על ארגון השטח באירוע.</div>
 
                             <div class="area-container">
                                 
@@ -793,7 +795,6 @@
                                         <li>טיפול סביבתי ושיקום תשתיות</li>
                                         <li>שיקום מפעל, יישום לקחים ומניעה</li>
                                     </ul>
-                                    <div style="background-color: #fbfbfb85;border-radius: 3vh;width: 53vw;margin: 10px;padding-right: 7px;text-align: right;">הרשות המקומית</div>
                                     <img class="stage-img" style="position: absolute;top: 38vh;right: 38vw;" src="assets/units/unit5/stageImgs/5.png" alt="stage-img5">               
                                 </div>  
                                 <button class="btn display-map-btn">חזור למפה</button>

@@ -576,12 +576,12 @@ section {
 
 .concepts-list-title {
     font-weight: 800;
-    font-size: 4vmax;
+    font-size: 3vmax;
     margin: 5%;
     text-align: center;
     background-color: #ffefdca1;
     border-radius: 10vh;
-    padding: 10px;
+    padding: 20px;
 }
 
 #end-concept-btn {
@@ -595,8 +595,8 @@ section {
 
 .concept {
     background-color: #f8effdc9;
-    width: 40vw;
-    min-height: 14svh;
+    width: 45vw;
+    min-height: 11svh;
     max-height: 20svh;
     margin-top: 15%;
     font-size: 2.5vmax;
@@ -1578,7 +1578,7 @@ section {
 }
 
 .checkMark {
-    width: 10vw;
+    width: 8vw;
     display: inline;
     display: none;
 }
