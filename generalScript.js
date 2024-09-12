@@ -206,14 +206,6 @@ const iOS = () => {
 } // check if the user's device is ios
 
 const displayScreens = (screenArrayName) => { 
-
-        //temp
-        document.getElementById("carStop5").style.display = "block";
-        document.getElementById("carStop2").style.display = "block";
-        document.getElementById("carStop3").style.display = "block";
-        //temp
-
-
     if (role == undefined) {alert("יש להתחבר לעמוד הראשי של הלומדה: \n https://madorpele1.github.io/HomasLomda/");} // alert that user is in the wrong page
     const loader = document.getElementById("loader");
     if (loader) {loader.style.display = "none";} // removing loader element
@@ -858,7 +850,17 @@ const pacMap = (chosen, clickedTag) => {
                 document.getElementById(`${chosen}`).classList.add("visited-concept");
             }
             if (completePacConcepts === 4) {
-                document.getElementsByClassName("back-btn")[18].style.display = "block";
+                switch (role) {
+                    case "commander":
+                        document.getElementsByClassName("back-btn")[18].style.display = "block";
+                        break;
+                    case "soldier":
+                        document.getElementsByClassName("back-btn")[11].style.display = "block";
+                        break;
+                
+                    default:
+                        break;
+                }
             }
              
     }
@@ -885,6 +887,10 @@ const pacMap = (chosen, clickedTag) => {
             case 'cold-roles':
                 explainText = document.getElementsByClassName(`job1`);
                 explainDiv = document.getElementsByClassName('cold-explain');
+            break;
+
+            case 'focus-roles':
+                explainText = document.getElementsByClassName(`general-job`);
             break;
 
             case 'warm-roles':         
@@ -962,15 +968,15 @@ const conceptScreenHandle = (definitionNum, target) => {
         }
 
     if (role == "soldier") {
-        document.getElementsByClassName("concept")[12].style.display = "none";
         document.getElementsByClassName("concept")[13].style.display = "none";
         document.getElementsByClassName("concept")[14].style.display = "none";
         document.getElementsByClassName("concept")[15].style.display = "none";
+        document.getElementsByClassName("concept")[16].style.display = "none";
         // displaying "none" the non-relavent concepts for soldiers
 
         var endConceptButton = document.getElementsByClassName('end-concept-btn');
         for (let i = 0; i < endConceptButton.length; i++) { 
-            if (completeConcept == 4) {
+            if (completeConcept == 5) {
                 endConceptButton[i].style.display = 'block';
             }
         }
@@ -984,9 +990,8 @@ const conceptScreenHandle = (definitionNum, target) => {
                 for (let i = 0; i < allPanels.length; i++) {
                     allPanels[i].style.display = 'none';
                 }
-                    allPanels[40].style.display = 'block';
+                    allPanels[41].style.display = 'block';
                         if (sessionStorage.getItem("answered-q1-1")) {
-                            allPanels[41].style.display = 'block';
                             allPanels[42].style.display = 'block';
                         } else {
                             document.body.scrollTop = 0; // For Safari
@@ -1088,6 +1093,23 @@ const conceptScreenHandle = (definitionNum, target) => {
                 clickedConcept.classList.add("visited-concept");
             break;
 
+            case 9:
+                var checkMark = document.getElementsByClassName("checkMark9"); 
+                for (let i = 0; i < checkMark.length; i++) {
+                    checkMark[i].style.display = 'inline';
+                }
+                visitedConcept8 = true;
+                for (let i = 0; i < allPanels.length; i++) {
+                    allPanels[i].style.display = 'none';
+                }
+                allPanels[40].style.display = 'block'; 
+                document.body.scrollTop = 0; // For Safari
+                document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+                if (!(clickedConcept.classList.contains('visited-concept'))) {
+                    completeConcept++;
+                }
+                clickedConcept.classList.add("visited-concept");
+                break;
             default:
                 break;
             }
