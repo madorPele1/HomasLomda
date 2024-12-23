@@ -1393,23 +1393,6 @@ section {
     font-weight: bold;
 }
 
-.try-again {
-    position: relative;
-    background-color: rgb(237, 214, 8);
-    box-shadow: 0 6px 0 rgb(228, 165, 4);
-    width: 30vw;
-    height: 6vh;
-    font-size: 2vmax;
-    font-weight: bold;
-    border-radius: 90svw;
-    border: none;
-    transition: all .3s;
-    display: block;
-    margin: auto;    
-    font-family: segoe;
-    /* bottom:400vh */
-}
-
 /* Media Queries */
 @media screen and (min-height: 850px) {
     .character-body-part {

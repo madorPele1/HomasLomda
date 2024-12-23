@@ -1487,11 +1487,8 @@ const setupDragAndDrop = () => {
         }
         else {
             const failureMessage = document.getElementsByClassName("failure-message")[1];
-            const tryAgain = document.getElementsByClassName("try-again")[1];
             failureMessage.style.display = "revert";
-            tryAgain.style.display = "block";
             resetDraggingBtn.style.display = "none";
-            tryAgain.addEventListener("click", resetGame);
         }
         let allPanels = document.getElementsByTagName('section');
         allPanels[36].style.display = "block";
